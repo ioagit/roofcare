@@ -3,20 +3,39 @@ var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
     , port = (process.env.PORT || 8081)
+    ,stylus = require('stylus')
     , homeRoute = require('./routes/home.js')
     , customerRoute = require('./routes/customer.js');
 
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+//sytlus setup
+function compile(str, path) {
+    return stylus(str).set('filename', path);
+}
 
 //Setup Express
 var server = express.createServer();
 server.configure(function(){
-    server.set('views', __dirname + '/views');
+
+    //Seting view options
+    server.set('views', __dirname + '/server/views');
+    server.set('view engine', 'jade');
     server.set('view options', { layout: false });
+
+    //stylus
+    server.use(stylus.middleware(
+        {src: __dirname + 'public',
+         compile: compile
+        }
+    ));
+
+    server.use(connect.static(__dirname + '/public'));
+
     server.use(express.logger('dev'));
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
     server.use(express.session({ secret: "shhhhhhhhh!"}));
-    server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
 });
 
@@ -61,20 +80,22 @@ io.sockets.on('connection', function(socket){
 
 /////// ADD ALL YOUR ROUTES HERE  /////////
 
-server.get('/', homeRoute.home);
-server.get('/customer', customerRoute.index);
-server.get('/customer/contact', customerRoute.contact);
+server.get('*', homeRoute.home);
+
+//server.get('/', homeRoute.home);
+//server.get('/customer', customerRoute.index);
+//server.get('/customer/contact', customerRoute.contact);
 
 
 //A Route for Creating a 500 Error (Useful to keep around)
-server.get('/500', function(req, res){
-    throw new Error('This is a 500 Error');
-});
+//server.get('/500', function(req, res){
+//    throw new Error('This is a 500 Error');
+//});
 
 //The 404 Route (ALWAYS Keep this as the last route)
-server.get('/*', function(req, res){
-    throw new NotFound;
-});
+//server.get('/*', function(req, res){
+//    throw new NotFound;
+//});
 
 function NotFound(msg){
     this.name = 'NotFound';
