@@ -80,6 +80,10 @@ io.sockets.on('connection', function(socket){
 
 /////// ADD ALL YOUR ROUTES HERE  /////////
 
+
+server.get('/partials/:partialPath', function(req, res) {
+    res.render('partials/' + req.params.partialPath);
+});
 server.get('*', homeRoute.home);
 
 //server.get('/', homeRoute.home);
