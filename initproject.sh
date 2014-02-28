@@ -12,7 +12,7 @@ echo "Copying code, markup and CSS boilerplate..."
 cp ./templates/app/server.js ./server.js
 cp ./templates/app/package.json ./package.json
 cp ./templates/app/.gitignore ./.gitignore
-cp ./templates/app/config.json ./config.json
+cp ./templates/app/default.json ./default.json
 cp ./templates/app/Makefile ./Makefile
 cp ./templates/test/stub.js ./test/stub.js
 curl https://raw.github.com/h5bp/html5-boilerplate/master/css/main.css > ./static/css/style.css

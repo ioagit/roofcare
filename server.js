@@ -62,7 +62,8 @@ server.error(function(err, req, res, next){
 
 
 //Connecting to MongoDB
-mongoose.connect('mongodb://localhost/testdb');
+//mongoose.connect('mongodb://localhost/testdb');
+mongoose.connect('mongodb://roofcareuser:r00fc4r3pwd@ds033559.mongolab.com:33559/roofcare');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.on('open', function callback() {

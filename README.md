@@ -44,7 +44,7 @@ Deployment
 
 node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. This means that:
 
-1. The version of Node is defined in config.json and in package.json
+1. The version of Node is defined in default.json and in package.json
 2. The main script to run is server.js
 3. The web server port is pulled from process.env.PORT 
 

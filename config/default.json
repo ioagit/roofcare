@@ -1,0 +1,13 @@
+/* Customer parameters
+ *
+ * This controls database access and legacy system synchronization
+ */
+{
+    "Customer": {
+        "dbName": "customers",
+        "dbHost": "localhost",
+        "dbPort": 5984
+        // Database synchronization frequency
+        "syncFrequency": 60
+    }
+}
