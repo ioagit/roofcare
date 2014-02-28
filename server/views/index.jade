@@ -1,6 +1,5 @@
-extends layout
+extends ../includes/layout
 
 block content
-	div
-		a(id='sender')='Send a Message'
-		ul(id='receiver')
+    section.content
+       div(ng-view)
