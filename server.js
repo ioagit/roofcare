@@ -3,7 +3,7 @@ var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
     , port = (process.env.PORT || 8081)
-    ,stylus = require('stylus')
+    , stylus = require('stylus')
     , homeRoute = require('./routes/home.js')
     , customerRoute = require('./routes/customer.js');
 
