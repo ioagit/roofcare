@@ -6,6 +6,7 @@ exports.home = function (req, res) {
             ,description: 'Page Description'
             ,author: 'IOA'
             ,analyticssiteid: 'XXXXXXX'
+            ,mongoMessage: mongoMessage
         }
     });
 
