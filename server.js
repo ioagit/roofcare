@@ -1,8 +1,11 @@
 //setup Dependencies
+
+var config = require('config');
+
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
-    , port = (process.env.PORT || 8081)
+    , port = (process.env.PORT || config.default_app_port)
     , stylus = require('stylus')
     , mongoose = require('mongoose')
     , homeRoute = require('./routes/home.js')
@@ -62,8 +65,8 @@ server.error(function(err, req, res, next){
 
 
 //Connecting to MongoDB
-//mongoose.connect('mongodb://localhost/testdb');
-mongoose.connect('mongodb://roofcareuser:r00fc4r3pwd@ds033559.mongolab.com:33559/roofcare');
+mongoose.connect('mongodb://localhost/testdb');
+//mongoose.connect('mongodb://roofcareuser:r00fc4r3pwd@ds033559.mongolab.com:33559/roofcare');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.on('open', function callback() {
