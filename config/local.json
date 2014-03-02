@@ -3,10 +3,22 @@
  * This controls database access and legacy system synchronization
  */
 {
-   "db": {
+
+    /*
+    "db": {
        "name": "testdb",
        "url": "localhost",
        "user": "",
        "pwd": ""
    }
+   */
+    //MongoDB stuff
+    "db": {
+        "name": "roofcare",
+        "url": "ds033559.mongolab.com:33559",
+        "user": "roofcareuser",
+        "pwd": "roofcarepwd"
+
+    }
+
 }
