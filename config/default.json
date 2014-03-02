@@ -3,5 +3,14 @@
  * This controls database access and legacy system synchronization
  */
 {
-   "default_app_port": 8081
+    "default_app_port": 8081,
+
+    //MongoDB stuff
+    "db": {
+        "name": "roofcare",
+        "url": "ds033559.mongolab.com:33559",
+        "user": "roofcareuser",
+        "pwd": "roofcarepwd"
+
+    }
 }

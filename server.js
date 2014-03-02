@@ -4,6 +4,7 @@ var config = require('config');
 
 var connect = require('connect')
     , express = require('express')
+    , util = require('util')
     , io = require('socket.io')
     , port = (process.env.PORT || config.default_app_port)
     , stylus = require('stylus')
@@ -65,8 +66,7 @@ server.error(function(err, req, res, next){
 
 
 //Connecting to MongoDB
-mongoose.connect('mongodb://localhost/testdb');
-//mongoose.connect('mongodb://roofcareuser:r00fc4r3pwd@ds033559.mongolab.com:33559/roofcare');
+mongoose.connect(util.format('mongodb://%s:%s@%s/%s',config.db.user, config.db.pwd, config.db.url, config.db.name));
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.on('open', function callback() {
@@ -77,11 +77,17 @@ db.on('open', function callback() {
 var messageSchema = new mongoose.Schema({message: String});
 var Message = mongoose.model('Message', messageSchema);
 var mongoMessage;
-Message.findOne().exec(function (err, messageDoc){
+var query;
+query = Message.findOne();
+query.exec(function (err, messageDoc){
+    if (err) {
+        console.log(err);
+        return;
+    }
     mongoMessage = messageDoc.message;
 });
 
-server.listen( port);
+server.listen(port);
 
 //Setup Socket.IO
 //var io = io.listen(server);
