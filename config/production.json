@@ -1,0 +1,12 @@
+/* Customer parameters
+ *
+ * This controls database access and legacy system synchronization
+ */
+{
+   "db": {
+       "name": "roofcare",
+       "url": "ds033559.mongolab.com:33559",
+       "user": "roofcareuser",
+       "pwd": "roofcarepwd"
+   }
+}
