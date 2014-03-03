@@ -1,6 +1,18 @@
 extends ../includes/layout
 
 block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+               a.navbar-brand(href="/") Tut
+                h6 SubText Header goes here
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/home") Home
     section.content
        div(ng-view)
-    h2= locals.mongoMessage
+
+
+    footer.container.text-center
+        p &copy; 2014 IRNetwork
