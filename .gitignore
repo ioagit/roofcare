@@ -1,3 +1,5 @@
 .idea
 node_modules
 public/vendor
+config/runttime.json
+npm-debug.log
