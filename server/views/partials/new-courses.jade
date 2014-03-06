@@ -1,3 +1,6 @@
 .panel.panel-primary
     .panel-heading.text-cente New Courses
-    .panel-body Body Goes here
+    .panel-body
+        .row(ng-repeat="course in courses | orderBy:'published':true | limitTo:10")
+            .col-lg-3 {{course.published | date:'MMM d'}}
+            .col-lg-9 {{course.name}}
