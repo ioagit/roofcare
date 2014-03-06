@@ -3,7 +3,7 @@
 
 app.controller('rfMainCtrl', function($scope) {
 
-    $scope.courses - [
+    $scope.courses = [
         {mame: "Course 1 ", featured: true, published: new Date('2000/01/01')},
         {mame: "Course 2 ", featured: true, published: new Date('2001/01/01')},
         {mame: "Course 3 ", featured: true, published: new Date('2002/01/01')},

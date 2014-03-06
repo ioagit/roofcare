@@ -1,3 +1,5 @@
 .panel.panel-primary
     .panel-heading.text-cente Featured Courses
-    .panel-body Body Goes here
+    .panel-body
+        .row(ng-repeat="course in courses | filter:{featured:true}")
+            .col-md-12 {{course.name}}
