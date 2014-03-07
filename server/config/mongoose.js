@@ -14,6 +14,43 @@ module.exports = function(config) {
         console.log('testdb is now open');
     });
 
+    var userSchema = new mongoose.Schema({firstName: String, lastName: String, username: String});
+    var User =  mongoose.model('User', userSchema);
 
+
+    function handlerError(err, obj) {
+        if (err) {
+            console.log(err);
+        }
+    }
+
+    //Defining a handleCreation
+    function handleDocumentCreation(err, obj) {
+        if (err) {
+           handlerError();
+           return;
+        }
+
+        console.log(JSON.stringify(obj));
+    }
+
+    User.find({}).exec(function(err, collection) {
+
+            if (err) {
+                handlerError();
+                return;
+            }
+
+         if (collection.length === 0) {
+             User.create({firstName:'Verita', lastName: 'Suarez', username:'verita' }, handleDocumentCreation);
+             User.create({firstName:'Rima', lastName: 'Gerhard', username:'rimita' }, handleDocumentCreation);
+             User.create({firstName:'Ioa', lastName: 'Suarez', username:'ioaioa' }, handleDocumentCreation);
+
+         }
+
+
+
+        }
+    )
 
 }

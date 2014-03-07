@@ -13,7 +13,9 @@
     "mongoose": "2.5.12",
     "socket.io": "0.8.7",
     "stylus": "~0.42.2",
-    "config": "~0.4.35"
+    "config": "~0.4.35",
+    "passport": "~0.2.0",
+    "passport-local": "~0.1.6"
   },
   "devDependencies": {
     "vows": "0.5.x",
