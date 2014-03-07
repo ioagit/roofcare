@@ -1,93 +1,48 @@
 //setup Dependencies
 
-var config = require('config');
-
-var connect = require('connect')
-    , express = require('express')
-    , util = require('util')
+var  express = require('express')
     , io = require('socket.io')
-    , port = (process.env.PORT || config.default_app_port)
-    , stylus = require('stylus')
-    , mongoose = require('mongoose')
     , homeRoute = require('./routes/home.js')
     , customerRoute = require('./routes/customer.js');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-//sytlus setup
-function compile(str, path) {
-    return stylus(str).set('filename', path);
-}
+
+//Getting the config object
+var config = require('./server/config/config')[env];
 
 //Setup Express
 var server = express.createServer();
-server.configure(function(){
-
-    //Seting view options
-    server.set('views', __dirname + '/server/views');
-    server.set('view engine', 'jade');
-    server.set('view options', { layout: false });
-
-    //stylus
-    server.use(stylus.middleware(
-        {src: __dirname + 'public',
-         compile: compile
-        }
-    ));
-
-    server.use(connect.static(__dirname + '/public'));
-
-    server.use(express.logger('dev'));
-    server.use(connect.bodyParser());
-    server.use(express.cookieParser());
-    server.use(express.session({ secret: "shhhhhhhhh!"}));
-    server.use(server.router);
-});
-
-//setup the errors
-server.error(function(err, req, res, next){
-    if (err instanceof NotFound) {
-        res.render('404.jade', { locals: { 
-                  title : '404 - Not Found'
-                 ,description: ''
-                 ,author: ''
-                 ,analyticssiteid: 'XXXXXXX' 
-                },status: 404 });
-    } else {
-        res.render('500.jade', { locals: { 
-                  title : 'The Server Encountered an Error'
-                 ,description: ''
-                 ,author: ''
-                 ,analyticssiteid: 'XXXXXXX'
-                 ,error: err 
-                },status: 500 });
-    }
-});
 
 
-//Connecting to MongoDB
-mongoose.connect(util.format('mongodb://%s:%s@%s/%s',config.db.user, config.db.pwd, config.db.url, config.db.name));
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
-db.on('open', function callback() {
-    console.log('testdb is now open');
-});
+require ('./server/config/express')(server, config);
+
+//Mongoose config
+require ('./server/config/mongoose')(config);
+
+//Routes config
+require ('./server/config/routes')(server);
+
+
+server.listen(config.port);
+
+console.log('Listening on http://0.0.0.0:' + config.port );
 
 //Creating mongoose schemas
-var messageSchema = new mongoose.Schema({message: String});
-var Message = mongoose.model('Message', messageSchema);
-var mongoMessage;
-var query;
-query = Message.findOne();
-query.exec(function (err, messageDoc){
-    if (err) {
-        console.log(err);
-        return;
-    }
-    mongoMessage = messageDoc.message;
-});
+//var messageSchema = new mongoose.Schema({message: String});
+//var Message = mongoose.model('Message', messageSchema);
+//var mongoMessage;
+//var query;
+//query = Message.findOne();
+//query.exec(function (err, messageDoc){
+//    if (err) {
+//        console.log(err);
+//        return;
+//    }
+//    mongoMessage = messageDoc.message;
+//});
 
-server.listen(port);
+
 
 //Setup Socket.IO
 //var io = io.listen(server);
@@ -103,30 +58,6 @@ server.listen(port);
 //});
 
 
-///////////////////////////////////////////
-//              Routes                   //
-///////////////////////////////////////////
-
-/////// ADD ALL YOUR ROUTES HERE  /////////
-
-
-server.get('/partials/:partialPath', function(req, res) {
-    res.render('partials/' + req.params.partialPath);
-});
-server.get('*', function(req, res) {
-
-        res.render('index.jade', {
-        locals : {
-            title : 'Index page'
-                ,description: 'Page Description'
-                ,author: 'IOA'
-                ,analyticssiteid: 'XXXXXXX'
-                ,mongoMessage: mongoMessage
-        }
-        }
-        );
-
-});
 
 //server.get('/', homeRoute.home);
 //server.get('/customer', customerRoute.index);
@@ -150,4 +81,4 @@ function NotFound(msg){
 }
 
 
-console.log('Listening on http://0.0.0.0:' + port );
+
