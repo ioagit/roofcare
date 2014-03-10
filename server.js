@@ -2,6 +2,9 @@
 
 var  express = require('express')
     , io = require('socket.io')
+    , passport = require('passport')
+    , LocalStrategy = require('passport-local').Strategy
+
     , homeRoute = require('./routes/home.js')
     , customerRoute = require('./routes/customer.js');
 
@@ -19,6 +22,51 @@ require ('./server/config/express')(server, config);
 
 //Mongoose config
 require ('./server/config/mongoose')(config);
+
+//Configuring Passport
+var User = mongoose.model('User');
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        User.findOne({username: username}).exec(function (err, user) {
+                if (err) {
+                    console.log(err)
+                    return;
+                } //End if Error
+
+                if (user)
+                   return done(null, user)
+                else
+                   return done(null, false);
+
+            } // End Exec Callback
+        ) //Close Exec function
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    if (user) {
+        done(null, user._id);
+    }
+});
+
+passport.deserializeUser(function(user, done) {
+
+    User.findOne({_id: user._id}).exec(function (err, user) {
+            if (err) {
+                console.log(err)
+                return;
+            } //End if Error
+
+            if (user)
+                return done(null, user)
+            else
+                return done(null, false);
+
+        } // End Exec Callback
+    ) //Close Exec function
+
+
+});
 
 //Routes config
 require ('./server/config/routes')(server);

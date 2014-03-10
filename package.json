@@ -20,6 +20,8 @@
   "devDependencies": {
     "vows": "0.5.x",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "passport": "~0.2.0",
+    "passport-local": "~0.1.6"
   }
 }
