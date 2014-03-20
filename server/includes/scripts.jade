@@ -3,6 +3,8 @@ script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
 script
     window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\\/script>')
 
+//Vendors
+script(defer, src='/vendor/toastr/toastr.min.js')
 
 //Angular
 script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js')
@@ -14,6 +16,9 @@ script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.mi
 script(defer, src='/app/app.js')
 script(defer, src='/app/account/rfNavBarLoginCtrl.js')
 script(defer, src='/app/main/rfMainCtrl.js')
+script(defer, src='/app/common/rfNotifier.js')
+script(defer, src='/app/account/rfIndentitySvc.js')
+
 
 //-script(defer, src='js/plugins.js')
 //script(defer, src='/static/js/script.js')

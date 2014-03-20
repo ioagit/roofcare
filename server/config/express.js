@@ -5,7 +5,8 @@
 
 var  connect = require('connect')
     ,express = require('express')
-    , stylus = require('stylus');
+    ,passport = require('passport')
+    ,stylus = require('stylus');
 
 module.exports = function (server, config) {
 
@@ -35,6 +36,8 @@ server.configure(function(){
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
     server.use(express.session({ secret: "shhhhhhhhh!"}));
+    server.use(passport.initialize());
+    server.use(passport.session());
     server.use(server.router);
 });
 
@@ -58,4 +61,9 @@ server.error(function(err, req, res, next){
     }
 });
 
+}
+function NotFound(msg){
+    this.name = 'NotFound';
+    Error.call(this, msg);
+    Error.captureStackTrace(this, arguments.callee);
 }

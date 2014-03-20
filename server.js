@@ -1,8 +1,8 @@
 //setup Dependencies
 
 var  express = require('express')
-    , io = require('socket.io')
     , passport = require('passport')
+    , mongoose = require('mongoose')
     , LocalStrategy = require('passport-local').Strategy
 
     , homeRoute = require('./routes/home.js')
@@ -50,6 +50,8 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
+
+
 
     User.findOne({_id: user._id}).exec(function (err, user) {
             if (err) {
@@ -121,12 +123,3 @@ console.log('Listening on http://0.0.0.0:' + config.port );
 //server.get('/*', function(req, res){
 //    throw new NotFound;
 //});
-
-function NotFound(msg){
-    this.name = 'NotFound';
-    Error.call(this, msg);
-    Error.captureStackTrace(this, arguments.callee);
-}
-
-
-
