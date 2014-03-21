@@ -1,4 +1,4 @@
-angular.module('app').factory('rfIdentitySvc', function() {
+angular.module('app').factory('rcIdentitySvc', function() {
     return {
         currentUser: undefined,
         isAuthenticated: function() {

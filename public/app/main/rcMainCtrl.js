@@ -1,7 +1,7 @@
 'use strict';
 
 
-app.controller('rfMainCtrl', function($scope) {
+app.controller('rcMainCtrl', function($scope) {
 
     $scope.courses = [
 

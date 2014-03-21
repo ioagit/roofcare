@@ -4,7 +4,7 @@
 
 angular.module('app').value('rfToastr', toastr);
 
-angular.module('app').factory('rfNotifier', function(rfToastr) {
+angular.module('app').factory('rcNotifierSvc', function(rfToastr) {
     return {
         notify: function(msg) {
             rfToastr.success(msg);
