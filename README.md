@@ -1,20 +1,18 @@
-Hello World!!!!
-
 Node Boilerplate Version 2
 ==========================
 *Requires Node v0.6.6 (or newer)*
-node-boilerplate takes html-boilerplate, express, connect, jade and Socket.IO and organizes them into a ready to use website project. It's a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
+node-boilerplate takes html-boilerplate, express, connect, jade and Socket.IO and organizes them into a ready to use website project. It's a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc...
 
 Node Boilerplate has 4 goals:
 
 1. To end the repetition involved with starting a new Node website project
 2. To never install anything outside of the project directory (For easier production deployment)
 3. To make it easy to install additional modules within the project directory
-4. To enable easy upgrade or freezing of project dependencies  
+4. To enable easy upgrade or freezing of project dependencies
 (These goals are much easier to meet now that node includes the node_modules convention)
 
 To start a project:
-		
+
 		git clone git://github.com/robrighter/node-boilerplate.git mynewproject
 		cd mynewproject
 		./initproject.sh
@@ -48,5 +46,5 @@ node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. T
 
 1. The version of Node is defined in default.json and in package.json
 2. The main script to run is server.js
-3. The web server port is pulled from process.env.PORT 
+3. The web server port is pulled from process.env.PORT
 
