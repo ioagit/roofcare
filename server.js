@@ -4,7 +4,7 @@ var  express = require('express')
     , passport = require('passport')
     , mongoose = require('mongoose')
     , LocalStrategy = require('passport-local').Strategy
-
+    , mongoose = require('mongoose')
     , homeRoute = require('./routes/home.js')
     , customerRoute = require('./routes/customer.js');
 
