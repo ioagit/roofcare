@@ -1,9 +1,9 @@
 {
-  "name": "nodetut",
+  "name": "RoofCare",
   "version": "0.0.0",
-  "description": "\"MEAN Tutorial\"",
+  "description": "\"Roof Care\"",
   "authors": [
-    "\"IOA\""
+    "\"IOA\"", "\"CE\""
   ],
   "license": "MIT",
   "private": true,
