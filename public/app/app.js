@@ -3,6 +3,8 @@
  * Created by isuarez on 2/27/14.
  */
 
+
+//Main Angular module
 var app = angular.module('app', ['ngResource', 'ngRoute']);
 
 //Defining Routes
