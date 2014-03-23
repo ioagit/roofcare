@@ -1,7 +1,7 @@
 /**
  * Created by isuarez on 3/6/14.
  */
-var passport = require('passport');
+var auth = require('./auth');
 
 module.exports =  function(server) {
 
@@ -10,23 +10,7 @@ module.exports =  function(server) {
         res.render('../../public/app/' + req.params);
     });
 
-    server.post('/login', function (req, res, next) {
-        var auth = passport.authenticate('local', function(err, user)
-            {
-                if (err) { return next(err); }
-                if (!user) {  res.send({success:false}) }
-
-                //Login success
-                req.logIn(user, function (err) {
-                    if (err) { return next(err); }
-                    res.send({success:true, user: user});
-                })
-
-            }
-
-        );
-        auth(req, res, next);
-    });
+    server.post('/login', auth.authenticate);
 
     server.get('*', function(req, res) {
 
