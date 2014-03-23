@@ -1,3 +1,5 @@
+Hello World!!!!
+
 Node Boilerplate Version 2
 ==========================
 *Requires Node v0.6.6 (or newer)*
