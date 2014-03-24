@@ -3,10 +3,8 @@
 var  express = require('express')
     , passport = require('passport')
     , mongoose = require('mongoose')
-    , LocalStrategy = require('passport-local').Strategy
-    , mongoose = require('mongoose')
-    , homeRoute = require('./routes/home.js')
-    , customerRoute = require('./routes/customer.js');
+    , LocalStrategy = require('passport-local').Strategy;
+
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -33,7 +31,7 @@ passport.use(new LocalStrategy(
                     return;
                 } //End if Error
 
-                if (user)
+                if (user && user.authenticate(password))
                    return done(null, user)
                 else
                    return done(null, false);
@@ -55,12 +53,12 @@ passport.deserializeUser(function(user, done) {
 
     User.findOne({_id: user._id}).exec(function (err, user) {
             if (err) {
-                console.log(err)
+                console.log(err);
                 return;
             } //End if Error
 
             if (user)
-                return done(null, user)
+                return done(null, user);
             else
                 return done(null, false);
 

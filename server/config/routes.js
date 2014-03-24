@@ -11,6 +11,11 @@ module.exports =  function(server) {
     });
 
     server.post('/login', auth.authenticate);
+    server.post('/logout', function(req, res) {
+        req.logout();
+        res.end();
+    });
+
 
     server.get('*', function(req, res) {
 

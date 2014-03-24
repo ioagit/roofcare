@@ -15,8 +15,25 @@ angular.module('app').factory('rcAuthSvc', function($http, rcIdentitySvc, $q) {
                     else
                         deferred.resolve(false);
 
-                })
+                });
             return deferred.promise;
+        },
+
+        logoutUser: function() {
+
+            var deffered = $q.defer();
+
+            $http.post('/logout', {logout: true}).then(function() {
+
+                rcIdentitySvc.currentUser = undefined;
+                deffered.resolve();
+
+                }
+            );
+
+            return deffered.promise;
+
         }
+
     }
 })

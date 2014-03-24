@@ -1,7 +1,7 @@
 'use strict';
 
 
-app.controller('rfNavBarLoginCtrl', function($scope, $http, rcNotifierSvc, rcIdentitySvc, rcAuthSvc) {
+app.controller('rcHeaderLoginCtrl', function($scope, $http, rcNotifierSvc, rcIdentitySvc, rcAuthSvc, $location) {
 
    $scope.identity = rcIdentitySvc;
    $scope.signin = function (username, password) {
@@ -15,10 +15,18 @@ app.controller('rfNavBarLoginCtrl', function($scope, $http, rcNotifierSvc, rcIde
                    rcNotifierSvc.notify('Error login in.');
 
        }
-       )
+       );
 
 
+   $scope.signout = function() {
 
+       rcAuthSvc.logoutUser().then(function() {
+           $scope.username = "";
+           $scope.password = "";
+           rcNotifierSvc.notify('You have been successfylly signe out');
+           $location.path("/");
+       })
+   }
 
    }
 

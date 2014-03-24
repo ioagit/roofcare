@@ -2,7 +2,8 @@
  * Created by isuarez on 3/6/14.
  */
 
-var mongoose  = require('mongoose');
+var mongoose  = require('mongoose'),
+    crypto = require('crypto');
 
 module.exports = function(config) {
 
@@ -14,7 +15,12 @@ module.exports = function(config) {
         console.log('testdb is now open');
     });
 
-    var userSchema = new mongoose.Schema({firstName: String, lastName: String, username: String});
+    var userSchema = new mongoose.Schema({firstName: String, lastName: String, username: String, salt: String, hashed_pwd: String});
+    userSchema.methods = {
+        authenticate: function(passwordToMatch) {
+          return hashPwd(this.salt, passwordToMatch) === this.hashed_pwd;
+        }
+    }
     var User =  mongoose.model('User', userSchema);
 
 
@@ -27,7 +33,7 @@ module.exports = function(config) {
     //Defining a handleCreation
     function handleDocumentCreation(err, obj) {
         if (err) {
-           handlerError();
+           handlerError()
            return;
         }
 
@@ -42,9 +48,16 @@ module.exports = function(config) {
             }
 
          if (collection.length === 0) {
-             User.create({firstName:'Verita', lastName: 'Suarez', username:'verita' }, handleDocumentCreation);
-             User.create({firstName:'Rima', lastName: 'Gerhard', username:'rimita' }, handleDocumentCreation);
-             User.create({firstName:'Ioa', lastName: 'Suarez', username:'ioaioa' }, handleDocumentCreation);
+             var salt, hash;
+             salt = createSalt();
+
+             User.create({firstName:'Verita', lastName: 'Suarez', username:'verita', salt: salt,hashed_pwd: hashPwd(salt, 'verita') }, handleDocumentCreation);
+
+             salt = createSalt();
+             User.create({firstName:'Rima', lastName: 'Gerhard', username:'rimita', salt: salt, hashed_pwd: hashPwd(salt, 'rimita') }, handleDocumentCreation);
+
+             salt = createSalt();
+             User.create({firstName:'Ioa', lastName: 'Suarez', username:'ioaioa',  salt: salt, hashed_pwd: hashPwd(salt, 'ioaioa')  }, handleDocumentCreation);
 
          }
 
@@ -53,4 +66,12 @@ module.exports = function(config) {
         }
     )
 
+    function createSalt() {
+        return crypto.randomBytes(128).toString('base64');
+    }
+
+    function hashPwd(salt, pwd) {
+        var hmac = crypto.createHmac('sha1', salt);
+        return hmac.update(pwd).digest('hex');
+    }
 }
