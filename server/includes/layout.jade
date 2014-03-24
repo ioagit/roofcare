@@ -20,10 +20,6 @@ html.no-js(lang='en')
     link(rel='stylesheet', href='/static/css/site.css')
     //-script(src='js/libs/modernizr-2.0.6.min.js')
   body(ng-app='app')
-    block header
-
+    include currentUser
     block content
-
-    block footer
-      footer
-       include scripts
+    include scripts

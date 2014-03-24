@@ -18,3 +18,21 @@ describe('Test Framework', function () {
     }
 
 )
+
+describe('Async testing', function() {
+
+    var result = false;
+    beforeEach(function (done) {
+        setTimeout(function () {
+            result = true;
+            //complete the asyn beforeEach
+            done();
+        }), 2000
+    });
+
+    it('should be true after async function is done', function(done) {
+        result.should.eql(true);
+        done();
+    });
+
+} )

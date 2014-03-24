@@ -20,8 +20,10 @@ module.exports =  function(server) {
     server.get('*', function(req, res) {
 
         res.render('index.jade', {
+
                 locals : {
-                    title : 'Index page'
+                    loggedUser: req.user
+                    ,title : 'Index page'
                     ,description: 'Page Description'
                     ,author: 'IOA'
                     ,analyticssiteid: 'XXXXXXX'
