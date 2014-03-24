@@ -1,3 +1,11 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
 .idea
 node_modules
 public/vendor
