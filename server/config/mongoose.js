@@ -15,7 +15,7 @@ module.exports = function(config) {
         console.log('testdb is now open');
     });
 
-    var userSchema = new mongoose.Schema({firstName: String, lastName: String, username: String, salt: String, hashed_pwd: String});
+    var userSchema = new mongoose.Schema({firstName: String, lastName: String, username: String, salt: String, hashed_pwd: String, roles: [String]});
     userSchema.methods = {
         authenticate: function(passwordToMatch) {
           return hashPwd(this.salt, passwordToMatch) === this.hashed_pwd;
@@ -52,7 +52,7 @@ module.exports = function(config) {
              salt = createSalt();
              hash = hashPwd(salt, 'verita');
 
-             User.create({firstName:'Verita', lastName: 'Suarez', username:'verita', salt: salt,hashed_pwd: hash }, handleDocumentCreation);
+             User.create({firstName:'Verita', lastName: 'Suarez', username:'verita', salt: salt,hashed_pwd: hash, roles: ['admin'] }, handleDocumentCreation);
 
              salt = createSalt();
              hash = hashPwd(salt, 'rimita');
@@ -60,7 +60,7 @@ module.exports = function(config) {
 
              salt = createSalt();
              hash = hashPwd(salt, 'ioaioa');
-             User.create({firstName:'Ioa', lastName: 'Suarez', username:'ioaioa',  salt: salt, hashed_pwd: hash  }, handleDocumentCreation);
+             User.create({firstName:'Ioa', lastName: 'Suarez', username:'ioaioa',  salt: salt, hashed_pwd: hash,  roles: ['']   }, handleDocumentCreation);
 
          }
 

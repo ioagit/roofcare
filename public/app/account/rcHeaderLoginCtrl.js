@@ -1,7 +1,7 @@
 'use strict';
 
 
-app.controller('rcHeaderLoginCtrl', function($scope, $http, rcNotifierSvc, rcIdentitySvc, rcAuthSvc, $location) {
+angular.module('app').controller('rcHeaderLoginCtrl', function($scope, $http, rcNotifierSvc, rcIdentitySvc, rcAuthSvc, $location) {
 
    $scope.identity = rcIdentitySvc;
    $scope.signin = function (username, password) {
@@ -20,7 +20,7 @@ app.controller('rcHeaderLoginCtrl', function($scope, $http, rcNotifierSvc, rcIde
 
    $scope.signout = function() {
 
-       rcAuthSvc.logoutUser().then(function() {
+           rcAuthSvc.logoutUser().then(function() {
            $scope.username = "";
            $scope.password = "";
            rcNotifierSvc.notify('You have been successfylly signe out');

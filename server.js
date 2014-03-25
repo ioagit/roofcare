@@ -1,9 +1,7 @@
 //setup Dependencies
 
-var  express = require('express')
-    , passport = require('passport')
-    , mongoose = require('mongoose')
-    , LocalStrategy = require('passport-local').Strategy;
+var  express = require('express');
+
 
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -22,51 +20,9 @@ require ('./server/config/express')(server, config);
 require ('./server/config/mongoose')(config);
 
 //Configuring Passport
-var User = mongoose.model('User');
-passport.use(new LocalStrategy(
-    function (username, password, done) {
-        User.findOne({username: username}).exec(function (err, user) {
-                if (err) {
-                    console.log(err)
-                    return;
-                } //End if Error
-
-                if (user && user.authenticate(password))
-                   return done(null, user)
-                else
-                   return done(null, false);
-
-            } // End Exec Callback
-        ) //Close Exec function
-    }
-));
-
-passport.serializeUser(function(user, done) {
-    if (user) {
-        done(null, user._id);
-    }
-});
-
-passport.deserializeUser(function(user, done) {
+require ('./server/config/passport')();
 
 
-
-    User.findOne({_id: user._id}).exec(function (err, user) {
-            if (err) {
-                console.log(err);
-                return;
-            } //End if Error
-
-            if (user)
-                return done(null, user);
-            else
-                return done(null, false);
-
-        } // End Exec Callback
-    ) //Close Exec function
-
-
-});
 
 //Routes config
 require ('./server/config/routes')(server);

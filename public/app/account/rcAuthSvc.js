@@ -2,14 +2,16 @@
  * Created by isuarez on 3/20/14.
  */
 
-angular.module('app').factory('rcAuthSvc', function($http, rcIdentitySvc, $q) {
+angular.module('app').factory('rcAuthSvc', function($http, rcIdentitySvc, $q, rcUser) {
     return {
         authenticateUser: function(username, password) {
             var deferred = $q.defer();
             $http.post('/login', {username: username, password: password})
                 .then(function(response){
                     if (response.data.success) {
-                        rcIdentitySvc.currentUser = response.data.user;
+                        var user = new rcUser();
+                        angular.extend(user, response.data.user);
+                        rcIdentitySvc.currentUser = user;
                         deferred.resolve(true);
   }
                     else
