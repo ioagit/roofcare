@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "\"Roof Care\"",
   "authors": [
-    "\"IOA\"", "\"CE\""
+    "\"IOA\"",
+    "\"CE\""
   ],
   "license": "MIT",
   "private": true,
@@ -18,9 +19,10 @@
   "dependencies": {
     "jquery": "~2.1.0",
     "toastr": "~2.0.1",
-    "angular": "~1.2.13",
+    "angular": "~1.2.15",
     "angular-resource": "~1.2.13",
     "angular-route": "~1.2.13",
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.1.1",
+    "angular-mocks": "~1.2.15"
   }
 }
