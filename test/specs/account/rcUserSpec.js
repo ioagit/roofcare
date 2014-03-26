@@ -1,5 +1,6 @@
 describe('rcUser', function() {
-   beforeEach(module('app'));
+
+    beforeEach(module('app'));
 
    describe('isAdmin', function() {
        it('should return false if the roles array does not contain admin entry', function(rcUser) {
