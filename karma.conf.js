@@ -20,7 +20,7 @@ module.exports = function(config) {
       'public/vendor/angular-mocks/angular-mocks.js',
       'test/test-app.js',
       'public/app/**/*.js',
-      'test/test/**/*.js'
+      'test/specs/**/*.js'
     ],
 
 
@@ -56,7 +56,6 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
 
