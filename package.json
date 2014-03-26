@@ -22,6 +22,7 @@
     "mocha": "*",
     "should": "*",
     "passport": "~0.2.0",
-    "passport-local": "~0.1.6"
+    "passport-local": "~0.1.6",
+    "karma-chrome-launcher": "~0.1.2"
   }
 }
