@@ -1,4 +1,5 @@
 angular.module('app').factory('rcIdentitySvc', function($window, rcUser) {
+
     var currentUser;
 
     if (!!$window.currentUser ) {
@@ -8,9 +9,17 @@ angular.module('app').factory('rcIdentitySvc', function($window, rcUser) {
     }
 
     return {
+
         currentUser: currentUser,
+
         isAuthenticated: function() {
             return !!this.currentUser;
+        },
+
+        isAuthorized: function(role) {
+            return this.isAuthenticated() && this.currentUser.hasRole(role);
         }
+
+
     }
 });

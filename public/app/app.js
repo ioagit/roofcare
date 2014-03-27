@@ -10,21 +10,22 @@ var app = angular.module('app', ['ngResource', 'ngRoute']);
 //Defining Routes
 app.config(function ($routeProvider, $locationProvider) {
 
+
+        var routeRoleChecks = {
+
+            admin: {
+                auth: function(rcAuthSvc) {
+                    return rcAuthSvc.authorizeCurrentUserForRoute('admin');
+                }
+            }
+
+        };
+
         $locationProvider.html5Mode(true);
         $routeProvider
             .when('/', {templateUrl: '/partials/main/main', controller: 'rcMainCtrl'})
             .when('/admin/users', {templateUrl: '/partials/admin/user-list',
-                controller: 'rcUserListCtrl',
-                resolve: {
-                    auth: function (rcIdentitySvc, $q) {
-                        if (rcIdentitySvc.currentUser && rcIdentitySvc.currentUser.roles.indexOf('admin') > -1) {
-                            return true;
-                        }
-                        else {
-                            return $q.reject('not authorized');
-                        }
-                    }
-                }
+                controller: 'rcUserListCtrl', resolve: routeRoleChecks.admin
             });
     }
 
