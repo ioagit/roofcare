@@ -30,7 +30,7 @@ angular.module('app').factory('rcAuthSvc', function ($http, rcIdentitySvc, $q, r
             var deferred = $q.defer();
 
             user.$save().then(function() {
-             rcIdentitySvc.currentUser = newUser;
+             rcIdentitySvc.currentUser = user;
              deferred.resolve();
 
             },

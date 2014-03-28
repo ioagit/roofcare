@@ -2,20 +2,15 @@
  * Created by isuarez on 3/6/14.
  */
 var auth = require('./auth')
-    mongoose = require('mongoose')
-    User = mongoose.model('User');
+    ,users = require('../controllers/users')
+    ,mongoose = require('mongoose')
+    ,User = mongoose.model('User');
+
 
 module.exports =  function(server) {
 
-    server.get('/api/users', auth.requiresRole('admin'), function (req, res) {
-
-        User.find( {}).exec(function (err, collection) {
-
-                res.send(collection);
-
-            } // End Exec Callback
-        ) //Close Exec function
-    });
+    server.get('/api/users', auth.requiresRole('admin'), users.getUsers);
+    server.post('/api/users', users.createUser);
     
     server.get('/partials/*', function(req, res) {
         res.render('../../public/app/' + req.params);

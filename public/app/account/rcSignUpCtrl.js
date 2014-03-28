@@ -14,15 +14,15 @@ angular.module('app').controller('rcSignUpCtrl', function($scope, rcAuthSvc, rcN
       };
 
       //Call the rcAuth Service
-      rcAuth.createUser(newUserData).then(
+      rcAuthSvc.createUser(newUserData).then(
           //Success
           function () {
-            rcNotifier.notify('User Account Created!');
+              rcNotifierSvc.notify('User Account Created!');
             $location.path('/');
           },
           //Fail
           function(reason) {
-             rcNotifier.error(reason);
+              rcNotifierSvc.error(reason);
           });
    //End Signup Function
    };
