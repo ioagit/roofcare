@@ -9,6 +9,11 @@ angular.module('app').factory('rcNotifierSvc', function(rfToastr) {
         notify: function(msg) {
             rfToastr.success(msg);
             console.log(msg);
+        },
+
+        error: function(msg) {
+            rfToastr.error(msg);
+            console.error(msg);
         }
     }
 });

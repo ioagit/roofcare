@@ -23,6 +23,25 @@ angular.module('app').factory('rcAuthSvc', function ($http, rcIdentitySvc, $q, r
             return deferred.promise;
         },
 
+
+        createUser: function(newUserData) {
+
+            var user = new rcUser(newUserData);
+            var deferred = $q.defer();
+
+            user.$save().then(function() {
+             rcIdentitySvc.currentUser = newUser;
+             deferred.resolve();
+
+            },
+            function(response) {
+                deferred.reject(response.data.reason);
+            }
+            );
+
+            return deferred.promise;
+        },
+
         authorizeCurrentUserForRoute:  function (role) {
             if (rcIdentitySvc.isAuthorized(role)) {
                 return true;
