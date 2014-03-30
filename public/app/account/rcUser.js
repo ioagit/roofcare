@@ -4,7 +4,11 @@
 
 angular.module('app').factory('rcUser', function($resource) {
 
-    var UserResource = $resource('/api/users/:id', {_id: "@id"});
+    var UserResource = $resource('/api/users/:id', {_id: "@id"},
+        {
+            update: {method: 'PUT', isArray:false}
+        }
+    );
 
     UserResource.prototype.isAdmin = function () {
         return this.roles && this.hasRole('admin');

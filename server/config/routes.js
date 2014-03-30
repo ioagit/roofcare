@@ -11,6 +11,7 @@ module.exports =  function(server) {
 
     server.get('/api/users', auth.requiresRole('admin'), users.getUsers);
     server.post('/api/users', users.createUser);
+    server.put('/api/users', users.updateUser);
     
     server.get('/partials/*', function(req, res) {
         res.render('../../public/app/' + req.params);

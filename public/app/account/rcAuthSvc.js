@@ -42,8 +42,40 @@ angular.module('app').factory('rcAuthSvc', function ($http, rcIdentitySvc, $q, r
             return deferred.promise;
         },
 
+
+        updateCurrentUser: function(newUserData) {
+
+            //cloning the current user in order to extend it with newUSerData.
+            //Only is save is success rcIdentitySvc.currentUser will be updated.
+            var clone = angular.copy(rcIdentitySvc.currentUser);
+            angular.extend(clone, newUserData);
+
+            var deferred = $q.defer();
+
+            clone.$update().then(function() {
+                    rcIdentitySvc.currentUser = clone;
+                    deferred.resolve();
+
+                },
+                function(response) {
+                    deferred.reject(response.data.reason);
+                }
+            );
+
+            return deferred.promise;
+        },
+
         authorizeCurrentUserForRoute:  function (role) {
             if (rcIdentitySvc.isAuthorized(role)) {
+                return true;
+            }
+            else {
+                return $q.reject('not authorized');
+            }
+        },
+
+        authorizeAuthenticatedUserForRoute:  function () {
+            if (rcIdentitySvc.isAuthenticated()) {
                 return true;
             }
             else {

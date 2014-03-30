@@ -5,6 +5,10 @@
 var passport = require('passport');
 
 exports.authenticate = function (req, res, next) {
+
+    //username is save in lowercase so lets modify the incoming username
+    req.body.username = req.body.username.toLowerCase();
+
     var auth = passport.authenticate('local', function(err, user, info)
         {
             if (err) { return next(err); }
