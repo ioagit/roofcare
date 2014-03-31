@@ -56,7 +56,8 @@ exports.updateUser = function(req, res, next) {
     //Getting data from post.
     var userUpdates = req.body;
 
-    if(req.user._id !== userUpdates._id && !req.user.isAdmin()) {
+    //the should use id instead of _id
+    if(req.user.id !== userUpdates._id && !req.user.isAdmin()) {
         res.status(403);
         return res.end();
 
