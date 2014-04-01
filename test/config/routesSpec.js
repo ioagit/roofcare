@@ -1,5 +1,5 @@
 var should = require('should');
-var request = require('supertest');
+var superagent = require('superagent');
 var express = require('express');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -16,36 +16,25 @@ require ('../../server/config/mongoose')(config);
 
 var routes = require('../../server/config/routes.js')(server, config);
 
+server.listen(config.port);
+
 
 describe ("Routes", function() {
 
+    describe('/login', function() {
 
-    describe('Auth Routes', function() {
+        describe('with good credentials', function() {
 
-        it('should login a valid username and password', function(done) {
-
-            var user = {
+            var admin = {
                 username: 'verita',
                 password: 'verita'
             };
 
-            request(server)
-                .post('/login')
-                .send(user)
-                .end(function (err, res) {
-                    if (err) {
-                        throw err;
-                    }
-                    // this is should.js syntax, very clear
-                    res.should.have.status(400);
-                    res.body.should.have.property('success');
-                    res.body.should.have.property('user');
-                    done();
-                }
-            );
+            var agent = superagent.agent();
+
+            it('should create a user session', loginUser(agent, admin));
 
         });
-
     });
 
 
@@ -73,5 +62,22 @@ describe ("Routes", function() {
     });
 
 
+
+    function loginUser(agent, credentials) {
+
+        return function (done) {
+            agent
+                .post('http://localhost:3000/login')
+                .send(credentials)
+                .end(onResponse);
+
+            function onResponse(err, res) {
+                res.should.have.status(200);
+                res.body.should.have.property('success');
+                res.body.should.have.property('user');
+                return done();
+            }
+        };
+    };
 
 });
