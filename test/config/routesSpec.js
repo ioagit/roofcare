@@ -1,24 +1,10 @@
 var should = require('should');
 var request = require('supertest');
-var express = require('express');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-//Getting the config object
 var config = require('../../server/config/config')[env];
-
-//Setup Express
-var server = express.createServer();
-require ('../../server/config/express')(server, config);
-
-//Mongoose config
-require ('../../server/config/mongoose')(config);
-
-
-//Configuring Passport
-require ('../../server/config/passport')();
-
-var routes = require('../../server/config/routes.js')(server, config);
+var server = require('../../server')(config);
+server.listen(config.port);
 
 
 describe ("Routes", function() {
@@ -87,9 +73,6 @@ describe ("Routes", function() {
 
 
     });
-
-
-
 
     function loginUser(credentials, done) {
 

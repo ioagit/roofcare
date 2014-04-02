@@ -1,78 +1,70 @@
 //setup Dependencies
 var  express = require('express');
 
-
-
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-
-//Getting the config object
-var config = require('./server/config/config')[env];
-
-//Setup Express
-var server = express.createServer();
-
-
-require ('./server/config/express')(server, config);
-
-//Mongoose config
-require ('./server/config/mongoose')(config);
-
-//Configuring Passport
-require ('./server/config/passport')();
+//Configuration requirements
+var expressServer =  require ('./server/config/express');
+var mongoose = require ('./server/config/mongoose');
+var passport = require ('./server/config/passport');
+var routes = require ('./server/config/routes');
 
 
 
-//Routes config
-require ('./server/config/routes')(server);
 
 
-server.listen(config.port);
+// Decorate express with our components
+// Marry the app to its running configuration
+function main(config) {
 
-console.log('Listening on http://0.0.0.0:' + config.port );
+    //Create the server
+    var server = express.createServer();
+    expressServer(server, config);
+    mongoose(config);
+    passport(config);
+    routes(server);
 
-//Creating mongoose schemas
-//var messageSchema = new mongoose.Schema({message: String});
-//var Message = mongoose.model('Message', messageSchema);
-//var mongoMessage;
-//var query;
-//query = Message.findOne();
-//query.exec(function (err, messageDoc){
-//    if (err) {
-//        console.log(err);
-//        return;
-//    }
-//    mongoMessage = messageDoc.message;
-//});
+    return server;
+}
 
+// Expose the app
+module.exports = main;
 
+// Start listening if the server has been started directly
 
-//Setup Socket.IO
-//var io = io.listen(server);
-//io.sockets.on('connection', function(socket){
-//  console.log('Client Connected');
-//  socket.on('message', function(data){
-//    socket.broadcast.emit('server_message',data);
-//    socket.emit('server_message',data);
-//  });
-//  socket.on('disconnect', function(){
-//    console.log('Client Disconnected.');
-//  });
-//});
+if (module === require.main) {
 
+       var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+       //Getting the config object
+       var config = require('./server/config/config')[env];
 
-//server.get('/', homeRoute.home);
-//server.get('/customer', customerRoute.index);
-//server.get('/customer/contact', customerRoute.contact);
+      //Get configured Server
+       var server = main(config);
 
+      server.listen(config.port);
 
-//A Route for Creating a 500 Error (Useful to keep around)
-//server.get('/500', function(req, res){
-//    throw new Error('This is a 500 Error');
-//});
+      console.log('Listening on http://0.0.0.0:' + config.port );
 
-//The 404 Route (ALWAYS Keep this as the last route)
-//server.get('/*', function(req, res){
-//    throw new NotFound;
-//});
+}
+
+//
+//var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+////Getting the config object
+//var config = require('./server/config/config')[env];
+//
+////Setup Express
+//var server = express.createServer();
+//
+//require ('./server/config/express')(server, config);
+//
+////Mongoose config
+//require ('./server/config/mongoose')(config);
+//
+////Configuring Passport
+//require ('./server/config/passport')();
+//
+////Routes config
+//require ('./server/config/routes')(server);
+//
+//server.listen(config.port);
+//
+//console.log('Listening on http://0.0.0.0:' + config.port );
