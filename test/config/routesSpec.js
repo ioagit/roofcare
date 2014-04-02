@@ -12,43 +12,31 @@ describe ("Routes", function() {
 
     describe('/login', function() {
 
-        it('should return success with a valid username and password', function(done) {
+        it('should return success with a valid username and password', loginUser());
 
-            var user = {
-                username: 'verita',
-                password: 'verita'
-            };
-
-            loginUser(user, done);
-
-        });
-
-        it('should return fail with an invalid username and password', function(done) {
-
-            var invalid = {
-                username: 'verita',
-                password: 'verita1'
-            };
-
-            request(server)
-                .post('/login')
-                .send(invalid)
-                .end(onResponse);
-
-
-            function onResponse(err, res) {
-                if (err) {
-                    done(new Error(err.message));
-                }
-                res.should.have.status(200);
-                res.body.should.have.property('success');
-                res.body.success.should.be.false;
-                done();
-            }
-
-        });
+        it('should return fail with an invalid username and password', loginInvalidUser());
 
     });
+
+    describe('/logout', function(done) {
+
+        it('should start with signin', loginUser());
+
+        it('should sign the user out', function(done) {
+            request(server)
+                .get('/logout')
+                .expect(200, done);
+
+        });
+        it('should response unauthorized status for non anonymous users', function(done){
+            request(server)
+                .get('/api/users')
+                .expect(403, done);
+        });
+
+
+    });
+
 
 
 
@@ -59,22 +47,18 @@ describe ("Routes", function() {
                 .expect(403, done);
         });
 
-//         it('should respond with json for admin users', function(done){
-//
-//                //First we need to login an admin user
-//
-//                request(server)
-//                    .get('/api/users')
-//                    .set('Accept', 'application/json')
-//                    .expect('Content-Type', /json/)
-//                    .expect(200, done);
-//          });
-
 
 
     });
 
-    function loginUser(credentials, done) {
+    function loginUser() {
+
+        return function(done) {
+
+            var credentials = {
+                username: 'verita',
+                password: 'verita'
+            };
 
             request(server)
                 .post('/login')
@@ -84,17 +68,48 @@ describe ("Routes", function() {
 
             function onResponse(err, res) {
                 if (err) {
-                    done(new Error(err.message));
+                    return done(new Error(err.message));
                 }
                 // this is should.js syntax, very clear
                 console.log(res.text)
                 res.should.have.status(200);
                 res.body.should.have.property('success');
                 res.body.should.have.property('user');
-                done();
+                return done();
             }
-
+        }
 
      }; //login User
+
+
+    function loginInvalidUser() {
+
+        return function(done) {
+
+            var credentials = {
+                username: 'verita',
+                password: 'verita1'
+            };
+
+            request(server)
+                .post('/login')
+                .send(credentials)
+                .end(onResponse);
+
+
+            function onResponse(err, res) {
+                if (err) {
+                    return done(new Error(err.message));
+                }
+                // this is should.js syntax, very clear
+                console.log(res.text)
+                res.should.have.status(200);
+                res.body.should.have.property('success');
+                res.body.success.should.be.false;
+                return done();
+            }
+        }
+
+    }; //login Invalid User
 
 });
