@@ -1,6 +1,7 @@
 var should = require('should');
 var request = require('supertest');
 
+
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('../../server/config/config')[env];
 var server = require('../../server')(config);
@@ -37,7 +38,7 @@ describe ("Routes", function() {
 
     describe('/logout', function(done) {
 
-        var agent =  request(server);
+        var agent =  request.agent('http://localhost:' + config.port);
 
         it('should start with signin', loginUser(agent, adminCredentials));
 
@@ -59,28 +60,29 @@ describe ("Routes", function() {
 
     describe('GET /api/users', function(){
 
-        var agent =  request(server);
+        //For persistence
+        var agentUsers = request.agent('http://localhost:' + config.port);
 
         it('should response unauthorized status for anonymous', function(done){
-            agent
+            agentUsers
                 .get('/api/users')
                 .expect(403, done);
         });
 
-        it('should start with signin non admin', loginUser(agent, contractorCredentials));
+        it('should start with signin non admin', loginUser(agentUsers, contractorCredentials));
         it('should response unauthorized status for non admin', function(done){
-            agent
+            agentUsers
                 .get('/api/users')
                 .expect(403, done);
         });
         it('should sign the user out', function(done) {
-            agent.get('/logout').expect(200, done);
+            agentUsers.get('/logout').expect(200, done);
 
         });
 
-        it('should  signin an admin', loginUser(agent, adminCredentials));
-        xit('should response with json for admin', function(done){
-            agent
+        it('should  signin an admin', loginUser(agentUsers, adminCredentials));
+        it('should response with json for admin', function(done){
+            agentUsers
                 .get('/api/users')
                 .set('Accept', 'application/json')
                 .expect(200)
@@ -91,7 +93,7 @@ describe ("Routes", function() {
                 });
         });
         it('should log the user out', function(done) {
-            agent
+            agentUsers
                 .get('/logout')
                 .expect(200, done);
 
