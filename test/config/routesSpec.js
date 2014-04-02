@@ -1,5 +1,5 @@
 var should = require('should');
-var superagent = require('superagent');
+var request = require('supertest');
 var express = require('express');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -14,27 +14,54 @@ require ('../../server/config/express')(server, config);
 //Mongoose config
 require ('../../server/config/mongoose')(config);
 
-var routes = require('../../server/config/routes.js')(server, config);
 
-server.listen(config.port);
+//Configuring Passport
+require ('../../server/config/passport')();
+
+var routes = require('../../server/config/routes.js')(server, config);
 
 
 describe ("Routes", function() {
 
+
     describe('/login', function() {
 
-        describe('with good credentials', function() {
+        it('should return success with a valid username and password', function(done) {
 
-            var admin = {
+            var user = {
                 username: 'verita',
                 password: 'verita'
             };
 
-            var agent = superagent.agent();
-
-            it('should create a user session', loginUser(agent, admin));
+            loginUser(user, done);
 
         });
+
+        it('should return fail with an invalid username and password', function(done) {
+
+            var invalid = {
+                username: 'verita',
+                password: 'verita1'
+            };
+
+            request(server)
+                .post('/login')
+                .send(invalid)
+                .end(onResponse);
+
+
+            function onResponse(err, res) {
+                if (err) {
+                    done(new Error(err.message));
+                }
+                res.should.have.status(200);
+                res.body.should.have.property('success');
+                res.body.success.should.be.false;
+                done();
+            }
+
+        });
+
     });
 
 
@@ -63,21 +90,28 @@ describe ("Routes", function() {
 
 
 
-    function loginUser(agent, credentials) {
 
-        return function (done) {
-            agent
-                .post('http://localhost:3000/login')
+    function loginUser(credentials, done) {
+
+            request(server)
+                .post('/login')
                 .send(credentials)
                 .end(onResponse);
 
+
             function onResponse(err, res) {
+                if (err) {
+                    done(new Error(err.message));
+                }
+                // this is should.js syntax, very clear
+                console.log(res.text)
                 res.should.have.status(200);
                 res.body.should.have.property('success');
                 res.body.should.have.property('user');
-                return done();
+                done();
             }
-        };
-    };
+
+
+     }; //login User
 
 });
