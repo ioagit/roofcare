@@ -14,35 +14,51 @@ require ('../../server/config/express')(server, config);
 //Mongoose config
 require ('../../server/config/mongoose')(config);
 
+
+//Configuring Passport
+require ('../../server/config/passport')();
+
 var routes = require('../../server/config/routes.js')(server, config);
 
 
 describe ("Routes", function() {
 
 
-    describe('Auth Routes', function() {
+    describe('/login', function() {
 
-        it('should login a valid username and password', function(done) {
+        it('should return success with a valid username and password', function(done) {
 
             var user = {
                 username: 'verita',
                 password: 'verita'
             };
 
+            loginUser(user, done);
+
+        });
+
+        it('should return fail with an invalid username and password', function(done) {
+
+            var invalid = {
+                username: 'verita',
+                password: 'verita1'
+            };
+
             request(server)
                 .post('/login')
-                .send(user)
-                .end(function (err, res) {
-                    if (err) {
-                        throw err;
-                    }
-                    // this is should.js syntax, very clear
-                    res.should.have.status(400);
-                    res.body.should.have.property('success');
-                    res.body.should.have.property('user');
-                    done();
+                .send(invalid)
+                .end(onResponse);
+
+
+            function onResponse(err, res) {
+                if (err) {
+                    done(new Error(err.message));
                 }
-            );
+                res.should.have.status(200);
+                res.body.should.have.property('success');
+                res.body.success.should.be.false;
+                done();
+            }
 
         });
 
@@ -73,5 +89,29 @@ describe ("Routes", function() {
     });
 
 
+
+
+    function loginUser(credentials, done) {
+
+            request(server)
+                .post('/login')
+                .send(credentials)
+                .end(onResponse);
+
+
+            function onResponse(err, res) {
+                if (err) {
+                    done(new Error(err.message));
+                }
+                // this is should.js syntax, very clear
+                console.log(res.text)
+                res.should.have.status(200);
+                res.body.should.have.property('success');
+                res.body.should.have.property('user');
+                done();
+            }
+
+
+     }; //login User
 
 });
