@@ -18,7 +18,10 @@ var contractorCredentials = {
 var userCredentials = {
     username: 'ioaioa',
     password: 'ioaioa'
-};;
+};
+
+//We want a persistence agent
+
 
 
 describe ("Routes", function() {
@@ -26,9 +29,7 @@ describe ("Routes", function() {
 
     describe('/login', function() {
 
-
-
-        it('should return success with a valid username and password', loginUser(adminCredentials));
+        it('should return success with a valid username and password', loginUser(request(server),adminCredentials));
 
         it('should return fail with an invalid username and password', loginInvalidUser());
 
@@ -36,18 +37,18 @@ describe ("Routes", function() {
 
     describe('/logout', function(done) {
 
+        var agent =  request(server);
 
-
-        it('should start with signin', loginUser(adminCredentials));
+        it('should start with signin', loginUser(agent, adminCredentials));
 
         it('should sign the user out', function(done) {
-            request(server)
+            agent
                 .get('/logout')
                 .expect(200, done);
 
         });
         it('should response unauthorized status for non anonymous users', function(done){
-            request(server)
+            agent
                 .get('/api/users')
                 .expect(403, done);
         });
@@ -58,28 +59,28 @@ describe ("Routes", function() {
 
     describe('GET /api/users', function(){
 
+        var agent =  request(server);
+
         it('should response unauthorized status for anonymous', function(done){
-            request(server)
+            agent
                 .get('/api/users')
                 .expect(403, done);
         });
 
-        it('should start with signin non admin', loginUser(contractorCredentials));
+        it('should start with signin non admin', loginUser(agent, contractorCredentials));
         it('should response unauthorized status for non admin', function(done){
-            request(server)
+            agent
                 .get('/api/users')
                 .expect(403, done);
         });
         it('should sign the user out', function(done) {
-            request(server)
-                .get('/logout')
-                .expect(200, done);
+            agent.get('/logout').expect(200, done);
 
         });
 
-        it('should  signin an admin', loginUser(adminCredentials));
+        it('should  signin an admin', loginUser(agent, adminCredentials));
         xit('should response with json for admin', function(done){
-            request(server)
+            agent
                 .get('/api/users')
                 .set('Accept', 'application/json')
                 .expect(200)
@@ -90,7 +91,7 @@ describe ("Routes", function() {
                 });
         });
         it('should log the user out', function(done) {
-            request(server)
+            agent
                 .get('/logout')
                 .expect(200, done);
 
@@ -102,11 +103,11 @@ describe ("Routes", function() {
 
     });
 
-    function loginUser(credentials) {
+    function loginUser(agent, credentials) {
 
         return function(done) {
 
-            request(server)
+            agent
                 .post('/login')
                 .send(credentials)
                 .end(onResponse);
