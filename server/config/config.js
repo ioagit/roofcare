@@ -12,6 +12,12 @@ var rootPath = path.normalize(__dirname + '/../../');
 module.exports = {
 
     development: {
+        db:  'mongodb://localhost/rcdb',
+        rootPath: rootPath,
+        port: process.env.PORT || 3000
+
+    },
+    test: {
         db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
         port: process.env.PORT || 3000

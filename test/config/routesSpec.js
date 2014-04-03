@@ -2,7 +2,7 @@ var should = require('should');
 var request = require('supertest');
 
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = 'test';
 var config = require('../../server/config/config')[env];
 var server = require('../../server')(config);
 server.listen(config.port);

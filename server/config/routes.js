@@ -18,7 +18,7 @@ module.exports =  function(server) {
     });
 
     server.post('/login', auth.authenticate);
-    server.post('/logout', function(req, res) {
+    server.get('/logout', function(req, res) {
         req.logout();
         res.end();
     });
