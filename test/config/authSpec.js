@@ -6,12 +6,33 @@ var auth = require('../../server/config/auth.js');
 
 describe('Auth Module', function () {
 
+    var req,res,next;
+
+    before(function() {
+            req = {
+                body: {
+                    username: 'verita',
+                    password: 'verita'
+                },
+                isAuthenticated: function () {
+                    return true;
+                }
+            };
+            res = {};
+            next = function () {
+                console.log('Done!');
+            };
+        }
+
+        );
+
+
   xdescribe('authenticate', function() {
 
-      var req = {body: {username:'verita', password:'verita'}}, res = {};
-      var next = function() {console.log('Done!');}
+      //auth.authenticate(req,res,next);
 
-      auth.authenticate(req,res,next);
+
+
 
 
   });
@@ -20,8 +41,11 @@ describe('Auth Module', function () {
    xdescribe('requiresApiLogin', function() {
        it('should return 403 for non authenticated users', function() {
 
-          var req = {}, res = {};
-          var next = function() {console.log('Done!');}
+         req.isAuthenticated = function () {
+             return false;
+         };
+
+
 
           auth.requiresApiLogin(req, res, next);
           res.should.have.property('status');
