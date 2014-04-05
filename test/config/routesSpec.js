@@ -12,8 +12,8 @@ server.listen(config.port);
 var agent;
 agent = request.agent('http://localhost:' + config.port);
 
-describe ("Routes", function() {
 
+describe ("Routes", function() {
 
 
 
@@ -47,6 +47,9 @@ describe ("Routes", function() {
 
 
     describe('GET /api/users', function(){
+
+
+
 
 
         it('should response unauthorized status for anonymous', function(done){
@@ -91,23 +94,48 @@ describe ("Routes", function() {
 
     });
 
-    xdescribe('POST /api/users', function() {
+    describe('POST /api/users', function() {
+
+        var mongoose;
+        var User;
+
+        before(function () {
+            mongoose = require('mongoose');
+            User = mongoose.model('User');
+        });
+
+        afterEach(function (done) {
+
+            User.remove({username: 'testcontractorname'}, done);
+
+        });
 
 
-
-        it('should create a new user', function(done) {
+        it('should create a new user', function (done) {
 
             request(server)
-                .post('/login')
-                .send(credentials.invalid)
+                .post('/api/users')
+                .send(testData.users.contractor)
                 .end(onResponse);
 
 
-       })
+            function onResponse(err, res) {
+                if (err) {
+                    return done(err);
+                }
+                // this is should.js syntax, very clear
+                console.log(res.text)
+                res.should.have.status(200);
+                res.body.firstName.should.equal('testContractorFirstName');
+                res.body.hashed_pwd.should.not.equal(testData.users.contractor.password);
+                res.body.roles.should.include('contractor');
+                return done();
+            }
 
+
+        });
 
     });
-
 
     function loginUser(agent, credentials) {
 

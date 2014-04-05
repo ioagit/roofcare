@@ -35,13 +35,9 @@ exports.createUser = function(req, res, next) {
             return res.send({reason: err.toString()});
         }
 
-        req.logIn(user, function(err) {
+        res.status(200);
+        res.send(user);
 
-            if (err) { return next(err)}
-
-            res.send(user);
-
-        });
 
 
 
