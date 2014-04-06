@@ -1,4 +1,5 @@
 var should = require('should');
+var expect = require("chai").expect;
 var request = require('supertest');
 var path = require('path');
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
@@ -104,20 +105,50 @@ describe ("Routes", function() {
             User = mongoose.model('User');
         });
 
-        afterEach(function (done) {
+        after(function (done) {
 
             User.remove({username: 'testcontractorname'}, done);
 
         });
 
 
-        it('should create a new user', function (done) {
+        it('should create a new user',
+            createUser(agent, testData.users.contractor)
+        );
 
-            request(server)
+        it('should throw duplicate user error when trying to save users with same username', function(done) {
+           //First lets create the user
+
+            agent
                 .post('/api/users')
                 .send(testData.users.contractor)
                 .end(onResponse);
 
+            function onResponse(err, res) {
+                if (err) {
+                    return done(err);
+                }
+                // this is should.js syntax, very clear
+                console.log(res.text)
+                res.should.have.status(400);
+                res.body.should.have.property('reason');
+                expect(res.body.reason).to.contain('Duplicated Username');
+                return done();
+            }
+
+
+        })
+
+    });
+
+    function createUser(agent, user) {
+
+        return function(done) {
+
+            agent
+                .post('/api/users')
+                .send(user)
+                .end(onResponse);
 
             function onResponse(err, res) {
                 if (err) {
@@ -132,11 +163,12 @@ describe ("Routes", function() {
                 return done();
             }
 
+        }
 
-        });
+    }
 
-    });
 
+    //Helper function for login Users
     function loginUser(agent, credentials) {
 
         return function(done) {
@@ -149,7 +181,7 @@ describe ("Routes", function() {
 
             function onResponse(err, res) {
                 if (err) {
-                    return done(new Error(err.message));
+                    return done(err);
                 }
                 // this is should.js syntax, very clear
                 console.log(res.text)
