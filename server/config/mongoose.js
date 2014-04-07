@@ -2,8 +2,7 @@
  * Created by isuarez on 3/6/14.
  */
 
-var mongoose  = require('mongoose'),
-    userModel = require('../models/Users')
+var mongoose  = require('mongoose')
 
 module.exports = function(config) {
 
@@ -14,8 +13,6 @@ module.exports = function(config) {
     db.on('open', function callback() {
         console.log('testdb is now open');
     });
-
-    userModel.createDefaultUsers();
 
 
 }

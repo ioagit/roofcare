@@ -2,43 +2,42 @@
  * Created by isuarez on 4/4/2014.
  */
 
-var credentials = {
-    admin: {
-        username: 'verita',
-        password: 'verita'
-    },
+var mongoose  = require('mongoose'),
+    path = require('path'),
+    encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption'));
 
-    contractor: {
-        username: 'rimita',
-        password: 'rimita'
-    },
 
-    user: {
-        username: 'ioaioa',
-        password: 'ioaioa'
-    },
+//adding the user model for User Model registration with Moongoose
+require(path.join(process.cwd(),'server','models','Users'));
 
-    invalid: {
-        username: 'invalid',
-        password: 'invalid'
-    }
-}
+var User =  mongoose.model('User');
+
+
 
 var testUsers =  {
 
     admin: {
 
-        username: 'testAdminName',
-        password: 'testAdminPassword',
-        firstName: 'testAdminFirstName',
-        lastName: 'testAdminLastName',
+        username: 'verita',
+        password: 'verita',
+        firstName: 'Vera',
+        lastName: 'Suarez',
         roles: ['admin']
     },
 
     contractor: {
 
-        username: 'testContractorName',
-        password: 'testContractorPassword',
+        username: 'rimita',
+        password: 'rimita',
+        firstName: 'Rima',
+        lastName: 'Gerhard',
+        roles: ['contractor']
+    },
+
+    contractor1: {
+
+        username: 'rimita1',
+        password: 'rimita1',
         firstName: 'testContractorFirstName',
         lastName: 'testContractorLastName',
         roles: ['contractor']
@@ -46,8 +45,26 @@ var testUsers =  {
 
     user: {
 
-        username: 'testUserName',
-        password: 'testUserPassword',
+        username: 'ioaioa',
+        password: 'ioaioa',
+        firstName: 'Ioa',
+        lastName: 'Suarez',
+        roles: ['']
+    },
+
+    crazy: {
+
+        username: '?/.><";:\'|{}+=-_(_)*&^%$#@!`~"',
+        password: '?/.><";:\'|{}+=-_(_)*&^%$#@!`~"',
+        firstName: 'testUserFirstName',
+        lastName: 'testUserLastName',
+        roles: ['']
+    },
+
+    invalid: {
+
+        username: 'ioaioa1',
+        password: 'ioaioa1',
         firstName: 'testUserFirstName',
         lastName: 'testUserLastName',
         roles: ['']
@@ -55,10 +72,67 @@ var testUsers =  {
 
 }
 
+
+function createDefaultUsers(done) {
+    User.find({}).exec(function (err, collection) {
+
+            if (err) return done(err);
+
+            if (collection.length === 0) {
+                addHashedProperties(testUsers.admin);
+                addHashedProperties(testUsers.contractor);
+                addHashedProperties(testUsers.user);
+
+                //Adding it to an array
+                User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
+
+
+            }
+
+        }
+    )
+};
+
+function removeAllUsers(done) {
+    User.remove({}, done);
+}
+
+
+function addHashedProperties(obj) {
+
+    var salt, hash;
+    salt = encrypt.createSalt();
+    hash = encrypt.hashPwd(salt, obj.password);
+    obj.salt = salt;
+    obj.hashed_pwd = hash;
+
+}
+
+function handlerError(err, obj) {
+    if (err) {
+        console.log(err);
+    }
+};
+
+//Defining a handleCreation
+function handleDocumentCreation(err, obj) {
+    if (err) {
+        handlerError();
+        return;
+    }
+
+    console.log(JSON.stringify(obj));
+};
+
+
+
 var testData = {
-    credentials: credentials,
+    createDefaultUsers: createDefaultUsers,
+    removeAllUsers: removeAllUsers,
     users : testUsers
 
 }
+
+
 
 module.exports = testData;
