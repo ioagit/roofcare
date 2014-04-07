@@ -43,6 +43,15 @@ var testUsers =  {
         roles: ['contractor']
     },
 
+    modifiedContractor1: {
+
+        username: 'rimita1',
+        password: 'rimita1',
+        firstName: 'modifiedContractor1First',
+        lastName: 'modifiedContractor1FirstLast',
+        roles: ['contractor', 'testRole']
+    },
+
     user: {
 
         username: 'ioaioa',
@@ -93,8 +102,22 @@ function createDefaultUsers(done) {
     )
 };
 
+function createUser(data,done) {
+    addHashedProperties(data);
+    User.create(data, function(err, data) {
+
+        testData.users.modifiedContractor1 =  data;
+        done()
+
+    });
+}
+
 function removeAllUsers(done) {
     User.remove({}, done);
+}
+
+function removeUser(data,done) {
+    User.remove({username: data.username}, done);
 }
 
 
@@ -128,7 +151,9 @@ function handleDocumentCreation(err, obj) {
 
 var testData = {
     createDefaultUsers: createDefaultUsers,
+    createUser: createUser,
     removeAllUsers: removeAllUsers,
+    removeUser: removeUser,
     users : testUsers
 
 }

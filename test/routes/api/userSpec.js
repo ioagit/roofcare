@@ -1,3 +1,7 @@
+/**
+ * Created by isuarez on 4/7/2014.
+ */
+
 var should = require('should');
 var expect = require("chai").expect;
 var request = require('supertest');
@@ -8,35 +12,14 @@ var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'te
 var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 
 
-var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init'));
-
-//Global before function. Only runs before any test
-before(function() {
-        init.initServer();
-
-    }
-
-)
 
 var agent;
 agent = request.agent('http://localhost:' + 3000);
 
-
-describe ("API Users", function() {
-
-
-    before(function(done) {
-        //Create default Users;
-        testData.createDefaultUsers(done);
-    });
-
-    after(function(done) {
-        //Create default Users;
-        testData.removeAllUsers(done);
-
-    });
+var User;
 
 
+describe ("Routes API Users", function() {
 
     describe('GET /api/users', function () {
 
@@ -81,21 +64,11 @@ describe ("API Users", function() {
 
     describe('POST /api/users', function () {
 
-        var mongoose;
-        var User;
 
-        before(function () {
-            mongoose = require('mongoose');
-            User = mongoose.model('User');
-        });
+        it('should create a new user', testUtil.createUser(agent, testData.users.contractor1) );
 
 
-        it('should create a new user',
-            testUtil.createUser(agent, testData.users.contractor1)
-        );
-
-
-        it('should throw duplicate user error when trying to save users with same username', function (done) {
+        it('should throw duplicate user error when trying to add users with same username', function (done) {
             //First lets create the user
 
             agent
@@ -116,46 +89,71 @@ describe ("API Users", function() {
             }
 
 
-        })
+        });
+
+        after(function(done) {
+            testData.removeUser(testData.users.contractor1, done);
+        }) ;
 
     });
 
-    xdescribe('PUT /api/users', function () {
+    describe('PUT /api/users', function () {
 
-        var mongoose;
-        var User;
 
-        before(function () {
-            mongoose = require('mongoose');
-            User = mongoose.model('User');
+       describe('When not logged in', function() {
+
+           it('should  not allowed to modify users without login in',
+               testUtil.reqAuthRoute(agent, testData.users.contractor1, '/api/users','put'));
+
+       });
+
+       describe('When logged in and update its own data', function() {
+
+
+          // Init method for this describe section
+           before(function(done) {
+               testData.createUser(testData.users.contractor1, done);
+           });
+
+           after(function(done) {
+
+               testData.removeUser(testData.users.contractor1, done);
+
+           }) ;
+
+           it('should login the new user as contractor 1', testUtil.loginUser(agent, testData.users.contractor1));
+
+           it('should fail to update contractor 1 when sending data with contractor credentials', function (done) {
+            agent
+                .put('/api/users')
+                .send(testData.users.contractor)
+                .expect(403, done);
         });
 
+        it('should update data for contractor 1 when sent with contractor 1 credentials',  testUtil.updateUser(agent, testData.users.modifiedContractor1));
 
-        it('should create a new user',
-            testUtil.createUser(agent, testData.users.contractor1)
-        );
+        it('should logout contractor 1', testUtil.logOut(agent));
+
+       })
+
+        describe('When logged as admin and update users data', function() {
+
+            before(function(done) {
+                testData.createUser(testData.users.contractor1, done);
+            });
+
+            after(function(done) {
+
+                testData.removeUser(testData.users.contractor1, done);
+
+            }) ;
+
+            it('should login as admin', testUtil.loginUser(agent, testData.users.admin));
 
 
-        it('should throw duplicate user error when trying to save users with same username', function (done) {
-            //First lets create the user
+            it('should update data for contractor 1', testUtil.updateUser(agent, testData.users.modifiedContractor1));
 
-            agent
-                .post('/api/users')
-                .send(testData.users.contractor1)
-                .end(onResponse);
-
-            function onResponse(err, res) {
-                if (err) {
-                    return done(err);
-                }
-                // this is should.js syntax, very clear
-                console.log(res.text)
-                res.should.have.status(400);
-                res.body.should.have.property('reason');
-                expect(res.body.reason).to.contain('Error: Duplicated Username');
-                return done();
-            }
-
+            it('should logout admin', testUtil.logOut(agent));
 
         })
 

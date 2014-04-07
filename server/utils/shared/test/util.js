@@ -59,6 +59,15 @@ function loginInvalidUser(agent, user) {
 
 }; //login Invalid User
 
+function logOut (agent) {
+
+   return function(done) {
+       agent
+           .get('/logout')
+           .expect(200, done);
+   }
+};
+
 function createUser(agent, user) {
 
     return function (done) {
@@ -85,11 +94,64 @@ function createUser(agent, user) {
 
 }
 
+
+function updateUser(agent, user) {
+
+    return function (done) {
+
+        agent
+            .put('/api/users')
+            .send(user)
+            .end(onResponse);
+
+        function onResponse(err, res) {
+            if (err) {
+                return done(err);
+            }
+            // this is should.js syntax, very clear
+            console.log(res.text)
+            res.should.have.status(200);
+            res.body.firstName.should.equal(testData.users.modifiedContractor1.firstName);
+            res.body.roles.should.include('testRole');
+            return done();
+        }
+
+    }
+
+}
+
+
+function reqAuthRoute(agent, data, route,method) {
+
+    return function (done) {
+
+        agent[method](route)
+            .send(data)
+            .end(onResponse);
+
+        function onResponse(err, res) {
+            if (err) {
+                return done(err);
+            }
+            // this is should.js syntax, very clear
+            console.log(res.text)
+            res.should.have.status(403);
+            return done();
+        }
+
+    }
+
+}
+
 module.exports = {
 
+    reqAuthRoute: reqAuthRoute,
     loginUser: loginUser,
     loginInvalidUser: loginInvalidUser,
-    createUser: createUser
+    logOut: logOut,
+    createUser: createUser,
+    updateUser: updateUser
+
 
 }
 

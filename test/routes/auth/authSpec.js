@@ -12,21 +12,10 @@ agent = request.agent('http://localhost:' + 3000);
 
 
 
-describe ("Routes", function() {
-
-    before(function(done) {
-        //Create default Users;
-        testData.createDefaultUsers(done);
-    });
-
-    after(function(done) {
-        //Create default Users;
-        testData.removeAllUsers(done);
-    });
+describe ("Routes Login Logout", function() {
 
 
-
-    describe('/Auth Routes', function() {
+    describe('Login and Logout', function() {
 
         it('/login should return fail with an invalid username and password', testUtil.loginInvalidUser(agent, testData.users.invalid));
 
@@ -37,13 +26,7 @@ describe ("Routes", function() {
 
         it('/login should return success when passing crazy characters', testUtil.loginUser(agent, testData.users.admin));
 
-        it('/logout should log the user out', function (done) {
-            agent
-                .get('/logout')
-                .expect(200, done);
-
-
-        });
+        it('/logout should log the user out',testUtil.logOut(agent));
 
         it('should response unauthorized status for non anonymous users', function (done) {
             agent

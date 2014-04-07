@@ -52,23 +52,44 @@ exports.updateUser = function(req, res, next) {
     //Getting data from post.
     var userUpdates = req.body;
 
+
     //the should use id instead of _id
-    if(req.user.id !== userUpdates._id && !req.user.isAdmin()) {
+    if(req.user.id !== userUpdates.id && !req.user.isAdmin()) {
         res.status(403);
         return res.end();
 
     }
 
-    req.user.username =  userUpdates.username;
-    req.user.firstName = userUpdates.firstName;
-    req.user.lastame = userUpdates.lastName;
-
     if (userUpdates.password && userUpdates.password.length > 0) {
-        req.user.salt = encrypt.createSalt();
-        req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
+
+        userUpdates.salt = encrypt.createSalt();
+        userUpdates.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
+        delete userUpdates.password;
     }
 
-    req.user.save(function(err) {
+    User.update({_id: userUpdates.id}, userUpdates, function(err, data) {
+
+        if (err) {
+            res.status(400);
+            return res.send({reason: err.toString()});
+        };
+
+        if  (req.user.id !== userUpdates.id) {
+              req.user.username =  userUpdates.username;
+              req.user.firstName = userUpdates.firstName;
+              req.user.lastame = userUpdates.lastName;
+              req.user.roles = userUpdates.roles;
+            };
+
+        res.send(userUpdates);
+
+    });
+
+
+
+
+
+    req.user.update(function(err) {
 
         if (err) {
             res.status(400);
