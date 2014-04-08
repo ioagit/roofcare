@@ -7,6 +7,7 @@ var expect = require("chai").expect;
 var request = require('supertest');
 
 
+
     //Helper function for login Users
 function loginUser(agent, credentials) {
 
@@ -111,7 +112,7 @@ function updateUser(agent, user) {
             // this is should.js syntax, very clear
             console.log(res.text)
             res.should.have.status(200);
-            res.body.firstName.should.equal(testData.users.modifiedContractor1.firstName);
+            res.body.firstName.should.equal(user.firstName);
             res.body.roles.should.include('testRole');
             return done();
         }
@@ -119,6 +120,8 @@ function updateUser(agent, user) {
     }
 
 }
+
+
 
 
 function reqAuthRoute(agent, data, route,method) {

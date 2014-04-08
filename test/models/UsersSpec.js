@@ -3,27 +3,104 @@
  */
 
 
-var mongoose  = require('mongoose');
+var mongoose = require('mongoose');
 var expect = require('chai').expect;
+var path = require('path');
 
-var userModel = require('../../server/models/Users');
+var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 
-describe('User Model', function() {
+require(path.join(process.cwd(), 'server', 'models', 'Users'));
+
+describe('User Model', function () {
 
     var User;
 
-    before(function(done) {
+    before(function (done) {
         User = mongoose.model('User');
         done();
     })
 
-    it('should return true for has Role Admin', function() {
+    describe('For Admin users', function () {
 
-        User.roles = ['admin'];
+        var userObj;
+        before(function (done) {
 
-       // expect(User.hasRole('admin')).to.be.true;
+            User.findOne({username: testData.users.admin.username}, function (err, user) {
+                expect(err).to.be.null;
+                userObj = user;
+                done();
+
+            })
+
+        });
+
+        it('isAdmin() should return true for admin users', function () {
+            expect(userObj.hasRole('admin')).to.be.true;
+            expect(userObj.isAdmin()).to.be.true;
+
+        });
+
+        it('isContractor() should return false for admin users', function () {
+            expect(userObj.isContractor()).to.be.false;
+
+        });
 
 
-    })
+    });
 
+    describe('For Contractors users', function () {
+
+        var userObj;
+        before(function (done) {
+
+            User.findOne({username: testData.users.contractor.username}, function (err, user) {
+                expect(err).to.be.null;
+                userObj = user;
+                done();
+
+            })
+
+        });
+
+        it('isAdmin() should return true for admin users', function () {
+            expect(userObj.hasRole('contractor')).to.be.true;
+            expect(userObj.isContractor()).to.be.true;
+
+        });
+
+        it('isAdmin() should return false for contractor users', function () {
+            expect(userObj.isAdmin()).to.be.false;
+
+        });
+
+
+    });
+
+
+    describe('For Regular users', function () {
+
+        var userObj;
+        before(function (done) {
+
+            User.findOne({username: testData.users.user.username}, function (err, user) {
+                expect(err).to.be.null;
+                userObj = user;
+                done();
+
+            })
+
+        });
+
+        it('isUser() should return true for admin users', function () {
+            expect(userObj.isUser()).to.be.true;
+
+        });
+
+        it('isAdmin() should return false for regular users', function () {
+            expect(userObj.isAdmin()).to.be.false;
+
+        });
+
+
+    });
 });

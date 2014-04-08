@@ -26,6 +26,10 @@ userSchema.methods = {
     },
     isContractor: function() {
         return this.hasRole('contractor');
+    },
+
+    isUser: function() {
+        return this.hasRole('user') || this.roles.length === 0;
     }
 
 };

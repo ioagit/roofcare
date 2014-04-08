@@ -52,6 +52,9 @@ exports.updateUser = function(req, res, next) {
     //Getting data from post.
     var userUpdates = req.body;
 
+    var user_id = userUpdates.id;
+
+
 
     //the should use id instead of _id
     if(req.user.id !== userUpdates.id && !req.user.isAdmin()) {
@@ -67,18 +70,18 @@ exports.updateUser = function(req, res, next) {
         delete userUpdates.password;
     }
 
-    User.update({_id: userUpdates.id}, userUpdates, function(err, data) {
+    User.findOneAndUpdate({_id: userUpdates.id}, {$set: userUpdates},  function(err, data) {
 
         if (err) {
             res.status(400);
             return res.send({reason: err.toString()});
         };
 
-        if  (req.user.id !== userUpdates.id) {
-              req.user.username =  userUpdates.username;
-              req.user.firstName = userUpdates.firstName;
-              req.user.lastame = userUpdates.lastName;
-              req.user.roles = userUpdates.roles;
+        if  (req.user.id !== data.id) {
+              req.user.username =  data.username;
+              req.user.firstName = data.firstName;
+              req.user.lastame = data.lastName;
+              req.user.roles = data.roles;
             };
 
         res.send(userUpdates);
@@ -86,23 +89,6 @@ exports.updateUser = function(req, res, next) {
     });
 
 
-
-
-
-    req.user.update(function(err) {
-
-        if (err) {
-            res.status(400);
-            return res.send({reason: err.toString()});
-        }
-
-        //No error. Send current User to Client
-        res.send(req.user);
-
-
-
-
-    });
 
 
 }

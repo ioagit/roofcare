@@ -58,7 +58,7 @@ var testUsers =  {
         password: 'ioaioa',
         firstName: 'Ioa',
         lastName: 'Suarez',
-        roles: ['']
+        roles: []
     },
 
     crazy: {
@@ -97,6 +97,9 @@ function createDefaultUsers(done) {
 
 
             }
+            else {
+                return done();
+            }
 
         }
     )
@@ -106,7 +109,7 @@ function createUser(data,done) {
     addHashedProperties(data);
     User.create(data, function(err, data) {
 
-        testData.users.modifiedContractor1 =  data;
+        testData.users.modifiedContractor1.id =  data.id;
         done()
 
     });
