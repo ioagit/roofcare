@@ -18,9 +18,9 @@ module.exports = function(config) {
       'public/vendor/angular/angular.js',
       'public/vendor/angular-resource/angular-resource.js',
       'public/vendor/angular-mocks/angular-mocks.js',
-      'test/test-app.js',
+      'public/test/test-app.js',
       'public/app/**/*.js',
-      'test/specs/**/*.js'
+      'public/test/specs/**/*.js'
     ],
 
 
@@ -33,14 +33,16 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    
+        'public/app/**/*.js': 'coverage'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+
 
 
     // web server port
@@ -56,7 +58,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers

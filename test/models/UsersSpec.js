@@ -48,6 +48,8 @@ describe('User Model', function () {
 
     });
 
+
+
     describe('For Contractors users', function () {
 
         var userObj;
@@ -79,7 +81,9 @@ describe('User Model', function () {
 
     describe('For Regular users', function () {
 
+
         var userObj;
+
         before(function (done) {
 
             User.findOne({username: testData.users.user.username}, function (err, user) {
