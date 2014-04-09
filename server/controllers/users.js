@@ -32,7 +32,7 @@ exports.createUser = function(req, res, next) {
             }
 
             res.status(400);
-            return res.send({reason: err.toString()});
+            return res.send({err: err, reason: err.toString()});
         }
 
         res.status(200);

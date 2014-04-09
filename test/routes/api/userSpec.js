@@ -64,6 +64,32 @@ describe ("Routes API Users", function() {
 
     describe('POST /api/users', function () {
 
+        it('should fail to create user when user data is not valid', function(done) {
+
+            agent
+                .post('/api/users')
+                .send(testData.users.invalid)
+                .end(onResponse);
+
+            function onResponse(err, res) {
+                expect(err).to.be.null;
+                res.should.have.status(400);
+                res.body.should.have.property('reason');
+                res.body.should.have.property('err');
+                res.body.err.should.have.property('errors');
+
+                var errors = res.body.err.errors;
+                errors.firstName.type.should.equal('required');
+                errors.lastName.type.should.equal('user defined');
+
+
+                expect(res.body.reason).to.contain('ValidationError');
+                return done();
+            }
+
+        } );
+
+
 
         it('should create a new user', testUtil.createUser(agent, testData.users.contractor1) );
 

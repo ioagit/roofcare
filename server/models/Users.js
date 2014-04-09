@@ -2,12 +2,15 @@
  * Created by isuarez on 3/28/2014.
  */
 var mongoose  = require('mongoose'),
-    encrypt = require('../utils/encryption');
+    encrypt = require('../utils/encryption'),
+    path = require('path'),
+    validator = require(path.join(process.cwd(), 'server', 'config', 'validator'));
+
 
 
 var userSchema = new mongoose.Schema(
-    {firstName: {type: String, required: '{PATH} is required!'},
-     lastName: {type: String, required: '{PATH} is required!'},
+    {firstName: {type: String, required:true, validate: validator.nameValidator},
+     lastName: {type: String, required:true, validate: validator.nameValidator},
      username: {type: String, required: '{PATH} is required!', unique: true},
      salt: {type: String, required: '{PATH} is required!'},
      hashed_pwd: {type: String, required: '{PATH} is required!'},

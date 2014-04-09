@@ -67,16 +67,16 @@ var testUsers =  {
         password: '?/.><";:\'|{}+=-_(_)*&^%$#@!`~"',
         firstName: 'testUserFirstName',
         lastName: 'testUserLastName',
-        roles: ['']
+        roles: []
     },
 
     invalid: {
 
         username: 'ioaioa1',
         password: 'ioaioa1',
-        firstName: 'testUserFirstName',
-        lastName: 'testUserLastName',
-        roles: ['']
+        firstName: '',
+        lastName: 'l',
+        roles: []
     }
 
 }

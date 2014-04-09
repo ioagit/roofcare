@@ -28,6 +28,7 @@
     "karma-chrome-launcher": "~0.1.2",
     "chai": "~1.9.1",
     "supertest": "~0.10.0",
-    "superagent": "~0.17.0"
+    "superagent": "~0.17.0",
+    "mongoose-validator": "~0.2.2"
   }
 }
