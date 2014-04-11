@@ -2,7 +2,7 @@
  * Created by isuarez on 3/20/14.
  */
 
-angular.module('App.Services').factory('authSvc', function ($http, identitySvc, $q, userResource) {
+angular.module('App.Services', []).factory('authSvc', function ($http, identitySvc, $q, userResource) {
 
     return {
 

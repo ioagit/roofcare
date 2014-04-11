@@ -17,10 +17,61 @@ html.no-js(lang='en')
     meta(name="viewport", content='width=device-width, initial-scale=1, user-scalable=no')
     link(href='/static/images/meta_icons/favicon.ico', rel='shortcut icon', type='image/x-icon')
     link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css', media="all")
+    link(rel='stylesheet', href='/static/css/light-theme.css', media="all", id="color-settings-body-color")
     link(rel='stylesheet', href='/vendor/toastr/toastr.css')
-    link(rel='stylesheet', href='/static/css/site.css')
     //-script(src='js/libs/modernizr-2.0.6.min.js')
-  body(ng-app='app')
+  body.contrast-red(ng-app='app')
     include currentUser
-    block content
+    header
+        nav.navbar.navbar-default
+            a.navbar-brand(href='home.html')
+                | Roofcare Mobil
+            a.toggle-nav.btn.pull-left(href='#')
+                i.icon-reorder
+            ul.nav
+                li.dropdown.dark.user-menu
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        img(width='23', height='23', alt='Mila Kunis', src='assets/images/avatar.jpg')
+                        span.user-name Mila Kunis
+                        b.caret
+                    ul.dropdown-menu
+                        li
+                            a(href='user_profile.html')
+                                i.icon-user
+                                | Profile
+                        li
+                            a(href='user_profile.html')
+                                i.icon-cog
+                                | Settings
+                        li.divider
+                        li
+                            a(href='login.html')
+                                i.icon-signout
+                                | Sign out
+        #wrapper
+            #main-nav-bg
+            nav#main-nav
+                .navigation
+                    ul.nav.nav-stacked
+                        li.active
+                            a(href='#/roofer/dashboard')
+                                i.icon-dashboard
+                                span Home
+                        li
+                            a(href='#/roofer/inbox')
+                                i.icon-edit
+                                span Inbox
+                        li
+                            a(href='#/roofer/jobs')
+                                i.icon-calendar
+                                span Jobs
+                        li
+                            a(href='#/roofer/kunden')
+                                i.icon-envelope
+                                span Kunden
+                        li
+                            a(href='#/roofer/rechnung')
+                                i.icon-money
+                                span Rechnung
+            block content
     include scripts

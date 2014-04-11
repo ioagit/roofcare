@@ -7,7 +7,7 @@ var CONFIG;
 (function() {
 
     var appPrefix = '/';
-    var templateUrlPrefix = 'templates/';
+    var templateUrlPrefix = 'public/app/templates/';
     var appVersion = 1;
 
     CONFIG = {

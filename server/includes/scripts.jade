@@ -20,16 +20,31 @@ script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.mi
 
 
 //Angular application
+script(defer, src='/app/lib/router.js')
+
+script(defer, src='/app/config/config.js')
+script(defer, src='/app/config/routes.js')
+
+
 script(defer, src='/app/app.js')
-script(defer, src='/app/account/rcHeaderLoginCtrl.js')
-script(defer, src='/app/main/rcMainCtrl.js')
-script(defer, src='/app/common/rcNotifierSvc.js')
-script(defer, src='/app/account/rcIdentitySvc.js')
-script(defer, src='/app/account/rcAuthSvc.js')
-script(defer, src='/app/account/rcUser.js')
-script(defer, src='/app/admin/rcUserListCtrl.js')
-script(defer, src='/app/account/rcSignUpCtrl.js')
-script(defer, src='/app/account/rcProfileCtrl.js')
+
+script(defer, src='/app/services/utilsSvc.js')
+
+
+script(defer, src='/app/controllers/account/headerLoginCtrl.js')
+script(defer, src='/app/services/notifierSvc.js')
+script(defer, src='/app/services/identitySvc.js')
+script(defer, src='/app/services/authSvc.js')
+script(defer, src='/app/resources/userResource.js')
+
+script(defer, src='/app/controllers/admin/userListCtrl.js')
+script(defer, src='/app/controllers/account/signUpCtrl.js')
+script(defer, src='/app/controllers/account/profileCtrl.js')
+script(defer, src='/app/controllers/roofer/rooferInboxCtrl.js')
+script(defer, src='/app/controllers/roofer/rooferDashboardCtrl.js')
+
+
+
 
 //-script(defer, src='js/plugins.js')
 //script(defer, src='/static/js/script.js')

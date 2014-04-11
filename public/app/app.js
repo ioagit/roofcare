@@ -4,10 +4,17 @@
  */
 
 
+//Declaring all modules to be use
+angular.module('App.Services', []);
+angular.module('App.Controllers', []);
+angular.module('App.Resources', []);
+
+
 //Main Angular module. Cool
-var app = angular.module('app', ['ngResource', 'ngRoute']);
+var app = angular.module('app', ['ngResource', 'ngRoute','App.Routes','App.Controllers', 'App.Services', 'App.Resources']);
 
 //Defining Routes
+/*
 app.config(function ($routeProvider, $locationProvider) {
 
 
@@ -50,7 +57,7 @@ app.config(function ($routeProvider, $locationProvider) {
     }
 
 );
-
+*/
 angular.module('app').run(function($rootScope, $location) {
 
     $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {

@@ -16,30 +16,40 @@ angular.module('App.Routes', [])
             }
         }
 
-        ROUTER.when('videos_path', '/videos', {
-            controller : 'VideosCtrl',
-            templateUrl : CONFIG.prepareViewTemplateUrl('videos/index')
+        ROUTER.when('roofer_dashboard_path', '/roofer/dashboard', {
+            controller : 'rooferDashboardCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/dashboard')
         });
 
-        ROUTER.when('video_path', '/videos/:id', {
-            controller : 'VideoCtrl',
-            templateUrl : CONFIG.prepareViewTemplateUrl('videos/show')
+        ROUTER.when('roofer_inbox_path', '/roofer/inbox', {
+            controller : 'rooferInboxCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/inbox')
         });
 
-        ROUTER.when('watched_videos_path', '/watched-videos', {
-            controller : 'WatchedVideosCtrl',
-            templateUrl : CONFIG.prepareViewTemplateUrl('videos/watched_videos')
+        ROUTER.when('roofer_jobs_path', '/roofer/jobs', {
+            controller : 'rooferJobCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/jobs')
         });
 
-        ROUTER.when('other_path', '/other', {
-            controller : 'OtherCtrl',
-            templateUrl : CONFIG.prepareViewTemplateUrl('other/index')
+        ROUTER.when('roofer_kunden_path', 'roofer/kunden', {
+            controller : 'rooferKundenCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/kunden')
         });
 
-        ROUTER.alias('home_path', 'videos_path');
+        ROUTER.when('roofer_rechnung_path', 'roofer/rechnung', {
+            controller : 'rooferRechnungCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/rechnung')
+        });
+
+        ROUTER.when('roofer_home_path', '', {
+            controller : 'rooferDashboardCtrl',
+            templateUrl : CONFIG.prepareViewTemplateUrl('roofer/dashboard')
+        });
+
+        ROUTER.alias('home_path', 'roofer_dashboard_path');
 
         ROUTER.otherwise({
-            redirectTo : '/videos'
+            redirectTo : 'roofer/dashboard'
         });
 
         ROUTER.install($routeProvider);

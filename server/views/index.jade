@@ -1,19 +1,14 @@
 extends ../includes/layout
 
 block content
-    .navbar.navbar-inverse.navbar-fixed-top
+    section#content
         .container
-            .navbar-header
-               a.navbar-brand(href="/") RC
-                h6 RC Desc
-            .navbar-collapse.collapse
-                ul.nav.navbar-nav
-                    li
-                        a(href="/home") Home
-                div(ng-include="'/partials/account/header-login'")
-    section.content
-       div(ng-view)
-
-
-    footer.container.text-center
-        p &copy; 2014 IRNetwork
+            #content-wrapper.row
+                ng-view
+            footer#footer
+                .footer-wrapper
+                    .row
+                        .col-sm-6.text
+                            | Copyright © 2013 Roofcare Mobil
+                        .col-sm-6.buttons
+        // / jquery [required]
