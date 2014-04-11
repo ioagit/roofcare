@@ -58,7 +58,7 @@ describe('User Model', function () {
 
         });
 
-        it('isAdmin() should return true for contractor users', function () {
+        it('isAdmin() should return false for contractor users', function () {
             expect(userObj.hasRole('admin')).to.be.false;
             expect(userObj.isAdmin()).to.be.false;
         });
