@@ -7,7 +7,7 @@ var passport = require('passport')
     ,LocalStrategy = require('passport-local').Strategy;
 
 //User Model
-require(path.join(proccess.cwd(), 'server', 'models','Users'));
+require(path.join(process.cwd(), 'server', 'models','Users'));
 
 var User = mongoose.model('User');
 
