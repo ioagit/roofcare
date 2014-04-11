@@ -61,7 +61,7 @@ server.error(function(err, req, res, next){
     }
 });
 
-}
+};
 function NotFound(msg){
     this.name = 'NotFound';
     Error.call(this, msg);

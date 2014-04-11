@@ -7,7 +7,7 @@ var passport = require('passport')
     ,LocalStrategy = require('passport-local').Strategy;
 
 //User Model
-require(path.join(process.cwd(), 'server', 'models','Users'));
+require(path.join(proccess.cwd(), 'server', 'models','Users'));
 
 var User = mongoose.model('User');
 
@@ -34,7 +34,7 @@ module.exports = function() {
                     return done(null, false);
 
             } // End Exec Callback
-        ) //Close Exec function
+        ); //Close Exec function
 
 
     });
@@ -52,14 +52,14 @@ module.exports = function() {
                         return done(null, false, { message: 'Incorrect username.' });
 
                     if (user.authenticate(password))
-                        return done(null, user)
+                        return done(null, user);
                     else
                         return done(null, false, { message: 'Incorrect password.' });
 
                 } // End Exec Callback
-            ) //Close Exec function
+            ); //Close Exec function
         }
     ));
 
 
-}
+};

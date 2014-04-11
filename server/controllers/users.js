@@ -12,10 +12,10 @@ exports.getUsers = function (req, res) {
             res.send(collection);
 
         } // End Exec Callback
-    ) //Close Exec function
+    ); //Close Exec function
 };
 
-exports.createUser = function(req, res, next) {
+exports.createUser = function(req, res) {
 
     var userData = req.body;
 
@@ -46,13 +46,12 @@ exports.createUser = function(req, res, next) {
 
 };
 
-exports.updateUser = function(req, res, next) {
+exports.updateUser = function(req, res) {
 
 
     //Getting data from post.
     var userUpdates = req.body;
 
-    var user_id = userUpdates.id;
 
 
 
@@ -75,14 +74,14 @@ exports.updateUser = function(req, res, next) {
         if (err) {
             res.status(400);
             return res.send({reason: err.toString()});
-        };
+        }
 
         if  (req.user.id !== data.id) {
               req.user.username =  data.username;
               req.user.firstName = data.firstName;
               req.user.lastame = data.lastName;
               req.user.roles = data.roles;
-            };
+            }
 
         res.send(userUpdates);
 
@@ -91,4 +90,4 @@ exports.updateUser = function(req, res, next) {
 
 
 
-}
+};

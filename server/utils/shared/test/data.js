@@ -79,7 +79,7 @@ var testUsers =  {
         roles: []
     }
 
-}
+};
 
 
 function createDefaultUsers(done) {
@@ -103,7 +103,7 @@ function createDefaultUsers(done) {
 
         }
     )
-};
+}
 
 function createUser(data,done) {
     addHashedProperties(data);
@@ -138,17 +138,8 @@ function handlerError(err, obj) {
     if (err) {
         console.log(err);
     }
-};
+}
 
-//Defining a handleCreation
-function handleDocumentCreation(err, obj) {
-    if (err) {
-        handlerError();
-        return;
-    }
-
-    console.log(JSON.stringify(obj));
-};
 
 
 
@@ -159,7 +150,7 @@ var testData = {
     removeUser: removeUser,
     users : testUsers
 
-}
+};
 
 
 

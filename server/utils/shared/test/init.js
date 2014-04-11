@@ -21,5 +21,5 @@ agent = request.agent('http://localhost:' + 3000);
 module.exports = {
     agent: agent,
     initServer: initServer
-}
+};
 
