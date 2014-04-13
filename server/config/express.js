@@ -22,6 +22,13 @@ server.configure(function(){
     server.set('views', config.rootPath + '/server/views');
     server.set('view engine', 'jade');
     server.set('view options', { layout: false });
+    server.register('.html', {
+        compile: function(string, options){
+            return function(locals){
+                return string;
+            };
+        }
+    });
 
     //stylus
     server.use(stylus.middleware(

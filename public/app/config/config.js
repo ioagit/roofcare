@@ -7,7 +7,7 @@ var CONFIG;
 (function() {
 
     var appPrefix = '/';
-    var templateUrlPrefix = 'public/app/templates/';
+    var templateUrlPrefix = '/templates/';
     var appVersion = 1;
 
     CONFIG = {
@@ -21,7 +21,7 @@ var CONFIG;
         routing : {
 
             prefix : '',
-            html5Mode : false
+            html5Mode : true
 
         },
 

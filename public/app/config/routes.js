@@ -31,17 +31,17 @@ angular.module('App.Routes', [])
             templateUrl : CONFIG.prepareViewTemplateUrl('roofer/jobs')
         });
 
-        ROUTER.when('roofer_kunden_path', 'roofer/kunden', {
+        ROUTER.when('roofer_kunden_path', '/roofer/kunden', {
             controller : 'rooferKundenCtrl',
             templateUrl : CONFIG.prepareViewTemplateUrl('roofer/kunden')
         });
 
-        ROUTER.when('roofer_rechnung_path', 'roofer/rechnung', {
+        ROUTER.when('roofer_rechnung_path', '/roofer/rechnung', {
             controller : 'rooferRechnungCtrl',
             templateUrl : CONFIG.prepareViewTemplateUrl('roofer/rechnung')
         });
 
-        ROUTER.when('roofer_home_path', '', {
+        ROUTER.when('roofer_home_path', '/', {
             controller : 'rooferDashboardCtrl',
             templateUrl : CONFIG.prepareViewTemplateUrl('roofer/dashboard')
         });
@@ -49,7 +49,7 @@ angular.module('App.Routes', [])
         ROUTER.alias('home_path', 'roofer_dashboard_path');
 
         ROUTER.otherwise({
-            redirectTo : 'roofer/dashboard'
+            redirectTo : '/roofer/dashboard'
         });
 
         ROUTER.install($routeProvider);

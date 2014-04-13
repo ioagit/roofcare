@@ -17,6 +17,10 @@ module.exports =  function(server) {
         res.render('../../public/app/' + req.params);
     });
 
+    server.get('/templates/*', function(req, res) {
+        res.render('../../public/app/templates/' + req.params);
+    });
+
     server.post('/login', auth.authenticate);
     server.get('/logout', function(req, res) {
         req.logout();

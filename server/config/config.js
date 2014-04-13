@@ -20,7 +20,7 @@ module.exports = {
     test: {
         db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
-        port: 9999
+        port: 3000
 
     },
     production: {
