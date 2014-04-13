@@ -1,4 +1,4 @@
-.navbar-right(ng-controller="rcHeaderLoginCtrl")
+.navbar-right(ng-controller="headerLoginCtrl")
     form.navbar-form(ng-hide="identity.isAuthenticated()")
         ul.nav.navbar-nav
             li
@@ -8,14 +8,22 @@
         .form-group
             input.form-control(placeholder="Password", ng-model="password")
         button.btn.btn-primary(ng-click="signin(username,password)") Sign In
-    ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
-        li.dropdown-toggle(href="", data-toggle="dropdown")
-           | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
-           b.caret
-        ul.dropdown-menu
-            li(ng-show="identity.currentUser.isAdmin()")
-               a(href="/admin/users") User Admin
-            li
-               a(href="/profile") Profile
-            li
-               a(href ng-click="signout()") Sign Out
+    ul.nav(ng-show="identity.isAuthenticated()")
+        li.dropdown.dark.user-menu
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+               span.user-name {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+               b.caret
+            ul.dropdown-menu
+                li(ng-show="identity.currentUser.isAdmin()")
+                   a(href="/admin/users")
+                       i.icon-asteric
+                       | User Admin
+                li
+                   a(href="/profile")
+                       i.icon-cog
+                       | Profile
+                li.divider
+                li
+                   a(ngHref="#", ng-click="signout()")
+                       i.icon-signout
+                       | Sign Out

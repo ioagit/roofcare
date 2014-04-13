@@ -5,7 +5,7 @@
 'use strict';
 
 
-angular.module('App.Controllers').controller('headerLoginCtrl', function($scope, $http, notifierSvc, identitySvc, authSvc, $location) {
+angular.module('App.Controllers', []).controller('headerLoginCtrl', function($scope, $http, notifierSvc, identitySvc, authSvc, $location) {
 
     $scope.identity = identitySvc;
     $scope.signin = function (username, password) {

@@ -7,12 +7,12 @@ angular.module('App.Services').value('rcToastr', toastr);
 angular.module('App.Services').factory('notifierSvc', function(rcToastr) {
     return {
         notify: function(msg) {
-            toastr.success(msg);
+            rcToastr.success(msg);
             console.log(msg);
         },
 
         error: function(msg) {
-            toastr.error(msg);
+            rcToastr.error(msg);
             console.error(msg);
         }
     }
