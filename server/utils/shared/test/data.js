@@ -13,6 +13,24 @@ require(path.join(process.cwd(),'server','models','Users'));
 var User =  mongoose.model('User');
 
 
+var testLocations = {
+    Heerdter: {
+        Latitude: 51.2395808,
+        Longitude: 6.7273549,
+        Street: 'Heerdter Lohweg 83',
+        City: 'Düsseldorf',
+        Country: 'Germany',
+        ZipCode: '40549'
+    },
+    AcademyOfArts: {
+        Latitude: 52.5163081,
+        Longitude: 13.3795345,
+        Street: 'Pariser Platz 4',
+        City: 'Berlin',
+        Country: 'Germany',
+        ZipCode: '10117'
+    }
+};
 
 var testUsers =  {
 
@@ -123,7 +141,6 @@ function removeUser(data,done) {
     User.remove({username: data.username}, done);
 }
 
-
 function addHashedProperties(obj) {
 
     var salt, hash;
@@ -140,16 +157,13 @@ function handlerError(err, obj) {
     }
 }
 
-
-
-
 var testData = {
     createDefaultUsers: createDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,
-    users : testUsers
-
+    users : testUsers,
+    locations: testLocations
 };
 
 

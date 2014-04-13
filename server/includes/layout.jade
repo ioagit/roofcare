@@ -28,26 +28,7 @@ html.no-js(lang='en')
                 | Roofcare Mobil
             a.toggle-nav.btn.pull-left(href='#')
                 i.icon-reorder
-            ul.nav
-                li.dropdown.dark.user-menu
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                        img(width='23', height='23', alt='Mila Kunis', src='assets/images/avatar.jpg')
-                        span.user-name Mila Kunis
-                        b.caret
-                    ul.dropdown-menu
-                        li
-                            a(href='user_profile.html')
-                                i.icon-user
-                                | Profile
-                        li
-                            a(href='user_profile.html')
-                                i.icon-cog
-                                | Settings
-                        li.divider
-                        li
-                            a(href='login.html')
-                                i.icon-signout
-                                | Sign out
+            div(ng-include="'/partials/account/header-login'")
         #wrapper
             #main-nav-bg
             nav#main-nav

@@ -6,7 +6,7 @@
  * Created by isuarez on 3/25/14.
  */
 
-angular.module('App.Resources').factory('userResource', function($resource) {
+angular.module('App.Resources', []).factory('userResource', function($resource) {
 
     var UserResource = $resource('/api/users/:id', {_id: "@id"},
         {

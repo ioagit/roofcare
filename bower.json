@@ -31,6 +31,7 @@
     "jquery-ui-touch-punch-valid": "~0.2.2",
     "modernizr": "~2.7.2",
     "signature-pad": "~2.5.0",
-    "SliderNav": "https://github.com/DevGrow/SliderNav.git"
+    "SliderNav": "https://github.com/DevGrow/SliderNav.git",
+    "sprintf": "*"
   }
 }

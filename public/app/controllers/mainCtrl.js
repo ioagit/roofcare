@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('App.Controllers').controller('mainCtrl', function($scope) {
+angular.module('App.Controllers', []).controller('mainCtrl', function($scope) {
 
     $scope.courses = [
 

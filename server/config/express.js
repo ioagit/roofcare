@@ -22,6 +22,8 @@ server.configure(function(){
     server.set('views', config.rootPath + '/server/views');
     server.set('view engine', 'jade');
     server.set('view options', { layout: false });
+
+    //Render html with no parsing
     server.register('.html', {
         compile: function(string, options){
             return function(locals){
@@ -29,6 +31,9 @@ server.configure(function(){
             };
         }
     });
+
+    //Pretty html for dev
+    server.configure('development', function () { server.locals.pretty = true; });
 
     //stylus
     server.use(stylus.middleware(

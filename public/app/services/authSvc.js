@@ -87,7 +87,7 @@ angular.module('App.Services', []).factory('authSvc', function ($http, identityS
 
             var deffered = $q.defer();
 
-            $http.post('/logout', {logout: true}).then(function () {
+            $http.get('/logout', {logout: true}).then(function () {
 
                     identitySvc.currentUser = undefined;
                     deffered.resolve();

@@ -4,12 +4,6 @@
  */
 
 
-//Declaring all modules to be use
-angular.module('App.Services', []);
-angular.module('App.Controllers', []);
-angular.module('App.Resources', []);
-
-
 //Main Angular module. Cool
 var app = angular.module('app', ['ngResource', 'ngRoute','App.Routes','App.Controllers', 'App.Services', 'App.Resources']);
 
