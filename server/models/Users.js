@@ -2,8 +2,8 @@
  * Created by isuarez on 3/28/2014.
  */
 var mongoose  = require('mongoose'),
-    encrypt = require('../utils/encryption'),
     path = require('path'),
+    encrypt = require(path.join(process.cwd(), 'server','utils','encryption')),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator'));
 
 

@@ -3,15 +3,12 @@
  */
 var passport = require('passport')
     ,path = require('path')
-    ,mongoose = require('mongoose')
     ,LocalStrategy = require('passport-local').Strategy;
 
 //User Model
 require(path.join(process.cwd(), 'server', 'models','Users'));
 
-var User = mongoose.model('User');
-
-module.exports = function() {
+module.exports = function(User) {
 
 
     passport.serializeUser(function(user, done) {

@@ -1,17 +1,12 @@
 /**
  * Created by isuarez on 3/6/14.
  */
-var auth = require('./auth')
-    ,users = require('../controllers/users')
-    ,mongoose = require('mongoose')
-    ,User = mongoose.model('User');
 
+module.exports =  function(server, User, userController, auth) {
 
-module.exports =  function(server) {
-
-    server.get('/api/users',  auth.requiresRole('admin'), users.getUsers);
-    server.post('/api/users', users.createUser);
-    server.put('/api/users',  auth.requiresApiLogin,  users.updateUser);
+    server.get('/api/users',  auth.requiresRole('admin'), userController.getUsers(User));
+    server.post('/api/users', userController.createUser(User));
+    server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
     
     server.get('/partials/*', function(req, res) {
         res.render('../../public/app/' + req.params);

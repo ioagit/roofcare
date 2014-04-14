@@ -2,11 +2,22 @@
 var  express = require('express');
 
 //Configuration requirements
-var expressServer =  require ('./server/config/express');
-var mongoose = require ('./server/config/mongoose');
-var passport = require ('./server/config/passport');
-var routes = require ('./server/config/routes');
+var path = require('path')
+    ,expressServer =  require (path.join(process.cwd(), 'server', 'config', 'express'))
+    ,mongooseConf = require (path.join(process.cwd(),'server','config','mongoose'))
+    ,passport = require (path.join(process.cwd(),'server','config','passport'))
+    ,routes = require (path.join(process.cwd(),'server','config','routes'))
+    ,auth = require(path.join(process.cwd(),'server','config','auth'));
 
+//Models
+var mongoose = require('mongoose');
+
+//Declaring models
+require(path.join(process.cwd(),'server','models','Users'));
+var User = mongoose.model('User');
+
+//Controllers
+var userController  = require(path.join(process.cwd(),'server','controllers','users'));
 
 
 
@@ -18,9 +29,11 @@ function main(config) {
     //Create the server
     var server = express.createServer();
     expressServer(server, config);
-    mongoose(config);
-    passport(config);
-    routes(server);
+    mongooseConf(config);
+
+
+    passport(User);
+    routes(server, User, userController, auth);
 
     return server;
 }
