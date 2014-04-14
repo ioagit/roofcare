@@ -9,9 +9,10 @@ var mongoose  = require('mongoose'),
 
 //adding the user model for User Model registration with Moongoose
 require(path.join(process.cwd(),'server','models','Users'));
+require(path.join(process.cwd(),'server','models','PhysicalAddress'));
 
 var User =  mongoose.model('User');
-
+var PhysicalAddress = mongoose.model('PhysicalAddress');
 
 var testLocations = {
     Heerdter: {
@@ -99,6 +100,23 @@ var testUsers =  {
 
 };
 
+function createTestLocations(done) {
+    PhysicalAddress.find({}).exec(
+        function(err,collection) {
+
+        if (err) return done(err);
+        if (collection.length === 0) {
+            PhysicalAddress.create(testLocations.Heerdter, testLocations.AcademyOfArts, done);
+        }
+        else {
+            return done();
+        }
+    })
+}
+
+function removeAllLocations(done) {
+    PhysicalAddress.remove({}, done);
+}
 
 function createDefaultUsers(done) {
     User.find({}).exec(function (err, collection) {
@@ -158,10 +176,12 @@ function handlerError(err, obj) {
 }
 
 var testData = {
+    createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,
+    removeAllLocations: removeAllLocations,
     users : testUsers,
     locations: testLocations
 };

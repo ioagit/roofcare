@@ -19,14 +19,25 @@ describe('PhysicalAddress Model', function () {
         done();
     });
 
-    it('Should Not Find The Address For The Academy Of Arts In Mongo', function() {
+
+    it('Should Find The Address For The Academy Of Arts In Mongo', function() {
         var academy = testData.locations.AcademyOfArts;
         expect(academy).to.not.be.null;
+        PhysicalAddress.findOne({ Latitude: academy.Latitude, Longitude: academy.Longitude },
+            function (err, addr) {
+                expect(addr).to.be.null;
+               })
+    });
+
+
+    it('Get Formatted Address Should Return A String With Correct Data', function() {
+        var academy = testData.locations.AcademyOfArts;
         PhysicalAddress.findOne(                {
-                    Latitude: academy.Latitude,
-                    Longitude: academy.Longitude
-                }, function (err, addr) {
-            expect(addr).to.be.null;
+            Latitude: academy.Latitude,
+            Longitude: academy.Longitude
+        }, function (err, addr) {
+            var f = addr.getFormattedAddress();
+            expect(f).to.eq('Pariser Platz 22 4 Berlin Germany 10117');
         })
     });
 

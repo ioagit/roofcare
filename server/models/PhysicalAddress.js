@@ -19,7 +19,7 @@ var physicalAddressSchema = new mongoose.Schema({
 physicalAddressSchema.methods = {
 
     getFormattedAddress: function() {
-        var address = sprintf('%(Street) %(City)');
+        var address = sprintf('%(Street) %(City)', Street, City);
         if (Country != null && Country != "")
             address += ' ' +Country;
         address += ' ' + ZipCode;
