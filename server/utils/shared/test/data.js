@@ -100,7 +100,8 @@ var testUsers =  {
 
 };
 
-function createTestLocations(done) {
+function createTestLocations() {
+    return function(done) {
     PhysicalAddress.find({}).exec(
         function(err,collection) {
 
@@ -112,13 +113,18 @@ function createTestLocations(done) {
             return done();
         }
     })
+ }
 }
 
-function removeAllLocations(done) {
-    PhysicalAddress.remove({}, done);
-}
+function removeAllLocations() {
+    return function(done) {
+        PhysicalAddress.remove({}, done);
+    };
+    }
 
-function createDefaultUsers(done) {
+function createDefaultUsers() {
+ return function(done) {
+
     User.find({}).exec(function (err, collection) {
 
             if (err) return done(err);
@@ -139,7 +145,7 @@ function createDefaultUsers(done) {
 
         }
     )
-}
+}};
 
 function createUser(data,done) {
     addHashedProperties(data);
@@ -151,8 +157,11 @@ function createUser(data,done) {
     });
 }
 
-function removeAllUsers(done) {
-    User.remove({}, done);
+function removeAllUsers() {
+    return function(done) {
+
+        User.remove({}, done);
+    }
 }
 
 function removeUser(data,done) {

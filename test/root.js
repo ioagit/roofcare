@@ -11,16 +11,16 @@ var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test',
 
 /* This will happen before any test */
 
-before(function(done) {
+before(function() {
 
         init.initServer();
-        testData.createTestLocations(done);
-        testData.createDefaultUsers(done);
+        testData.createTestLocations();
+        testData.createDefaultUsers();
     }
 
 )
 
-after(function(done) {
-    testData.removeAllLocations(done);
-    testData.removeAllUsers(done);
+after(function() {
+    testData.removeAllLocations();
+    testData.removeAllUsers();
 });

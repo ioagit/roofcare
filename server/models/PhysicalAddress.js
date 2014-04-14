@@ -4,8 +4,8 @@
 
 var mongoose  = require('mongoose'),
     path = require('path'),
-    sprintf = require('sprintf').sprintf,
-    validator = require(path.join(process.cwd(), 'server', 'config', 'validator'));
+    validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
+    util = require('util');
 
 var physicalAddressSchema = new mongoose.Schema({
     Latitude: {type: Number, required:true},
@@ -19,10 +19,11 @@ var physicalAddressSchema = new mongoose.Schema({
 physicalAddressSchema.methods = {
 
     getFormattedAddress: function() {
-        var address = sprintf('%(Street) %(City)', Street, City);
-        if (Country != null && Country != "")
-            address += ' ' +Country;
-        address += ' ' + ZipCode;
+        var address = util.format('%s %s', this.Street, this.City);
+        if (this.Country != null && this.Country != "")
+            address += ' ' + this.Country;
+        address += ' ' + this.ZipCode;
+        return address;
     }
 };
 
