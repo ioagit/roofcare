@@ -2,7 +2,6 @@
  * Created by isuarez on 3/31/14.
  */
 
-
 var mongoose = require('mongoose');
 var expect = require('chai').expect;
 var path = require('path');
@@ -25,8 +24,9 @@ describe('User Model', function () {
         var userObj;
         before(function (done) {
 
-            User.findOne({username: testData.users.admin.username}, function (err, user) {
-                expect(err).to.be.null;
+            var admin = testData.users.admin;
+            expect(admin).to.not.be.null;
+            User.findOne({username: admin.username}, function (err, user) {
                 userObj = user;
                 done();
             })
@@ -34,6 +34,7 @@ describe('User Model', function () {
         });
 
         it('isAdmin() should return true for admin users', function () {
+            expect(userObj).to.not.be.null;
             expect(userObj.hasRole('admin')).to.be.true;
             expect(userObj.isAdmin()).to.be.true;
         });

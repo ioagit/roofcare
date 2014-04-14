@@ -28,4 +28,3 @@ physicalAddressSchema.methods = {
 };
 
 var PhysicalAddress =  mongoose.model('PhysicalAddress', physicalAddressSchema);
-

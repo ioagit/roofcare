@@ -120,13 +120,11 @@ function removeAllLocations() {
     return function(done) {
         PhysicalAddress.remove({}, done);
     };
-    }
+}
 
 function createDefaultUsers() {
- return function(done) {
-
-    User.find({}).exec(function (err, collection) {
-
+    return function(done) {
+        User.find({}).exec(function (err, collection) {
             if (err) return done(err);
 
             if (collection.length === 0) {
@@ -136,15 +134,11 @@ function createDefaultUsers() {
 
                 //Adding it to an array
                 User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
-
-
             }
             else {
                 return done();
             }
-
-        }
-    )
+        })
 }};
 
 function createUser(data,done) {

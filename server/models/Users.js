@@ -38,4 +38,3 @@ userSchema.methods = {
 };
 
 var User =  mongoose.model('User', userSchema);
-
