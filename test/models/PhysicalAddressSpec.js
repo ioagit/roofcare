@@ -38,6 +38,7 @@ describe('PhysicalAddress Model', function () {
 
         var model, model2;
 
+
 //        PhysicalAddress.create({Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' },
 //        function(err, obj) {
 //            done();
