@@ -25,6 +25,7 @@ before(function (done) {
             }
 
         ],
+        //Optionall callback. Needed to call done().
         function (err, results) {
             if (err || !results) {
                 done(err);
