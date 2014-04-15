@@ -4,22 +4,25 @@
 
 var mongoose = require('mongoose');
 var expect = require('chai').expect;
+var assert= require('chai').assert;
 var path = require('path');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
+var users = require(path.join(process.cwd(), 'server', 'models', 'Users'));
 
-require(path.join(process.cwd(), 'server', 'models', 'Users'));
+describe.only('User Model', function () {
 
-describe('User Model', function () {
+    var User = users.Model;
 
-    var User;
-
-    before(function (done) {
-        User = mongoose.model('User');
-        done();
+    after(function() {
+        testData.removeAllUsers();
     });
 
-    describe('For Admin users', function () {
+    before(function () {
+        testData.createTempDefaultUsers();
+    });
+
+    describe.skip('For Admin users', function () {
 
         var userObj;
         before(function (done) {
@@ -28,13 +31,13 @@ describe('User Model', function () {
             expect(admin).to.not.be.null;
             User.findOne({username: admin.username}, function (err, user) {
                 userObj = user;
+                expect(userObj).to.not.be.null;
                 done();
             })
 
         });
 
         it('isAdmin() should return true for admin users', function () {
-            expect(userObj).to.not.be.null;
             expect(userObj.hasRole('admin')).to.be.true;
             expect(userObj.isAdmin()).to.be.true;
         });
@@ -52,12 +55,16 @@ describe('User Model', function () {
         before(function (done) {
 
             User.findOne({username: testData.users.contractor.username}, function (err, user) {
+            //User.findOne({}, function (err, user) {
                 expect(err).to.be.null;
+                assert(user !== null, 'user is null');
+
                 userObj = user;
                 done();
             })
 
         });
+
 
         it('isAdmin() should return false for contractor users', function () {
             expect(userObj.hasRole('admin')).to.be.false;
@@ -69,7 +76,6 @@ describe('User Model', function () {
         });
 
     });
-
 
     describe('For Regular users', function () {
 

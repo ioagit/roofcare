@@ -13,14 +13,12 @@ var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test',
 
 before(function() {
 
-        init.initServer();
-//        testData.createTestLocations();
-        testData.createDefaultUsers();
-    }
-
-)
+    init.initServer();
+//    testData.createTestLocations();
+//    testData.createDefaultUsers();
+})
 
 after(function() {
-//    testData.removeAllLocations();
-    testData.removeAllUsers();
+    //testData.removeAllLocations();
+    //testData.removeAllUsers();
 });

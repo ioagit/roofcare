@@ -8,10 +8,10 @@ var mongoose  = require('mongoose'),
 
 
 //adding the user model for User Model registration with Moongoose
-require(path.join(process.cwd(),'server','models','Users'));
+var users = require(path.join(process.cwd(),'server','models','Users'));
 require(path.join(process.cwd(),'server','models','PhysicalAddress'));
 
-var User =  mongoose.model('User');
+var User = users.Model;
 var PhysicalAddress = mongoose.model('PhysicalAddress');
 
 var testLocations = {
@@ -122,6 +122,16 @@ function removeAllLocations() {
     };
 }
 
+function createTempDefaultUsers() {
+    return function(done) {
+        addHashedProperties(testUsers.admin);
+        addHashedProperties(testUsers.contractor);
+        addHashedProperties(testUsers.user);
+
+        //Adding it to an array
+        User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
+    };
+}
 function createDefaultUsers() {
     return function(done) {
         User.find({}).exec(function (err, collection) {
@@ -181,6 +191,7 @@ function handlerError(err, obj) {
 var testData = {
     createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
+    createTempDefaultUsers: createTempDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,
