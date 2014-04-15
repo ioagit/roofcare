@@ -13,7 +13,7 @@ agent = request.agent('http://localhost:' + 3000);
 
 
 
-describe.skip ("Routes Tempaltes ", function() {
+describe ("Routes Tempaltes ", function() {
 
     it('Should Return an _tpl file when requested with a template path', function(done) {
         agent

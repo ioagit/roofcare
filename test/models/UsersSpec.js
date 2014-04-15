@@ -2,7 +2,6 @@
  * Created by isuarez on 3/31/14.
  */
 
-var mongoose = require('mongoose');
 var expect = require('chai').expect;
 var assert= require('chai').assert;
 var path = require('path');
@@ -10,19 +9,12 @@ var path = require('path');
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 var users = require(path.join(process.cwd(), 'server', 'models', 'Users'));
 
-describe.only('User Model', function () {
+describe('User Model', function () {
 
     var User = users.Model;
 
-    after(function() {
-        testData.removeAllUsers();
-    });
 
-    before(function () {
-        testData.createTempDefaultUsers();
-    });
-
-    describe.skip('For Admin users', function () {
+    describe('For Admin users', function () {
 
         var userObj;
         before(function (done) {

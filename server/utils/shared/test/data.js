@@ -122,7 +122,6 @@ function removeAllLocations() {
     };
 }
 
-function createDefaultUsers(callBack) {
 function createTempDefaultUsers() {
     return function(done) {
         addHashedProperties(testUsers.admin);
@@ -133,8 +132,8 @@ function createTempDefaultUsers() {
         User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
     };
 }
-function createDefaultUsers() {
-    return function(done) {
+function createDefaultUsers(callback) {
+
         User.find({}).exec(function (err, collection) {
             if (err) return callBack(err);
 
@@ -145,11 +144,11 @@ function createDefaultUsers() {
 
                 //Adding it to an array
                 User.create(testUsers.admin, testUsers.contractor, testUsers.user, function (err, result) {
-                    return callBack(err, result);
+                    return callback(err, result);
                 });
             }
             else {
-                callBack(null, "User collection already exists.");
+                callback(null, "User collection already exists.");
             }
         })
 };
@@ -164,9 +163,9 @@ function createUser(data,done) {
     });
 }
 
-function removeAllUsers(callBack) {
+function removeAllUsers(callback) {
         User.remove({}, function(err, result) {
-            return callBack(err, result);
+            return callback(err, result);
         });
 }
 

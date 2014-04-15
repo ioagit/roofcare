@@ -15,9 +15,9 @@ var agent = request.agent('http://localhost:' + 3000);
 var User;
 
 
-describe.skip ("Routes API Users", function() {
+describe ("Routes API Users", function() {
 
-    describe.skip('GET /api/users', function () {
+    describe('GET /api/users', function () {
 
         it('should response unauthorized status for anonymous', function (done) {
             agent
@@ -58,7 +58,7 @@ describe.skip ("Routes API Users", function() {
 
     });
 
-    describe.skip('POST /api/users', function () {
+    describe('POST /api/users', function () {
 
         it('should fail to create user when user data is not valid', function(done) {
 
@@ -119,7 +119,7 @@ describe.skip ("Routes API Users", function() {
 
     });
 
-    describe.skip('PUT /api/users', function () {
+    describe('PUT /api/users', function () {
 
 
        describe('When not logged in', function() {

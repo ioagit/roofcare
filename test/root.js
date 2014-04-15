@@ -5,7 +5,6 @@
 var path = require('path');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
-var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init'));
 var async = require('async');
 
@@ -19,10 +18,10 @@ before(function (done) {
 
         async.series([
             function(callback){
-                testData.removeAllUsers(callback)
+                testData.removeAllUsers(callback);
             },
             function(callback) {
-                testData.createDefaultUsers(callback)
+                testData.createDefaultUsers(callback);
             }
 
         ],

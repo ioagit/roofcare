@@ -3,8 +3,6 @@
  */
 
 var expect = require("chai").expect;
-var should = require('should');
-var assert = require('assert');
 var config = require('../../server/config/config.js');
 
 
@@ -75,4 +73,4 @@ describe('Config Module', function () {
 
     }
 
-)
+);

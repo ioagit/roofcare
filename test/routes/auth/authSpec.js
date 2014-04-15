@@ -11,7 +11,7 @@ var agent = request.agent('http://localhost:' + 3000);
 
 
 
-describe.skip ("Routes Login Logout", function() {
+describe ("Routes Login Logout", function() {
 
 
     describe('Login and Logout', function() {
