@@ -7,6 +7,16 @@ var expect = require("chai").expect;
 var request = require('supertest');
 
 
+//Use as a generic callback function
+function callback(err, result) {
+    if (err)
+       console.log(data);
+
+    if (result)
+        console.log(result);
+
+
+}
 
     //Helper function for login Users
 function loginUser(agent, credentials) {
@@ -148,6 +158,8 @@ function reqAuthRoute(agent, data, route,method) {
 
 module.exports = {
 
+    //Generic callback
+    callback: callback,
     reqAuthRoute: reqAuthRoute,
     loginUser: loginUser,
     loginInvalidUser: loginInvalidUser,

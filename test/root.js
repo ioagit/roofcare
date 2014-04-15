@@ -5,22 +5,39 @@
 var path = require('path');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
+var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init'));
-
+var async = require('async');
 
 
 /* This will happen before any test */
 
-before(function() {
+before(function (done) {
 
         init.initServer();
-//        testData.createTestLocations();
-        testData.createDefaultUsers();
-    }
 
+        async.series([
+            function(callback){
+                testData.removeAllUsers(callback)
+            },
+            function(callback) {
+                testData.createDefaultUsers(callback)
+            }
+
+        ],
+        function (err, results) {
+            if (err || !results) {
+                done(err);
+            }
+            if (results.length) return done();
+        });
+
+//        testData.createTestLocations();
+
+    }
 )
 
-after(function() {
+after(function (done) {
 //    testData.removeAllLocations();
-    testData.removeAllUsers();
+    testData.removeAllUsers(done);
 });

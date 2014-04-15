@@ -122,10 +122,9 @@ function removeAllLocations() {
     };
 }
 
-function createDefaultUsers() {
-    return function(done) {
+function createDefaultUsers(callBack) {
         User.find({}).exec(function (err, collection) {
-            if (err) return done(err);
+            if (err) return callBack(err);
 
             if (collection.length === 0) {
                 addHashedProperties(testUsers.admin);
@@ -133,13 +132,15 @@ function createDefaultUsers() {
                 addHashedProperties(testUsers.user);
 
                 //Adding it to an array
-                User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
+                User.create(testUsers.admin, testUsers.contractor, testUsers.user, function (err, result) {
+                    return callBack(err, result);
+                });
             }
             else {
-                return done();
+                callBack(null, "User collection already exists.");
             }
         })
-}};
+};
 
 function createUser(data,done) {
     addHashedProperties(data);
@@ -151,11 +152,10 @@ function createUser(data,done) {
     });
 }
 
-function removeAllUsers() {
-    return function(done) {
-
-        User.remove({}, done);
-    }
+function removeAllUsers(callBack) {
+        User.remove({}, function(err, result) {
+            return callBack(err, result);
+        });
 }
 
 function removeUser(data,done) {
