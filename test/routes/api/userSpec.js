@@ -7,21 +7,17 @@ var expect = require("chai").expect;
 var request = require('supertest');
 var path = require('path');
 
-
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 
-
-
-var agent;
-agent = request.agent('http://localhost:' + 3000);
+var agent = request.agent('http://localhost:' + 3000);
 
 var User;
 
 
-describe ("Routes API Users", function() {
+describe.skip ("Routes API Users", function() {
 
-    describe('GET /api/users', function () {
+    describe.skip('GET /api/users', function () {
 
         it('should response unauthorized status for anonymous', function (done) {
             agent
@@ -62,7 +58,7 @@ describe ("Routes API Users", function() {
 
     });
 
-    describe('POST /api/users', function () {
+    describe.skip('POST /api/users', function () {
 
         it('should fail to create user when user data is not valid', function(done) {
 
@@ -123,7 +119,7 @@ describe ("Routes API Users", function() {
 
     });
 
-    describe('PUT /api/users', function () {
+    describe.skip('PUT /api/users', function () {
 
 
        describe('When not logged in', function() {
