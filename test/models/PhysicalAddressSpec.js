@@ -5,6 +5,7 @@
 var mongoose = require('mongoose');
 var expect = require('chai').expect;
 var path = require('path');
+var async = require('async');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 
@@ -23,34 +24,35 @@ describe('PhysicalAddress Model', function () {
                });
     });
 
-
-
-    it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function() {
+    it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function(done) {
 
         var model, model2, temp;
 
-        before(function (done) {
-            temp = {Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' };
-            PhysicalAddress.create(temp, done);
+        async.series([
+            function(callback) {
+                temp = {Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' };
+                PhysicalAddress.create(temp, callback);
+            },
+            function(callback) {
+                PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
+                    model = obj;
+                    expect(model).to.not.be.null;
+                    model.ZipCode='22222';
+                    callback();
+                });
+            },
+            function(callback) {
+                PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
+                    model2=obj;
+                    expect(model2).to.not.be.null;
+                    expect(model2.ZipCode).to.eq('11111');
+                    callback();
+                });
+            }
+        ],
+        function (err, results) {
+            PhysicalAddress.remove({Latitude:0.1, Longitude:0.1}, done);
         });
-
-        after(function (done) {
-            PhysicalAddress.remove({Latitude:0.1, Longitude:0.1},done);
-        });
-
-//        PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
-//            model=obj;
-//            expect(model).to.not.be.null;
-//            model.ZipCode='22222';
-//            done();
-//        });
-//
-//        PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
-//            model2=obj;
-//            expect(model2).to.not.be.null;
-//            expect(model2.ZipCode).to.eq('11111');
-//            done();
-//        });
     });
 
     it('Get Formatted Address Should Return A String With Correct Data', function() {
