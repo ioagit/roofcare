@@ -19,5 +19,6 @@ module.exports = function(config) {
         './public/test/unit/**/*.js'
     ]);
 
+    //Setting the configuration
     config.set(conf);
 };
