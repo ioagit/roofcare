@@ -17,12 +17,10 @@ before(function (done) {
         init.initServer();
 
         async.series([
-            function(callback){
-                testData.removeAllUsers(callback);
-            },
-            function(callback) {
-                testData.createDefaultUsers(callback);
-            }
+            function(callback) { testData.removeAllLocations(callback); },
+            function(callback) { testData.removeAllUsers(callback); },
+            function(callback) { testData.createTestLocations(callback); },
+            function(callback) { testData.createDefaultUsers(callback); }
 
         ],
         //Callback when everything is done.
@@ -32,9 +30,6 @@ before(function (done) {
             }
             if (results.length) return done();
         });
-
-//        testData.createTestLocations();
-
     }
 )
 

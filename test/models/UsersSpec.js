@@ -47,7 +47,6 @@ describe('User Model', function () {
         before(function (done) {
 
             User.findOne({username: testData.users.contractor.username}, function (err, user) {
-            //User.findOne({}, function (err, user) {
                 expect(err).to.be.null;
                 assert(user !== null, 'user is null');
 

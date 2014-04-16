@@ -9,10 +9,10 @@ var mongoose  = require('mongoose'),
 
 //adding the user model for User Model registration with Moongoose
 var users = require(path.join(process.cwd(),'server','models','Users'));
-require(path.join(process.cwd(),'server','models','PhysicalAddress'));
+var addresses = require(path.join(process.cwd(),'server','models','PhysicalAddress'));
 
 var User = users.Model;
-var PhysicalAddress = mongoose.model('PhysicalAddress');
+var PhysicalAddress = addresses.Model;
 
 var testLocations = {
     Heerdter: {
@@ -100,58 +100,49 @@ var testUsers =  {
 
 };
 
-function createTestLocations() {
-    return function(done) {
+function createTestLocations(callback) {
+
     PhysicalAddress.find({}).exec(
         function(err,collection) {
 
-        if (err) return done(err);
+        if (err) return callback(err);
         if (collection.length === 0) {
-            PhysicalAddress.create(testLocations.Heerdter, testLocations.AcademyOfArts, done);
+            PhysicalAddress.create(testLocations.Heerdter, testLocations.AcademyOfArts, function (err, result) {
+                return callback(err, result);
+            });
         }
         else {
-            return done();
+            callback(null, "Default physical address collection already exists.");
         }
     })
- }
 }
 
-function removeAllLocations() {
-    return function(done) {
-        PhysicalAddress.remove({}, done);
-    };
+function removeAllLocations(callback) {
+    PhysicalAddress.remove({}, function(err, result) {
+        return callback(err, result);
+    });
 }
 
-function createTempDefaultUsers() {
-    return function(done) {
-        addHashedProperties(testUsers.admin);
-        addHashedProperties(testUsers.contractor);
-        addHashedProperties(testUsers.user);
-
-        //Adding it to an array
-        User.create(testUsers.admin, testUsers.contractor, testUsers.user, done);
-    };
-}
 function createDefaultUsers(callback) {
 
-        User.find({}).exec(function (err, collection) {
-            if (err) return callBack(err);
+    User.find({}).exec(function (err, collection) {
+        if (err) return callBack(err);
 
-            if (collection.length === 0) {
-                addHashedProperties(testUsers.admin);
-                addHashedProperties(testUsers.contractor);
-                addHashedProperties(testUsers.user);
+        if (collection.length === 0) {
+            addHashedProperties(testUsers.admin);
+            addHashedProperties(testUsers.contractor);
+            addHashedProperties(testUsers.user);
 
-                //Adding it to an array
-                User.create(testUsers.admin, testUsers.contractor, testUsers.user, function (err, result) {
-                    return callback(err, result);
-                });
-            }
-            else {
-                callback(null, "User collection already exists.");
-            }
-        })
-};
+            //Adding it to an array
+            User.create(testUsers.admin, testUsers.contractor, testUsers.user, function (err, result) {
+                return callback(err, result);
+            });
+        }
+        else {
+            callback(null, "User collection already exists.");
+        }
+    })
+}
 
 function createUser(data,done) {
     addHashedProperties(data);
@@ -164,9 +155,9 @@ function createUser(data,done) {
 }
 
 function removeAllUsers(callback) {
-        User.remove({}, function(err, result) {
-            return callback(err, result);
-        });
+    User.remove({}, function(err, result) {
+        return callback(err, result);
+    });
 }
 
 function removeUser(data,done) {
@@ -183,16 +174,9 @@ function addHashedProperties(obj) {
 
 }
 
-function handlerError(err, obj) {
-    if (err) {
-        console.log(err);
-    }
-}
-
 var testData = {
     createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
-    createTempDefaultUsers: createTempDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,

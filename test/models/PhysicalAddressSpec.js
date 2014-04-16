@@ -8,22 +8,11 @@ var path = require('path');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 
-require(path.join(process.cwd(), 'server', 'models', 'PhysicalAddress'));
+var addresses = require(path.join(process.cwd(), 'server', 'models', 'PhysicalAddress'));
 
 describe('PhysicalAddress Model', function () {
 
-    var PhysicalAddress;
-
-    before(function (done) {
-        testData.createTestLocations();
-        PhysicalAddress = mongoose.model('PhysicalAddress');
-        done();
-    });
-
-    after(function() {
-        testData.removeAllLocations();
-    });
-
+    var PhysicalAddress = addresses.Model;
 
     it('Should Find The Address For The Academy Of Arts In Mongo', function() {
         var academy = testData.locations.AcademyOfArts;
@@ -34,15 +23,20 @@ describe('PhysicalAddress Model', function () {
                });
     });
 
+
+
     it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function() {
 
-        var model, model2;
+        var model, model2, temp;
 
+        before(function (done) {
+            temp = {Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' };
+            PhysicalAddress.create(temp, done);
+        });
 
-//        PhysicalAddress.create({Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' },
-//        function(err, obj) {
-//            done();
-//        });
+        after(function (done) {
+            PhysicalAddress.remove({Latitude:0.1, Longitude:0.1},done);
+        });
 
 //        PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
 //            model=obj;
