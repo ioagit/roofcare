@@ -5,7 +5,7 @@
 
 
 //Main Angular module. Cool
-var app = angular.module('app', ['ngResource', 'ngRoute','App.Routes','App.Controllers', 'App.Services', 'App.Resources']);
+var app = angular.module('App', ['ngResource', 'ngRoute','App.Routes','App.Controllers', 'App.Services', 'App.Resources']);
 
 //Defining Routes
 /*
