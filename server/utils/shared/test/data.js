@@ -106,7 +106,10 @@ var testUsers =  {
         password: 'rimita',
 
 
+
         roles: ['contractor']
+
+
     },
 
     contractor1: {

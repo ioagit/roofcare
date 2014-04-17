@@ -6,16 +6,17 @@ var mongoose = require('mongoose'),
     path = require('path'),
     encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption')),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
-    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
+    extend = require('mongoose-schema-extend'),
+    PersonSchema = require(path.join(process.cwd(), 'server', 'models', 'PersonSchema'));
 
-var userSchema = new mongoose.Schema({
-        contactInfo: contactInfo,
-        //firstName: {type: String, required: true, trim: true, validate: validator.nameValidator},
-        //lastName: {type: String, required: true,trim: true, validate: validator.nameValidator},
+var userSchema =  PersonSchema.extend({
+
         username: {type: String, required: '{PATH} is required!', unique: true},
         salt: {type: String, required: '{PATH} is required!'},
         hashed_pwd: {type: String, required: '{PATH} is required!'},
-        roles: [String]});
+        roles: [String]
+
+}, { collection : 'users', discriminatorKey : '_type' });
 
 userSchema.methods = {
 

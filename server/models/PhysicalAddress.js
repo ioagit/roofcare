@@ -34,3 +34,4 @@ physicalAddressSchema.methods = {
 
 var _model =  mongoose.model('PhysicalAddress', physicalAddressSchema);
 module.exports.Model = _model;
+module.exports.Schema = physicalAddressSchema;
