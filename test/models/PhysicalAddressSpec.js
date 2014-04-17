@@ -16,7 +16,7 @@ describe('PhysicalAddress Model', function () {
     var PhysicalAddress = addresses.Model;
 
     it('Should Find The Address For The Academy Of Arts In Mongo', function() {
-        var academy = testData.locations.AcademyOfArts;
+        var academy = testData.locations.FisherIsland;
         expect(academy).to.not.be.null;
         PhysicalAddress.findOne({ Latitude: academy.Latitude, Longitude: academy.Longitude },
             function (err, addr) {
@@ -67,4 +67,14 @@ describe('PhysicalAddress Model', function () {
             expect(f).to.eq('Pariser Platz 4 Berlin Germany 10117');
         })
     });
+
+    it('Find The closest location to Univision', function() {
+        var univisionAddress = [25.813146, -80.350437];
+
+        PhysicalAddress.find( {
+            geo: { $near : [ 40, 5 ] , $maxDistance : 500}
+        },  function (err, addr) {
+            expect(addr).not.to.be.null;
+        });
+    })
 });
