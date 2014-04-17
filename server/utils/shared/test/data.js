@@ -37,64 +37,103 @@ var testUsers =  {
 
     admin: {
 
+        contactInfo: {
+            firstName: 'Vera',
+            lastName: 'Suarez',
+            email: 'verita@verita.com',
+            phone: '123-345'
+        },
+
         username: 'verita',
         password: 'verita',
-        firstName: 'Vera',
-        lastName: 'Suarez',
+
         roles: ['admin']
     },
 
     contractor: {
 
+        contactInfo: {
+            firstName: 'Rima',
+            lastName: 'Gerhard',
+            email: 'rimita@rimita.com',
+            phone: '123-344'
+        },
+
         username: 'rimita',
         password: 'rimita',
-        firstName: 'Rima',
-        lastName: 'Gerhard',
+
+
         roles: ['contractor']
     },
 
     contractor1: {
 
+        contactInfo: {
+            firstName: 'rimita1',
+            lastName: 'rimita1',
+            email: 'rimita1@verita.com',
+            phone: '123-333'
+        },
+
         username: 'rimita1',
         password: 'rimita1',
-        firstName: 'testContractorFirstName',
-        lastName: 'testContractorLastName',
         roles: ['contractor']
     },
 
     modifiedContractor1: {
 
+        contactInfo: {
+            firstName: 'modifiedContractor1First',
+            lastName: 'modifiedContractor1FirstLast',
+            email: 'rimitas1@verita.com',
+            phone: '123-3343'
+        },
+
         username: 'rimita1',
         password: 'rimita1',
-        firstName: 'modifiedContractor1First',
-        lastName: 'modifiedContractor1FirstLast',
         roles: ['contractor', 'testRole']
     },
 
     user: {
 
+        contactInfo: {
+            firstName: 'ioa',
+            lastName: 'ioa',
+            email: 'ioa@ioa.com',
+            phone: '123-33243'
+        },
+
         username: 'ioaioa',
         password: 'ioaioa',
-        firstName: 'Ioa',
-        lastName: 'Suarez',
+
         roles: []
     },
 
     crazy: {
 
+        contactInfo: {
+            firstName: 'testUserFirstName',
+            lastName: 'testUserLastName',
+            email: 'crazy@verita.com',
+            phone: '12223-3343'
+        },
+
         username: '?/.><";:\'|{}+=-_(_)*&^%$#@!`~"',
         password: '?/.><";:\'|{}+=-_(_)*&^%$#@!`~"',
-        firstName: 'testUserFirstName',
-        lastName: 'testUserLastName',
         roles: []
     },
 
     invalid: {
 
+        contactInfo: {
+            firstName: '',
+            lastName: 'l',
+            email: '',
+            phone: ''
+        },
+
         username: 'ioaioa1',
         password: 'ioaioa1',
-        firstName: '',
-        lastName: 'l',
         roles: []
     }
 

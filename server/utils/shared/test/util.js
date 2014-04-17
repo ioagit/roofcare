@@ -95,7 +95,7 @@ function createUser(agent, user) {
             // this is should.js syntax, very clear
             console.log(res.text)
             res.should.have.status(200);
-            res.body.firstName.should.equal(user.firstName);
+            res.body.contactInfo.firstName.should.equal(user.contactInfo.firstName);
             res.body.hashed_pwd.should.not.equal(user.password);
             res.body.roles.should.include('contractor');
             return done();
@@ -122,7 +122,7 @@ function updateUser(agent, user) {
             // this is should.js syntax, very clear
             console.log(res.text)
             res.should.have.status(200);
-            res.body.firstName.should.equal(user.firstName);
+            res.body.contactInfo.firstName.should.equal(user.contactInfo.firstName);
             res.body.roles.should.include('testRole');
             return done();
         }

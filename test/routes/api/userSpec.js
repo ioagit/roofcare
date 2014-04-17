@@ -75,8 +75,8 @@ describe ("Routes API Users", function() {
                 res.body.err.should.have.property('errors');
 
                 var errors = res.body.err.errors;
-                errors.firstName.type.should.equal('required');
-                errors.lastName.type.should.equal('user defined');
+                errors['contactInfo.firstName'].type.should.equal('required');
+                errors['contactInfo.lastName'].type.should.equal('user defined');
 
 
                 expect(res.body.reason).to.contain('ValidationError');

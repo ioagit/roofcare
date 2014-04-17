@@ -9,9 +9,9 @@ var mongoose = require('mongoose'),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
 
 var userSchema = new mongoose.Schema({
-        //contactInfo: contactInfo,
-        firstName: {type: String, required: true, trim: true, validate: validator.nameValidator},
-        lastName: {type: String, required: true,trim: true, validate: validator.nameValidator},
+        contactInfo: contactInfo,
+        //firstName: {type: String, required: true, trim: true, validate: validator.nameValidator},
+        //lastName: {type: String, required: true,trim: true, validate: validator.nameValidator},
         username: {type: String, required: '{PATH} is required!', unique: true},
         salt: {type: String, required: '{PATH} is required!'},
         hashed_pwd: {type: String, required: '{PATH} is required!'},
