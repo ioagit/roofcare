@@ -14,7 +14,7 @@ var physicalAddressSchema = new mongoose.Schema({
     Street : {type: String, required:true},
     City: {type: String, required:true},
     ZipCode: {type: String, required:false},
-    Country: {type: String, required:true}
+    Country: {type: String, required:true, default: 'Germany'}
 });
 
 physicalAddressSchema.methods = {

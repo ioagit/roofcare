@@ -20,7 +20,6 @@ var testLocations = {
         Longitude: 6.7273549,
         Street: 'Heerdter Lohweg 83',
         City: 'Düsseldorf',
-        Country: 'Germany',
         ZipCode: '40549'
     },
     AcademyOfArts: {
@@ -28,8 +27,52 @@ var testLocations = {
         Longitude: 13.3795345,
         Street: 'Pariser Platz 4',
         City: 'Berlin',
-        Country: 'Germany',
         ZipCode: '10117'
+    },
+    Sonoma: {
+        Latitude: 25.826017,
+        Longitude: -80.378167,
+        Street: '11209 NW 57th Ln',
+        City: 'Doral',
+        State: 'FL',
+        Country: 'USA',
+        ZipCode: '33178'
+    },
+    OceanDrive: {
+        Latitude: 25.781653,
+        Longitude: -80.130808,
+        Street: '1020 Ocean Drive',
+        City: 'Miami Beach',
+        State: 'FL',
+        Country: 'USA',
+        ZipCode: '33139'
+    },
+    DolphinMall: {
+        Latitude: 25.787894,
+        Longitude: -80.380602,
+        Street: '11401 NW 12th St',
+        City: 'Miami',
+        State: 'FL',
+        Country: 'USA',
+        ZipCode: '33172'
+    },
+    TheEnclave: {
+        Latitude: 25.813993,
+        Longitude: -80.370002,
+        Street: '4320 NW 107th Ave  Apt 103',
+        City: 'Doral',
+        State: 'FL',
+        Country: 'USA',
+        ZipCode: '33178'
+    },
+    FisherIsland: {
+        Latitude: 25.761615,
+        Longitude: -80.14074,
+        Street: '18 Fisher Island Dr',
+        City: 'Miami Beach',
+        State: 'FL',
+        Country: 'USA',
+        ZipCode: '33109'
     }
 };
 
@@ -146,7 +189,14 @@ function createTestLocations(callback) {
 
         if (err) return callback(err);
         if (collection.length === 0) {
-            PhysicalAddress.create(testLocations.Heerdter, testLocations.AcademyOfArts, function (err, result) {
+            PhysicalAddress.create(testLocations.Heerdter,
+                testLocations.AcademyOfArts,
+                testLocations.Sonoma,
+                testLocations.OceanDrive,
+                testLocations.DolphinMall,
+                testLocations.TheEnclave,
+                testLocations.FisherIsland,
+                function (err, result) {
                 return callback(err, result);
             });
         }
