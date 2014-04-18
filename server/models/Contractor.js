@@ -7,12 +7,11 @@ var mongoose = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
-    UserSchema = require(path.join(process.cwd(), 'server', 'models', 'UserSchema'));
+    UserSchema = require(path.join(process.cwd(), 'server', 'models', 'Users')).Schema;
 
 var _schema =  UserSchema.extend
 ({
 
-    contactInfo: contactInfo,
     address: { type : mongoose.Schema.ObjectId,
                ref : 'Property'
              },
