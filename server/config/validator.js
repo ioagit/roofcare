@@ -9,7 +9,7 @@ module.exports = {
 
     nameValidator : [validate({message: "String should be between 3 and 50 characters"}, 'len', 2, 50), validate('isAlphanumeric')],
     emailValidator: [validate('isEmail', {passIfEmpty: true})],
-    phoneValidator: [validate('len',5,10, {passIfEmpty: true})]
+    phoneValidator: [validate('len',5,20, {passIfEmpty: true})]
         //[validate('matches','^([+][0-9]{1,3}[ .-])?([(]{1}[0-9]{1,6}[)])?([0-9 .-/]{3,20})((x|ext|extension)[ ]?[0-9]{1,4})?$','i')]
 
 };

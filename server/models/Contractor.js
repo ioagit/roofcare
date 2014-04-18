@@ -4,6 +4,7 @@
 
 // Customer Model
 var mongoose = require('mongoose'),
+
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
@@ -15,7 +16,7 @@ var _schema =  UserSchema.extend
     address: { type : mongoose.Schema.ObjectId,
                ref : 'Property'
              },
-    jobs: []
+    jobs: [mongoose.Schema.Types.ObjectId]
 
 });
 

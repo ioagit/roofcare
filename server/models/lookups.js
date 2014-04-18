@@ -4,6 +4,14 @@
 
 module.exports = {
 
+    roles: {
+
+        admin: 'admin',
+        contractor: 'contractor',
+        customer: 'customer'
+
+    },
+
     salutation: {
 
         Mr: 'Mr',
