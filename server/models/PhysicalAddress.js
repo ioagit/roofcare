@@ -28,8 +28,7 @@ physicalAddressSchema.methods = {
     },
     closest: function(callback) {
         return this.model('Place').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
-}
-
+    }
 };
 
 var _model =  mongoose.model('PhysicalAddress', physicalAddressSchema);
