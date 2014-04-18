@@ -5,7 +5,7 @@ var mongoose  = require('mongoose')
     , contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
 
 
-monky.factory('Contractor', { username: 'monkyContractor', password:'monkycontractor'}, function (err) {
+monky.factory('Contractor', { username: 'monkyContractor', salt:'monkycontractor'}, function (err) {
     if (err)
         console.log(err);
 } );
