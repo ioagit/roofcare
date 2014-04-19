@@ -10,7 +10,7 @@ var mongoose  = require('mongoose'),
 var physicalAddressSchema = new mongoose.Schema({
     Longitude: {type: Number, required:true},
     Latitude: {type: Number, required:true},
-    geo: {type: [Number], index: '2d'},
+    Coordinates: {type: [Number, Number], index: '2d'},
     Street : {type: String, required:true},
     City: {type: String, required:true},
     ZipCode: {type: String, required:false},

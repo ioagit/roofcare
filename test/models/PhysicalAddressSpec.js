@@ -4,6 +4,7 @@
 
 var mongoose = require('mongoose');
 var expect = require('chai').expect;
+var assert = require('chai').assert;
 var path = require('path');
 var async = require('async');
 
@@ -68,13 +69,16 @@ describe('PhysicalAddress Model', function () {
         })
     });
 
-    it('Find The closest location to Univision', function() {
+    it.only('Find The closest location to Univision', function() {
         var univisionAddress = [25.813146, -80.350437];
 
-        PhysicalAddress.find( {
-            geo: { $near : [ 40, 5 ] , $maxDistance : 500}
-        },  function (err, addr) {
-            expect(addr).not.to.be.null;
-        });
+        PhysicalAddress.find( { Coordinates: { $near : univisionAddress , $maxDistance : 50} },
+            function (err, addr) {
+                expect(addr).not.to.be.null;
+                assert(addr.length > 0, "At least one address was found");
+                console.log(addr[0]);
+                expect(addr[0].Coordinates[0]).to.eq(testData.locations.TheEnclave.Coordinates[0]);
+                expect(addr[0].Coordinates[1]).to.eq(testData.locations.TheEnclave.Coordinates[1]);
+            });
     })
 });

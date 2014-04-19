@@ -18,6 +18,7 @@ var testLocations = {
     Heerdter: {
         Latitude: 51.2395808,
         Longitude: 6.7273549,
+        Coordinates: [51.2395808, 6.7273549],
         Street: 'Heerdter Lohweg 83',
         City: 'Düsseldorf',
         ZipCode: '40549'
@@ -25,6 +26,7 @@ var testLocations = {
     AcademyOfArts: {
         Latitude: 52.5163081,
         Longitude: 13.3795345,
+        Coordinates: [52.5163081, 13.3795345],
         Street: 'Pariser Platz 4',
         City: 'Berlin',
         ZipCode: '10117'
@@ -32,6 +34,7 @@ var testLocations = {
     Sonoma: {
         Latitude: 25.826017,
         Longitude: -80.378167,
+        Coordinates: [25.826017, -80.378167],
         Street: '11209 NW 57th Ln',
         City: 'Doral',
         State: 'FL',
@@ -41,6 +44,7 @@ var testLocations = {
     OceanDrive: {
         Latitude: 25.781653,
         Longitude: -80.130808,
+        Coordinates: [25.781653, -80.130808],
         Street: '1020 Ocean Drive',
         City: 'Miami Beach',
         State: 'FL',
@@ -50,6 +54,7 @@ var testLocations = {
     DolphinMall: {
         Latitude: 25.787894,
         Longitude: -80.380602,
+        Coordinates: [25.787894, -80.380602],
         Street: '11401 NW 12th St',
         City: 'Miami',
         State: 'FL',
@@ -59,6 +64,7 @@ var testLocations = {
     TheEnclave: {
         Latitude: 25.813993,
         Longitude: -80.370002,
+        Coordinates: [25.813993, -80.370002],
         Street: '4320 NW 107th Ave  Apt 103',
         City: 'Doral',
         State: 'FL',
@@ -68,6 +74,7 @@ var testLocations = {
     FisherIsland: {
         Latitude: 25.761615,
         Longitude: -80.14074,
+        Coordinates: [25.761615, -80.14074],
         Street: '18 Fisher Island Dr',
         City: 'Miami Beach',
         State: 'FL',
