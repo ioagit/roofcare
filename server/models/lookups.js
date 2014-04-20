@@ -20,6 +20,7 @@ module.exports = {
 
     },
 
+    //Should be translated
     orderType: {
         repair: 'roof repair',
         check: 'roof check'
