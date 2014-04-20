@@ -51,7 +51,8 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+
+<tr ng-repeat="job in jobs">
     <td>
         <div class='text-right'>
             <a class='btn btn-info btn-xs' href='checklists.html'>
@@ -65,9 +66,9 @@
             </a>
         </div>
     </td>
-    <td>Janick Williamson</td>
-    <td>Dachreparatur</td>
-    <td>Steildach</td>
+    <td>{{job.customer.fullName}}</td>
+    <td>{{job.roofType}}</td>
+    <td>{{job}}</td>
     <td>Denningerstr. 123</td>
     <td>
         14.12.2013

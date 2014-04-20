@@ -10,14 +10,13 @@ var mongoose = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookUps'));
-    phisicalAddress = require(path.join(process.cwd(), 'server', 'models', 'PhisicalAddress'));
+    phisicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
 var _schema = new mongoose.Schema({
 
     address: [phisicalAddress.Schema],
 
     roofType: {
-
         type: String,
         default: lookUps.roofType.steep
     },
