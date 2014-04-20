@@ -18,6 +18,7 @@ describe('Address Model', function () {
         Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)
         {
             expect(result).to.not.be.null;
+            expect(result.Street).to.eq('1 River Place');
             console.log(result);
             done();
         })
