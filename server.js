@@ -18,7 +18,7 @@ var User = mongoose.model('User');
 
 //Controllers
 var userController  = require(path.join(process.cwd(),'server','controllers','users'));
-
+var jobController  = require(path.join(process.cwd(),'server','controllers','jobs'));
 
 
 
@@ -33,7 +33,7 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, auth);
+    routes(server, User, userController, jobController, auth);
 
     return server;
 }

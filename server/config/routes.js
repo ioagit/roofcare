@@ -2,11 +2,15 @@
  * Created by isuarez on 3/6/14.
  */
 
-module.exports =  function(server, User, userController, auth) {
+module.exports =  function(server, User, userController, jobController, auth) {
 
     server.get('/api/users',  auth.requiresRole('admin'), userController.getUsers(User));
     server.post('/api/users', userController.createUser(User));
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
+
+    server.get('/api/contractor/jobs', auth.requiresApiLogin, jobController.getJobs());
+//    server.get('/api/contractor/inbox', auth.requiresApiLogin, jobController.getInboxes());
+
     
     server.get('/partials/*', function(req, res) {
         res.render('../../public/app/' + req.params);

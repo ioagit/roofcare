@@ -19,8 +19,7 @@ var _schema =  BaseSchema.extend
 
     contactInfo: contactInfo,
     properties: [
-                  { type : mongoose.Schema.ObjectId,
-                    ref : 'Property' }
+                  { type : mongoose.Schema.ObjectId, ref : 'Property' }
                 ]
 });
 

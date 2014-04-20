@@ -11,7 +11,7 @@ var mongoose  = require('mongoose')
 monky.factory('Contractor', {
 
         //From User Schema
-        username: '#n' + 'username',
+        username: 'testcontractor',
         salt:  '12345',
         hashed_pwd: encrypt.hashPwd('12345', 'password'),
         password: 'password',

@@ -10,7 +10,7 @@ var mongoose  = require('mongoose'),
 //adding the user model for User Model registration with Moongoose
 var users = require(path.join(process.cwd(),'server','models','Users'));
 var addresses = require(path.join(process.cwd(),'server','models','Address'));
-
+var lookups = require(path.join(process.cwd(),'server','models','lookups'));
 var User = users.Model;
 var Address = addresses.Model;
 
@@ -82,7 +82,6 @@ var testUsers =  {
 
         username: 'verita',
         password: 'verita',
-
         roles: ['admin']
     },
 
@@ -97,12 +96,7 @@ var testUsers =  {
 
         username: 'rimita',
         password: 'rimita',
-
-
-
         roles: ['contractor']
-
-
     },
 
     contractor1: {
@@ -178,6 +172,27 @@ var testUsers =  {
 
 };
 
+var testJobs = {
+   job1: {
+       StartDate: '2014-04-19 10:00AM',
+       Status: lookups.jobStatus.requestAccepted,
+       Contractor: 1,
+       Customer:1,
+       OnSiteContact:1,
+       WorkSite:1
+   }
+};
+function createTestJobs(callback) {
+
+    var  contractor
+        ,customers
+        ,WorkSite;
+
+    return null;
+    //Creating the contractor
+
+
+}
 function createTestLocations(callback) {
 
     Address.find({}).exec(
@@ -267,8 +282,8 @@ var testData = {
     removeUser: removeUser,
     removeAllLocations: removeAllLocations,
     users : testUsers,
+    jobs: testJobs,
     locations: testLocations
 };
-
 
 module.exports = testData;
