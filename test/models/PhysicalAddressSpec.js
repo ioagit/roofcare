@@ -19,31 +19,49 @@ describe('PhysicalAddress Model', function () {
     it('Should Find The Address For The Academy Of Arts In Mongo', function() {
         var academy = testData.locations.FisherIsland;
         expect(academy).to.not.be.null;
-        PhysicalAddress.findOne({ Latitude: academy.Latitude, Longitude: academy.Longitude },
+        PhysicalAddress.findOne({ Coordinates: academy.Coordinates},
             function (err, addr) {
                 expect(addr).not.to.be.null;
                });
     });
 
+    it('Latitude property should update Coordinates Field', function(){
+        var address = new PhysicalAddress();
+        address.Latitude = 25;
+        expect(address.Latitude).to.eq(25);
+        expect(address.Coordinates[0]).to.eq(25);
+    });
+
+    it('Longitude property should update Coordinates Field', function(){
+        var address = new PhysicalAddress();
+        address.Longitude = 25;
+        expect(address.Longitude).to.eq(25);
+        expect(address.Coordinates[1]).to.eq(25);
+    });
     it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function(done) {
 
+        var coord = {Coordinates: [0.1, 0.1]};
         var model, model2, temp;
 
         async.series([
             function(callback) {
-                temp = {Latitude:0.1, Longitude:0.1, Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA' };
+                PhysicalAddress.remove(coord, callback);
+            },
+            function(callback) {
+                temp = { Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA', Coordinates:[0.1,0.1] };
                 PhysicalAddress.create(temp, callback);
             },
             function(callback) {
-                PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
+                PhysicalAddress.findOne(coord, function(err,obj) {
                     model = obj;
+                    console.log(obj);
                     expect(model).to.not.be.null;
                     model.ZipCode='22222';
                     callback();
                 });
             },
             function(callback) {
-                PhysicalAddress.findOne({Latitude:0.1, Longitude:0.1}, function(err,obj) {
+                PhysicalAddress.findOne(coord, function(err,obj) {
                     model2=obj;
                     expect(model2).to.not.be.null;
                     expect(model2.ZipCode).to.eq('11111');
@@ -51,28 +69,24 @@ describe('PhysicalAddress Model', function () {
                 });
             }
         ],
-        function (err, results) {
-            PhysicalAddress.remove({Latitude:0.1, Longitude:0.1}, done);
+        function () {
+            PhysicalAddress.remove(coord, done);
         });
     });
 
     it('Get Formatted Address Should Return A String With Correct Data', function() {
         var academy = testData.locations.AcademyOfArts;
-        PhysicalAddress.findOne(                {
-            Latitude: academy.Latitude,
-            Longitude: academy.Longitude
-        }, function (err, addr) {
-
+        PhysicalAddress.findOne({Coordinates: academy.Coordinates}, function (err, addr) {
             expect(addr).not.to.be.null;
             var f = addr.getFormattedAddress();
             expect(f).to.eq('Pariser Platz 4 Berlin Germany 10117');
         })
     });
 
-    it.only('Find The closest location to Univision', function() {
-        var univisionAddress = [25.813146, -80.350437];
+    it('Find The closest location to Univision', function() {
+        var univision = [25.813146, -80.350437];
 
-        PhysicalAddress.find( { Coordinates: { $near : univisionAddress , $maxDistance : 50} },
+        PhysicalAddress.find( { Coordinates: { $near : univision , $maxDistance : 50} },
             function (err, addr) {
                 expect(addr).not.to.be.null;
                 assert(addr.length > 0, "At least one address was found");

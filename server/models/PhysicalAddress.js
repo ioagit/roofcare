@@ -7,17 +7,23 @@ var mongoose  = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     util = require('util');
 
-var physicalAddressSchema = new mongoose.Schema({
-    Longitude: {type: Number, required:true},
-    Latitude: {type: Number, required:true},
-    Coordinates: {type: [Number, Number], index: '2d'},
+var schema = new mongoose.Schema({
+    Coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
     Street : {type: String, required:true},
     City: {type: String, required:true},
     ZipCode: {type: String, required:false},
     Country: {type: String, required:true, default: 'Germany'}
 });
 
-physicalAddressSchema.methods = {
+var latitudeProp = schema.virtual('Latitude');
+latitudeProp.get(function() { return this.Coordinates[0]; });
+latitudeProp.set(function(val) { this.Coordinates[0] = val; });
+
+var longitudeProp = schema.virtual('Longitude');
+longitudeProp.get(function(){ return this.Coordinates[1];});
+longitudeProp.set(function(val) { this.Coordinates[1] = val; });
+
+schema.methods = {
 
     getFormattedAddress: function() {
         var address = util.format('%s %s', this.Street, this.City);
@@ -27,10 +33,12 @@ physicalAddressSchema.methods = {
         return address;
     },
     closest: function(callback) {
-        return this.model('Place').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
+        return this.model('PhysicalAddress').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
     }
 };
+schema.set('toJSON', { getters: true, virtuals: false });
 
-var _model =  mongoose.model('PhysicalAddress', physicalAddressSchema);
+
+var _model =  mongoose.model('PhysicalAddress', schema);
 module.exports.Model = _model;
-module.exports.Schema = physicalAddressSchema;
+module.exports.Schema = schema;
