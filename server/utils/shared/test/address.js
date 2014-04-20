@@ -6,10 +6,10 @@ var mongoose  = require('mongoose')
     , Monky     = require('monky')
     , monky     = new Monky(mongoose)
     , path = require('path')
-    , contractor = require(path.join(process.cwd(), 'server', 'models', 'PhysicalAddress'));
+    , contractor = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
 
-monky.factory('PhysicalAddress', {
+monky.factory('Address', {
 
     Latitude: 25.781653,
     Longitude: -80.130808,

@@ -7,7 +7,7 @@ var assert= require('chai').assert;
 var path = require('path');
 
 var contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
-var addresses = require(path.join(process.cwd(), 'server', 'models', 'PhysicalAddress')).Model;
+var addresses = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
 var mockContractor =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'contractor')).mock;
 var mockAddress =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'address')).mock;
 
@@ -18,7 +18,7 @@ describe('Contractor', function() {
 
     beforeEach(function(done) {
         var suite = this;
-        mockAddress.create('PhysicalAddress', function(err, obj) {
+        mockAddress.create('Address', function(err, obj) {
             if (err) return done(err);
             address = obj;
             done();

@@ -9,31 +9,31 @@ var path = require('path');
 var async = require('async');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
+var addresses = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
-var addresses = require(path.join(process.cwd(), 'server', 'models', 'PhysicalAddress'));
+describe('Address Model', function () {
 
-describe('PhysicalAddress Model', function () {
+    var Address = addresses.Model;
 
-    var PhysicalAddress = addresses.Model;
-
-    it('Should Find The Address For The Academy Of Arts In Mongo', function() {
+    it('Should Find The Address For The Academy Of Arts In Mongo', function(done) {
         var academy = testData.locations.FisherIsland;
         expect(academy).to.not.be.null;
-        PhysicalAddress.findOne({ Coordinates: academy.Coordinates},
+        Address.findOne({ Coordinates: academy.Coordinates},
             function (err, addr) {
                 expect(addr).not.to.be.null;
+                done();
                });
     });
 
     it('Latitude property should update Coordinates Field', function(){
-        var address = new PhysicalAddress();
+        var address = new Address();
         address.Latitude = 25;
         expect(address.Latitude).to.eq(25);
         expect(address.Coordinates[0]).to.eq(25);
     });
 
     it('Longitude property should update Coordinates Field', function(){
-        var address = new PhysicalAddress();
+        var address = new Address();
         address.Longitude = 25;
         expect(address.Longitude).to.eq(25);
         expect(address.Coordinates[1]).to.eq(25);
@@ -45,14 +45,14 @@ describe('PhysicalAddress Model', function () {
 
         async.series([
             function(callback) {
-                PhysicalAddress.remove(coord, callback);
+                Address.remove(coord, callback);
             },
             function(callback) {
                 temp = { Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA', Coordinates:[0.1,0.1] };
-                PhysicalAddress.create(temp, callback);
+                Address.create(temp, callback);
             },
             function(callback) {
-                PhysicalAddress.findOne(coord, function(err,obj) {
+                Address.findOne(coord, function(err,obj) {
                     model = obj;
                     console.log(obj);
                     expect(model).to.not.be.null;
@@ -61,7 +61,7 @@ describe('PhysicalAddress Model', function () {
                 });
             },
             function(callback) {
-                PhysicalAddress.findOne(coord, function(err,obj) {
+                Address.findOne(coord, function(err,obj) {
                     model2=obj;
                     expect(model2).to.not.be.null;
                     expect(model2.ZipCode).to.eq('11111');
@@ -70,13 +70,13 @@ describe('PhysicalAddress Model', function () {
             }
         ],
         function () {
-            PhysicalAddress.remove(coord, done);
+            Address.remove(coord, done);
         });
     });
 
     it('Get Formatted Address Should Return A String With Correct Data', function() {
         var academy = testData.locations.AcademyOfArts;
-        PhysicalAddress.findOne({Coordinates: academy.Coordinates}, function (err, addr) {
+        Address.findOne({Coordinates: academy.Coordinates}, function (err, addr) {
             expect(addr).not.to.be.null;
             var f = addr.getFormattedAddress();
             expect(f).to.eq('Pariser Platz 4 Berlin Germany 10117');
@@ -86,7 +86,7 @@ describe('PhysicalAddress Model', function () {
     it('Find The closest location to Univision', function() {
         var univision = [25.813146, -80.350437];
 
-        PhysicalAddress.find( { Coordinates: { $near : univision , $maxDistance : 50} },
+        Address.find( { Coordinates: { $near : univision , $maxDistance : 50} },
             function (err, addr) {
                 expect(addr).not.to.be.null;
                 assert(addr.length > 0, "At least one address was found");

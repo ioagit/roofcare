@@ -9,31 +9,25 @@ var mongoose  = require('mongoose'),
 
 //adding the user model for User Model registration with Moongoose
 var users = require(path.join(process.cwd(),'server','models','Users'));
-var addresses = require(path.join(process.cwd(),'server','models','PhysicalAddress'));
+var addresses = require(path.join(process.cwd(),'server','models','Address'));
 
 var User = users.Model;
-var PhysicalAddress = addresses.Model;
+var Address = addresses.Model;
 
 var testLocations = {
     Heerdter: {
-        Latitude: 51.2395808,
-        Longitude: 6.7273549,
         Coordinates: [51.2395808, 6.7273549],
         Street: 'Heerdter Lohweg 83',
         City: 'Düsseldorf',
         ZipCode: '40549'
     },
     AcademyOfArts: {
-        Latitude: 52.5163081,
-        Longitude: 13.3795345,
         Coordinates: [52.5163081, 13.3795345],
         Street: 'Pariser Platz 4',
         City: 'Berlin',
         ZipCode: '10117'
     },
     Sonoma: {
-        Latitude: 25.826017,
-        Longitude: -80.378167,
         Coordinates: [25.826017, -80.378167],
         Street: '11209 NW 57th Ln',
         City: 'Doral',
@@ -42,8 +36,6 @@ var testLocations = {
         ZipCode: '33178'
     },
     OceanDrive: {
-        Latitude: 25.781653,
-        Longitude: -80.130808,
         Coordinates: [25.781653, -80.130808],
         Street: '1020 Ocean Drive',
         City: 'Miami Beach',
@@ -52,8 +44,6 @@ var testLocations = {
         ZipCode: '33139'
     },
     DolphinMall: {
-        Latitude: 25.787894,
-        Longitude: -80.380602,
         Coordinates: [25.787894, -80.380602],
         Street: '11401 NW 12th St',
         City: 'Miami',
@@ -62,8 +52,6 @@ var testLocations = {
         ZipCode: '33172'
     },
     TheEnclave: {
-        Latitude: 25.813993,
-        Longitude: -80.370002,
         Coordinates: [25.813993, -80.370002],
         Street: '4320 NW 107th Ave  Apt 103',
         City: 'Doral',
@@ -72,8 +60,6 @@ var testLocations = {
         ZipCode: '33178'
     },
     FisherIsland: {
-        Latitude: 25.761615,
-        Longitude: -80.14074,
         Coordinates: [25.761615, -80.14074],
         Street: '18 Fisher Island Dr',
         City: 'Miami Beach',
@@ -194,12 +180,12 @@ var testUsers =  {
 
 function createTestLocations(callback) {
 
-    PhysicalAddress.find({}).exec(
+    Address.find({}).exec(
         function(err,collection) {
 
         if (err) return callback(err);
         if (collection.length === 0) {
-            PhysicalAddress.create(testLocations.Heerdter,
+            Address.create(testLocations.Heerdter,
                 testLocations.AcademyOfArts,
                 testLocations.Sonoma,
                 testLocations.OceanDrive,
@@ -217,7 +203,7 @@ function createTestLocations(callback) {
 }
 
 function removeAllLocations(callback) {
-    PhysicalAddress.remove({}, function(err, result) {
+    Address.remove({}, function(err, result) {
         return callback(err, result);
     });
 }
@@ -283,7 +269,6 @@ var testData = {
     users : testUsers,
     locations: testLocations
 };
-
 
 
 module.exports = testData;

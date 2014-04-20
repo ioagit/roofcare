@@ -33,12 +33,12 @@ schema.methods = {
         return address;
     },
     closest: function(callback) {
-        return this.model('PhysicalAddress').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
+        return this.model('Address').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
     }
 };
 schema.set('toJSON', { getters: true, virtuals: false });
 
 
-var _model =  mongoose.model('PhysicalAddress', schema);
+var _model =  mongoose.model('Address', schema);
 module.exports.Model = _model;
 module.exports.Schema = schema;
