@@ -7,13 +7,22 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 var path = require('path');
 var async = require('async');
-
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 var addresses = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
 describe('Address Model', function () {
 
     var Address = addresses.Model;
+
+    it('Should return a full Address from user entered location information', function(done){
+        Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)
+        {
+            expect(result).to.not.be.null;
+            expect(result.Street).to.eq('1 River Place');
+            console.log(result);
+            done();
+        })
+    });
 
     it('Should Find The Address For The Academy Of Arts In Mongo', function(done) {
         var academy = testData.locations.FisherIsland;
