@@ -20,6 +20,11 @@ module.exports = {
 
     },
 
+    orderType: {
+        repair: 'roof repair',
+        check: 'roof check'
+    },
+
     roofType: {
 
         steep: 'Steep',
