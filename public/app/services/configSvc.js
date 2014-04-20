@@ -1,17 +1,10 @@
-/**
- * Created by isuarez on 4/20/14.
- */
-
-var CONFIG;
-
-(function() {
-
+angular.module('App.Services').factory('configSvc', function() {
 
     var appPrefix = '/';
     var templateUrlPrefix = '/templates/';
     var appVersion = 1;
 
-    CONFIG = {
+    var config = {
 
         version : appVersion,
 
@@ -38,6 +31,7 @@ var CONFIG;
 
     };
 
+    return config;
 
 
-})();
+});

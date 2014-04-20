@@ -5,7 +5,9 @@
 
 
 //Main Angular module. Cool
-var app = angular.module('App', ['ngResource', 'ngRoute','App.Routes','App.Controllers', 'App.Services', 'App.Resources']);
+var app = angular.module('app',
+                  ['ngResource', 'ngRoute',
+                   'App.Controllers', 'App.Services', 'App.Routes','App.Resources']);
 
 //Defining Routes
 /*
@@ -52,7 +54,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
 );
 */
-angular.module('app').run(function($rootScope, $location) {
+angular.module('app').run(function($rootScope, $location)
+{
 
     $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
