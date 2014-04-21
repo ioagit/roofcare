@@ -29,7 +29,7 @@ monky.factory('Contractor', {
        //From Contractor Schema
        address: mongoose.Types.ObjectId(),
 
-       jobs: [mongoose.Types.ObjectId(), mongoose.Types.ObjectId()]
+
 
     },
 

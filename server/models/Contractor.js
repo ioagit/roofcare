@@ -15,8 +15,7 @@ var _schema =  UserSchema.extend
 
     address: { type : mongoose.Schema.ObjectId,
                ref : 'Property'
-             },
-    jobs: [mongoose.Schema.Types.ObjectId]
+             }
 
 });
 
