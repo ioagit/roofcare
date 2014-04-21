@@ -8,6 +8,5 @@ lib-cov
 *.gz
 .idea
 node_modules
-public/vendor
-config/runttime.json
+config/runtime.json
 npm-debug.log
