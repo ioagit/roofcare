@@ -104,10 +104,9 @@ module.exports = function (grunt) {
 
         concat: {
             styles: {
-                dest: './public/dist/app.css',
+                dest: './public/static/dist/app.css',
                 src: [
                     './public/app/static/css/**/*.css',
-                    './public/vendor/bootstrap/dist/bootstrap.min.css',
                     './public/vendor/bootstrap/dist/bootstrap-theme.min.css',
                     './public/vendor/bootstrap/dist/bootstrap-datetimepicker.min.css',
 
@@ -122,46 +121,34 @@ module.exports = function (grunt) {
                 options: {
                     separator: ';'
                 },
-                dest: './app/assets/apps.js',
+                dest: './public/static/dist/app.js',
                 src: [
                     //jquery
-                    './public/vendor/jquery/jquery.min.js',
                     './public/vendor/jquery-migrate/jquery-migrate.min.js',
 
 
                     //modernizer
-                    './public/vendor/modernizr/modernizr.min.js',
+                    './public/vendor/modernizr/modernizr.js',
 
                     //retina
-                    './public/vendor/modernizr/retina.js',
+                    './public/vendor/retina.js/src/retina.js',
 
                     //Toastr
                     './public/vendor/toastr/toastr.min.js',
 
 
 
-                    //Angular dependencies
-                    './public/vendor/angular/angular.min.js',
-                    './public/vendor/angular-resource/angular-resource.min.js',
-                    './public/vendor/angular-route/angular-route.min.js',
-
-                    //'bower_components/angularjs-scope.safeapply/src/Scope.SafeApply.js',
+                    './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 
 
-                    //Bootstrap
-                    './public/vendor/bootstrap/dist/bootstrap.min.js',
-                    './public/vendor/bootstrap/dist/bootstrap.min.js',
-                    './public/vendor/bootstrap-datetimepicker/build/bootstrap-datetimepicker.min.js',
-
-
-                    './public/app/scripts/lib/router.js',
-                    './public/app/scripts/config/config.js',
-                    './public/app/scripts/services/**/*.js',
-                    './public/app/scripts/directives/**/*.js',
-                    './public/app/scripts/controllers/**/*.js',
-                    './public/app/scripts/filters/**/*.js',
-                    './public/app/scripts/config/routes.js',
-                    './public/app/scripts/app.js'
+                    './public/app/lib/router.js',
+                    './public/app/config/config.js',
+                    './public/app/services/**/*.js',
+                    './public/app/directives/**/*.js',
+                    './public/app/controllers/**/*.js',
+                    './public/app/filters/**/*.js',
+                    './public/app/config/routes.js',
+                    './public/app/app.js'
                 ]
             }
         }

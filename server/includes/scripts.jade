@@ -6,50 +6,9 @@ script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
 //Bootstrap
 script(defer, src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
 
-
-script(defer, src='/vendor/toastr/toastr.min.js')
-
 //Angular
 script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js')
 script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js')
 script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js')
 
-
-//Angular application
-script(defer, src='/app/lib/router.js')
-
-
-//Configuration
-script(defer, src='/app/config/config.js')
-script(defer, src='/app/config/routes.js')
-
-
-//Services
-script(defer, src='/app/services/authSvc.js')
-script(defer, src='/app/services/utilsSvc.js')
-script(defer, src='/app/services/notifierSvc.js')
-script(defer, src='/app/services/identitySvc.js')
-
-//Resources
-script(defer, src='/app/resources/userResource.js')
-
-//Controllers
-script(defer, src='/app/controllers/account/headerLoginCtrl.js')
-script(defer, src='/app/controllers/admin/userListCtrl.js')
-script(defer, src='/app/controllers/account/signUpCtrl.js')
-script(defer, src='/app/controllers/account/profileCtrl.js')
-script(defer, src='/app/controllers/roofer/rooferInboxCtrl.js')
-script(defer, src='/app/controllers/roofer/rooferDashboardCtrl.js')
-
-//Application
-script(defer, src='/app/app.js')
-
-
-//-script(defer, src='js/plugins.js')
-//script(defer, src='/static/js/script.js')
-//script(defer, src='/socket.io/socket.io.js')
-
-//if lt IE 7
-      script(defer, src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js')
-      script(defer)
-        window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+script(defer, src='/static/dist/app.js')
