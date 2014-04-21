@@ -15,6 +15,7 @@
     "stylus": "~0.42.2",
     "config": "~0.4.35",
     "passport": "~0.2.0",
+    "passport-local": "~0.1.6",
     "async": "~0.7.0",
     "node-geocoder": "2.2.0",
     "mongoose-validator": "~0.2.2",
