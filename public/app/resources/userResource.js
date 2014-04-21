@@ -6,7 +6,7 @@
  * Created by isuarez on 3/25/14.
  */
 
-angular.module('App.Resources', []).factory('userResource', function($resource) {
+module.exports = function userResource($resource) {
 
     var UserResource = $resource('/api/users/:id', {_id: "@id"},
         {
@@ -27,4 +27,4 @@ angular.module('App.Resources', []).factory('userResource', function($resource) 
     };
 
     return UserResource;
-});
+};

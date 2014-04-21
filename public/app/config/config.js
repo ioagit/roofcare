@@ -2,16 +2,11 @@
  * Created by isuarez on 4/20/14.
  */
 
-var CONFIG;
+ var appPrefix = '/';
+ var templateUrlPrefix = '/templates/';
+ var appVersion = 1;
 
-(function() {
-
-
-    var appPrefix = '/';
-    var templateUrlPrefix = '/templates/';
-    var appVersion = 1;
-
-    CONFIG = {
+ module.exports = {
 
         version : appVersion,
 
@@ -36,8 +31,9 @@ var CONFIG;
                 this.templateFileQuerystring;
         }
 
-    };
+
+};
 
 
 
-})();
+

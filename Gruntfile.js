@@ -8,7 +8,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    // grunt.loadNpmTasks('grunt-karma');
+
+    grunt.loadNpmTasks('grunt-browserify');
+
 
     grunt.initConfig({
 
@@ -24,6 +26,27 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             }
         },
+
+
+        "browserify-shim": {
+            "jquery": "global:$",
+            "angular": "global:angular"
+        },
+
+        browserify: {
+           all: {
+               src: './public/app/app.js',
+               dest: './public/static/dist/bundle.js',
+               options: {
+                   transform: ['partialify', 'debowerify',  'deglobalify', 'browserify-shim'],
+                   debug: true,
+                   alias: ['./public/app/config/config.js:app_config']
+               }
+           }
+
+        },
+
+
 
 
         shell: {
@@ -66,39 +89,16 @@ module.exports = function (grunt) {
             }
         },
 
-        /*
-         karma: {
-         unit: {
-         configFile: './test/karma-unit.conf.js',
-         autoWatch: false,
-         singleRun: true
-         },
-         unit_auto: {
-         configFile: './test/karma-unit.conf.js'
-         },
-         midway: {
-         configFile: './test/karma-midway.conf.js',
-         autoWatch: false,
-         singleRun: true
-         },
-         midway_auto: {
-         configFile: './test/karma-midway.conf.js'
-         },
-         e2e: {
-         configFile: './test/karma-e2e.conf.js',
-         autoWatch: false,
-         singleRun: true
-         },
-         e2e_auto: {
-         configFile: './test/karma-e2e.conf.js'
-         }
-         },
-         */
+
 
         watch: {
             assets: {
-                files: ['./public/app/static/css/**/*.css', './public/app/**/*.js'],
+                files: './public/app/static/css/**/*.css',
                 tasks: ['concat']
+            },
+            scripts: {
+                files: './public/app/**/*.js',
+                task: ['browserify']
             }
         },
 
@@ -106,12 +106,15 @@ module.exports = function (grunt) {
             styles: {
                 dest: './public/static/dist/app.css',
                 src: [
-                    './public/app/static/css/**/*.css',
-                    './public/vendor/bootstrap/dist/bootstrap-theme.min.css',
-                    './public/vendor/bootstrap/dist/bootstrap-datetimepicker.min.css',
+
+                    './public/vendor/bootstrap/dist/css/bootstrap.min.css',
+                    './public/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
+                    './public/vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
 
                     //Toastr
-                    './public/vendor/toastr/toastr.css'
+                    './public/vendor/toastr/toastr.css',
+
+                    './public/static/css/**/*.css'
 
 
 
@@ -121,7 +124,7 @@ module.exports = function (grunt) {
                 options: {
                     separator: ';'
                 },
-                dest: './public/static/dist/app.js',
+                dest: './public/static/dist/vendors.js',
                 src: [
                     //jquery
                     './public/vendor/jquery-migrate/jquery-migrate.min.js',
@@ -139,16 +142,6 @@ module.exports = function (grunt) {
 
 
                     './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-
-
-                    './public/app/lib/router.js',
-                    './public/app/config/config.js',
-                    './public/app/services/**/*.js',
-                    './public/app/directives/**/*.js',
-                    './public/app/controllers/**/*.js',
-                    './public/app/filters/**/*.js',
-                    './public/app/config/routes.js',
-                    './public/app/app.js'
                 ]
             }
         }
@@ -156,6 +149,8 @@ module.exports = function (grunt) {
 
     //installation-related
     grunt.registerTask('install', ['shell:npm_install', 'shell:bower_install']);
+
+    grunt.registerTask('browserify all', ['browserify']);
 
     //defaults
     grunt.registerTask('default', ['dev']);
@@ -165,4 +160,6 @@ module.exports = function (grunt) {
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
+
+
 };

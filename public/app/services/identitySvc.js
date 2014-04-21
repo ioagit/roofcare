@@ -2,7 +2,7 @@
  * Created by isuarez on 4/10/2014.
  */
 
-angular.module('App.Services').factory('identitySvc', function($window, userResource) {
+module.exports = function identitySvc($window, userResource) {
 
     var currentUser;
 
@@ -26,4 +26,4 @@ angular.module('App.Services').factory('identitySvc', function($window, userReso
 
 
     }
-});
+}

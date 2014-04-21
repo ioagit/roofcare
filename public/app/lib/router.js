@@ -1,10 +1,7 @@
-var ROUTER;
-
-(function() {
     var lookup = {};
     var otherwiseLookup = null;
 
-    ROUTER = {
+    module.exports = {
 
         when : function(key, url, params) {
             lookup[key] = {
@@ -59,4 +56,3 @@ var ROUTER;
         }
     };
 
-})();

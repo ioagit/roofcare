@@ -1,7 +1,7 @@
 /**
  * Created by isuarez on 3/27/14.
  */
-angular.module('App.Controllers').controller('signupCtrl', function($scope, authSvc, notifierSvc, $location) {
+module.exports =  function signupCtrl($scope, authSvc, notifierSvc, $location) {
 
     $scope.signup = function() {
 
@@ -30,4 +30,4 @@ angular.module('App.Controllers').controller('signupCtrl', function($scope, auth
 
 
 
-});
+}

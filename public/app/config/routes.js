@@ -2,76 +2,82 @@
  * Created by isuarez on 4/9/14.
  */
 
-angular.module('App.Routes',[])
+var config = requires('app_config');
+var router = requires('../../../public/app/lib/router.js');
 
-    .config(['$routeProvider', '$locationProvider',
+
+var app_routes = angular.module('App.Routes',[]);
+
+app_routes.config(['$routeProvider', '$locationProvider',
 
         function ( $routeProvider, $locationProvider) {
 
-            if (CONFIG.routing.html5Mode) {
+            if (config.routing.html5Mode) {
                 $locationProvider.html5Mode(true);
             }
             else {
-                var routingPrefix = CONFIG.routing.prefix;
+                var routingPrefix = config.routing.prefix;
                 if (routingPrefix && routingPrefix.length > 0) {
                     $locationProvider.hashPrefix(routingPrefix);
                 }
             }
 
-            ROUTER.when('roofer_dashboard_path', '/roofer/dashboard', {
+            router.when('roofer_dashboard_path', '/roofer/dashboard', {
                 controller: 'rooferDashboardCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/dashboard')
+                templateUrl: config.prepareViewTemplateUrl('roofer/dashboard')
             });
 
-            ROUTER.when('roofer_inbox_path', '/roofer/inbox', {
+            router.when('roofer_inbox_path', '/roofer/inbox', {
                 controller: 'rooferInboxCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/inbox')
+                templateUrl: config.prepareViewTemplateUrl('roofer/inbox')
             });
 
-            ROUTER.when('roofer_jobs_path', '/roofer/jobs', {
+            router.when('roofer_jobs_path', '/roofer/jobs', {
                 controller: 'rooferJobCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/jobs')
+                templateUrl: config.prepareViewTemplateUrl('roofer/jobs')
             });
 
-            ROUTER.when('roofer_kunden_path', '/roofer/kunden', {
+            router.when('roofer_kunden_path', '/roofer/kunden', {
                 controller: 'rooferKundenCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/kunden')
+                templateUrl: config.prepareViewTemplateUrl('roofer/kunden')
             });
 
-            ROUTER.when('roofer_rechnung_path', '/roofer/rechnung', {
+            router.when('roofer_rechnung_path', '/roofer/rechnung', {
                 controller: 'rooferRechnungCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/rechnung')
+                templateUrl: config.prepareViewTemplateUrl('roofer/rechnung')
             });
 
-            ROUTER.when('roofer_home_path', '/', {
+            router.when('roofer_home_path', '/', {
                 controller: 'rooferDashboardCtrl',
-                templateUrl: CONFIG.prepareViewTemplateUrl('roofer/dashboard')
+                templateUrl: config.prepareViewTemplateUrl('roofer/dashboard')
             });
 
-            ROUTER.alias('home_path', 'roofer_dashboard_path');
+            router.alias('home_path', 'roofer_dashboard_path');
 
-            ROUTER.otherwise({
+            router.otherwise({
                 redirectTo: '/roofer/dashboard'
             });
 
-            ROUTER.install($routeProvider);
-        }]).
+            router.install($routeProvider);
+        }]);
 
-    run([ '$rootScope', '$location', function ( $rootScope, $location) {
+app_routes.run([ '$rootScope', '$location', function ( $rootScope, $location) {
         var prefix = '';
-        if (!CONFIG.routing.html5Mode) {
-            prefix = '#' + CONFIG.routing.prefix;
+        if (!config.routing.html5Mode) {
+            prefix = '#' + config.routing.prefix;
         }
         $rootScope.route = function (url, args) {
-            return prefix + ROUTER.routePath(url, args);
+            return prefix + router.routePath(url, args);
         };
 
         $rootScope.r = $rootScope.route;
 
         $rootScope.c = function (route, value) {
-            var url = ROUTER.routePath(route);
+            var url = router.routePath(route);
             if (url === $location.path()) {
                 return value;
             }
         };
     }]);
+
+module.exports = app_routes;

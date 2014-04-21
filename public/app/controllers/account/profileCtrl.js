@@ -5,7 +5,7 @@
  * Created by isuarez on 3/29/14.
  */
 
-angular.module('App.Controllers').controller('profileCtrl', function($scope, authSvc, identitySvc, notifierSvc) {
+module.exports = function profileCtrl($scope, authSvc, identitySvc, notifierSvc) {
 
     //Assing the data
     var user = identitySvc.currentUser;
@@ -42,4 +42,4 @@ angular.module('App.Controllers').controller('profileCtrl', function($scope, aut
 
     }
 
-});
+};

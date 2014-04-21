@@ -3,11 +3,17 @@
  * Created by isuarez on 2/27/14.
  */
 
+var
+    app_routes = require('../../public/app/config/routes.js'),
+    controllers = require('../../public/app/controllers'),
+    services = require('../../public/app/services'),
+    resources = require('../../public/app/resources');
+
 
 //Main Angular module. Cool
-var app = angular.module('app',
+angular.module('app',
                   ['ngResource', 'ngRoute',
-                   'App.Controllers', 'App.Services', 'App.Routes','App.Resources']);
+                  controllers.name, services.name, app_routes.name, resources.name]);
 
 //Defining Routes
 /*

@@ -2,11 +2,8 @@
  * Created by isuarez on 2/3/14.
  */
 
-angular.module('App.Controllers').controller('rooferJobCtrl',  function($scope, jobResource) {
+module.exports = function rooferJobCtrl($scope, jobResource) {
 
+       $scope.jobs = jobResource.query();
 
-        $scope.jobs = jobResource.query();
-
-
-
-});
+}

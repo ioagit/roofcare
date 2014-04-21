@@ -2,8 +2,8 @@
  * Created by isuarez on 2/3/14.
  */
 
-angular.module('App.Controllers').controller('rooferKundenCtrl', function($scope) {
+module.exports = function rooferKundenCtrl($scope) {
 
     //TODO;
 
-});
+}
