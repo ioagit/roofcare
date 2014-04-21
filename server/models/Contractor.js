@@ -4,7 +4,6 @@
 
 // Customer Model
 var mongoose = require('mongoose'),
-
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),

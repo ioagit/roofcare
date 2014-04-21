@@ -12,10 +12,12 @@ var users = require(path.join(process.cwd(),'server','models','Users'));
 var addresses = require(path.join(process.cwd(),'server','models','Address'));
 var lookups = require(path.join(process.cwd(),'server','models','lookups'));
 var jobs  = require(path.join(process.cwd(),'server','models','Job'));
+var contractors = require(path.join(process.cwd(),'server','models','Contractor'));
 
 var Address = addresses.Model;
-var Jobs = jobs.Model;
+var Job = jobs.Model;
 var User = users.Model;
+var Contractor = contractors.Model;
 
 var testLocations = {
     Heerdter: {
@@ -186,9 +188,22 @@ var testJobs = {
 
 function createTestJobs(callback) {
 
-    var  contractor
-        ,customers
+    var workSite = new Address();
+    workSite.Street = '100 Main St';
+    workSite.City = 'Miami';
+    workSite.State = 'FL';
+    workSite.ZipCode = '33156';
+
+    var job = new Job();
+    var contractor = new Contractor();
+
+    job.Contractor = contractor;
+    job.WorkSite = workSite;
+
+    var customers
         ,WorkSite;
+
+    job.save();
 
     callback(null, "");
     //Creating the contractor
@@ -218,7 +233,7 @@ function createTestLocations(callback) {
 }
 
 function removeAllJobs(callback) {
-    Jobs.remove({}, function(err, result) { return callback(err, result); });
+    Job.remove({}, function(err, result) { return callback(err, result); });
 }
 function removeAllLocations(callback) {
     Address.remove({}, function(err, result) { return callback(err, result); });
