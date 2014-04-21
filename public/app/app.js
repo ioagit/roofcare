@@ -3,6 +3,7 @@
  * Created by isuarez on 2/27/14.
  */
 
+//We are getting angualr from cdn
 var
     app_routes = require('../../public/app/config/routes.js'),
     controllers = require('../../public/app/controllers'),
