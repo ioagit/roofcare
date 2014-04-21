@@ -17,23 +17,22 @@ before(function (done) {
         init.initServer();
 
         async.series([
+            function(callback) { testData.removeAllJobs(callback); },
             function(callback) { testData.removeAllLocations(callback); },
             function(callback) { testData.removeAllUsers(callback); },
+            function(callback) { testData.createTestJobs(callback); },
             function(callback) { testData.createTestLocations(callback); },
             function(callback) { testData.createDefaultUsers(callback); }
-
         ],
         //Callback when everything is done.
         function (err, results) {
-            if (err || !results) {
-                done(err);
-            }
+            if (err || !results) { done(err); }
             if (results.length) return done();
         });
     }
 )
 
 after(function (done) {
-//    testData.removeAllLocations();
+
     testData.removeAllUsers(done);
 });

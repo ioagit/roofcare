@@ -7,12 +7,15 @@ var mongoose  = require('mongoose'),
     encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption'));
 
 
-//adding the user model for User Model registration with Moongoose
+//adding the user model for User Model registration with Mongoose
 var users = require(path.join(process.cwd(),'server','models','Users'));
 var addresses = require(path.join(process.cwd(),'server','models','Address'));
 var lookups = require(path.join(process.cwd(),'server','models','lookups'));
-var User = users.Model;
+var jobs  = require(path.join(process.cwd(),'server','models','Job'));
+
 var Address = addresses.Model;
+var Jobs = jobs.Model;
+var User = users.Model;
 
 var testLocations = {
     Heerdter: {
@@ -68,7 +71,6 @@ var testLocations = {
         ZipCode: '33109'
     }
 };
-
 var testUsers =  {
 
     admin: {
@@ -171,7 +173,6 @@ var testUsers =  {
     }
 
 };
-
 var testJobs = {
    job1: {
        StartDate: '2014-04-19 10:00AM',
@@ -182,13 +183,14 @@ var testJobs = {
        WorkSite:1
    }
 };
+
 function createTestJobs(callback) {
 
     var  contractor
         ,customers
         ,WorkSite;
 
-    return null;
+    callback(null, "");
     //Creating the contractor
 
 
@@ -207,9 +209,7 @@ function createTestLocations(callback) {
                 testLocations.DolphinMall,
                 testLocations.TheEnclave,
                 testLocations.FisherIsland,
-                function (err, result) {
-                return callback(err, result);
-            });
+                function (err, result) { return callback(err, result); });
         }
         else {
             callback(null, "Default physical address collection already exists.");
@@ -217,10 +217,14 @@ function createTestLocations(callback) {
     })
 }
 
+function removeAllJobs(callback) {
+    Jobs.remove({}, function(err, result) { return callback(err, result); });
+}
 function removeAllLocations(callback) {
-    Address.remove({}, function(err, result) {
-        return callback(err, result);
-    });
+    Address.remove({}, function(err, result) { return callback(err, result); });
+}
+function removeAllUsers(callback) {
+    User.remove({}, function(err, result) { return callback(err, result); });
 }
 
 function createDefaultUsers(callback) {
@@ -243,7 +247,6 @@ function createDefaultUsers(callback) {
         }
     })
 }
-
 function createUser(data,done) {
     addHashedProperties(data);
     User.create(data, function(err, data) {
@@ -254,11 +257,6 @@ function createUser(data,done) {
     });
 }
 
-function removeAllUsers(callback) {
-    User.remove({}, function(err, result) {
-        return callback(err, result);
-    });
-}
 
 function removeUser(data,done) {
     User.remove({username: data.username}, done);
@@ -275,12 +273,14 @@ function addHashedProperties(obj) {
 }
 
 var testData = {
+    createTestJobs: createTestJobs,
     createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,
     removeAllLocations: removeAllLocations,
+    removeAllJobs: removeAllJobs,
     users : testUsers,
     jobs: testJobs,
     locations: testLocations
