@@ -98,7 +98,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: './public/app/**/*.js',
-                task: ['browserify']
+                task: 'browserify all'
             }
         },
 

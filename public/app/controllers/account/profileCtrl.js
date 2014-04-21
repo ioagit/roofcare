@@ -42,4 +42,4 @@ module.exports = function profileCtrl($scope, authSvc, identitySvc, notifierSvc)
 
     }
 
-};
+}

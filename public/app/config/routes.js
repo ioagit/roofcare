@@ -2,8 +2,8 @@
  * Created by isuarez on 4/9/14.
  */
 
-var config = requires('app_config');
-var router = requires('../../../public/app/lib/router.js');
+var config = require('app_config');
+var router = require('../../../public/app/lib/router.js');
 
 
 var app_routes = angular.module('App.Routes',[]);
