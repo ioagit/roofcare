@@ -11,11 +11,7 @@ var mongoose = require('mongoose'),
 
 var _schema =  UserSchema.extend
 ({
-
-    address: { type : mongoose.Schema.ObjectId,
-               ref : 'Property'
-             }
-
+    address: { type : mongoose.Schema.ObjectId, ref : 'Property' }
 });
 
 _schema.methods = {
@@ -25,10 +21,7 @@ _schema.methods = {
 
 var _model = mongoose.model('Contractor', _schema);
 
-
 module.exports = {
     Model: _model,
     Schema : _schema
 }
-
-

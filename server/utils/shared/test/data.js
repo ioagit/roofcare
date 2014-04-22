@@ -11,13 +11,16 @@ var mongoose  = require('mongoose'),
 var users = require(path.join(process.cwd(),'server','models','Users'));
 var addresses = require(path.join(process.cwd(),'server','models','Address'));
 var lookups = require(path.join(process.cwd(),'server','models','lookups'));
+var async = require('async');
 var jobs  = require(path.join(process.cwd(),'server','models','Job'));
 var contractors = require(path.join(process.cwd(),'server','models','Contractor'));
+var customers = require(path.join(process.cwd(),'server','models','Customer'));
 
 var Address = addresses.Model;
 var Job = jobs.Model;
 var User = users.Model;
 var Contractor = contractors.Model;
+var Customer = customers.Model;
 
 var testLocations = {
     Heerdter: {
@@ -194,22 +197,30 @@ function createTestJobs(callback) {
     workSite.State = 'FL';
     workSite.ZipCode = '33156';
 
-    var job = new Job();
-    var contractor = new Contractor();
+    var customer = new Customer();
+    customer.contactInfo.firstName = 'Bob';
+    customer.contactInfo.lastName = 'Smith';
 
+    var contractor = new Contractor();
+    contractor.username = 'contractor.with.a.job';
+
+    var job = new Job();
+    job.Status = lookups.jobStatus.requestAccepted;
+    job.StartDate = new Date('April 23, 2014 11:00 AM');
+    job.Customer = customer;
     job.Contractor = contractor;
     job.WorkSite = workSite;
 
-    var customers
-        ,WorkSite;
 
-    job.save();
-
-    callback(null, "");
-    //Creating the contractor
-
-
+    async.series([
+            function(callback) { job.save(callback); },
+            function(callback) { contractor.save(callback); },
+            function(callback) { customer.save(callback); },
+            function(callback) { workSite.save(callback); }
+        ],
+        function () {callback();});
 }
+
 function createTestLocations(callback) {
 
     Address.find({}).exec(
