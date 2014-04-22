@@ -1,14 +1,16 @@
 'use strict';
 
+var path = '../../../public/app/controllers/';
 
-var path = '../controllers/';
+var profileCtrl = require(path + 'account/profileCtrl');
 
 module.exports = angular.module('App.Controllers', [])
 
     //Account
-    .controller('profileCtrl',  require(path + 'account/profileCtrl'))
-    .controller('headerLoginCtrl',require(path + 'account/headerLoginCtrl'))
-    .controller('signupCtrl',require(path + 'account/signupCtrl'))
+    //.controller('profileCtrl',  require(npath.join(process.cwd(), 'public', 'app', 'controllers', 'account','profileCtrl')))
+    .controller('profileCtrl',  profileCtrl)
+    .controller('headerLoginCtrl', require(path + 'account/headerLoginCtrl'))
+    .controller('signupCtrl', require(path + 'account/signupCtrl'))
 
     //Admin
 

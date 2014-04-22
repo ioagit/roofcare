@@ -6,9 +6,9 @@
     "node": "0.10.x",
     "npm": "1.3.x"
   },
-  "browserify-shim":  {
-      "jquery": "global:$",
-      "angular": "global:angular"
+  "browserify-shim": {
+    "jquery": "global:$",
+    "angular": "global:angular"
   },
   "dependencies": {
     "connect": "1.8.5",

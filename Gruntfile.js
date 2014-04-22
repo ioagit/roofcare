@@ -8,6 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.loadNpmTasks('grunt-browserify');
 
@@ -28,10 +29,7 @@ module.exports = function (grunt) {
         },
 
 
-        "browserify-shim": {
-            "jquery": "global:$",
-            "angular": "global:angular"
-        },
+
 
         browserify: {
            all: {
@@ -47,6 +45,36 @@ module.exports = function (grunt) {
         },
 
 
+        uglify: {
+            options: {
+                compress: {
+                    drop_console: true
+                }
+            },
+            vendors: {
+                files: {
+                    './public/static/dist/vendors.min.js':
+                        [
+                            //jquery
+                            './public/vendor/jquery-migrate/jquery-migrate.min.js',
+
+
+                            //modernizer
+                            './public/vendor/modernizr/modernizr.js',
+
+                            //retina
+                            './public/vendor/retina.js/src/retina.js',
+
+                            //Toastr
+                            './public/vendor/toastr/toastr.min.js',
+
+
+
+                            './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+                    ]
+                }
+            }
+        },
 
 
         shell: {
@@ -98,7 +126,10 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: './public/app/**/*.js',
-                task: 'browserify all'
+                tasks: ['browserify all']
+            },
+            options: {
+                spawn: false
             }
         },
 
