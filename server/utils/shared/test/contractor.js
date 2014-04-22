@@ -29,8 +29,6 @@ monky.factory('Contractor', {
        //From Contractor Schema
        address: mongoose.Types.ObjectId(),
 
-
-
     },
 
     function (err) {
