@@ -151,8 +151,6 @@ module.exports = function (grunt) {
 
                     //'./public/static/css/**/*.css'
 
-
-
                 ]
             },
             scripts: {
