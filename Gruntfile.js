@@ -29,15 +29,20 @@ module.exports = function (grunt) {
         },
 
 
-
+        "browserify-shim": {
+            "jquery": "global:$",
+            "angular": "global:angular",
+            "toast": "global:toastr"
+        },
 
         browserify: {
            all: {
                src: './public/app/app.js',
                dest: './public/static/dist/bundle.js',
                options: {
-                   transform: ['partialify', 'debowerify',  'deglobalify', 'browserify-shim'],
+                   transform: ['browserify-shim','partialify', 'debowerify',  'deglobalify'],
                    debug: true,
+                   insertGlobals: false,
                    alias: ['./public/app/config/config.js:app_config']
                }
            }
@@ -121,7 +126,7 @@ module.exports = function (grunt) {
 
         watch: {
             assets: {
-                files: './public/app/static/css/**/*.css',
+                files: './public/static/css/**/*.css',
                 tasks: ['concat']
             },
             scripts: {
@@ -139,13 +144,12 @@ module.exports = function (grunt) {
                 src: [
 
                     './public/vendor/bootstrap/dist/css/bootstrap.min.css',
-                    './public/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
-                    './public/vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                    './public/static/css/light-theme.css',
 
                     //Toastr
-                    './public/vendor/toastr/toastr.css',
+                    './public/vendor/toastr/toastr.css'
 
-                    './public/static/css/**/*.css'
+                    //'./public/static/css/**/*.css'
 
 
 
