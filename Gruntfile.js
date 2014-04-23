@@ -63,6 +63,7 @@ module.exports = function (grunt) {
                             //jquery
                             './public/vendor/jquery-migrate/jquery-migrate.min.js',
 
+                            './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 
                             //modernizer
                             './public/vendor/modernizr/modernizr.js',
@@ -75,7 +76,7 @@ module.exports = function (grunt) {
 
 
 
-                            './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+
                     ]
                 }
             }
@@ -143,7 +144,7 @@ module.exports = function (grunt) {
                 dest: './public/static/dist/app.css',
                 src: [
 
-                    './public/vendor/bootstrap/dist/css/bootstrap.min.css',
+                    //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
                     './public/static/css/light-theme.css',
 
                     //Toastr
