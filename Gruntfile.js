@@ -41,9 +41,10 @@ module.exports = function (grunt) {
                dest: './public/static/dist/bundle.js',
                options: {
                    transform: ['browserify-shim','partialify', 'debowerify',  'deglobalify'],
-                   debug: true,
-                   insertGlobals: false,
-                   alias: ['./public/app/config/config.js:app_config']
+                   alias: ['./public/app/config/config.js:app_config'],
+                   bundleOptions: {
+                       debug: true
+                   }
                }
            }
 
@@ -72,7 +73,7 @@ module.exports = function (grunt) {
                             './public/vendor/retina.js/src/retina.js',
 
                             //Toastr
-                            './public/vendor/toastr/toastr.min.js',
+                            './public/vendor/toastr/toastr.min.js'
 
 
 
@@ -175,7 +176,7 @@ module.exports = function (grunt) {
 
 
 
-                    './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                    './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
                 ]
             }
         }
