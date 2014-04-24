@@ -1,8 +1,7 @@
 /**
  * Created by isuarez on 3/20/14.
  */
-var toastr = require('toastr');
-
+//toastr comes from vendor.min.js
 
 module.exports = function notifierSvc() {
     return {
