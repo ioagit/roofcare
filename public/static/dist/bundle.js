@@ -72,7 +72,7 @@ angular.module('app').run(function($rootScope, $location)
     });
 
 });
-},{"../../public/app/config/routes.js":4,"../../public/app/controllers":8,"../../public/app/resources":15,"../../public/app/services":20}],"m+cUNR":[function(require,module,exports){
+},{"../../public/app/config/routes.js":4,"../../public/app/controllers":8,"../../public/app/resources":15,"../../public/app/services":20}],"9dpAQ+":[function(require,module,exports){
 /**
  * Created by isuarez on 4/20/14.
  */
@@ -114,7 +114,7 @@ angular.module('app').run(function($rootScope, $location)
 
 
 },{}],"app_config":[function(require,module,exports){
-module.exports=require('m+cUNR');
+module.exports=require('9dpAQ+');
 },{}],4:[function(require,module,exports){
 /**
  * Created by isuarez on 4/9/14.
@@ -200,7 +200,7 @@ app_routes.run([ '$rootScope', '$location', function ( $rootScope, $location) {
 
 module.exports = app_routes;
 
-},{"../../../public/app/lib/router.js":14,"app_config":"m+cUNR"}],5:[function(require,module,exports){
+},{"../../../public/app/lib/router.js":14,"app_config":"9dpAQ+"}],5:[function(require,module,exports){
 /**
  * Created by isuarez on 4/10/2014.
  */
@@ -671,9 +671,7 @@ module.exports = angular.module('App.Services', [])
 /**
  * Created by isuarez on 3/20/14.
  */
-//var toastr = require('toastr');
-
-//Toastr is provided as external lib
+//toastr comes from vendor.min.js
 
 module.exports = function notifierSvc() {
     return {
