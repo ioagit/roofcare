@@ -51,6 +51,8 @@ describe.only("Client Signup Controller", function() {
         $scope.signup();
         expect($scope).to.have.property('email');
         sinon.assert.calledOnce(authSvcStub);
+        //sinon.assert.calledOnce(notifyStub);
+        //sinon.assert.calledOnce(locationStub);
 
 
 
