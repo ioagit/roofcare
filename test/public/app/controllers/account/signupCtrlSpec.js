@@ -7,7 +7,8 @@ var should = require('should')
     ,expect = require("chai").expect
     ,sinon = require('sinon')
     ,path = require('path')
-    ,q = require('q');
+    ,q = require('q')
+    angular = require('angular');
 
 //dependencies
 var authSvc = require(path.join(process.cwd(), 'public', 'app', 'services', 'authSvc'))()
@@ -17,8 +18,9 @@ var authSvc = require(path.join(process.cwd(), 'public', 'app', 'services', 'aut
 
 describe.only("Client Signup Controller", function() {
 
-    var notifySpy;
+    var notifyStub;
     var authSvcStub;
+    var locationStub;
 
 
 
@@ -28,27 +30,28 @@ describe.only("Client Signup Controller", function() {
 
 
       //create spies
-        notifySpy = sinon.spy(notifierSvc, 'notify' );
+        notifyStub = sinon.stub(notifierSvc, 'notify').returns(true);
         authSvcStub = sinon.stub(authSvc, "createUser").returns(q.resolve(true));
+        locationStub = sinon.stub({path: function(value) { return value; }});
 
 
 
     })
 
     afterEach(function(){
-        notifySpy.restore();
+        notifyStub.restore();
         authSvcStub.restore();
     });
 
     it('should try to create a user', function() {
         var $scope = {email:'',password:'pass',fname:'',lname:''};
 
-        var signupCtrl = ctrlFactory($scope, authSvc, notifierSvc, {});
+        var signupCtrl = ctrlFactory($scope, authSvc, notifierSvc, locationStub);
 
         $scope.signup();
         expect($scope).to.have.property('email');
-        expect(notifySpy.calledOnce).to.be.true;
-        expect(authSvcStub.calledOnce).to.be.true;
+        sinon.assert.calledOnce(authSvcStub);
+
 
 
     })
