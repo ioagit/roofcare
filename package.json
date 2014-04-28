@@ -25,7 +25,8 @@
     "node-geocoder": "2.2.0",
     "mongoose-validator": "~0.2.2",
     "mongoose-schema-extend": "~0.1.7",
-    "bower": "0.6.x"
+    "bower": "0.6.x",
+    "angular": "1.2.16"
   },
   "devDependencies": {
     "vows": "0.5.x",
