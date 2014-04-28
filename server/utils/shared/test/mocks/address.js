@@ -10,7 +10,7 @@ var mongoose  = require('mongoose')
     , Address = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
 
-monky.factory('Contractor',
+monky.factory('Address',
 
     {
             Coordinates: new Array([faker.Address.latitude(), faker.Address.longitude()]),

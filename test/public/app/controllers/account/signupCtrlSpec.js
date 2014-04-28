@@ -7,8 +7,8 @@ var should = require('should')
     ,expect = require("chai").expect
     ,sinon = require('sinon')
     ,path = require('path')
-    ,q = require('q')
-    angular = require('angular');
+    ,q = require('q');
+
 
 //dependencies
 var authSvc = require(path.join(process.cwd(), 'public', 'app', 'services', 'authSvc'))()

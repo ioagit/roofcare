@@ -1,6 +1,6 @@
 ///**
-// * Created by isuarez on 4/27/14.
-// */
+//* Created by isuarez on 4/27/14.
+//*/
 //
 //
 //var mongoose  = require('mongoose')
@@ -10,12 +10,14 @@
 //    , async = require('async')
 //
 //    //Models
-//    ,Job =  require(path.join(process.cwd(), 'server', 'models', 'Job'))
-//    ,Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor'))
+//    ,Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model
+//    ,Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model
+//    ,Address =  require(path.join(process.cwd(), 'server', 'models', 'Address')).Model
+//
 //
 //   //Monky
 //   require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractor')).mock;
-//   addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'address'));
+//   addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'address')).mock;
 //   require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'customer')).mock;
 //   require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'job')).mock;
 //
@@ -28,7 +30,7 @@
 //
 //function createAddresses(n, targetList, callback) {
 //
-//    addressMock.createList(n, function (err, list) {
+//    monky.createList('Address', n, function (err, list) {
 //        targetList = list;
 //        callback();
 //    });
