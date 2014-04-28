@@ -5,6 +5,8 @@
 var path = require('path');
 
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
+var seedData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'seed'));
+
 var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init'));
 var async = require('async');
 
@@ -23,7 +25,8 @@ before(function (done) {
             function(callback) { testData.createTestJobs(callback); },
             function(callback) { testData.createTestLocations(callback); },
             function(callback) { testData.createDefaultUsers(callback); }
-        ],
+            //function(callback) { seedData.seedOneContractor(callback); }
+            ],
         //Callback when everything is done.
         function (err, results) {
             if (err || !results) { done(err); }

@@ -17,9 +17,8 @@ var mongoose = require('mongoose'),
 var _schema =  BaseSchema.extend
 ({
 
-    contactInfo: contactInfo,
-    properties:   { type : mongoose.Schema.ObjectId,
-                    ref : 'Address' }
+    contactInfo: contactInfo
+
 
 });
 

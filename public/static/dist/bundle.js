@@ -300,25 +300,21 @@ module.exports =  function signupCtrl($scope, authSvc, notifierSvc, $location) {
         };
 
         //Call the rcAuth Service
-        var promise =  authSvc.createUser(newUserData);
-        handlePromise(promise, 'User Account Created!');
-        //End Signup Function
-    };
-
-    //Handles a promise response
-    function handlePromise(promise, successMsg) {
-        if (!promise) return;
-        promise.then(
+        authSvc.createUser(newUserData).then(
             //Success
             function () {
-                notifierSvc.notify(successMsg);
+                notifierSvc.notify('User Account Created!');
                 $location.path('/');
             },
             //Fail
             function(reason) {
                 notifierSvc.error(reason);
-            });
-    }
+            });;
+
+        //End Signup Function
+    };
+
+
 
 
 

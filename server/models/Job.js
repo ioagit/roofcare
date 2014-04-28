@@ -8,12 +8,13 @@ var mongoose = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema'));
+    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
 
 var schema =  BaseSchema.extend
 ({
     Contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
     Customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
-    OnSiteContact: {type : mongoose.Schema.ObjectId, ref : 'ContactInfo'},
+    OnSiteContact: contactInfo,
     StartDate: {type: Date, required:true},
     Status: {type: String, required:true},
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}

@@ -16,7 +16,7 @@ var authSvc = require(path.join(process.cwd(), 'public', 'app', 'services', 'aut
     ,ctrlFactory =   require(path.join(process.cwd(), 'public', 'app', 'controllers', 'account', 'signupCtrl'));
 
 
-describe.only("Client Signup Controller", function() {
+describe("Client Signup Controller", function() {
 
     var notifyStub;
     var authSvcStub;
