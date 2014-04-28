@@ -7,7 +7,7 @@ var path = require('path'),
 
 module.exports = {
 
-    salutation: {type: String, trim: true, validate: validator.nameValidator},
+    salutation: {type: String, trim: true},
     firstName: {type: String, required: true, trim: true, validate: validator.nameValidator},
     lastName: {type: String, required: true,trim: true, validate: validator.nameValidator},
     email: {type: String, required: true,trim: true, validate: validator.emailValidator},

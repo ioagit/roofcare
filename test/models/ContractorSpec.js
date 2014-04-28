@@ -9,7 +9,7 @@ var path = require('path');
 var contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
 var addresses = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
 var mockContractor =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractor')).mock;
-var mockAddress =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'address')).mock;
+var addressMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock'));
 
 
 describe.skip('Contractor', function() {
@@ -18,7 +18,7 @@ describe.skip('Contractor', function() {
 
     beforeEach(function(done) {
         var suite = this;
-        mockAddress.create('Address', function(err, obj) {
+        addressMock.create( function(err, obj) {
             if (err) return done(err);
             address = obj;
             done();
