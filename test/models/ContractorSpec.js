@@ -8,7 +8,7 @@ var path = require('path');
 
 var contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
 var addresses = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
-var mockContractor =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractor')).mock;
+var mockContractor =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock'));
 var addressMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock'));
 
 
