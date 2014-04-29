@@ -1,5 +1,5 @@
 /**
- * Created by christophererker on 4/28/14.
+ * Created by cerker on 4/28/14.
  */
 var mongoose = require('mongoose');
 var expect = require('chai').expect;
@@ -24,6 +24,20 @@ describe('Job Model', function () {
                 expect(collection.length).to.eq(20);
                 done();
             })
+    });
+
+    it ('Should return the next page of 10 rows', function(done) {
+       Job.find({})
+           .limit(10)
+           .skip(5)
+           .populate('Customer')
+           .populate('Contractor')
+           .populate('WorkSite')
+           .exec(function (err, collection) {
+               expect(collection.length).to.be.eq(10);
+               done();
+           });
+
     });
 
     it ('Should return a job with linked Customer and WorkSite', function(done){

@@ -23,12 +23,16 @@ exports.getJobs = function() {
 
     return function (req, res) {
 
+        var startingIndex = req.param('startIndex') + 0;
+        var pageSize = 10;
         Job.find({status:
                      {$nin: [lookups.jobStatus.created,
                              lookups.jobStatus.unknown,
                              lookups.jobStatus.workRejected ] }
 
                   })
+            .skip(startingIndex)
+            .limit(pageSize)
             .populate('Customer')
             .populate('WorkSite')
             .exec(function (err, collection) {
