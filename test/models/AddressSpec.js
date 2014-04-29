@@ -92,6 +92,28 @@ describe('Address Model', function () {
         })
     });
 
+    it('Return closest location including distance', function(done){
+        var univision = [25.813146, -80.350437];
+
+        Address.aggregate([
+            {
+                $geoNear: {
+                    near: univision,
+                    distanceField: "distance",
+                    maxDistance: 3,
+                    spherical: false,
+                    distanceMultiplier: 112,
+                    includeLocs: "Coordinates",
+                    num: 1
+                }
+            }
+        ], function(err, result){
+            console.log(result);
+            expect(result[0].distance).to.be.above(0);
+            done();
+        })
+    });
+
     it('Find The closest location to Univision', function() {
         var univision = [25.813146, -80.350437];
 

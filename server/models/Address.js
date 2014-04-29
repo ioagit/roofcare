@@ -33,9 +33,6 @@ schema.methods = {
             address += ' ' + this.Country;
         address += ' ' + this.ZipCode;
         return address;
-    },
-    closest: function(callback) {
-        return this.model('Address').find({geo: { $nearSphere: this.geo, $maxDistance: 0.01} }, callback);
     }
 };
 schema.set('toJSON', { getters: true, virtuals: false });
