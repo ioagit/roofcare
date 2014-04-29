@@ -38,8 +38,6 @@ module.exports = {
         multiFamily: 'Multi Family'
     },
 
-
-
     contactType: {
         owner: 'owner',
         renter: 'renter',
@@ -80,12 +78,7 @@ module.exports = {
         Piece: 'Piece',
         Meter: 'Meter',
         CubicMeter: 'CubicMeter'
-
     }
-
-
-
-
 
 
 };

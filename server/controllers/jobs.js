@@ -9,14 +9,10 @@
 
 
 var path = require('path')
-    ,lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
+    ,lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
     ,Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model
-,Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model
+    ,Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model
     ,Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
-
-
-
-
 
 
 exports.getJobs = function() {
@@ -26,9 +22,9 @@ exports.getJobs = function() {
         var startingIndex = req.param('startIndex') || 0;
         var pageSize = req.param('pageSize') || 10;
         Job.find({Status:
-                     {$nin: [lookups.jobStatus.created,
-                             lookups.jobStatus.unknown,
-                             lookups.jobStatus.workRejected ] }
+                     {$nin: [lookUps.jobStatus.created,
+                             lookUps.jobStatus.unknown,
+                             lookUps.jobStatus.workRejected ] }
 
                   })
             .skip(startingIndex)

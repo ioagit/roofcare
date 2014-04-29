@@ -9,12 +9,9 @@ var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend'),
     UserSchema = require(path.join(process.cwd(), 'server', 'models', 'Users')).Schema;
 
-var _schema =  UserSchema.extend
-({
+var _schema =  UserSchema.extend({
     address: { type : mongoose.Schema.ObjectId, ref : 'Property' }
 });
-
-
 
 var _model = mongoose.model('Contractor', _schema);
 
