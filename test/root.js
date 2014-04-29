@@ -24,8 +24,8 @@ before(function (done) {
             function(callback) { testData.removeAllUsers(callback); },
             function(callback) { testData.createTestJobs(callback); },
             function(callback) { testData.createTestLocations(callback); },
-            function(callback) { testData.createDefaultUsers(callback); }
-            //function(callback) { seedData.seedOneContractor(callback); }
+            function(callback) { testData.createDefaultUsers(callback); },
+            function(callback) { seedData.seedOneContractor(20, callback); }
             ],
         //Callback when everything is done.
         function (err, results) {

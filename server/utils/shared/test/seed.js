@@ -26,7 +26,7 @@ var mongoose  = require('mongoose')
 var customerAddressList
     , contractorAddressLIst
     , customerList
-    , contractorList
+    , contractorList = new Array()
     , jobList
 
 
@@ -122,15 +122,16 @@ function createJobs(n, callback) {
 
 };
 
-function seedOneContractor(done) {
+function seedOneContractor(n, done) {
 
-    var n = 10;
+    if (!n)
+        n=10;
 
     //Getting all the lists
     customerAddressList = buildList(addressMock.build, n);
     contractorAddressLIst = buildList(addressMock.build, n);
     customerList  = buildList(customerMock.build, n);
-    contractorList = buildList(contractorMock.build, n);
+    contractorList.push( build(contractorMock.build, {username: 'contractor1'}));
     jobList  = buildList(jobMock.build, n);
 
     //Assining contractor addresses
@@ -154,13 +155,12 @@ function seedOneContractor(done) {
             function(callback) { Job.create(jobList, callback); }
         ],
         function (err, results) {
-            return true;
-            //done(err, results)
+            done(err, results)
         });
 
 }
 
 module.exports = {
 
-    seedOneContractor: seedOneContractor()
+    seedOneContractor: seedOneContractor
 }

@@ -7,6 +7,9 @@ var passport = require('passport')
 
 //User Model
 require(path.join(process.cwd(), 'server', 'models','Users'));
+//Evry model that is a descendant of user needs to be included
+require(path.join(process.cwd(), 'server', 'models','Contractor'));
+
 
 module.exports = function(User) {
 

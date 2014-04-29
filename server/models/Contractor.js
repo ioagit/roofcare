@@ -14,10 +14,7 @@ var _schema =  UserSchema.extend
     address: { type : mongoose.Schema.ObjectId, ref : 'Property' }
 });
 
-_schema.methods = {
 
-
-};
 
 var _model = mongoose.model('Contractor', _schema);
 
