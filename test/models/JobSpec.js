@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var expect = require('chai').expect;
 var path = require('path');
 var async = require('async');
+var lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'));
 var jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
 describe('Job Model', function () {
@@ -38,6 +39,25 @@ describe('Job Model', function () {
                done();
            });
 
+    });
+
+    it ('Should return a job with only specified filter', function(done) {
+        Job.find({Status: {
+                $nin: [ lookups.jobStatus.created,
+                        lookups.jobStatus.unknown,
+                        lookups.jobStatus.workRejected ]}
+            })
+            .exec(function(err, coll) {
+                for(var i=0; i<coll.length; i++)
+                {
+                    var success = coll[i].Status !== lookups.jobStatus.created &&
+                        coll[i].Status !== lookups.jobStatus.unknown &&
+                        coll[i].Status !== lookups.jobStatus.workRejected;
+
+                    expect(success).to.be.true;
+                }
+                done();
+            });
     });
 
     it ('Should return a job with linked Customer and WorkSite', function(done){

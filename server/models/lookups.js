@@ -52,8 +52,6 @@ module.exports = {
 
         klm: 'kilometers',
         miles: 'miles'
-
-
     },
 
     jobStatus: {

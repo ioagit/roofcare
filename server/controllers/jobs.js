@@ -23,9 +23,9 @@ exports.getJobs = function() {
 
     return function (req, res) {
 
-        var startingIndex = req.param('startIndex') + 0;
-        var pageSize = 10;
-        Job.find({status:
+        var startingIndex = req.param('startIndex') || 0;
+        var pageSize = req.param('pageSize') || 10;
+        Job.find({Status:
                      {$nin: [lookups.jobStatus.created,
                              lookups.jobStatus.unknown,
                              lookups.jobStatus.workRejected ] }
