@@ -25,7 +25,9 @@ function build() {
             //Dates are from now for the next two weeks
             StartDate: faker.Date.between(new Date(), new Date(+new Date + 12096e5)),
             Status: faker.random.array_element(_.values(lookups.jobStatus) ),
-            WorkSite:  mongoose.Types.ObjectId()
+            WorkSite:  mongoose.Types.ObjectId(),
+            OrderType: faker.random.array_element(_.values(lookups.orderType) ),
+            RoofType: faker.random.array_element(_.values(lookups.roofType) )
         });
 
 }

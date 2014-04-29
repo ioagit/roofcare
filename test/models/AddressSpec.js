@@ -111,7 +111,8 @@ describe('Address Model', function () {
             console.log(result);
             expect(result[0].distance).to.be.above(0);
             done();
-        })
+        });
+
     });
 
     it('Find The closest location to Univision', function() {

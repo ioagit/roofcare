@@ -9,7 +9,7 @@ var mongoose  = require('mongoose'),
     util = require('util');
 
 var schema = new mongoose.Schema({
-    Coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
+    Coordinates: {type: [Number, Number], index: '2dsphere', default:[0,0], required:true},
     Street : {type: String, required:true},
     City: {type: String, required:true},
     State: {type: String, required:false},

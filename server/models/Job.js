@@ -17,6 +17,8 @@ var schema =  BaseSchema.extend
     OnSiteContact: contactInfo,
     StartDate: {type: Date, required:true},
     Status: {type: String, required:true},
+    OrderType: {type: String, required:true},
+    RoofType: {type: String, required:true},
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
 });
 
