@@ -29,7 +29,8 @@ exports.getJobs = function() {
                              lookups.jobStatus.workRejected ] }
 
                   })
-            .populate('Customer', 'WorkSite')
+            .populate('Customer')
+            .populate('WorkSite')
             .exec(function (err, collection) {
 
                 res.send(JSON.stringify(collection));

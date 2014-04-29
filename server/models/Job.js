@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
-    BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema'));
+    BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
 
 var schema =  BaseSchema.extend
