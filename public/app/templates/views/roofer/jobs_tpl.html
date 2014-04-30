@@ -73,7 +73,7 @@
 
     <td>{{job.StartDate | date:'medium'}}</td>
     <td>
-        <span class='label label-important'>{{job.Status}}</span>
+        <job-status status="{{job.Status}}" type="success" />
     </td>
 
 </tr>

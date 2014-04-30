@@ -8,13 +8,15 @@ var
     app_routes = require('../../public/app/config/routes.js'),
     controllers = require('../../public/app/controllers'),
     services = require('../../public/app/services'),
-    resources = require('../../public/app/resources');
+    resources = require('../../public/app/resources'),
+    directives = require('../../public/app/directives')
+    ;
 
 
 //Main Angular module. Cool
 angular.module('app',
                   ['ngResource', 'ngRoute',
-                  controllers.name, services.name, app_routes.name, resources.name]);
+                  controllers.name, services.name, app_routes.name, resources.name, directives.name]);
 
 //Defining Routes
 /*
