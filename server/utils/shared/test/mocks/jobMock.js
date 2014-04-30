@@ -18,7 +18,7 @@ function build() {
             OnSiteContact: {
                 firstName: faker.Name.firstName(),
                 lastName: faker.Name.lastName(),
-                salutation: faker.random.name_prefix ,
+                salutation: faker.random.array_element(_.values(lookups.salutation) ),
                 email: faker.Internet.email(),
                 phone: faker.PhoneNumber.phoneNumberFormat(0)
             },
