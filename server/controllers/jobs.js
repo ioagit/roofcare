@@ -14,13 +14,15 @@ var path = require('path')
     ,Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model
     ,Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
 
-
 exports.getJobs = function() {
 
     return function (req, res) {
 
         var startingIndex = req.param('startIndex') || 0;
         var pageSize = req.param('pageSize') || 10;
+        var name = req.param('customer') || '';
+
+        var q= { $or:[ {'Customer.contactInfo.firstName':name}, {'Customer.contactInfo.lastName':name} ]};
         Job.find({Status:
                      {$nin: [lookUps.jobStatus.created,
                              lookUps.jobStatus.unknown,
