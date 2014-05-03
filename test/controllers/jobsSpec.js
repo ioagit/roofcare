@@ -110,11 +110,29 @@ describe('Job Controller', function () {
                         });
                 }
             ],
-            //Callback when everything is done.
             function (err, results) {
+                //Callback when everything is done.
                 if (err || !results) { done(err); }
                 if (results.length) return done();
             });
     })
 
+    it('getJobs should filter on status', function(done){
+
+        agent
+            .get('/api/contractor/jobs?status='+lookUps.jobStatus.requestAccepted)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .end(function (err, res) {
+                if (err) return done(err);
+
+                var resultObj = JSON.parse( res.text );
+                for(var i=0; i < resultObj.jobs.length; i++)
+                {
+                    var job = resultObj.jobs[i];
+                    expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
+                }
+                done();
+            });
+    });
 });
