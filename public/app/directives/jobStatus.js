@@ -11,6 +11,10 @@ module.exports = function jobStatus() {
         },
         restrict: 'AE',
         replace: 'true',
-        templateUrl: '/templates/directives/jobStatus.html'
+        templateUrl: '/templates/directives/jobStatus.html',
+        link: function(scope, el, attrs) {
+            scope.type = 'important';
+        }
+
     };
 }

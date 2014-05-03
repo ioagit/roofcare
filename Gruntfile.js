@@ -11,6 +11,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-nodemon');
 
 
     grunt.initConfig({
@@ -98,7 +99,7 @@ module.exports = function (grunt) {
 
         connect: {
             options: {
-                base: 'server/'
+                base: 'server.js'
             },
             webserver: {
                 options: {
@@ -179,6 +180,12 @@ module.exports = function (grunt) {
                     './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
                 ]
             }
+        },
+
+        nodemon: {
+            dev: {
+                script: 'server.js'
+            }
         }
     });
 
@@ -191,7 +198,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', ['install', 'jshint', 'concat', 'connect:devserver', 'open:devserver', 'watch:assets']);
+    grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'nodemon', 'open:devserver', 'watch:assets']);
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
