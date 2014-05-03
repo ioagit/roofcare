@@ -18,7 +18,7 @@ module.exports = {
 
     },
     test: {
-        db:  'mongodb://localhost/rcdb',
+        db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
         port: 3000
 

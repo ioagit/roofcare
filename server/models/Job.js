@@ -63,6 +63,8 @@ schema.statics.QueryInbox = function() {
             lookUps.jobStatus.workRejected ]);
 };
 
+
+
 module.exports = {
     Model: mongoose.model('Job', schema),
     Schema : schema

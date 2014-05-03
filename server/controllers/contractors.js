@@ -13,50 +13,72 @@ var path = require('path'),
 exports.getDashboard = function() {
     return function (req, res) {
 
-        var acceptedRequests = [
-            {
-                id: '111111',
-                StartDate: '05-03-2014 3:00PM',
-                Status: lookUps.jobStatus.requestAccepted,
-                WorkSite: {
-                    Street: '',
-                    City: ''
-                },
-                OnSiteContact: {
-                    salutation: 'Mr',
-                    firstName: 'Sabine',
-                    lastName: 'Flesch',
-                    email: 'kunde@kunde.com',
-                    phone: ' (101) 123456-111'
-                }
-            },
-            {
-                id: '222222',
-                StartDate: '05-04-2014 11:00AM',
-                Status: lookUps.jobStatus.requestAccepted,
-                OnSiteContact: {
-                    salutation: 'Mr',
-                    firstName: 'Sepp',
-                    lastName: 'Maier',
-                    email: 'kunde@kunde.com',
-                    phone: ' (101) 123456-111'
-                }
-            }];
-
         var dashBoard = {
-            inbox: {
-                request: 3,
-                total: 6,
-                next: acceptedRequests[0]
-
-            },
-            jobs: {
-                completed: 3,
-                started: 3,
-                rejected: 2
-            },
-            comingUp: acceptedRequests
+            inbox: {},
+            jobs: {}
         };
-        res.send(JSON.stringify(dashBoard));
+
+        var now = new Date();
+        var start = now.toDateString();
+        now.setDate(now.getDate() + 7);
+        var end = now.toDateString();
+
+        async.series(
+            [
+                function (callback) {
+                    Job.find(
+                        {
+                            'StartDate':  {"$gte": start, "$lt": end},
+                            'Status': lookUps.jobStatus.requestAccepted
+                        })
+                        .populate('Customer')
+                        .populate('WorkSite')
+                        .exec(function (err, coll) {
+                            dashBoard.inbox.next = coll[0];
+                            dashBoard.comingUp = coll;
+                            callback();
+                        });
+                },
+                function (callback) {
+                    Job
+                        .aggregate({$group: {_id: {status: '$Status'}, count: {$sum: 1}}})
+                        .exec(function (err, groupings) {
+                            for(var i=0; i < groupings.length; i++) {
+                                var status = groupings[i]._id.status;
+                                var count = groupings[i].count;
+
+                                switch (status) {
+                                    case lookUps.jobStatus.created:
+                                        dashBoard.inbox.request = count;
+                                        break;
+
+                                    case lookUps.jobStatus.requestAccepted:
+                                        dashBoard.inbox.total = count;
+                                        break;
+
+                                    case lookUps.jobStatus.workCompleted:
+                                        dashBoard.jobs.completed = count;
+                                        break;
+
+                                    case lookUps.jobStatus.workStarted:
+                                        dashBoard.jobs.started = count;
+                                        break;
+
+                                    case lookUps.jobStatus.workRejected:
+                                        dashBoard.jobs.rejected = count;
+                                        break;
+                                } // end switch
+                            } //end for
+                            dashBoard.inbox.total += dashBoard.inbox.request;
+                            callback();
+                        });
+                }
+            ],
+            function (err, results) {
+                if (err || !results) { }
+                if (results.length) {
+                    res.send(JSON.stringify(dashBoard));
+                }
+            });
     };
 };

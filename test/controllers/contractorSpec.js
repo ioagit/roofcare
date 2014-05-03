@@ -59,7 +59,7 @@ describe('Contractor Controller', function () {
                     if (err) return done(err);
 
                     var dashBoard = JSON.parse(res.text);
-                    //console.log(dashBoard);
+                    console.log(dashBoard);
                     expect(dashBoard).to.not.be.null;
                     done();
                 });
