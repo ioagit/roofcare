@@ -36,7 +36,5 @@ before(function (done) {
 )
 
 after(function (done) {
-
     done();
-   //testData.removeAllUsers(done);
 });

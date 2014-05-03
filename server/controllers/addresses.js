@@ -1,5 +1,5 @@
 /**
- * Created by cerker on 4/20/2014.
+ * Created by christophererker on 4/20/2014.
  */
 
 exports.getAddress = function(Address)
@@ -13,5 +13,4 @@ exports.getAddress = function(Address)
             } // End Exec Callback
         ); //Close Exec function
     };
-
-}
+};

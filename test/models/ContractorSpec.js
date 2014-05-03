@@ -3,7 +3,6 @@
  */
 
 var expect = require('chai').expect;
-var assert= require('chai').assert;
 var path = require('path');
 
 var contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
@@ -54,6 +53,3 @@ describe.skip('Contractor', function() {
 describe('Contractor', function() {
 
 });
-
-
-

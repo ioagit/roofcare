@@ -5,9 +5,9 @@
 // Customer Model
 var mongoose = require('mongoose'),
     path = require('path'),
+    extend = require('mongoose-schema-extend'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
-    extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema'));
 
 var schema =  BaseSchema.extend(

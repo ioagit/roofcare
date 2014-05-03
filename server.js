@@ -1,5 +1,5 @@
 //setup Dependencies
-var  express = require('express');
+var express = require('express');
 
 //Configuration requirements
 var path = require('path')
@@ -9,17 +9,13 @@ var path = require('path')
     ,routes = require (path.join(process.cwd(),'server','config','routes'))
     ,auth = require(path.join(process.cwd(),'server','config','auth'));
 
-//Models
-var mongoose = require('mongoose');
-
 //Declaring models
-require(path.join(process.cwd(),'server','models','Users'));
-var User = mongoose.model('User');
+var User = require(path.join(process.cwd(),'server','models','Users')).Model;
 
 //Controllers
-var userController  = require(path.join(process.cwd(),'server','controllers','users'));
-var jobController  = require(path.join(process.cwd(),'server','controllers','jobs'));
-
+var userController  = require(path.join(process.cwd(),'server','controllers','users')),
+    jobController  = require(path.join(process.cwd(),'server','controllers','jobs')),
+    contractorController = require(path.join(process.cwd(),'server','controllers','contractors'));
 
 
 // Decorate express with our components
@@ -33,7 +29,7 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, jobController, auth);
+    routes(server, User, userController, jobController, contractorController, auth);
 
     return server;
 }

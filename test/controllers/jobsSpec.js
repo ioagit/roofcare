@@ -23,115 +23,119 @@ describe('Job Controller', function () {
         done();
     });
 
-    it('getJobs method should exist', function(done) {
+    describe('getJobs method', function() {
 
-        var whatIsIt = typeof jobsController.getJobs;
-        expect(whatIsIt).to.be.eq('function');
-        done();
-    });
+        it('Should exist', function (done) {
 
-    it('getJobs should return 200', function(done) {
+            var whatIsIt = typeof jobsController.getJobs;
+            expect(whatIsIt).to.be.eq('function');
+            done();
+        });
 
-        agent
-            .get('/api/contractor/jobs')
-            .expect(200, done);
+        it('Should return 200', function (done) {
 
-    });
+            agent
+                .get('/api/contractor/jobs')
+                .expect(200, done);
 
-    it('getJobs should respond with json', function (done) {
-        agent
-            .get('/api/contractor/jobs')
-            .set('Accept', 'application/json')
-            .expect(200)
-            .end(function (err, res) {
-                if (err) return done(err);
+        });
 
-                var resultObj = JSON.parse( res.text );
-                var len =resultObj.rows.length;
-                expect(len).to.be.at.most(10);
-                expect(resultObj.totalFound).to.be.at.least(len);
-                done();
-            });
-    });
+        it('Should respond with json', function (done) {
+            agent
+                .get('/api/contractor/jobs')
+                .set('Accept', 'application/json')
+                .expect(200)
+                .end(function (err, res) {
+                    if (err) return done(err);
 
-    it('getJobs should respond with 5 results when limit = 5', function (done) {
-        agent
-            .get('/api/contractor/jobs?limit=5')
-            .set('Accept', 'application/json')
-            .expect(200)
-            .end(function (err, res) {
-                if (err) return done(err);
+                    var resultObj = JSON.parse(res.text);
+                    var len = resultObj.rows.length;
+                    expect(len).to.be.at.most(10);
+                    expect(resultObj.totalFound).to.be.at.least(len);
+                    done();
+                });
+        });
 
-                var resultObj = JSON.parse( res.text );
-                var len = resultObj.rows.length;
-                expect(len).to.eq(5);
-                expect(resultObj.totalFound).to.be.at.least(5);
-                done();
-            });
-    });
+        it('Should respond with 5 results when limit = 5', function (done) {
+            agent
+                .get('/api/contractor/jobs?limit=5')
+                .set('Accept', 'application/json')
+                .expect(200)
+                .end(function (err, res) {
+                    if (err) return done(err);
 
-    it('getJobs should filter on customer name', function(done){
+                    var resultObj = JSON.parse(res.text);
+                    var len = resultObj.rows.length;
+                    expect(len).to.eq(5);
+                    expect(resultObj.totalFound).to.be.at.least(5);
+                    done();
+                });
+        });
 
-        var results;
-        var customerName;
+        it('Should filter on customer name', function (done) {
 
-        //customer.Model.find({'contactInfo.lastName': customerName})
+            var results;
+            var customerName;
 
-        async.series([
-                function(callback) {
-                    Job.QueryJobs()
-                        .populate('Customer')
-                        .populate('WorkSite')
-                        .exec(function (err, collection) {
-                            results = collection;
-                            expect(results).to.not.be.null;
-                            callback();
-                        });
-                },
-                function(callback) {
-                    customerName = results[0].Customer.contactInfo.lastName;
-                    agent
-                        .get('/api/contractor/jobs?customer=' + customerName)
-                        .set('Accept', 'application/json')
-                        .expect(200)
-                        .end(function (err, res) {
-                            if (err) return callback(err);
+            //customer.Model.find({'contactInfo.lastName': customerName})
 
-                            var resultObj = JSON.parse( res.text );
+            async.series([
+                    function (callback) {
+                        Job.QueryJobs()
+                            .populate('Customer')
+                            .populate('WorkSite')
+                            .exec(function (err, collection) {
+                                results = collection;
+                                expect(results).to.not.be.null;
+                                callback();
+                            });
+                    },
+                    function (callback) {
+                        customerName = results[0].Customer.contactInfo.lastName;
+                        agent
+                            .get('/api/contractor/jobs?customer=' + customerName)
+                            .set('Accept', 'application/json')
+                            .expect(200)
+                            .end(function (err, res) {
+                                if (err) return callback(err);
 
-                            expect(resultObj.rows.length).to.be.at.least(1);
-                            var obj = resultObj.rows[0];
-                            expect(obj).to.not.be.null;
-                            expect(obj.Customer).to.not.be.null;
-                            expect(obj.Customer.contactInfo.lastName).to.eq(customerName);
+                                var resultObj = JSON.parse(res.text);
 
-                            callback();
-                        });
-                }
-            ],
-            function (err, results) {
-                //Callback when everything is done.
-                if (err || !results) { done(err); }
-                if (results.length) return done();
-            });
-    })
+                                expect(resultObj.rows.length).to.be.at.least(1);
+                                var obj = resultObj.rows[0];
+                                expect(obj).to.not.be.null;
+                                expect(obj.Customer).to.not.be.null;
+                                expect(obj.Customer.contactInfo.lastName).to.eq(customerName);
 
-    it('getJobs should filter on status', function(done){
+                                callback();
+                            });
+                    }
+                ],
+                function (err, results) {
+                    //Callback when everything is done.
+                    if (err || !results) {
+                        done(err);
+                    }
+                    if (results.length) return done();
+                });
+        })
 
-        agent
-            .get('/api/contractor/jobs?status='+lookUps.jobStatus.requestAccepted)
-            .set('Accept', 'application/json')
-            .expect(200)
-            .end(function (err, res) {
-                if (err) return done(err);
+        it('Should filter on status', function (done) {
 
-                var resultObj = JSON.parse( res.text );
-                for(var i = 0; i < resultObj.rows.length; i++)
-                {
-                    var job = resultObj.rows[i];
-                    expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
-                }
-                done();
-            });
+            agent
+                .get('/api/contractor/jobs?status=' + lookUps.jobStatus.requestAccepted)
+                .set('Accept', 'application/json')
+                .expect(200)
+                .end(function (err, res) {
+                    if (err) return done(err);
+
+                    var resultObj = JSON.parse(res.text);
+                    for (var i = 0; i < resultObj.rows.length; i++) {
+                        var job = resultObj.rows[i];
+                        expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
+                    }
+                    done();
+                });
+        });
     });
 });

@@ -37,8 +37,8 @@ userSchema.methods = {
     }
 };
 
-var _model = mongoose.model('User', userSchema);
+var model = mongoose.model('User', userSchema);
 module.exports = {
-    Model: _model,
+    Model: model,
     Schema: userSchema
-}
+};

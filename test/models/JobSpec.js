@@ -1,12 +1,13 @@
 /**
- * Created by cerker on 4/28/14.
+ * Created by christophererker on 4/28/14.
  */
-var mongoose = require('mongoose');
-var expect = require('chai').expect;
-var path = require('path');
-var async = require('async');
-var lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'));
-var jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
+
+var mongoose = require('mongoose'),
+    expect = require('chai').expect,
+    path = require('path'),
+    async = require('async'),
+    lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
 describe('Job Model', function () {
 
