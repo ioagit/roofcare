@@ -52,7 +52,7 @@
 </thead>
 <tbody>
 
-<tr ng-repeat="job in jobs">
+<tr ng-repeat="job in rows">
     <td>
         <div class='text-right'>
             <a class='btn btn-info btn-xs' href='checklists.html'>
@@ -73,18 +73,23 @@
 
     <td>{{job.StartDate | date:'medium'}}</td>
     <td>
-        <job-status status="{{job.Status}}" type="success" />
+        <job-status status="{{job.Status}}" />
     </td>
 
 </tr>
-
 </tbody>
 </table>
+
+</div>
+
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
+    <div ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</div>
+    <button type="button" class="btn btn-default btn-lg" ng-click="loadMore()" ng-show="moreAvailable()">
+        <span class="glyphicon glyphicon-star"></span> more...
+    </button>
 
 </div>

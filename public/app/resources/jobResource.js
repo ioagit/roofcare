@@ -14,7 +14,11 @@ module.exports = function jobResource($resource) {
 
     var JobResource = $resource('/api/contractor/jobs/:id', {_id: '@id'},
         {
-            update: {method: 'PUT', isArray:false}
+            update: {method: 'PUT', isArray:false},
+            list:{isArray:true, method:'get',
+                transformResponse: function (data, headers) {
+                    return JSON.parse(data);
+                }}
         }
     );
 

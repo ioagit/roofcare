@@ -198,7 +198,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'nodemon', 'open:devserver', 'watch:assets']);
+    grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'watch']);
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);

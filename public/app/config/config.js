@@ -29,6 +29,10 @@
         prepareViewTemplateUrl : function(url) {
             return this.viewUrlPrefix + url + this.templateFileSuffix +
                 this.templateFileQuerystring;
+        },
+
+        pagination: {
+            limit: 3
         }
 
 
