@@ -12,6 +12,7 @@ var path = require('path'),
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
     async = require('async');
 
+
 exports.getJobs = function() {
 
     return function (req, res) {
@@ -19,16 +20,12 @@ exports.getJobs = function() {
         var startingIndex = req.param('offset') || 0;
         var pageSize = req.param('limit') || 10;
         var name = req.param('customer') || '';
-        var status = req.param('status') || '';
         var totalMatches = 0;
 
-        // http://mongoosejs.com/docs/2.7.x/docs/query.html
-        var query = Job.QueryJobs();
 
-        if (status !== '')
-        {
-            query = query.where('Status', status);
-        }
+        var query = Job.QueryJobs({
+            status: req.param('status')
+        });
 
         async.series(
             [

@@ -23,17 +23,37 @@ var schema =  BaseSchema.extend
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
 });
 
-schema.statics.QueryJobs = function() {
-    return this.find({})
-        .where('Status')
-        .in([lookUps.jobStatus.requestAccepted, lookUps.jobStatus.workStarted, lookUps.jobStatus.workCompleted ]);
+function applyCriteria(query, criteria)
+{
+    // http://mongoosejs.com/docs/2.7.x/docs/query.html
+
+    if (criteria === undefined || criteria === null) return query;
+
+    if ((criteria['status'] || '').length > 0)
+        query = query.where('Status', criteria.status);
+
+    return query;
+}
+schema.statics.QueryJobs = function(criteria) {
+
+    return applyCriteria(this
+            .find({})
+            .where('Status')
+            .in([lookUps.jobStatus.requestAccepted,
+                lookUps.jobStatus.workStarted,
+                lookUps.jobStatus.workCompleted ]),
+        criteria);
 };
 
-schema.statics.QueryRequests = function() {
+schema.statics.QueryRequests = function(criteria) {
     //Inbox
-    return this.find({})
-        .where('Status')
-        .in([lookUps.jobStatus.created, lookUps.jobStatus.requestRejected, lookUps.jobStatus.workRejected ]);
+    return applyCriteria(this
+            .find({})
+            .where('Status')
+            .in([lookUps.jobStatus.created,
+                lookUps.jobStatus.requestRejected,
+                lookUps.jobStatus.workRejected ]),
+        criteria);
 };
 
 module.exports = {

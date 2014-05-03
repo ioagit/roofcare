@@ -127,7 +127,7 @@ describe('Job Controller', function () {
                 if (err) return done(err);
 
                 var resultObj = JSON.parse( res.text );
-                for(var i=0; i < resultObj.jobs.length; i++)
+                for(var i = 0; i < resultObj.jobs.length; i++)
                 {
                     var job = resultObj.jobs[i];
                     expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
