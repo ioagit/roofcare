@@ -15,7 +15,7 @@ module.exports = function inboxSvc($http, $q) {
 
             var deferred = $q.defer();
 
-
+            //Getting the services
             $http({
                     method: 'GET',
                     url: baseUrl + '?limit=' + options.limit + '&offset=' + options.offset
