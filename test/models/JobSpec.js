@@ -1,12 +1,13 @@
 /**
- * Created by cerker on 4/28/14.
+ * Created by christophererker on 4/28/14.
  */
-var mongoose = require('mongoose');
-var expect = require('chai').expect;
-var path = require('path');
-var async = require('async');
-var lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'));
-var jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
+
+var mongoose = require('mongoose'),
+    expect = require('chai').expect,
+    path = require('path'),
+    async = require('async'),
+    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
 describe('Job Model', function () {
 
@@ -16,15 +17,6 @@ describe('Job Model', function () {
 
         expect(Job).to.not.be.null;
         done();
-    });
-
-    it('Job find should return 20 jobs', function(done){
-
-        Job.find({})
-            .exec(function (err, collection) {
-                expect(collection.length).to.eq(20);
-                done();
-            })
     });
 
     it ('Should return the next page of 10 rows', function(done) {
@@ -42,19 +34,60 @@ describe('Job Model', function () {
 
     it ('Should return a job with only specified filter', function(done) {
         Job.find({Status: {
-                $nin: [ lookups.jobStatus.created,
-                        lookups.jobStatus.unknown,
-                        lookups.jobStatus.workRejected ]}
+                $nin: [ lookUps.jobStatus.created,
+                        lookUps.jobStatus.unknown,
+                        lookUps.jobStatus.workRejected ]}
             })
             .exec(function(err, coll) {
                 for(var i=0; i<coll.length; i++)
                 {
-                    var success = coll[i].Status !== lookups.jobStatus.created &&
-                        coll[i].Status !== lookups.jobStatus.unknown &&
-                        coll[i].Status !== lookups.jobStatus.workRejected;
+                    var success = coll[i].Status !== lookUps.jobStatus.created &&
+                        coll[i].Status !== lookUps.jobStatus.unknown &&
+                        coll[i].Status !== lookUps.jobStatus.workRejected;
 
                     expect(success).to.be.true;
                 }
+                done();
+            });
+    });
+
+    it('Should aggregate on Status for Dashboard', function(done) {
+        var dashBoard = {
+            inbox: {},
+            jobs: {}
+        };
+        Job.aggregate(
+            {$group: {_id: {status: '$Status'}, count: {$sum: 1}}}
+        )
+            .exec(function (err, groupings) {
+
+                for(var i=0; i < groupings.length; i++) {
+                    var status = groupings[i]._id.status;
+                    var count = groupings[i].count;
+
+                    switch (status) {
+                        case lookUps.jobStatus.created:
+                            dashBoard.inbox.request = count;
+                            break;
+
+                        case lookUps.jobStatus.requestAccepted:
+                            dashBoard.inbox.total = count;
+                            break;
+
+                        case lookUps.jobStatus.workCompleted:
+                            dashBoard.jobs.completed = count;
+                            break;
+
+                        case lookUps.jobStatus.workStarted:
+                            dashBoard.jobs.started = count;
+                            break;
+
+                        case lookUps.jobStatus.workRejected:
+                            dashBoard.jobs.rejected = count;
+                            break;
+                    }
+                }
+                console.log(dashBoard);
                 done();
             });
     });

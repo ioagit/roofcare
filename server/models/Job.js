@@ -1,5 +1,5 @@
 /**
- * Created by cerker on 4/20/2014.
+ * Created by christophererker on 4/20/2014.
  */
 
 // Job Model
@@ -62,6 +62,8 @@ schema.statics.QueryInbox = function() {
             lookUps.jobStatus.requestRejected,
             lookUps.jobStatus.workRejected ]);
 };
+
+
 
 module.exports = {
     Model: mongoose.model('Job', schema),
