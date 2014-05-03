@@ -62,8 +62,8 @@ schema.statics.Build = function(sourceAddress, callback)
         entity.Longitude = geoData.longitude;
         callback(entity);
     });
-}
+};
 
-var _model =  mongoose.model('Address', schema);
-module.exports.Model = _model;
+var model =  mongoose.model('Address', schema);
+module.exports.Model = model;
 module.exports.Schema = schema;

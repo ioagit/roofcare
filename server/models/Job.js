@@ -8,7 +8,8 @@ var mongoose = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
-    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
+    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
+    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups'));
 
 var schema =  BaseSchema.extend
 ({
@@ -21,6 +22,19 @@ var schema =  BaseSchema.extend
     RoofType: {type: String, required:true},
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
 });
+
+schema.statics.QueryJobs = function() {
+    return this.find({})
+        .where('Status')
+        .in([lookUps.jobStatus.requestAccepted, lookUps.jobStatus.workStarted, lookUps.jobStatus.workCompleted ]);
+};
+
+schema.statics.QueryRequests = function() {
+    //Inbox
+    return this.find({})
+        .where('Status')
+        .in([lookUps.jobStatus.created, lookUps.jobStatus.requestRejected, lookUps.jobStatus.workRejected ]);
+};
 
 module.exports = {
     Model: mongoose.model('Job', schema),

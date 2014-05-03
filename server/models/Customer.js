@@ -1,8 +1,4 @@
 /**
- * Created by isuarez on 4/17/2014.
- */
-
-/**
  * Created by isuarez on 3/28/2014.
  */
 
@@ -14,25 +10,14 @@ var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema'));
 
-var _schema =  BaseSchema.extend
-({
+var schema =  BaseSchema.extend(
+    {
+        contactInfo: contactInfo
+    }
+);
 
-    contactInfo: contactInfo
-
-
-});
-
-_schema.methods = {
-
-
-};
-
-var _model = mongoose.model('Customer', _schema);
-
-
+var model = mongoose.model('Customer', schema);
 module.exports = {
-    Model: _model,
-    Schema : _schema
-}
-
-
+    Model: model,
+    Schema : schema
+};
