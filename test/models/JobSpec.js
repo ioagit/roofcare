@@ -38,7 +38,6 @@ describe('Job Model', function () {
                expect(collection.length).to.be.eq(10);
                done();
            });
-
     });
 
     it ('Should return a job with only specified filter', function(done) {

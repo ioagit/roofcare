@@ -46,9 +46,10 @@ describe('Job Controller', function () {
             .end(function (err, res) {
                 if (err) return done(err);
 
-                var results = JSON.parse( res.text );
-
-                expect(results.length).to.be.at.most(10);
+                var resultObj = JSON.parse( res.text );
+                var len =resultObj.jobs.length;
+                expect(len).to.be.at.most(10);
+                expect(resultObj.totalFound).to.be.at.least(len);
                 done();
             });
     });
@@ -61,9 +62,10 @@ describe('Job Controller', function () {
             .end(function (err, res) {
                 if (err) return done(err);
 
-                var results = JSON.parse( res.text );
-
-                expect(results.length).to.eq(5);
+                var resultObj = JSON.parse( res.text );
+                var len = resultObj.jobs.length;
+                expect(len).to.eq(5);
+                expect(resultObj.totalFound).to.be.at.least(5);
                 done();
             });
     });
@@ -96,10 +98,10 @@ describe('Job Controller', function () {
                         .end(function (err, res) {
                             if (err) return callback(err);
 
-                            var r = JSON.parse( res.text );
+                            var resultObj = JSON.parse( res.text );
 
-                            expect(r.length).to.be.at.least(1);
-                            var obj = r[0];
+                            expect(resultObj.jobs.length).to.be.at.least(1);
+                            var obj = resultObj.jobs[0];
                             expect(obj).to.not.be.null;
                             expect(obj.Customer).to.not.be.null;
                             expect(obj.Customer.contactInfo.lastName).to.eq(customerName);

@@ -19,10 +19,10 @@ exports.getJobs = function() {
         var startingIndex = req.param('offset') || 0;
         var pageSize = req.param('limit') || 10;
         var name = req.param('customer') || '';
+        var totalMatches = 0;
 
         // http://mongoosejs.com/docs/2.7.x/docs/query.html
         var query = Job.QueryJobs();
-        var jsonToSend = '';
 
         async.series(
             [
@@ -44,15 +44,24 @@ exports.getJobs = function() {
                         });
                     }
                 },
+                function(callback){
+                    query.count( function(err,count){
+                        totalMatches = count;
+                        callback();
+                    });
+                },
                 function(callback) {
-                    query
+                    query.find()
                         .skip(startingIndex)
                         .limit(pageSize)
                         .populate('Customer')
                         .populate('WorkSite')
                         .exec(function (err, collection) {
-                            jsonToSend = JSON.stringify(collection);
-                            res.send(jsonToSend);
+                            var resultToSend = {
+                                totalFound: totalMatches,
+                                jobs: collection
+                            };
+                            res.send(JSON.stringify(resultToSend));
                             callback();
                         }
                     );
