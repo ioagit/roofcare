@@ -14,13 +14,13 @@ describe('Job Controller', function () {
     var jobsController = require(path.join(process.cwd(), 'server', 'controllers', 'jobs'));
     var agent = request.agent('http://localhost:' + 3000);
 
-    it('Jobs controller exists', function(done){
+    it('controller should exist', function(done){
 
         expect(jobsController).to.not.be.null;
         done();
     });
 
-    it ('Jobs controller has getJobs method', function(done) {
+    it('getJobs method should exist', function(done) {
 
         var whatIsIt = typeof jobsController.getJobs;
         expect(whatIsIt).to.be.eq('function');
@@ -35,7 +35,7 @@ describe('Job Controller', function () {
 
     });
 
-    it('should respond with json for getJobs', function (done) {
+    it('getJobs should respond with json', function (done) {
         agent
             .get('/api/contractor/jobs')
             .set('Accept', 'application/json')
@@ -50,7 +50,7 @@ describe('Job Controller', function () {
             });
     });
 
-    it('should respond with 5 results when pageSize = 5 for getJobs', function (done) {
+    it('getJobs should respond with 5 results when pageSize = 5', function (done) {
         agent
             .get('/api/contractor/jobs?pageSize=5')
             .set('Accept', 'application/json')
@@ -58,12 +58,15 @@ describe('Job Controller', function () {
             .end(function (err, res) {
                 if (err) return done(err);
 
-                var jsonString = res.text;
-                var results = JSON.parse( jsonString );
+                var results = JSON.parse( res.text );
 
                 expect(results.length).to.eq(5);
                 done();
             });
     });
+
+    it('getJobs should filter on customer name', function(done){
+        done();
+    })
 
 });

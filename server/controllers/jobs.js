@@ -22,10 +22,7 @@ exports.getJobs = function() {
         var pageSize = req.param('pageSize') || 10;
         var name = req.param('customer') || '';
 
-//        var query = Job.find({Status: {
-//            $nin: [lookUps.jobStatus.created, lookUps.jobStatus.unknown, lookUps.jobStatus.workRejected ] }
-//        });
-
+        // http://mongoosejs.com/docs/2.7.x/docs/query.html
         var query = Job.find({});
         query = query
                 .where('Status')
@@ -42,10 +39,8 @@ exports.getJobs = function() {
             .populate('Customer')
             .populate('WorkSite')
             .exec(function (err, collection) {
-
                 var r = JSON.stringify(collection);
                 res.send(r);
-
             } // End Exec Callback
         ); //Close Exec function
     };
