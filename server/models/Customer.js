@@ -16,6 +16,16 @@ var schema =  BaseSchema.extend(
     }
 );
 
+schema.statics.FindByFirstOrLastName = function(name, callback)
+{
+    var namesCriteria =[ {'contactInfo.firstName': name}, {'contactInfo.lastName': name}];
+    this.find({})
+        .or(namesCriteria)
+        .exec(function (err, coll) {
+            callback(coll);
+        });
+};
+
 var model = mongoose.model('Customer', schema);
 module.exports = {
     Model: model,

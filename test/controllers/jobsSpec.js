@@ -47,7 +47,7 @@ describe('Job Controller', function () {
                 if (err) return done(err);
 
                 var resultObj = JSON.parse( res.text );
-                var len =resultObj.jobs.length;
+                var len =resultObj.rows.length;
                 expect(len).to.be.at.most(10);
                 expect(resultObj.totalFound).to.be.at.least(len);
                 done();
@@ -63,7 +63,7 @@ describe('Job Controller', function () {
                 if (err) return done(err);
 
                 var resultObj = JSON.parse( res.text );
-                var len = resultObj.jobs.length;
+                var len = resultObj.rows.length;
                 expect(len).to.eq(5);
                 expect(resultObj.totalFound).to.be.at.least(5);
                 done();
@@ -71,7 +71,7 @@ describe('Job Controller', function () {
     });
 
     it('getJobs should filter on customer name', function(done){
-        var query;
+
         var results;
         var customerName;
 
@@ -79,7 +79,7 @@ describe('Job Controller', function () {
 
         async.series([
                 function(callback) {
-                    query = Job.QueryJobs()
+                    Job.QueryJobs()
                         .populate('Customer')
                         .populate('WorkSite')
                         .exec(function (err, collection) {
@@ -90,7 +90,6 @@ describe('Job Controller', function () {
                 },
                 function(callback) {
                     customerName = results[0].Customer.contactInfo.lastName;
-                    console.log(customerName);
                     agent
                         .get('/api/contractor/jobs?customer=' + customerName)
                         .set('Accept', 'application/json')
@@ -100,8 +99,8 @@ describe('Job Controller', function () {
 
                             var resultObj = JSON.parse( res.text );
 
-                            expect(resultObj.jobs.length).to.be.at.least(1);
-                            var obj = resultObj.jobs[0];
+                            expect(resultObj.rows.length).to.be.at.least(1);
+                            var obj = resultObj.rows[0];
                             expect(obj).to.not.be.null;
                             expect(obj.Customer).to.not.be.null;
                             expect(obj.Customer.contactInfo.lastName).to.eq(customerName);
@@ -127,9 +126,9 @@ describe('Job Controller', function () {
                 if (err) return done(err);
 
                 var resultObj = JSON.parse( res.text );
-                for(var i = 0; i < resultObj.jobs.length; i++)
+                for(var i = 0; i < resultObj.rows.length; i++)
                 {
-                    var job = resultObj.jobs[i];
+                    var job = resultObj.rows[i];
                     expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
                 }
                 done();

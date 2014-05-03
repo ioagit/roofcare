@@ -9,7 +9,7 @@ module.exports =  function(server, User, userController, jobController, auth) {
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
 
     server.get('/api/contractor/jobs',  jobController.getJobs());
-//    server.get('/api/contractor/inbox', auth.requiresApiLogin, jobController.getInboxes());
+    server.get('/api/contractor/inbox', auth.requiresApiLogin, jobController.getInboxes());
 
     
     server.get('/partials/*', function(req, res) {

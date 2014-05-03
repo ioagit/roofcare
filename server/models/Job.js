@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
-    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups'));
+    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
 
 var schema =  BaseSchema.extend
 ({
@@ -23,37 +24,43 @@ var schema =  BaseSchema.extend
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
 });
 
-function applyCriteria(query, criteria)
-{
-    // http://mongoosejs.com/docs/2.7.x/docs/query.html
+schema.statics.Filter = function(query, criteria, processQuery) {
+    //http://mongoosejs.com/docs/2.7.x/docs/query.html
 
     if (criteria === undefined || criteria === null) return query;
 
     if ((criteria['status'] || '').length > 0)
         query = query.where('Status', criteria.status);
 
-    return query;
+    if ((criteria['customer'] || '').length > 0)
+    {
+        Customer.FindByFirstOrLastName(criteria.customer, function(customers){
+            var customerIds = [];
+            for(var i=0; i< customers.length; i++) {
+                customerIds.push(customers[i].id);
+            }
+            query = query.where('Customer').in(customerIds);
+            processQuery(query);
+        });
+    }
+    else
+        processQuery(query);
 }
-schema.statics.QueryJobs = function(criteria) {
-
-    return applyCriteria(this
+schema.statics.QueryJobs = function() {
+    return this
             .find({})
             .where('Status')
             .in([lookUps.jobStatus.requestAccepted,
                 lookUps.jobStatus.workStarted,
-                lookUps.jobStatus.workCompleted ]),
-        criteria);
+                lookUps.jobStatus.workCompleted ]);
 };
-
-schema.statics.QueryRequests = function(criteria) {
-    //Inbox
-    return applyCriteria(this
-            .find({})
-            .where('Status')
-            .in([lookUps.jobStatus.created,
-                lookUps.jobStatus.requestRejected,
-                lookUps.jobStatus.workRejected ]),
-        criteria);
+schema.statics.QueryInbox = function() {
+    return this
+        .find({})
+        .where('Status')
+        .in([lookUps.jobStatus.created,
+            lookUps.jobStatus.requestRejected,
+            lookUps.jobStatus.workRejected ]);
 };
 
 module.exports = {
