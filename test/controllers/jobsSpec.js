@@ -7,8 +7,9 @@ var expect = require('chai').expect;
 var path = require('path');
 var async = require('async');
 var request = require('supertest');
+var jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
-describe('Jobs Controller', function () {
+describe('Job Controller', function () {
 
     var jobsController = require(path.join(process.cwd(), 'server', 'controllers', 'jobs'));
     var agent = request.agent('http://localhost:' + 3000);
@@ -34,15 +35,35 @@ describe('Jobs Controller', function () {
 
     });
 
-    it('should response with json for getJobs', function (done) {
+    it('should respond with json for getJobs', function (done) {
         agent
             .get('/api/contractor/jobs')
             .set('Accept', 'application/json')
             .expect(200)
             .end(function (err, res) {
                 if (err) return done(err);
-//console.log(res);
+
+                var results = JSON.parse( res.text );
+
+                expect(results.length).to.be.at.most(10);
                 done();
             });
     });
+
+    it('should respond with 5 results when pageSize = 5 for getJobs', function (done) {
+        agent
+            .get('/api/contractor/jobs?pageSize=5')
+            .set('Accept', 'application/json')
+            .expect(200)
+            .end(function (err, res) {
+                if (err) return done(err);
+
+                var jsonString = res.text;
+                var results = JSON.parse( jsonString );
+
+                expect(results.length).to.eq(5);
+                done();
+            });
+    });
+
 });

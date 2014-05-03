@@ -22,20 +22,29 @@ exports.getJobs = function() {
         var pageSize = req.param('pageSize') || 10;
         var name = req.param('customer') || '';
 
-        var q= { $or:[ {'Customer.contactInfo.firstName':name}, {'Customer.contactInfo.lastName':name} ]};
-        Job.find({Status:
-                     {$nin: [lookUps.jobStatus.created,
-                             lookUps.jobStatus.unknown,
-                             lookUps.jobStatus.workRejected ] }
+//        var query = Job.find({Status: {
+//            $nin: [lookUps.jobStatus.created, lookUps.jobStatus.unknown, lookUps.jobStatus.workRejected ] }
+//        });
 
-                  })
+        var query = Job.find({});
+        query = query
+                .where('Status')
+                .nin([lookUps.jobStatus.created, lookUps.jobStatus.unknown, lookUps.jobStatus.workRejected ]);
+
+        if(name !== '')
+            query = query.or([
+                {'Customer.contactInfo.firstName':name},
+                {'Customer.contactInfo.lastName':name} ]);
+
+        query
             .skip(startingIndex)
             .limit(pageSize)
             .populate('Customer')
             .populate('WorkSite')
             .exec(function (err, collection) {
 
-                res.send(JSON.stringify(collection));
+                var r = JSON.stringify(collection);
+                res.send(r);
 
             } // End Exec Callback
         ); //Close Exec function
