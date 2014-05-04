@@ -32,7 +32,7 @@
         },
 
         pagination: {
-            limit: 3
+            limit: 5
         }
 
 

@@ -66,7 +66,7 @@
             </a>
         </div>
     </td>
-    <td>{{job.Customer.fullName}}</td>
+    <td>{{job.Customer.contactInfo.firstName}} {{job.Customer.contactInfo.lastName}}</td>
     <td>{{job.RoofType}}</td>
     <td>{{job.OrderType}}</td>
     <td>{{job.WorkSite.Street}}</td>
@@ -80,6 +80,14 @@
 </tbody>
 </table>
 
+    <div class="load-more">
+        <a id="comments-more-activity" class="btn btn-block" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading more..." href="#" ng-click="loadMore()" ng-show="moreAvailable()"><i class="icon-circle-arrow-down"></i>
+            Mehr laden...
+            <span class="pull-right" style="padding-right: 10px;" ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</span>
+
+        </a>
+    </div>
+
 </div>
 
 </div>
@@ -87,9 +95,6 @@
 </div>
 </div>
 </div>
-    <div ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</div>
-    <button type="button" class="btn btn-default btn-lg" ng-click="loadMore()" ng-show="moreAvailable()">
-        <span class="glyphicon glyphicon-star"></span> more...
-    </button>
+
 
 </div>

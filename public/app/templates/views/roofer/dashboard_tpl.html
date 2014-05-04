@@ -24,17 +24,17 @@
             <div class='row'>
                 <div class='col-sm-12'>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-error'>3</h3>
-                        <small><a href="inbox.html">Neue Auftr&auml;ge</a></small>
+                        <h3 class='title text-error'>{{dashboard.inbox.request}}</h3>
+                        <small><a href="/roofer/inbox">Neue Auftr&auml;ge</a></small>
                         <div class='text-error icon-plus align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-info'>5</h3>
-                        <small><a href="inbox.html">Auftr&auml;ge insgesamt</a></small>
+                        <h3 class='title text-info'>{{dashboard.inbox.total}}</h3>
+                        <small><a href="/roofer/inbox">Auftr&auml;ge insgesamt</a></small>
                         <div class='text-info icon-inbox align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-primary'>14:00 Uhr</h3>
+                        <h3 class='title text-primary'>{{nextJob.StartDate | date: 'HH:mm' || 'nichts zu tun'}} Uhr</h3>
                         <small><a href="job_start.html">N&auml;chster Termin</a></small>
                         <div class='text-primary icon-time align-right'></div>
                     </div>
@@ -53,17 +53,17 @@
             <div class='row'>
                 <div class='col-sm-12'>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-success'>1</h3>
+                        <h3 class='title text-success'>{{dashboard.jobs.completed}}</h3>
                         <small>Erledigt</small>
                         <div class='text-success icon-ok align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-info'>0</h3>
+                        <h3 class='title text-info'>{{dashboard.jobs.started}}</h3>
                         <small>Am Laufen</small>
                         <div class='text-info icon-check align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-muted'>0</h3>
+                        <h3 class='title text-muted'>{{dashboard.jobs.rejected}}</h3>
                         <small>Gek&uuml;ndigt</small>
                         <div class='text-muted icon-remove align-right'></div>
                     </div>
@@ -108,137 +108,15 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="heute">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li>
-                                        <div class="avatar pull-left">
-                                            <i class="icon-time"></i>
-                                        </div>
-                                        <div class="body">
-
-                                            <div class="name">
-                                                <a class="text-blue" href="job_start.html">Montag, 13.12.2013</a><br/>
-                                                <a class="text-contrast" href="job_start.html">14:00 Uhr</a>
-                                            </div>
-                                            <address>
-                                                <strong>Sepp Maier</strong>
-                                                <br>
-                                                Denningerstr. 123
-                                                <br>
-                                                81679 M&uuml;nchen
-                                                <br>
-                                                <br>
-                                                <small><a href="mailto:kunde@kunde.com">kunde@kunde.com</a></small>
-                                                <br>
-                                                <small>(101) 123456-111</small>
-                                            </address>
-                                        </div>
-                                        <div class="text-right">
-                                            <small class="date text-muted">
-                                                <span class="timeago fade has-tooltip in" data-placement="top" title="September 15, 2013 - 18:33">In 2 Stunden</span>
-                                                <i class="icon-time"></i>
-                                            </small>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="avatar pull-left">
-                                            <div class="icon-time"></div>
-                                        </div>
-                                        <div class="body">
-
-                                            <div class="name">
-                                                <a class="text-blue" href="job_start.html">Montag, 13.12.2013</a><br/>
-                                                <a class="text-contrast" href="job_start.html">18:00 Uhr</a></div>
-                                            <address>
-                                                <strong>Andrea Kohlndorfer</strong>
-                                                <br>
-                                                Denningerstr. 123
-                                                <br>
-                                                81679 M&uuml;nchen
-                                                <br>
-                                                <br>
-                                                <small><a href="mailto:kunde@kunde.com">kunde@kunde.com</a></small>
-                                                <br>
-                                                <small>(101) 123456-111</small>
-                                            </address>
-                                        </div>
-                                        <div class="text-right">
-                                            <small class="date text-muted">
-                                                <span class="timeago fade has-tooltip in" data-placement="top" title="September 15, 2013 - 18:33">In 4 Stunden</span>
-                                                <i class="icon-time"></i>
-                                            </small>
-                                        </div>
+                                    <li ng-repeat="job in dashboard.comingUp  | orderBy: 'StartDate' | filter:onlyToday()">
+                                        <dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="woche">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li>
-                                        <div class="avatar pull-left">
-                                            <div class="icon-time"></div>
-                                        </div>
-                                        <div class="body">
-
-                                            <div class="name">
-                                                <a class="text-blue" href="job_start.html">Mittwoch, 15.12.2013</a><br/>
-                                                <a class="text-contrast" href="#">19:00 Uhr</a></div>
-                                            <address>
-                                                <strong>Sabine Flesch</strong>
-                                                <br>
-                                                Denningerstr. 123
-                                                <br>
-                                                81679 M&uuml;nchen
-                                                <br>
-                                                <br>
-                                                <small><a href="mailto:kunde@kunde.com">kunde@kunde.com</a></small>
-                                                <br>
-                                                <small>(101) 123456-111</small>
-                                            </address>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="avatar pull-left">
-                                            <div class="icon-time"></div>
-                                        </div>
-                                        <div class="body">
-
-                                            <div class="name">
-                                                <a class="text-blue" href="job_start.html">Donnerstag, 16.12.2013</a><br/>
-                                                <a class="text-contrast" href="#">11:00 Uhr</a></div>
-                                            <address>
-                                                <strong>Sepp Maier</strong>
-                                                <br>
-                                                Denningerstr. 123
-                                                <br>
-                                                81679 M&uuml;nchen
-                                                <br>
-                                                <br>
-                                                <small><a href="mailto:kunde@kunde.com">kunde@kunde.com</a></small>
-                                                <br>
-                                                <small>(101) 123456-111</small>
-                                            </address>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="avatar pull-left">
-                                            <div class="icon-time"></div>
-                                        </div>
-                                        <div class="body">
-
-                                            <div class="name">
-                                                <a class="text-blue" href="job_start.html">Freitag, 16.12.2013</a><br/>
-                                                <a class="text-contrast" href="#">10:00 Uhr</a></div>
-                                            <address>
-                                                <strong>Sepp Maier</strong>
-                                                <br>
-                                                Denningerstr. 123
-                                                <br>
-                                                81679 M&uuml;nchen
-                                                <br>
-                                                <br>
-                                                <small><a href="mailto:kunde@kunde.com">kunde@kunde.com</a></small>
-                                                <br>
-                                                <small>(101) 123456-111</small>
-                                            </address>
-                                        </div>
+                                    <li ng-repeat="job in dashboard.comingUp | orderBy: 'StartDate'">
+                                        <dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>
                                 <div class="load-more">

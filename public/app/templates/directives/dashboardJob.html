@@ -1,0 +1,37 @@
+<div>
+    <div class="avatar pull-left">
+        <i class="icon-time"></i>
+    </div>
+    <div class="body">
+
+        <div class="name">
+            <a class="text-blue" href="job_start.html">
+                {{job.StartDate | date: 'EEEE, dd.MM.yyyy' }}
+            </a><br/>
+            <a class="text-contrast" href="job_start.html">{{job.StartDate | date: 'HH:mm' }} Uhr</a>
+        </div>
+        <address>
+            <strong>{{job.Customer.contactInfo.firsName }} {{job.Customer.contactInfo.lastName}}</strong>
+            <br>
+            {{job.WorkSite.Street}}
+            <br>
+            {{job.WorkSite.ZipCode}} {{job.WorkSite.City}}
+            <br>
+            <br>
+            <small><a href="{{job.Customer.contactInfo.email}}">
+                <br>{{job.Customer.contactInfo.email}}
+                <br></a></small>
+            <br>
+            <small>{{job.Customer.contactInfo.phone}}
+                <br></small>
+        </address>
+    </div>
+    <div class="text-right">
+        <small class="date text-muted">
+                                                <span class="timeago fade has-tooltip in" data-placement="top"
+                                                      title="{{job.StartDate | date: 'medium'}}">
+                                                <br>"In 2 Stunden</span>
+            <i class="icon-time"></i>
+        </small>
+    </div>
+</div>

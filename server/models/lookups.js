@@ -7,77 +7,78 @@ module.exports = {
     roles: {
 
         admin: 'admin',
-        contractor: 'contractor',
-        customer: 'customer'
+        contractor: 'Kontraktor',
+        customer: 'Kunde'
 
     },
 
     salutation: {
 
-        Mr: 'Mr',
-        Mrs: 'Ms',
+        Mr: 'Herr',
+        Mrs: 'Frau',
         Miss: ''
 
     },
 
     //Should be translated
     orderType: {
-        repair: 'roof repair',
-        check: 'roof check'
+        repair: 'Dachreparatur',
+        check: 'Dachcheck'
     },
 
     roofType: {
 
-        steep: 'Steep',
-        flat: 'Flat',
-        other: 'Other'
+        steep: 'Steildach',
+        flat: 'Flachdach',
+        other: 'Nicht angegeben'
     },
 
     propertyType: {
-        singleFamily: 'Single Family',
-        multiFamily: 'Multi Family'
+        singleFamily: 'Ein bis Zweifamilien Wohnhaus',
+        multiFamily: 'Grosses Mehrfamilienwohnhaus',
+        other: 'Anderes Haus'
     },
 
     contactType: {
-        owner: 'owner',
-        renter: 'renter',
-        concierge: 'concierge',
-        roommate: 'roommate',
-        neighbour: 'neighbour'
+        owner: 'Besitzer/in',
+        renter: 'Mieter/in',
+        concierge: 'Hausmeiser/in',
+        roommate: 'MItberwohner/in',
+        neighbour: 'Nachbar/in'
     },
 
     distanceType: {
 
-        klm: 'kilometers',
+        klm: 'KM',
         miles: 'miles'
     },
 
     jobStatus: {
-        unknown : 'unknown',
-        created: 'created',
-        requestAccepted: 'request accepted',
-        requestRejected: 'request rejected' ,
-        workStarted: 'work started',
-        workCompleted: 'work completed',
-        workRejected: 'work rejected'
+        unknown : 'Nicht angegeben',
+        created: 'Erstellt',
+        requestAccepted: 'Angenommen',
+        requestRejected: 'Anfrage Abgelehnt' ,
+        workStarted: 'Gestartet',
+        workCompleted: 'Fertig',
+        workRejected: 'Vor Ort Abgelehnt'
     },
 
     paymentType: {
 
-        cash:'cash',
-        bankTransfer: 'bank transfer',
-        amex: 'amex',
-        visa: 'visa',
-        masterCard: 'master card',
-        discoverCard: 'discover card'
+        cash:'Bar',
+        bankTransfer: 'Bank Transfer',
+        amex: 'Amex',
+        visa: 'Visa',
+        masterCard: 'Mastercard',
+        discoverCard: 'Discover'
 
     },
 
     UnitOfMeasure: {
 
-        Piece: 'Piece',
+        Piece: 'Stueck',
         Meter: 'Meter',
-        CubicMeter: 'CubicMeter'
+        CubicMeter: 'Kubik Meter'
     }
 
 

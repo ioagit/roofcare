@@ -55,22 +55,25 @@
                 </a>
             </div>
         </td>
-        <td>{{item.Customer.fullName}}</td>
+        <td>{{item.Customer.contactInfo.firstName}} {{item.Customer.contactInfo.lastName}}</td>
         <td>{{item.RoofType}}</td>
         <td>{{item.WorkSite.Street}}</td>
-        <td>{{item.StartDate | date:'small'}}</td>
+        <td>{{item.StartDate | date:'dd.MM.yyyy'}}</td>
          </tr>
 
     </tbody>
 </table>
+    <div class="load-more">
+        <a id="comments-more-activity" class="btn btn-block" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading more..." href="#" ng-click="loadMore()" ng-show="moreAvailable()"><i class="icon-circle-arrow-down"></i>
+            Mehr laden...
+            <span class="pull-right" style="padding-right: 10px;" ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</span>
+
+        </a>
+    </div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-    <div ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</div>
-    <button type="button" class="btn btn-default btn-lg" ng-click="loadMore()" ng-show="moreAvailable()">
-        <span class="glyphicon glyphicon-star"></span> more...
-    </button>
 </div>
