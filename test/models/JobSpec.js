@@ -51,11 +51,33 @@ describe('Job Model', function () {
             });
     });
 
+    it('Should return jobs sorted by StartDate', function(done) {
+        var now = new Date();
+        var start = now.toDateString();
+        now.setDate(now.getDate() + 7);
+        var end = now.toDateString();
+
+        Job.find(
+            {
+                'StartDate':  {"$gte": start, "$lt": end},
+                'Status': lookUps.jobStatus.requestAccepted
+            })
+            .sort('StartDate')
+            .select('StartDate')
+
+            .exec(function (err, coll) {
+                var current = new Date();
+                for(var i = 0; i < coll.length; i++)
+                {
+                    expect(current).to.be.below(coll[i].StartDate);
+                    current = coll[i].StartDate;
+                }
+                done();
+            });
+    });
+
     it('Should aggregate on Status for Dashboard', function(done) {
-        var dashBoard = {
-            inbox: {},
-            jobs: {}
-        };
+        var dashBoard = { inbox: {}, jobs: {} };
         Job.aggregate(
             {$group: {_id: {status: '$Status'}, count: {$sum: 1}}}
         )
@@ -92,7 +114,7 @@ describe('Job Model', function () {
             });
     });
 
-    it ('Should return a job with linked Customer and WorkSite', function(done){
+    it('Should return a job with linked Customer and WorkSite', function(done){
         Job.find({})
             .limit(1)
             .populate('Customer')
@@ -101,7 +123,6 @@ describe('Job Model', function () {
             .exec(function (err, collection) {
 
                 var job = collection[0];
-                console.log(job);
                 expect(job).to.not.be.null;
                 expect(job.Customer).to.not.be.null;
                 expect(job.Customer._id).to.not.be.null;

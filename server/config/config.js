@@ -18,6 +18,9 @@ module.exports = {
 
     },
     test: {
+        //db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
+        //db:  'mongodb://localhost/rcdb',
+
         db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
         port: 3000

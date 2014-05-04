@@ -31,8 +31,10 @@ exports.getDashboard = function() {
                             'StartDate':  {"$gte": start, "$lt": end},
                             'Status': lookUps.jobStatus.requestAccepted
                         })
+                        .sort('StartDate')
                         .populate('Customer')
                         .populate('WorkSite')
+
                         .exec(function (err, coll) {
                             dashBoard.inbox.next = coll[0];
                             dashBoard.comingUp = coll;
