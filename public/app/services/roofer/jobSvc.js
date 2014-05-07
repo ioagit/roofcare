@@ -11,6 +11,26 @@ module.exports = function jobSvc ($http, $q) {
 
 
 
+        getJob: function getLatest(id) {
+
+            var deferred = $q.defer();
+
+
+            $http({
+                    method: 'GET',
+                    url: jobsBaseUrl +  id
+                }
+            ).success(function (data, status, headers, info) {
+                    deferred.resolve(data);
+                }).error(function (data, status, headers, info) {
+                    deferred.reject(status);
+                })
+
+            return deferred.promise;
+
+        },
+
+
         getLatest: function getLatest(options) {
 
             var deferred = $q.defer();

@@ -14,15 +14,6 @@ module.exports = function rooferDashboardCtrl($scope, dashboardSvc) {
 
     };
 
-    $scope.onlyToday = function() {
-        var todayDay = (new Date).getDate();
-
-        return function (job) {
-            var jobDate = new Date(job.StartDate).getDate();
-            return jobDate === todayDay;
-        };
-
-    }
     //Run
     $scope.getDashboard();
 

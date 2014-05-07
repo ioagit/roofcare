@@ -9,6 +9,8 @@ module.exports =  function(server, User, userController, jobController, contract
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
 
     server.get('/api/contractor/jobs',  jobController.getJobs());
+    server.get('/api/contractor/jobs/:id',  jobController.getJob());
+
     server.get('/api/contractor/inbox', auth.requiresApiLogin, jobController.getInboxes());
     server.get('/api/contractor/dashboard', auth.requiresApiLogin, contractorController.getDashboard());
     

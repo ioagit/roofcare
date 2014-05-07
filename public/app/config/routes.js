@@ -37,6 +37,11 @@ app_routes.config(['$routeProvider', '$locationProvider',
                 templateUrl: config.prepareViewTemplateUrl('roofer/jobs')
             });
 
+            router.when('roofer_jobs_path', '/roofer/job_start/:id', {
+                controller: 'rooferJobStartCtrl',
+                templateUrl: config.prepareViewTemplateUrl('roofer/job_start')
+            });
+
             router.when('roofer_kunden_path', '/roofer/kunden', {
                 controller: 'rooferKundenCtrl',
                 templateUrl: config.prepareViewTemplateUrl('roofer/kunden')

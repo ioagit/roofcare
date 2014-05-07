@@ -8,5 +8,5 @@
 
 module.exports = angular.module('App.Filters', [])
 
-    .filter('todayFilter',  require('./todayFilter'));
+    .filter('byDateFilter',  require('./byDateFilter'));
 

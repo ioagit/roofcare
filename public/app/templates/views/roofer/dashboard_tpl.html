@@ -108,7 +108,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="heute">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li ng-repeat="job in dashboard.comingUp  | orderBy: 'StartDate' | filter:onlyToday()">
+                                    <li ng-repeat="job in dashboard.comingUp | byDateFilter | orderBy: 'StartDate' ">
                                         <dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>

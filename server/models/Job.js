@@ -21,6 +21,7 @@ var schema =  BaseSchema.extend
     Status: {type: String, required:true},
     OrderType: {type: String, required:true},
     RoofType: {type: String, required:true},
+    PropertyType: {type: String, required:true},
     WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
 });
 

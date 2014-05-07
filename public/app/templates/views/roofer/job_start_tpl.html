@@ -1,0 +1,227 @@
+<div class='col-xs-12'>
+<div class='page-header'>
+    <h1 class='pull-left'>
+        <i class='icon-dashboard'></i>
+        <span>Job starten</span>
+    </h1>
+</div>
+
+<div class='row'>
+<div class='col-xs-12'>
+<div class='box'>
+<div class='box-content box-double-padding'>
+<form class='form' style='margin-bottom: 0;'>
+
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-envelope text-contrast'></i>
+            Adresse
+        </div>
+        <small class='text-muted'>Die folgenden Daten wurden vom Kunden angegeben.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class="form-group">
+            <label>Adresse</label>
+            <input class="form-control" id="address" placeholder="Strasse und Hausnummer" type="text" disabled value="{{job.WorkSite.Street}}">
+        </div>
+        <div class="form-group">
+            <label>Postleitzahl</label>
+            <input class="form-control" id="zip" value="{{job.WorkSite.ZipCode}}" placeholder="Postleitzahl" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Stadt</label>
+            <input class="form-control" id="city" value="{{job.WorkSite.City}}" value="" placeholder="Stadt" type="text" disabled>
+        </div>
+    </div>
+</fieldset>
+<hr class='hr-normal'>
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-user text-contrast'></i>
+            Ansprechpartner
+        </div>
+        <small class='text-muted'>Kontaktieren Sie vor Ort die hier angegebene Person.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class="form-group">
+            <label>Ansprechpartner</label>
+            <input class="form-control" id="contact"   value="{{job.OnSiteContact.firstName}}   value="{{job.OnSiteContact.lastName}}"" placeholder="Ansprechpartner (Funktion, Anrede, Name, Vorname)" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Telefon</label>
+            <input class="form-control" id="phone"  value="{{job.OnSiteContact.phone}}" placeholder="Telefon" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" id="email"  value="{{job.OnSiteContact.email}}" placeholder="Email" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Handy</label>
+            <input class="form-control" id="cell" placeholder="Handy" type="text" disabled>
+        </div>
+    </div>
+</fieldset>
+<hr class='hr-normal'>
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-gear text-contrast'></i>
+            Auftragsdaten
+        </div>
+        <small class='text-muted'>Die folgenen Daten wurden zu dem Auftrag angegeben.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class="form-group">
+            <label class="control-label">Auftragsart</label>
+            <input class="form-control" value=" {{job.OrderType}}"   type="text" disabled>
+  </div>
+        <div class="form-group">
+            <label class="control-label">Dachtyp</label>
+            <input class="form-control" value=" {{job.RoofType}}"   type="text" disabled>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Haustyp</label>
+            <input class="form-control" value=" {{job.propertyType}}"   type="text" disabled>
+
+        </div>
+        <div class='form-group'>
+            <label>Weitere Informationen</label>
+            <textarea class='autosize form-control' id='bio' placeholder='Weitere Informationen'></textarea>
+        </div>
+    </div>
+</fieldset>
+<hr class="hr-normal">
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-gear text-contrast'></i>
+            Termin
+        </div>
+        <small class='text-muted'>Bitte best&auml;tigen Sie das Datum und die Uhrzeit.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class='form-group'>
+            <label>Datum</label>
+            <div class="datepicker input-group" id="datepicker">
+                <input class="form-control" data-format="dd.MM.yyyy" value="{{job.StartDate | date: 'dd.MM.yyyy'}}" placeholder="03.12.2013" type="text">
+                          	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar"></span>
+                          	</span>
+            </div>
+        </div>
+        <div class='form-group'>
+            <label>Anfangsuhrzeit</label>
+            <div class="timepicker input-group" id="timepicker">
+                <input class="form-control" data-format="hh:mm" value="{{job.StartDate | date: 'HH.mm'}}"  placeholder="14:00" type="text">
+                          	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-time"></span>
+                          	</span>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</fieldset>
+<hr class="hr-normal">
+<fieldset id="form-extend">
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-plus text-contrast'></i>
+            Joberweiterung
+        </div>
+        <small class='text-muted'>Geben Sie hier den zus&auml; Zeit- und Materialeinsatz an.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class='form-group'>
+            <label>Erweiterungsgrund</label>
+            <textarea class='autosize form-control' id='extend-reason' placeholder='Erweiterungsgrund'></textarea>
+        </div>
+        <div class='form-group'>
+            <label>Stunden</label>
+            <select class="form-control" id="inputSelectMulti">
+                <option>1 Stunde</option>
+                <option>2 Stunden</option>
+                <option>3 Stunden</option>
+                <option>4 Stunden</option>
+                <option>5 Stunden</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Silikon  transparent</label>
+            <select class="form-control" id="inputSelectMulti">
+                <option>1 Tube</option>
+                <option>2 Tuben</option>
+                <option>3 Tuben</option>
+                <option>4 Tuben</option>
+                <option>5 Tuben</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Dichtmasse</label>
+            <select class="form-control" id="inputSelectMulti">
+                <option>1 Tube</option>
+                <option>2 Tuben</option>
+                <option>3 Tuben</option>
+                <option>4 Tuben</option>
+                <option>5 Tuben</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Klebeband Typ 1</label>
+            <select class="form-control" id="inputSelectMulti">
+                <option>1 Band </option>
+                <option>2 Band </option>
+                <option>3 Band </option>
+                <option>4 Band </option>
+                <option>5 Band </option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Klebeband Typ 2</label>
+            <select class="form-control" id="inputSelectMulti">
+                <option>1 Band </option>
+                <option>2 Band </option>
+                <option>3 Band </option>
+                <option>4 Band </option>
+                <option>5 Band </option>
+            </select>
+        </div>
+    </div>
+</fieldset>
+<div class='form-actions form-actions-padding clearfix' style='margin-bottom: 0;'>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <div class='btn btn-danger btn-lg'>
+                <i class='icon-trash'></i>
+                Job Stornieren
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='btn btn-info btn-lg' id="button-extend">
+                <i class='icon-ok'></i>
+                Job Erweitern
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='btn btn-primary btn-lg'>
+                <i class='icon-ok'></i>
+                Job Starten
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>

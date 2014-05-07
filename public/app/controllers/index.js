@@ -16,6 +16,7 @@ module.exports = angular.module('App.Controllers', [])
     .controller('rooferDashboardCtrl',require('./roofer/rooferDashboardCtrl'))
     .controller('rooferInboxCtrl',require('./roofer/rooferInboxCtrl'))
     .controller('rooferJobCtrl',require('./roofer/rooferJobCtrl'))
+    .controller('rooferJobStartCtrl',require('./roofer/rooferJobStartCtrl'))
     .controller('rooferKunderCtrl',require('./roofer/rooferKunderCtrl'))
     .controller('rooferRechnungCtrl',require('./roofer/rooferRechnungCtrl'));
 

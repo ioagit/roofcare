@@ -27,7 +27,9 @@ function build() {
             Status: faker.random.array_element(_.values(lookups.jobStatus) ),
             WorkSite:  mongoose.Types.ObjectId(),
             OrderType: faker.random.array_element(_.values(lookups.orderType) ),
-            RoofType: faker.random.array_element(_.values(lookups.roofType) )
+            RoofType: faker.random.array_element(_.values(lookups.roofType) ),
+            PropertyType: faker.random.array_element(_.values(lookups.propertyType) )
+
         });
 
 }

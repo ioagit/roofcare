@@ -5,10 +5,10 @@
     <div class="body">
 
         <div class="name">
-            <a class="text-blue" href="job_start.html">
+            <a class="text-blue" href="/roofer/job_start/{{job._id}}">
                 {{job.StartDate | date: 'EEEE, dd.MM.yyyy' }}
             </a><br/>
-            <a class="text-contrast" href="job_start.html">{{job.StartDate | date: 'HH:mm' }} Uhr</a>
+            <a class="text-contrast" href="/roofer/job_start/{{job._id}}">{{job.StartDate | date: 'HH:mm' }} Uhr</a>
         </div>
         <address>
             <strong>{{job.Customer.contactInfo.firsName }} {{job.Customer.contactInfo.lastName}}</strong>

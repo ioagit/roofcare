@@ -10,6 +10,22 @@ var path = require('path'),
     async = require('async');
 
 
+exports.getJob = function() {
+
+    return function (req, res) {
+        Job.findById(req.params.id)
+          .populate('Customer')
+          .populate('WorkSite')
+            .exec(function (err, job) {
+                if (job)
+                   res.send(job);
+                else
+                  res.status(404).send('Not Found');
+            });
+    }
+
+}
+
 exports.getJobs = function() {
     return function (req, res) {
 
