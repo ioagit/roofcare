@@ -38,14 +38,14 @@ describe('Address Model', function () {
         var address = new Address();
         address.Latitude = 25;
         expect(address.Latitude).to.eq(25);
-        expect(address.Coordinates[0]).to.eq(25);
+        expect(address.Coordinates[1]).to.eq(25);
     });
 
     it('Longitude property should update Coordinates Field', function(){
         var address = new Address();
         address.Longitude = 25;
         expect(address.Longitude).to.eq(25);
-        expect(address.Coordinates[1]).to.eq(25);
+        expect(address.Coordinates[0]).to.eq(25);
     });
     it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function(done) {
 
@@ -93,7 +93,7 @@ describe('Address Model', function () {
     });
 
     it('Return closest location including distance', function(done){
-        var univision = [25.813146, -80.350437];
+        var univision = [ -80.350437, 25.813146];
 
         Address.aggregate([
             {
@@ -108,6 +108,7 @@ describe('Address Model', function () {
                 }
             }
         ], function(err, result){
+            console.log(err);
             console.log(result);
             expect(result[0].distance).to.be.above(0);
             done();
@@ -116,7 +117,7 @@ describe('Address Model', function () {
     });
 
     it('Find The closest location to Univision', function() {
-        var univision = [25.813146, -80.350437];
+        var univision = [ -80.350437, 25.813146];
 
         Address.find( { Coordinates: { $near : univision , $maxDistance : 50} },
             function (err, addr) {
