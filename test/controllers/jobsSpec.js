@@ -30,7 +30,6 @@ describe('Job Controller', function () {
 
             var whatIsIt = typeof jobsController.getJob;
             expect(whatIsIt).to.be.eq('function');
-
         });
 
         it('Should respond with 404 when id is not found', function (done) {
@@ -39,11 +38,7 @@ describe('Job Controller', function () {
                 .set('Accept', 'application/json')
                 .expect(404, done);
         });
-
-
     });
-
-
 
     describe('getJobs method', function() {
 
