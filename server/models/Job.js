@@ -64,6 +64,14 @@ schema.statics.QueryInbox = function() {
             lookUps.jobStatus.workRejected ]);
 };
 
+//schema.statics.QueryInbox = function(contractorId) {
+//    return this
+//        .find({Contractor: contractorId})
+//        .where('Status')
+//        .in([lookUps.jobStatus.created,
+//            lookUps.jobStatus.requestRejected,
+//            lookUps.jobStatus.workRejected ]);
+//};
 
 
 module.exports = {

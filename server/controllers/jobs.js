@@ -59,6 +59,7 @@ exports.getInboxes = function() {
 
         var startingIndex = req.param('offset') || 0;
         var pageSize = req.param('limit') || 10;
+       // var user = req.user;
 
         var criteria = {
             customer: req.param('customer'),
