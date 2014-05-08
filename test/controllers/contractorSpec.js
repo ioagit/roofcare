@@ -16,10 +16,10 @@ var mongoose = require('mongoose'),
 
 var contractor = null;
 
-describe('Contractor Controller', function () {
+var controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors'));
+var agent = request.agent('http://localhost:' + 3000);
 
-    var controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors'));
-    var agent = request.agent('http://localhost:' + 3000);
+describe('Contractor Controller', function () {
 
     it('controller should exist', function(){
         expect(controller).to.not.be.null;
@@ -70,13 +70,17 @@ describe('Contractor Controller', function () {
                     if (err) return done(err);
 
                     var dashBoard = JSON.parse(res.text);
-                    //console.log(dashBoard);
                     expect(dashBoard).to.not.be.null;
+                    for (var i =0; i < dashBoard.comingUp.length; i++)
+                    {
+                        var job = dashBoard.comingUp[i];
+                        expect(job).to.not.be.null;
+                        expect(job.contractor).to.eq(contractor.id);
+                    }
                     done();
                 });
         });
 
-        //it('should logout admin', testUtil.logOut(agent));
         it('should logout contractor', testUtil.logOut(agent));
 
     });

@@ -15,7 +15,6 @@ function callback(err, result) {
     if (result)
         console.log(result);
 
-
 }
 
     //Helper function for login Users

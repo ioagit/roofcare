@@ -18,6 +18,7 @@ exports.getDashboard = function() {
             jobs: {}
         };
 
+        var user = req.user;
         var now = new Date();
         var start = now.toDateString();
         now.setDate(now.getDate() + 7);
@@ -28,6 +29,7 @@ exports.getDashboard = function() {
                 function (callback) {
                     Job.find(
                         {
+                            'Contractor': user.id,
                             'StartDate':  {"$gte": start, "$lt": end},
                             'Status': lookUps.jobStatus.requestAccepted
                         })
