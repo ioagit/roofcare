@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
     testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 
 var contractor = null;
+var contractorId;
 
 describe('Job Controller', function () {
 
@@ -27,6 +28,18 @@ describe('Job Controller', function () {
         done();
     });
 
+    before( function(done){
+        Contractor.find({username: 'contractor1'}, function(err, found){
+            contractorId = found[0].id;
+            contractor = found[0].toObject();
+            contractor.password = 'password';
+            done();
+        });
+    });
+
+    it('contractor1 should exist', function() {
+        expect(contractor).to.not.be.null;
+    });
 
     describe('getJob method', function() {
 
@@ -162,18 +175,6 @@ describe('Job Controller', function () {
 
     describe('getInboxes method', function() {
 
-        before( function(done){
-            Contractor.find({username: 'contractor1'}, function(err, found){
-                contractor = found[0].toObject();
-                contractor.password = 'password';
-                done();
-            });
-        });
-
-        it('Contractor1 should exist', function() {
-            expect(contractor).to.not.be.null;
-        });
-
         it('Should exist', function (done) {
             var whatIsIt = typeof jobsController.getInboxes;
             expect(whatIsIt).to.be.eq('function');
@@ -235,7 +236,7 @@ describe('Job Controller', function () {
 
             async.series([
                     function (callback) {
-                        Job.QueryInbox()
+                        Job.QueryInbox(contractorId)
                             .populate('Customer')
                             .populate('WorkSite')
                             .exec(function (err, collection) {

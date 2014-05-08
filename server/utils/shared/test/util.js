@@ -6,7 +6,6 @@ var should = require('should');
 var expect = require("chai").expect;
 var request = require('supertest');
 
-
 //Use as a generic callback function
 function callback(err, result) {
     if (err)
@@ -33,7 +32,7 @@ function loginUser(agent, credentials) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text)
+            //console.log(res.text)
             res.should.have.status(200);
             res.body.should.have.property('success');
             res.body.should.have.property('user');

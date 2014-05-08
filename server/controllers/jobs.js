@@ -59,14 +59,14 @@ exports.getInboxes = function() {
 
         var startingIndex = req.param('offset') || 0;
         var pageSize = req.param('limit') || 10;
-       // var user = req.user;
+        var user = req.user;
 
         var criteria = {
             customer: req.param('customer'),
             status: req.param('status')
         };
 
-        Job.Filter(Job.QueryInbox(), criteria, function(query)
+        Job.Filter(Job.QueryInbox(user.id), criteria, function(query)
         {
             query.count( function(err,count){
                 query.find()

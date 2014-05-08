@@ -55,23 +55,23 @@ schema.statics.QueryJobs = function() {
                 lookUps.jobStatus.workStarted,
                 lookUps.jobStatus.workCompleted ]);
 };
-schema.statics.QueryInbox = function() {
-    return this
-        .find({})
-        .where('Status')
-        .in([lookUps.jobStatus.created,
-            lookUps.jobStatus.requestRejected,
-            lookUps.jobStatus.workRejected ]);
-};
-
-//schema.statics.QueryInbox = function(contractorId) {
+//schema.statics.QueryInbox = function() {
 //    return this
-//        .find({Contractor: contractorId})
+//        .find({})
 //        .where('Status')
 //        .in([lookUps.jobStatus.created,
 //            lookUps.jobStatus.requestRejected,
 //            lookUps.jobStatus.workRejected ]);
 //};
+
+schema.statics.QueryInbox = function(contractorId) {
+    return this
+        .find({Contractor: contractorId})
+        .where('Status')
+        .in([lookUps.jobStatus.created,
+            lookUps.jobStatus.requestRejected,
+            lookUps.jobStatus.workRejected ]);
+};
 
 
 module.exports = {
