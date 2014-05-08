@@ -9,7 +9,7 @@ var mongoose  = require('mongoose'),
     util = require('util');
 
 var schema = new mongoose.Schema({
-    Coordinates: {type: [Number, Number], index: '2dsphere', default:[0,0], required:true},
+    Coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
     Street : {type: String, required:true},
     City: {type: String, required:true},
     State: {type: String, required:false},
@@ -18,12 +18,12 @@ var schema = new mongoose.Schema({
 });
 
 var latitudeProp = schema.virtual('Latitude');
-latitudeProp.get(function() { return this.Coordinates[0]; });
-latitudeProp.set(function(val) { this.Coordinates[0] = val; });
+latitudeProp.get(function() { return this.Coordinates[1]; });
+latitudeProp.set(function(val) { this.Coordinates[1] = val; });
 
 var longitudeProp = schema.virtual('Longitude');
-longitudeProp.get(function(){ return this.Coordinates[1];});
-longitudeProp.set(function(val) { this.Coordinates[1] = val; });
+longitudeProp.get(function(){ return this.Coordinates[0];});
+longitudeProp.set(function(val) { this.Coordinates[0] = val; });
 
 schema.methods = {
 

@@ -15,7 +15,8 @@ function build() {
 
     return  new Address(
         {
-            Coordinates: [faker.Address.latitude(), faker.Address.longitude()],
+            Latitude: faker.Address.latitude(),
+            Longitude: faker.Address.longitude(),
             Street: faker.Address.streetAddress(),
             City: faker.Address.city(),
             State: faker.Address.usState(),

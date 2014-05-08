@@ -24,19 +24,19 @@ var Customer = customers.Model;
 
 var testLocations = {
     Heerdter: {
-        Coordinates: [51.2395808, 6.7273549],
+        Coordinates: [ 6.7273549, 51.2395808],
         Street: 'Heerdter Lohweg 83',
         City: 'Düsseldorf',
         ZipCode: '40549'
     },
     AcademyOfArts: {
-        Coordinates: [52.5163081, 13.3795345],
+        Coordinates: [13.3795345,52.5163081],
         Street: 'Pariser Platz 4',
         City: 'Berlin',
         ZipCode: '10117'
     },
     Sonoma: {
-        Coordinates: [25.826017, -80.378167],
+        Coordinates: [ -80.378167, 25.826017],
         Street: '11209 NW 57th Ln',
         City: 'Doral',
         State: 'FL',
@@ -44,7 +44,7 @@ var testLocations = {
         ZipCode: '33178'
     },
     OceanDrive: {
-        Coordinates: [25.781653, -80.130808],
+        Coordinates: [ -80.130808, 25.781653],
         Street: '1020 Ocean Drive',
         City: 'Miami Beach',
         State: 'FL',
@@ -52,7 +52,7 @@ var testLocations = {
         ZipCode: '33139'
     },
     DolphinMall: {
-        Coordinates: [25.787894, -80.380602],
+        Coordinates: [ -80.380602, 25.787894],
         Street: '11401 NW 12th St',
         City: 'Miami',
         State: 'FL',
@@ -60,7 +60,7 @@ var testLocations = {
         ZipCode: '33172'
     },
     TheEnclave: {
-        Coordinates: [25.813993, -80.370002],
+        Coordinates: [ -80.370002, 25.813993],
         Street: '4320 NW 107th Ave  Apt 103',
         City: 'Doral',
         State: 'FL',
@@ -68,7 +68,7 @@ var testLocations = {
         ZipCode: '33178'
     },
     FisherIsland: {
-        Coordinates: [25.761615, -80.14074],
+        Coordinates: [ -80.14074, 25.761615],
         Street: '18 Fisher Island Dr',
         City: 'Miami Beach',
         State: 'FL',
