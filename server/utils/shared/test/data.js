@@ -189,38 +189,6 @@ var testJobs = {
    }
 };
 
-function createTestJobs(callback) {
-
-    var workSite = new Address();
-    workSite.Street = '100 Main St';
-    workSite.City = 'Miami';
-    workSite.State = 'FL';
-    workSite.ZipCode = '33156';
-
-    var customer = new Customer();
-    customer.contactInfo.firstName = 'Bob';
-    customer.contactInfo.lastName = 'Smith';
-
-    var contractor = new Contractor();
-    contractor.username = 'contractor.with.a.job';
-
-    var job = new Job();
-    job.Status = lookups.jobStatus.requestAccepted;
-    job.StartDate = new Date('April 23, 2014 11:00 AM');
-    job.Customer = customer;
-    job.Contractor = contractor;
-    job.WorkSite = workSite;
-
-
-    async.series([
-            function(callback) { job.save(callback); },
-            function(callback) { contractor.save(callback); },
-            function(callback) { customer.save(callback); },
-            function(callback) { workSite.save(callback); }
-        ],
-        function () {callback();});
-}
-
 function createTestLocations(callback) {
 
     Address.find({}).exec(
@@ -299,7 +267,6 @@ function addHashedProperties(obj) {
 }
 
 var testData = {
-    createTestJobs: createTestJobs,
     createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
     createUser: createUser,
