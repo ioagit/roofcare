@@ -21,12 +21,7 @@ describe('Job Controller', function () {
     var jobsController = require(path.join(process.cwd(), 'server', 'controllers', 'jobs'));
     var agent = request.agent('http://localhost:' + 3000);
     var Job = jobs.Model;
-
-    it('controller should exist', function(done){
-
-        expect(jobsController).to.not.be.null;
-        done();
-    });
+    var contractor = null;
 
     before( function(done){
         Contractor.find({username: 'contractor1'}, function(err, found){
@@ -37,6 +32,11 @@ describe('Job Controller', function () {
         });
     });
 
+    it('controller should exist', function(done){
+        expect(jobsController).to.not.be.null;
+        done();
+    });
+
     it('contractor1 should exist', function() {
         expect(contractor).to.not.be.null;
     });
@@ -44,9 +44,18 @@ describe('Job Controller', function () {
     describe('getJob method', function() {
 
         it('Should exist', function () {
-
             var whatIsIt = typeof jobsController.getJob;
             expect(whatIsIt).to.be.eq('function');
+        });
+
+        it('Should return 403 Forbidden because authentication failed', function (done) {
+            agent
+                .get('/api/contractor/jobs')
+                .expect(403, done);
+        });
+
+        it('Should login as contractor', function(done){
+            testUtil.loginUser(agent, contractor)(done);
         });
 
         it('Should respond with 404 when id is not found', function (done) {
@@ -55,6 +64,14 @@ describe('Job Controller', function () {
                 .set('Accept', 'application/json')
                 .expect(404, done);
         });
+
+        it('Should return 200', function (done) {
+            agent
+                .get('/api/contractor/jobs')
+                .expect(200, done);
+        });
+
+        it('Should logout contractor', testUtil.logOut(agent));
     });
 
     describe('getJobs method', function() {
@@ -66,12 +83,8 @@ describe('Job Controller', function () {
             done();
         });
 
-        it('Should return 200', function (done) {
-
-            agent
-                .get('/api/contractor/jobs')
-                .expect(200, done);
-
+        it('Should login as contractor', function(done){
+            testUtil.loginUser(agent, contractor)(done);
         });
 
         it('Should respond with json', function (done) {
@@ -111,11 +124,9 @@ describe('Job Controller', function () {
             var results;
             var customerName;
 
-            //customer.Model.find({'contactInfo.lastName': customerName})
-
             async.series([
                     function (callback) {
-                        Job.QueryJobs()
+                        Job.QueryJobs(contractorId)
                             .populate('Customer')
                             .populate('WorkSite')
                             .exec(function (err, collection) {
@@ -136,10 +147,12 @@ describe('Job Controller', function () {
                                 var resultObj = JSON.parse(res.text);
 
                                 expect(resultObj.rows.length).to.be.at.least(1);
-                                var obj = resultObj.rows[0];
-                                expect(obj).to.not.be.null;
-                                expect(obj.Customer).to.not.be.null;
-                                expect(obj.Customer.contactInfo.lastName).to.eq(customerName);
+                                for (var i = 0; i < resultObj.rows.length; i++) {
+                                    var job = resultObj.rows[i];
+                                    expect(job.Customer).to.not.be.null;
+                                    expect(job.Customer.contactInfo.lastName).to.eq(customerName);
+                                    expect(job.Contractor).to.be.eq(contractorId);
+                                }
 
                                 callback();
                             });
@@ -167,10 +180,13 @@ describe('Job Controller', function () {
                     for (var i = 0; i < resultObj.rows.length; i++) {
                         var job = resultObj.rows[i];
                         expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
+                        expect(job.Contractor).to.be.eq(contractorId);
                     }
                     done();
                 });
         });
+
+        it('Should logout contractor', testUtil.logOut(agent));
     });
 
     describe('getInboxes method', function() {
@@ -257,11 +273,12 @@ describe('Job Controller', function () {
                                 var resultObj = JSON.parse(res.text);
 
                                 expect(resultObj.rows.length).to.be.at.least(1);
-                                var obj = resultObj.rows[0];
-                                expect(obj).to.not.be.null;
-                                expect(obj.Customer).to.not.be.null;
-                                expect(obj.Customer.contactInfo.lastName).to.eq(customerName);
-
+                                for (var i = 0; i < resultObj.rows.length; i++) {
+                                    var job = resultObj.rows[i];
+                                    expect(job.Customer).to.not.be.null;
+                                    expect(job.Customer.contactInfo.lastName).to.eq(customerName);
+                                    expect(job.Contractor).to.be.eq(contractorId);
+                                }
                                 callback();
                             });
                     }
@@ -288,6 +305,7 @@ describe('Job Controller', function () {
                     for (var i = 0; i < resultObj.rows.length; i++) {
                         var job = resultObj.rows[i];
                         expect(job.Status).to.be.eq(lookUps.jobStatus.created);
+                        expect(job.Contractor).to.be.eq(contractorId);
                     }
                     done();
                 });

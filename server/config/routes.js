@@ -8,8 +8,8 @@ module.exports =  function(server, User, userController, jobController, contract
     server.post('/api/users', userController.createUser(User));
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
 
-    server.get('/api/contractor/jobs',  jobController.getJobs());
-    server.get('/api/contractor/jobs/:id',  jobController.getJob());
+    server.get('/api/contractor/jobs',  auth.requiresApiLogin, jobController.getJobs());
+    server.get('/api/contractor/jobs/:id',  auth.requiresApiLogin, jobController.getJob());
 
     server.get('/api/contractor/inbox', auth.requiresApiLogin, jobController.getInboxes());
     server.get('/api/contractor/dashboard', auth.requiresApiLogin, contractorController.getDashboard());
@@ -28,7 +28,6 @@ module.exports =  function(server, User, userController, jobController, contract
         res.end();
     });
 
-
     server.get('*', function(req, res) {
 
         res.render('index.jade', {
@@ -45,5 +44,4 @@ module.exports =  function(server, User, userController, jobController, contract
         );
 
     });
-
 };

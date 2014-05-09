@@ -47,22 +47,15 @@ schema.statics.Filter = function(query, criteria, processQuery) {
     else
         processQuery(query);
 }
-schema.statics.QueryJobs = function() {
+schema.statics.QueryJobs = function(contractorId) {
     return this
-            .find({})
-            .where('Status')
-            .in([lookUps.jobStatus.requestAccepted,
-                lookUps.jobStatus.workStarted,
-                lookUps.jobStatus.workCompleted ]);
+        .find({Contractor: contractorId})
+        .where('Status')
+        .in([lookUps.jobStatus.requestAccepted,
+            lookUps.jobStatus.workStarted,
+            lookUps.jobStatus.workCompleted ]);
 };
-//schema.statics.QueryInbox = function() {
-//    return this
-//        .find({})
-//        .where('Status')
-//        .in([lookUps.jobStatus.created,
-//            lookUps.jobStatus.requestRejected,
-//            lookUps.jobStatus.workRejected ]);
-//};
+
 
 schema.statics.QueryInbox = function(contractorId) {
     return this

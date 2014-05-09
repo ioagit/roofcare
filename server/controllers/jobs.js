@@ -9,9 +9,7 @@ var path = require('path'),
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
     async = require('async');
 
-
 exports.getJob = function() {
-
     return function (req, res) {
         Job.findById(req.params.id)
           .populate('Customer')
@@ -23,7 +21,6 @@ exports.getJob = function() {
                   res.status(404).send('Not Found');
             });
     }
-
 }
 
 exports.getJobs = function() {
@@ -31,13 +28,14 @@ exports.getJobs = function() {
 
         var startingIndex = req.param('offset') || 0;
         var pageSize = req.param('limit') || 10;
+        var user = req.user;
 
         var criteria = {
             customer: req.param('customer'),
             status: req.param('status')
         };
 
-        Job.Filter(Job.QueryJobs(), criteria, function(query)
+        Job.Filter(Job.QueryJobs(user.id), criteria, function(query)
         {
             query.count( function(err,count){
                 query.find()
