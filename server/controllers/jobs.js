@@ -6,6 +6,7 @@ var path = require('path'),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
+    Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
     async = require('async');
 
@@ -21,7 +22,74 @@ exports.getJob = function() {
                   res.status(404).send('Not Found');
             });
     }
-}
+};
+
+/*
+ OrderType should contain:
+ duration (in hours)
+ price (fixed, not dependant on duration)
+
+ return RequestWorkflow {
+     jobId,
+     full address object
+     invoiceNumber,
+     duration, Order Type
+     price (EUR), Order Type
+     distance (km),
+     travelCharge (EUR)
+ }
+ */
+exports.createRequest = function(){
+    return function(req,res) {
+        var jobData = req.body;
+
+        Address.Build(jobData.WorkSite, function(address) {
+            Address.create(address, function (err, finalAddress) {
+                if (err) {
+                    res.status(400);
+                    return res.send({err: err, reason: 'Address: ' + err.toString()});
+                }
+                jobData.WorkSite = finalAddress.id;
+
+                Contractor.FindClosest(finalAddress.Coordinates, function(err, found) {
+                    if (err) {
+                        res.status(400);
+                        return res.send({err: err, reason: 'No contractor found ' + err.toString()});
+                    }
+
+
+                    var contractorInfo = found[0];
+                    jobData.Contractor = contractorInfo.id;
+                    Job.create(jobData, function (err, job) {
+
+                        if (err) {
+                            res.status(400);
+                            return res.send({err: err, reason: err.toString()});
+                        }
+                        var workFlow = {
+                            jobId: job.id,
+                            WorkSite: finalAddress,
+                            invoiceNumber: '0001',
+                            duration: 2,
+                            price: 90,
+                            distance: contractorInfo.distance,
+                            travelCharge: contractorInfo.distance * 2.5
+                        };
+                        res.status(200);
+                        res.send(workFlow);
+                    })
+                });
+
+            })
+        });
+    }
+};
+
+exports.saveRequest = function() {
+  return function(req,res) {
+
+  }
+};
 
 exports.getJobs = function() {
     return function (req, res) {

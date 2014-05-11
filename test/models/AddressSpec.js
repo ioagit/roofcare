@@ -24,14 +24,52 @@ describe('Address Model', function () {
         })
     });
 
-    it('Should Find The Address For The Academy Of Arts In Mongo', function(done) {
-        var academy = testData.locations.FisherIsland;
-        expect(academy).to.not.be.null;
-        Address.findOne({ Coordinates: academy.Coordinates},
+    it('Should Find The Address For Fisher Island In Mongo', function(done) {
+        var fisherIsland = testData.locations.FisherIsland;
+        expect(fisherIsland).to.not.be.null;
+        Address.findOne({ Coordinates: fisherIsland.Coordinates},
             function (err, addr) {
                 expect(addr).not.to.be.null;
                 done();
                });
+    });
+
+    it('Should refresh Lat/Long only if address has changed', function(done){
+        var oceanDrive = testData.locations.OceanDrive;
+
+        var sourceAddress;
+        async.series(
+            [
+                function(callback) {
+                    Address.findOne({ Coordinates: oceanDrive.Coordinates}, function (err, found) {
+                        sourceAddress = found;
+                        sourceAddress.save();
+
+                        expect(sourceAddress.Street).not.to.eq('27 Star Island Dr');
+                        expect(sourceAddress.Latitude).to.eq(oceanDrive.Coordinates[1]);
+                        expect(sourceAddress.Longitude).to.eq(oceanDrive.Coordinates[0]);
+                        sourceAddress.Street = '27 Star Island Dr';
+                        callback();
+                    });
+                },
+                function(callback){
+                    Address.UpdateIfNeeded(sourceAddress, callback);
+                },
+                function(callback) {
+                    Address.findById(sourceAddress.id, function (err, found) {
+                        sourceAddress = found;
+                        expect(sourceAddress.Latitude).not.to.eq(oceanDrive.Latitude);
+                        expect(sourceAddress.Longitude).not.to.eq(oceanDrive.Longitude);
+                        callback();
+                    })
+                }
+            ],
+            function () {
+                sourceAddress.Street = oceanDrive.Street;
+                sourceAddress.Latitude = oceanDrive.Coordinates[1];
+                sourceAddress.Longitude = oceanDrive.Coordinates[0];
+                sourceAddress.save(done);
+            });
     });
 
     it('Latitude property should update Coordinates Field', function(){
@@ -47,6 +85,7 @@ describe('Address Model', function () {
         expect(address.Longitude).to.eq(25);
         expect(address.Coordinates[0]).to.eq(25);
     });
+
     it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function(done) {
 
         var coord = {Coordinates: [0.1, 0.1]};
@@ -71,7 +110,7 @@ describe('Address Model', function () {
             },
             function(callback) {
                 Address.findOne(coord, function(err,obj) {
-                    model2=obj;
+                    model2 = obj;
                     expect(model2).to.not.be.null;
                     expect(model2.ZipCode).to.eq('11111');
                     callback();

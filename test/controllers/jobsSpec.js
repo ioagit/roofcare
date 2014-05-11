@@ -41,6 +41,16 @@ describe('Job Controller', function () {
         expect(contractor).to.not.be.null;
     });
 
+    describe('saveRequest method', function() {
+
+        it('Should exist', function () {
+            var whatIsIt = typeof jobsController.saveRequest;
+            expect(whatIsIt).to.be.eq('function');
+        });
+
+
+    });
+
     describe('getJob method', function() {
 
         it('Should exist', function () {
