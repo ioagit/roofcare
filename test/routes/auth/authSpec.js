@@ -8,9 +8,6 @@ var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'te
 
 var agent = request.agent('http://localhost:' + 3000);
 
-
-
-
 describe ("Routes Login Logout", function() {
 
 
@@ -19,7 +16,6 @@ describe ("Routes Login Logout", function() {
         it('/login should return fail with an invalid username and password', testUtil.loginInvalidUser(agent, testData.users.invalid));
 
         it('/login should return fail with an invalid and crazy username and password', testUtil.loginInvalidUser(agent, testData.users.crazy));
-
 
         it('/login should return success with a valid username and password', testUtil.loginUser(agent, testData.users.admin));
 
@@ -33,7 +29,5 @@ describe ("Routes Login Logout", function() {
                 .expect(403, done);
         });
     });
-
-
 
 });

@@ -36,7 +36,7 @@ describe('By Date Filter', function() {
 
     });
 
-    it('should return the same job list when job is undefined or lenth is 0', function() {
+    it('should return the same job list when job is undefined or length is 0', function() {
 
         var resultList = byDateFilter([]);
         expect(resultList.length).to.equal(0);

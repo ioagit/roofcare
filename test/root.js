@@ -22,7 +22,6 @@ before(function (done) {
             function(callback) { testData.removeAllJobs(callback); },
             function(callback) { testData.removeAllLocations(callback); },
             function(callback) { testData.removeAllUsers(callback); },
-            function(callback) { testData.createTestJobs(callback); },
             function(callback) { testData.createTestLocations(callback); },
             function(callback) { testData.createDefaultUsers(callback); },
             function(callback) { seedData.seedOneContractor(200, callback); }
