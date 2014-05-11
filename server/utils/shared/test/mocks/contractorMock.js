@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
     , path = require('path')
     , faker = require('Faker')
-    ,encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption'))
-    ,lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
+    , encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption'))
+    , lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
     , Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model;
 
 
@@ -29,8 +29,6 @@ function build() {
             address: mongoose.Types.ObjectId()
         }
     );
-
-
 
 
 }
