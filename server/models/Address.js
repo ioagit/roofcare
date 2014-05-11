@@ -29,16 +29,65 @@ schema.methods = {
 
     getFormattedAddress: function() {
         var address = util.format('%s %s', this.Street, this.City);
-        if (this.Country != null && this.Country != "")
-            address += ' ' + this.Country;
+        if (this.State != null && this.State != "") address += ' ' + this.State;
+        if (this.Country != null && this.Country != "") address += ' ' + this.Country;
         address += ' ' + this.ZipCode;
         return address;
     }
 };
 schema.set('toJSON', { getters: true, virtuals: false });
 
-schema.statics.Build = function(sourceAddress, callback)
-{
+schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
+    var that = this;
+
+    that.findById(sourceAddress.id, function (err, entity) {
+        if (err) {
+            callback(err);
+        } else {
+
+            var isDirty = false;
+
+            if (entity.Street !== sourceAddress.Street)
+            {
+                entity.Street = sourceAddress.Street;
+                isDirty = true;
+            }
+            if (entity.City !== sourceAddress.City)
+            {
+                entity.City = sourceAddress.City;
+                isDirty = true;
+            }
+            if (entity.State !== sourceAddress.State)
+            {
+                entity.State = sourceAddress.State;
+                isDirty = true;
+            }
+            if (entity.ZipCode !== sourceAddress.ZipCode)
+            {
+                entity.ZipCode = sourceAddress.ZipCode;
+                isDirty = true;
+            }
+            if (entity.Country !== sourceAddress.Country)
+            {
+                entity.Country = sourceAddress.Country;
+                isDirty = true;
+            }
+
+            if (isDirty)
+            {
+                var location = entity.getFormattedAddress();
+                geocoder.geocode(location, function(err, data) {
+                    var geoData = data[0];
+                    entity.Coordinates = [geoData.longitude, geoData.latitude];
+                    entity.Street =  '11111';
+                    entity.save(callback);
+                });
+            }
+        }
+    })
+};
+
+schema.statics.Build = function(sourceAddress, callback) {
     var entity = new this();
     entity.Street = sourceAddress.street;
     entity.City = sourceAddress.city;

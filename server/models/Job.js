@@ -22,8 +22,11 @@ var schema =  BaseSchema.extend
     OrderType: {type: String, required:true},
     RoofType: {type: String, required:true},
     PropertyType: {type: String, required:true},
-    WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'}
+    WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'},
+    CustomerNotes: {type: String, required:false},
+    ContractorNotes: {type: String, required:false}
 });
+
 
 schema.statics.Filter = function(query, criteria, processQuery) {
     //http://mongoosejs.com/docs/2.7.x/docs/query.html
@@ -46,7 +49,7 @@ schema.statics.Filter = function(query, criteria, processQuery) {
     }
     else
         processQuery(query);
-}
+};
 schema.statics.QueryJobs = function(contractorId) {
     return this
         .find({Contractor: contractorId})
@@ -55,8 +58,6 @@ schema.statics.QueryJobs = function(contractorId) {
             lookUps.jobStatus.workStarted,
             lookUps.jobStatus.workCompleted ]);
 };
-
-
 schema.statics.QueryInbox = function(contractorId) {
     return this
         .find({Contractor: contractorId})

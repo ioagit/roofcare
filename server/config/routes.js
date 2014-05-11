@@ -8,6 +8,9 @@ module.exports =  function(server, User, userController, jobController, contract
     server.post('/api/users', userController.createUser(User));
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
 
+    server.post('/api/request', jobController.createRequest());
+    server.put('/api/request', jobController.saveRequest());
+
     server.get('/api/contractor/jobs',  auth.requiresApiLogin, jobController.getJobs());
     server.get('/api/contractor/jobs/:id',  auth.requiresApiLogin, jobController.getJob());
 
