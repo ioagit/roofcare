@@ -22,6 +22,17 @@ app_routes.config(['$routeProvider', '$locationProvider',
                 }
             }
 
+            /* ************************************
+            ********   Main Site Routes *************
+            ************************************** */
+
+            /*
+            router.when('main_order_start', '/order_start', {
+                controller: 'mainOrderStart',
+                templateUrl: config.prepareViewTemplateUrl('main/order_start')
+            });
+            */
+
             router.when('roofer_dashboard_path', '/roofer/dashboard', {
                 controller: 'rooferDashboardCtrl',
                 templateUrl: config.prepareViewTemplateUrl('roofer/dashboard')

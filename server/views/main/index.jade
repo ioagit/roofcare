@@ -1,0 +1,158 @@
+extends ../../includes/layout
+
+include ../../includes/main/header
+
+block content
+    // === Begin Slider ===
+    div.slider-inner
+        #da-slider.da-slider
+            .da-slide
+                h2
+                    i
+                        | Dachreparaturen
+                        div & Dachwartung
+                    br
+                p
+                    i
+                        | Ist Ihr Dacht undicht? Möchten Sie Ihre Bausubstanz schützen?
+                        br
+                    i(style='font-size: 13px;')
+                        strong Dann buchen Sie Ihre Dacharbeiten jetzt gleich 24 h täglich / 7 Tage die Woche.
+                        br
+                    i(style='font-size: 13px;')
+                        | Mit garantierter Auftragsabwicklung innerhalb von 3 Tagen sowie deutschlandweit gleichen, hohen Servicsstandards.
+                // <a href="#" class="da-link">Test</a>
+                a.da-button1.hover-effect(href='/order_start')
+                    | Dach reparieren
+                    i.icon-angle-right.icon-2x.pull-right
+                    span Buchen Sie hier Ihren Wunschtermin
+                a.da-button2.hover-effect(href='order_start')
+                    | Dachcheck / Dachwartung
+                    i.icon-angle-right.icon-2x.pull-right
+                    span Buchen Sie hier Ihren Wunschtermin
+                .da-img
+                    img(src='/static/images/main/plugins/parallax-slider/img/1.png', alt='')
+            .da-slide
+                h2
+                    i Höchste Service-Qualität
+                p
+                    i Schützen Sie Ihre Bausubstanz.
+                .da-img
+                    iframe(width='530', height='300', src='//www.youtube.com/embed/6O72GzCXyys', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')
+            .da-slide
+                h2
+                    i Fachgerechte Arbeiten
+                p
+                    i Wir sind die Dach-Profis.
+                .da-img
+                    img(src='/static/images/main/plugins/parallax-slider/img/1.png', alt='')
+            .da-arrows
+                span.da-arrows-prev
+                span.da-arrows-next
+        // /da-slider
+    // === End Slider ===
+
+    // === Being Purchase ===
+    div.how-roofcare
+        .container
+            .row
+                .headline
+                    h2 Wie funktioniert Roofcare?
+                .col-md-3.info-blocks
+                    img(src='/static/images/main/main/roofcare-buchung.png', alt='Roofcare Dachreparatur buchen')
+                    .info-blocks-in
+                        h3 Online Buchung
+                        p
+                            | Ihr Termin wird online von Ihnen vereinbart. Sie sehen sofort, welchen Service Sie erwarten können und welche Kosten
+                            | entstehen.
+                .col-md-3.info-blocks
+                    img(src='/static/images/main/main/roofcare-bestaetigung.png', alt='Roofcare Dachcheck buchen')
+                    .info-blocks-in
+                        h3 Bestätigung
+                        p Unser Team bestätigt Ihren Termin umgehend.
+                .col-md-3.info-blocks
+                    img(src='/static/images/main/main/roofcare-termin.png', alt='Roofcare Dachwartung buchen')
+                    .info-blocks-in
+                        h3 Terminänderung
+                        p
+                            | Hat sich Ihr Terminwunsch geändert? Kein Problem. Sie können uns jederzeit einen neuen Terminwunsch zuschicken. Unser Team meldet sich mit der Bestätigung.
+                .col-md-3.info-blocks
+                    img(src='/static/images/main/main/roofcare-abrechnung.png', alt='Dachreparaturen buchen')
+                    .info-blocks-in
+                        h3 Abrechnung
+                        p
+                            | Sie erhalten nach Abschluss der Arbeiten Ihre Rechnung per Email. Die Abrechnung ist transparent und Sie wissen jederzeit vorab, welche Kosten Sie erwarten können.
+    // /row
+    // End Purchase Block
+
+    // ==== Why RoofCare ====
+    div.why-roofcare
+        .container
+            .row
+                .headline
+                    h2 Warum soll Ich mich für Roofcare entscheiden?
+                .col-md-8
+                    h4 Wir bieten ein professionelles Netzwerk aus Spezialisten.
+                    p
+                        | Wir beraten Sie auf Basis eines langjährigen Wissens mit Anspruch an die beste Lösung für Jeden.
+                        | Erstmalig bieten wir in Deutschland:
+                    ul.list-unstyled.margin-bottom-20
+                        li
+                            i.icon-ok.color-green
+                            | Zuverlässige Reparaturen binnen 3 Tagen
+                        li
+                            i.icon-ok.color-green
+                            | Transparente klare Abrechnung für Reparaturen
+                        li
+                            i.icon-ok.color-green
+                            | Freundliche geschulte Handwerker
+                        li
+                            i.icon-ok.color-green
+                            | 24h/7Tage Auftragsaquise
+                    a.btn-buy.hover-effect(href='warum_roofcare')
+                        | Erfahren Sie mehr
+                        i.icon-angle-right.icon-large.pull-right
+                .col-md-4
+                    img.img-responsive.margin-bottom-20(src='/static/images/main/main/warum-roofcare.jpg', alt='Warum Roofcare Dachreparatur Dachcheck')
+    // === /End Why RoofCare
+
+    // ==== roofCare cost ====
+    div.why-roofcare
+        .container
+            .row
+                .headline
+                    h2 Warum soll Ich mich für Roofcare entscheiden?
+                .col-md-8
+                    h4 Wir bieten ein professionelles Netzwerk aus Spezialisten.
+                    p
+                        | Wir beraten Sie auf Basis eines langjährigen Wissens mit Anspruch an die beste Lösung für Jeden.
+                        | Erstmalig bieten wir in Deutschland:
+                    ul.list-unstyled.margin-bottom-20
+                        li
+                            i.icon-ok.color-green
+                            | Zuverlässige Reparaturen binnen 3 Tagen
+                        li
+                            i.icon-ok.color-green
+                            | Transparente klare Abrechnung für Reparaturen
+                        li
+                            i.icon-ok.color-green
+                            | Freundliche geschulte Handwerker
+                        li
+                            i.icon-ok.color-green
+                            | 24h/7Tage Auftragsaquise
+                    a.btn-buy.hover-effect(href='warum_roofcare')
+                        | Erfahren Sie mehr
+                        i.icon-angle-right.icon-large.pull-right
+                .col-md-4
+                    img.img-responsive.margin-bottom-20(src='/static/images/main/main/warum-roofcare.jpg', alt='Warum Roofcare Dachreparatur Dachcheck')
+
+        // ===  end roofCare cost ====
+
+
+include ../../includes/main/footer
+
+script.
+    jQuery(document).ready(function() {
+        App.init();
+        Index.initParallaxSlider();
+    });

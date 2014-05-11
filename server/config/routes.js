@@ -31,9 +31,25 @@ module.exports =  function(server, User, userController, jobController, contract
         res.end();
     });
 
-    server.get('*', function(req, res) {
+    server.get('/', function(req, res) {
 
-        res.render('index.jade', {
+        res.render('main/index.jade', {
+            locals: {
+            title : 'Index page'
+            ,description: 'Page Description'
+            ,author: 'IOA'
+            ,analyticssiteid: 'XXXXXXX'
+            }
+        })
+
+        }
+
+
+    );
+
+    server.get('/contractor/*', function(req, res) {
+
+        res.render('contractor.jade', {
 
                 locals : {
                     currentUser: req.user

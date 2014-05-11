@@ -58,6 +58,31 @@ module.exports = function (grunt) {
                     drop_console: true
                 }
             },
+            vendors_main: {
+                files: {
+                    './public/static/dist/vendors.main.min.js':
+                        [
+                            //jquery
+                            './public/vendor/jquery-migrate/jquery-migrate.min.js',
+
+                            './public/vendor/modernizr/modernizr.js',
+
+                            //Toastr
+                            './public/vendor/toastr/toastr.min.js',
+
+                            //For the main site
+                            './public/specs/beta/assets/plugins/hover-dropdown.min.js',
+                            './public/specs/beta/assets/plugins/back-to-top.js',
+                            './public/specs/beta/assets/plugins/respond.js',
+                            './public/specs/beta/assets/js/roofcare.js'
+
+
+
+
+
+                        ]
+                }
+            },
             vendors: {
                 files: {
                     './public/static/dist/vendors.min.js':
@@ -74,7 +99,14 @@ module.exports = function (grunt) {
                             './public/vendor/retina.js/src/retina.js',
 
                             //Toastr
-                            './public/vendor/toastr/toastr.min.js'
+                            './public/vendor/toastr/toastr.min.js',
+
+                            //For the main site
+                            './public/specs/beta/assets/plugins/hover-dropdown.min.js',
+                            './public/specs/beta/assets/plugins/back-to-top.js',
+                            './public/specs/beta/assets/plugins/respond.js',
+                            './public/specs/beta/assets/js/roofcare.js'
+
 
 
 
@@ -83,6 +115,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+
 
 
         shell: {
@@ -141,7 +174,31 @@ module.exports = function (grunt) {
             }
         },
 
+
+
+
         concat: {
+            styles_main: {
+                dest: './public/static/dist/app_main.css',
+                src: [
+
+                    //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
+                    './public/specs/beta/assets/css/style.css',
+                    './public/specs/beta/assets/css/header/header1.css',
+                    './public/specs/beta/assets/css/responsive.css',
+                    './public/specs/beta/assets/plugins/font-awesome/css/font-awesome.css',
+                    './public/specs/beta/assets/css/themes/red.css',
+                    './public/specs/beta/assets/css/themes/headers/header1-red.css',
+                    './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
+
+
+                    //Toastr
+                    './public/vendor/toastr/toastr.css'
+
+                    //'./public/static/css/**/*.css'
+
+                ]
+            },
             styles: {
                 dest: './public/static/dist/app.css',
                 src: [
@@ -200,6 +257,7 @@ module.exports = function (grunt) {
     //development
     grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'watch']);
 
+    grunt.registerTask('dev-main', [ 'concat:styles_main', 'browserify', 'uglify:vendors_main', 'watch']);
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
 
