@@ -187,15 +187,17 @@ module.exports = function (grunt) {
                     //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
                     './public/specs/beta/assets/css/style.css',
                     './public/specs/beta/assets/css/header/header1.css',
+
                     './public/specs/beta/assets/css/responsive.css',
                     './public/specs/beta/assets/plugins/font-awesome/css/font-awesome.css',
                     './public/specs/beta/assets/css/themes/red.css',
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
                     './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
-
-
                     //Toastr
                     './public/vendor/toastr/toastr.css'
+
+
+
 
                     //'./public/static/css/**/*.css'
 

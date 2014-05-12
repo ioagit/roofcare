@@ -35,7 +35,8 @@ module.exports =  function(server, User, userController, jobController, contract
 
         res.render('main/index.jade', {
             locals: {
-            title : 'Index page'
+                breadCrump: false,
+                title : 'Index page'
             ,description: 'Page Description'
             ,author: 'IOA'
             ,analyticssiteid: 'XXXXXXX'

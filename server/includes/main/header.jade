@@ -44,8 +44,7 @@ div.header
                     li
                         a(href='/warum_roofcare', data-delay='0', data-close-others='false', ng-class='{active: isLinkActive("Warum Roofcare")}', ng-click='navigate("warum_roofcare","Warum Roofcare")') Warum Roofcare
 
-div.breadcrumbs.margin-bottom-40
-    div.container
-        h1.pull-left TEST
-// /breadcrumbs
-// === End Breadcrumbs ===
+if (breadCrump)
+    div.breadcrumbs.margin-bottom-40
+        div.container
+            h1.pull-left TEST
