@@ -3,38 +3,39 @@ block css
     link(rel='stylesheet', href='/static/dist/app.css', media="all", id="")
 
 block header
-header
-    nav.navbar.navbar-default
-        a.navbar-brand(href='home.html')
-            | Roofcare Mobil
-        a.toggle-nav.btn.pull-left(href='#')
-            i.icon-reorder
-        div(ng-include="'/partials/account/header-login'")
-    div#wrapper
-        #main-nav-bg
-        nav#main-nav
-            .navigation
-                ul.nav.nav-stacked
-                    li.active
-                        a(href='/roofer/dashboard')
-                            i.icon-dashboard
-                            span Home
-                    li
-                        a(href='/roofer/inbox')
-                            i.icon-edit
-                            span Inbox
-                    li
-                        a(href='/roofer/jobs')
-                            i.icon-calendar
-                            span Jobs
-                    li
-                        a(href='/roofer/kunden')
-                            i.icon-envelope
-                            span Kunden
-                    li
-                        a(href='/roofer/rechnung')
-                            i.icon-money
-                            span Rechnung
+    include ../includes/currentUser
+    header
+        nav.navbar.navbar-default
+            a.navbar-brand(href='home.html')
+                | Roofcare Mobil
+            a.toggle-nav.btn.pull-left(href='#')
+                i.icon-reorder
+            div(ng-include="'/partials/account/header-login'")
+        div#wrapper
+            #main-nav-bg
+            nav#main-nav
+                .navigation
+                    ul.nav.nav-stacked
+                        li.active
+                            a(href='/roofer/dashboard')
+                                i.icon-dashboard
+                                span Home
+                        li
+                            a(href='/roofer/inbox')
+                                i.icon-edit
+                                span Inbox
+                        li
+                            a(href='/roofer/jobs')
+                                i.icon-calendar
+                                span Jobs
+                        li
+                            a(href='/roofer/kunden')
+                                i.icon-envelope
+                                span Kunden
+                        li
+                            a(href='/roofer/rechnung')
+                                i.icon-money
+                                span Rechnung
 
 block content
     section#content

@@ -47,7 +47,7 @@ module.exports =  function(server, User, userController, jobController, contract
 
     );
 
-    server.get('/contractor/*', function(req, res) {
+    server.get('/roofer/*', function(req, res) {
 
         res.render('contractor.jade', {
 

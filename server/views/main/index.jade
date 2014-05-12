@@ -1,12 +1,15 @@
 extends ../../includes/layout
 
-include ../../includes/main/header
+block css
+    link(rel='stylesheet', href='/static/dist/app_main.css', media="all", id="")
+
+block header
+    include ../../includes/main/header
 
 block content
-    // === Begin Slider ===
     div.slider-inner
-        #da-slider.da-slider
-            .da-slide
+        div#da-slider.da-slider
+            div.da-slide
                 h2
                     i
                         | Dachreparaturen
@@ -32,21 +35,21 @@ block content
                     span Buchen Sie hier Ihren Wunschtermin
                 .da-img
                     img(src='/static/images/main/plugins/parallax-slider/img/1.png', alt='')
-            .da-slide
+            div.da-slide
                 h2
                     i Höchste Service-Qualität
                 p
                     i Schützen Sie Ihre Bausubstanz.
                 .da-img
                     iframe(width='530', height='300', src='//www.youtube.com/embed/6O72GzCXyys', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')
-            .da-slide
+            div.da-slide
                 h2
                     i Fachgerechte Arbeiten
                 p
                     i Wir sind die Dach-Profis.
                 .da-img
                     img(src='/static/images/main/plugins/parallax-slider/img/1.png', alt='')
-            .da-arrows
+            div.da-arrows
                 span.da-arrows-prev
                 span.da-arrows-next
         // /da-slider
@@ -87,7 +90,7 @@ block content
 
     // ==== Why RoofCare ====
     div.why-roofcare
-        .container
+        div.container
             .row
                 .headline
                     h2 Warum soll Ich mich für Roofcare entscheiden?
@@ -117,42 +120,40 @@ block content
     // === /End Why RoofCare
 
     // ==== roofCare cost ====
-    div.why-roofcare
-        .container
+    div.roofcare-costs
+        div.container
             .row
                 .headline
-                    h2 Warum soll Ich mich für Roofcare entscheiden?
+                    h2 Wie hoch sind die Kosten, die mich erwarten?
                 .col-md-8
-                    h4 Wir bieten ein professionelles Netzwerk aus Spezialisten.
+                    h4 Wir errechnen für Sie die günstigste Lösung.
                     p
-                        | Wir beraten Sie auf Basis eines langjährigen Wissens mit Anspruch an die beste Lösung für Jeden.
-                        | Erstmalig bieten wir in Deutschland:
+                        | Für eine Pauschale von 200 Euro garantieren wir eine Leistung bis zu 2 Stunden Arbeit. Sollte die Leistung umfangreicher ausfallen müssen wir individuell berechnen.
                     ul.list-unstyled.margin-bottom-20
                         li
                             i.icon-ok.color-green
-                            | Zuverlässige Reparaturen binnen 3 Tagen
+                            | Wir errechnen für Sie die günstigste Lösung
                         li
                             i.icon-ok.color-green
-                            | Transparente klare Abrechnung für Reparaturen
+                            | Dachreparaturen und Dachchecks zum Pauschal-Festpreis
                         li
                             i.icon-ok.color-green
-                            | Freundliche geschulte Handwerker
-                        li
-                            i.icon-ok.color-green
-                            | 24h/7Tage Auftragsaquise
-                    a.btn-buy.hover-effect(href='warum_roofcare')
+                            | Dachwartungen auf Ihren Kostenrahmen maßgeschneidert
+                    a.btn-buy.hover-effect(href='kosten.html')
                         | Erfahren Sie mehr
                         i.icon-angle-right.icon-large.pull-right
                 .col-md-4
-                    img.img-responsive.margin-bottom-20(src='/static/images/main/main/warum-roofcare.jpg', alt='Warum Roofcare Dachreparatur Dachcheck')
-
-        // ===  end roofCare cost ====
+                    img.img-responsive.margin-bottom-20(src='/static/images/main/main/roofcare-kosten.jpg', alt='Roofcare Kosten')
 
 
-include ../../includes/main/footer
+block footer
+    include ../../includes/main/footer
 
-script.
-    jQuery(document).ready(function() {
-        App.init();
-        Index.initParallaxSlider();
-    });
+block scripts
+    script(defer, src='/static/dist/vendors.main.min.js')
+
+    script.
+        jQuery(document).ready(function() {
+            App.init();
+            Index.initParallaxSlider();
+        });

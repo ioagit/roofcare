@@ -1,22 +1,18 @@
-block css
-    link(rel='stylesheet', href='/static/dist/app_main.css', media="all", id="")
-
-
 div.header
-    .navbar.navbar-default(role='navigation')
-        .container
-            .row
-                .menu1
+    div.navbar.navbar-default(role='navigation')
+        div.container
+            div.row
+                div.menu1
                     ul.pull-right
             // Brand and toggle get grouped for better mobile display
-            .navbar-header
+            div.navbar-header
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
                     span.sr-only Toggle navigation
                     span.icon-bar
                     span.icon-bar
                     span.icon-bar
                 a.navbar-brand(href='index.html')
-                    img#logo-header(src='assets/img/logo1-default.png', alt='Logo')
+                    img#logo-header(src='/static/images/main/logo1-default.png', alt='Logo')
             // Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse.navbar-responsive-collapse
                 ul.nav.navbar-nav.navbar-right.menu-top
@@ -31,7 +27,7 @@ div.header
                         a(href='/kontakt', data-delay='0', data-close-others='false', title='Kontakt' )  Kontakt
                     li.devider
                     li
-                        a(href='/uber_uns', data-delay='0', data-close-others='false' title='Über uns') Über uns
+                        a(href='/uber_uns', data-delay='0', data-close-others='false', title='Über uns') Über uns
                 ul.nav.navbar-nav.navbar-right
                     li
                         a(href='/bestehender_termin', data-delay='0', data-close-others='false', ng-class='{active: isLinkActive("Bestehender Termin")}', ng-click='navigate("bestehender_termin","Bestehender Termin")') Bestehender Termin
@@ -47,10 +43,9 @@ div.header
                     li.devider
                     li
                         a(href='/warum_roofcare', data-delay='0', data-close-others='false', ng-class='{active: isLinkActive("Warum Roofcare")}', ng-click='navigate("warum_roofcare","Warum Roofcare")') Warum Roofcare
-            // /navbar-collapse
-            // === Breadcrumbs ===
+
 div.breadcrumbs.margin-bottom-40
     div.container
-        h1.pull-left 'TEST'
+        h1.pull-left TEST
 // /breadcrumbs
 // === End Breadcrumbs ===

@@ -74,7 +74,9 @@ module.exports = function (grunt) {
                             './public/specs/beta/assets/plugins/hover-dropdown.min.js',
                             './public/specs/beta/assets/plugins/back-to-top.js',
                             './public/specs/beta/assets/plugins/respond.js',
-                            './public/specs/beta/assets/js/roofcare.js'
+                            './public/specs/beta/assets/plugins/parallax-slider/js/jquery.cslider.js',
+                            './public/specs/beta/assets/js/roofcare.js',
+                            './public/specs/beta/assets/js/pages/index.js'
 
 
 
