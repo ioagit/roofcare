@@ -2,11 +2,15 @@
  * Created by isuarez on 4/17/14.
  */
 
-var expect = require('chai').expect;
-var path = require('path');
-var contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor'));
-var mock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock'));
-var addressMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock'));
+var expect = require('chai').expect,
+    path = require('path'),
+    async = require('async'),
+    contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')),
+    address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
+    mock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock')),
+    addressMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
+    Contractor = contractor.Model,
+    Address = address.Model;
 
 describe('Contractor Model', function() {
 
@@ -30,4 +34,19 @@ describe('Contractor Model', function() {
             contractor.remove(done);
         });
     });
+
+    it.skip ('should find the closest contractor to specified address', function(done){
+        var contractor;
+        var oldCoordinates;
+        Contractor.find({username: 'contractor1'}, function(err, found){
+            contractor = found;
+            Address.findById(contractor.address, function(err, address)
+            {
+                oldCoordinates = address.Coordinates;
+                address.Coordinates = [ -80.130808, 25.781653];
+                address.save();
+            });
+        });
+        done();
+    })
 });

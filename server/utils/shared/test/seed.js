@@ -124,20 +124,19 @@ function createJobs(n, callback) {
 
 function seedOneContractor(n, done) {
 
-    if (!n)
-        n=10;
+    if (!n) n = 10;
 
     //Getting all the lists
-    customerAddressList = buildList(addressMock.build, n);
-    contractorAddressLIst = buildList(addressMock.build, n);
-    customerList  = buildList(customerMock.build, n);
+    var customerAddressList = buildList(addressMock.build, n);
+    var contractorAddressList = buildList(addressMock.build, n);
+
+    var customerList  = buildList(customerMock.build, n);
     contractorList.push( build(contractorMock.build, {username: 'contractor1'}));
-    jobList  = buildList(jobMock.build, n);
+    var jobList  = buildList(jobMock.build, n);
 
-    //Assining contractor addresses
+    //Assigning contractor addresses
     for (var i = 0; i < contractorList.length; i += 1)
-        contractorList[i].address = contractorAddressLIst[i];
-
+        contractorList[i].address = contractorAddressList[i];
 
     //Jobs
     for (var i = 0; i < n; i += 1) {
@@ -146,10 +145,9 @@ function seedOneContractor(n, done) {
         jobList[i].WorkSite = customerAddressList[i];
     }
 
-
     async.series([
             function(callback) { Address.create(customerAddressList, callback); },
-            function(callback) { Address.create(contractorAddressLIst, callback); },
+            function(callback) { Address.create(contractorAddressList, callback); },
             function(callback) { Customer.create(customerList, callback) },
             function(callback) { Contractor.create(contractorList, callback)},
             function(callback) { Job.create(jobList, callback); }
