@@ -31,22 +31,41 @@ module.exports =  function(server, User, userController, jobController, contract
         res.end();
     });
 
+
+    server.get('/order_start/*', function(req, res) {
+
+            res.render('main/order_start.jade', {
+                locals: {
+                    breadCrump: false,
+                    title : 'Termin vereinbaren'
+                    ,description: 'Termin vereinbaren'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+
     server.get('/', function(req, res) {
 
         res.render('main/index.jade', {
             locals: {
                 breadCrump: false,
-                title : 'Index page'
-            ,description: 'Page Description'
-            ,author: 'IOA'
+                title : 'RoofCare'
+            ,description: 'RoofCare'
+            ,author: 'RoofCare'
             ,analyticssiteid: 'XXXXXXX'
             }
         })
 
         }
-
-
     );
+
+
+
+
 
     server.get('/roofer/*', function(req, res) {
 

@@ -10,7 +10,9 @@ module.exports = angular.module('App.Controllers', [])
     .controller('headerLoginCtrl', require('./account/headerLoginCtrl'))
     .controller('signupCtrl', require('./account/signupCtrl'))
 
-    //Admin
+    //main
+    .controller('mainOrderStart',require('./main/mainOrderStartCtrl'))
+
 
     //roofer
     .controller('rooferDashboardCtrl',require('./roofer/rooferDashboardCtrl'))
