@@ -12,7 +12,7 @@ var mongoose  = require('mongoose')
     ,Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model
     ,Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model
     ,Address =  require(path.join(process.cwd(), 'server', 'models', 'Address')).Model
-    ,Customer =  require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model
+    ,Customer =  require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
 
 
 
@@ -23,12 +23,7 @@ var mongoose  = require('mongoose')
    jobMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'jobMock'));
 
 
-var customerAddressList
-    , contractorAddressLIst
-    , customerList
-    , contractorList = new Array()
-    , jobList
-
+var contractorList = [];
 
 //Some helper functions
 function build(builder, options) {
@@ -52,7 +47,7 @@ function create(builder, options, callback) {
 
 function buildList(builder, n) {
 
-    var list = new Array();
+    var list = [];
 
     for (var i = 0; i < n; i+= 1)
         list.push(build(builder));
@@ -60,67 +55,6 @@ function buildList(builder, n) {
     return list;
 
 }
-
-function createList(model, builder, n, callback) {
-    return model.create(buildList(builder, n), function(err, list) {
-        callback(err, list);
-    })
-}
-
-
-function createAddresses(n, targetList, callback) {
-
-    createList(Address, addressMock.build, n, function (err, list) {
-        targetList = list;
-        callback();
-    });
-
-
-}
-
-function createCustomers(n, callback) {
-
-    createList(Customer, customerMock.build, n, function (err, list) {
-        customerList = list;
-        callback();
-    });
-
-}
-
-function createContractors(n, callback) {
-
-    contractorList = buildList(contractorMock.build,  n);
-
-    for (var i = 0; i < n; i += 1)
-         contractorList[n].address = contractorAddressLIst[n];
-
-        //Persist contractors
-    Contractor.create(contractorList, function (err, result) {
-            return callback(err, result);
-        });
-
-
-    };
-
-
-
-function createJobs(n, callback) {
-
-     jobList = buildList(jobMock.build,  n);
-
-       for (var i = 0; i < n; i += 1) {
-            jobList[n].Contractor = contractorList[n];
-            jobList[n].Customer = customerList[n];
-            jobList[n].WorkSite = customerAddressList[n];
-        }
-
-        //persisting the job
-        Job.create(jobList, function (err, result) {
-            return callback(err, result);
-        });
-
-
-};
 
 function seedOneContractor(n, done) {
 
@@ -139,7 +73,7 @@ function seedOneContractor(n, done) {
         contractorList[i].address = contractorAddressList[i];
 
     //Jobs
-    for (var i = 0; i < n; i += 1) {
+    for ( i = 0; i < n; i += 1) {
         jobList[i].Contractor = contractorList[0];
         jobList[i].Customer = customerList[i];
         jobList[i].WorkSite = customerAddressList[i];
@@ -155,10 +89,8 @@ function seedOneContractor(n, done) {
         function (err, results) {
             done(err, results)
         });
-
 }
 
 module.exports = {
-
     seedOneContractor: seedOneContractor
-}
+};

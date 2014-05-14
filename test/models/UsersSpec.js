@@ -13,7 +13,6 @@ describe('User Model', function () {
 
     var User = users.Model;
 
-
     describe('For Admin users', function () {
 
         var userObj;

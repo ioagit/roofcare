@@ -14,6 +14,14 @@ describe('Address Model', function () {
 
     var Address = addresses.Model;
 
+    before( function(done){
+       testData.createTestLocations(done);
+    });
+
+    after( function(done){
+        testData.removeAllLocations(done);
+    });
+
     it('Should return a full Address from user entered location information', function(done){
         Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)
         {
@@ -43,13 +51,17 @@ describe('Address Model', function () {
                 function(callback) {
                     Address.findOne({ Coordinates: oceanDrive.Coordinates}, function (err, found) {
                         sourceAddress = found;
-                        sourceAddress.save();
+                        sourceAddress.save(function(){
 
-                        expect(sourceAddress.Street).not.to.eq('27 Star Island Dr');
-                        expect(sourceAddress.Latitude).to.eq(oceanDrive.Coordinates[1]);
-                        expect(sourceAddress.Longitude).to.eq(oceanDrive.Coordinates[0]);
-                        sourceAddress.Street = '27 Star Island Dr';
-                        callback();
+                            expect(sourceAddress.Latitude).to.eq(oceanDrive.Coordinates[1]);
+                            expect(sourceAddress.Longitude).to.eq(oceanDrive.Coordinates[0]);
+                            sourceAddress.Street = '27 E Star Island Dr';
+                            sourceAddress.City = 'Miami Beach';
+                            sourceAddress.State = 'FL';
+                            sourceAddress.ZipCode = '33139';
+                            callback();
+                        });
+
                     });
                 },
                 function(callback){
@@ -58,8 +70,8 @@ describe('Address Model', function () {
                 function(callback) {
                     Address.findById(sourceAddress.id, function (err, found) {
                         sourceAddress = found;
-                        expect(sourceAddress.Latitude).not.to.eq(oceanDrive.Latitude);
-                        expect(sourceAddress.Longitude).not.to.eq(oceanDrive.Longitude);
+                        expect(sourceAddress.Latitude).not.to.eq(oceanDrive.Coordinates[1]);
+                        expect(sourceAddress.Longitude).not.to.eq(oceanDrive.Coordinates[0]);
                         callback();
                     })
                 }

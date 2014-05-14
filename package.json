@@ -15,7 +15,7 @@
     "connect": "1.8.5",
     "express": "2.5.2",
     "jade": "0.20.0",
-    "mongoose": "3.8.8",
+    "mongoose": "3.8.9",
     "socket.io": "0.8.7",
     "stylus": "~0.42.2",
     "config": "~0.4.35",

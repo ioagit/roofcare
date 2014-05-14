@@ -5,6 +5,7 @@
 var expect = require('chai').expect,
     path = require('path'),
     async = require('async'),
+    testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
     contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')),
     address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     mock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock')),
@@ -29,24 +30,65 @@ describe('Contractor Model', function() {
 
     it('should save contractor with valid data', function(done) {
         contractor = mock.build();
-        contractor.save(function(err, r) {
+        contractor.save(function(err) {
             expect(err).to.be.null;
             contractor.remove(done);
         });
     });
 
-    it.skip ('should find the closest contractor to specified address', function(done){
+    it('should find the closest contractor to specified address', function(done){
         var contractor;
         var oldCoordinates;
-        Contractor.find({username: 'contractor1'}, function(err, found){
-            contractor = found;
-            Address.findById(contractor.address, function(err, address)
-            {
-                oldCoordinates = address.Coordinates;
-                address.Coordinates = [ -80.130808, 25.781653];
-                address.save();
+        var contractorAddress;
+        var foundAddress;
+
+        async.series(
+            [
+                function(callback) {
+                    testData.removeAllLocations(callback);
+                },
+                function(callback) {
+                    Contractor.find({username: 'contractor1'}, function(err, found){
+                        contractor = found[0];
+                        callback();
+                    });
+                },
+                function(callback){
+                    Address.findById(contractor.address, function(err, address)
+                    {
+                        contractorAddress = address;
+                        oldCoordinates = contractorAddress.Coordinates;
+                        contractorAddress.Coordinates = testData.locations.OceanDrive.Coordinates;
+                        contractorAddress.save(callback);
+                    });
+                },
+                function(callback){
+                    var findCoord = testData.locations.FisherIsland.Coordinates;
+                    Contractor.FindClosest(findCoord, function(err, result) {
+                        expect(err).to.be.null;
+                        expect(result.length).to.be.eq(1);
+                        foundAddress = result[0];
+                        expect(foundAddress.distance).to.be.gt(2);
+                        expect(foundAddress.distance).to.be.lt(3);
+
+                        console.log(foundAddress._id + '');
+                        //console.log(contractor.address);
+                        //console.log(found);
+                        callback();
+                    });
+                },
+                function(callback) {
+                    Address.findById( foundAddress._id, function(err,result){
+                        expect(err).to.be.null;
+                        expect(result).not.to.be.null;
+                        console.log(result);
+                        callback();
+                    })
+                }
+            ],
+            function() {
+                contractorAddress.Coordinates = oldCoordinates;
+                contractorAddress.save(done);
             });
-        });
-        done();
     })
 });

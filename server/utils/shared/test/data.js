@@ -76,7 +76,6 @@ var testLocations = {
         ZipCode: '33109'
     }
 
-
 };
 var testUsers =  {
 
@@ -193,31 +192,33 @@ var testJobs = {
 
 function createTestLocations(callback) {
 
-    Address.find({}).exec(
-        function(err,collection) {
-
-        if (err) return callback(err);
-        if (collection.length === 0) {
-            Address.create(testLocations.Heerdter,
-                testLocations.AcademyOfArts,
-                testLocations.Sonoma,
-                testLocations.OceanDrive,
-                testLocations.DolphinMall,
-                testLocations.TheEnclave,
-                testLocations.FisherIsland,
-                function (err, result) { return callback(err, result); });
-        }
-        else {
-            callback(null, "Default physical address collection already exists.");
-        }
-    })
+    Address.create(testLocations.Heerdter,
+        testLocations.AcademyOfArts,
+        testLocations.Sonoma,
+        testLocations.OceanDrive,
+        testLocations.DolphinMall,
+        testLocations.TheEnclave,
+        testLocations.FisherIsland,
+        callback);
+}
+function removeAllLocations(callback) {
+    Address
+        .find({})
+        .where('Street')
+        .in([
+            testLocations.Heerdter.Street,
+            testLocations.AcademyOfArts.Street,
+            testLocations.Sonoma.Street,
+            testLocations.OceanDrive.Street,
+            testLocations.DolphinMall.Street,
+            testLocations.TheEnclave.Street,
+            testLocations.FisherIsland.Street
+        ])
+        .remove(callback);
 }
 
 function removeAllJobs(callback) {
     Job.remove({}, function(err, result) { return callback(err, result); });
-}
-function removeAllLocations(callback) {
-    Address.remove({}, function(err, result) { return callback(err, result); });
 }
 function removeAllUsers(callback) {
     User.remove({}, function(err, result) { return callback(err, result); });

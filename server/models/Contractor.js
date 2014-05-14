@@ -8,24 +8,26 @@ var mongoose = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
     UserSchema = require(path.join(process.cwd(), 'server', 'models', 'Users')).Schema,
-    Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
+    addresses = require(path.join(process.cwd(), 'server', 'models', 'Address'));
+
+var Address = addresses.Model;
 
 var schema =  UserSchema.extend({
-    address: { type : mongoose.Schema.ObjectId, ref : 'Property' },
+    address: { type : mongoose.Schema.ObjectId, ref : 'Address' },
     distanceCharge: {type: Number, required: false}
 });
 
-schema.statics.FindClosest = function(coordinates, callback)
+schema.statics.FindClosest = function(locCoordinates, callback)
 {
     Address.aggregate([
         {
             $geoNear: {
-                near: coordinates,
+                near: locCoordinates,
                 distanceField: "distance",
                 maxDistance: 50,
-                spherical: false,
-                distanceMultiplier: 112,
-                includeLocs: "address.Coordinates",
+                spherical: true, distanceMultiplier: 6371,
+                //spherical: false, distanceMultiplier: 112,
+                //includeLocs: "address.Coordinates",
                 num: 1
             }
         }
@@ -37,4 +39,4 @@ var model = mongoose.model('Contractor', schema);
 module.exports = {
     Model: model,
     Schema : schema
-}
+};

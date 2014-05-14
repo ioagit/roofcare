@@ -8,14 +8,16 @@ var mongoose  = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     util = require('util');
 
-var schema = new mongoose.Schema({
+var rawSchema = {
     Coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
     Street : {type: String, required:true},
     City: {type: String, required:true},
     State: {type: String, required:false},
     ZipCode: {type: String, required:false},
     Country: {type: String, required:true, default: 'Germany'}
-});
+};
+
+var schema = new mongoose.Schema(rawSchema);
 
 var latitudeProp = schema.virtual('Latitude');
 latitudeProp.get(function() { return this.Coordinates[1]; });
@@ -77,12 +79,17 @@ schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
             {
                 var location = entity.getFormattedAddress();
                 geocoder.geocode(location, function(err, data) {
-                    var geoData = data[0];
-                    entity.Coordinates = [geoData.longitude, geoData.latitude];
-                    entity.Street =  '11111';
-                    entity.save(callback);
+                    if (err)
+                        callback(err);
+                    else {
+                        var geoData = data[0];
+                        entity.Coordinates = [geoData.longitude, geoData.latitude];
+                        entity.save(callback);
+                    }
                 });
             }
+            else
+                callback();
         }
     })
 };
