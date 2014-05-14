@@ -22,6 +22,8 @@
     "bootstrap-datetimepicker": "~0.0.11",
     "modernizr": "~2.7.2",
     "signature-pad": "~2.5.0",
-    "SliderNav": "https://github.com/DevGrow/SliderNav.git"
+    "SliderNav": "https://github.com/DevGrow/SliderNav.git",
+    "momentjs": "~2.6.0",
+    "spinjs": "~2.0.1"
   }
 }
