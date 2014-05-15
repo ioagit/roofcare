@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         browserify: {
            all: {
                src: './public/app/app.js',
-               dest: './public/static/dist/bundle.js',
+               dest: './public/static/dist/ngScripts.js',
                options: {
                    transform: ['browserify-shim','partialify', 'debowerify',  'deglobalify'],
                    alias: ['./public/app/config/config.js:app_config'],
@@ -58,60 +58,49 @@ module.exports = function (grunt) {
                     drop_console: true
                 }
             },
-            vendors_main: {
+            vendors_common: {
+                files: {
+                    './public/static/dist/vendors.common.min.js':
+                    [
+                        //jquery
+                        './public/vendor/jquery-migrate/jquery-migrate.min.js',
+
+                        './public/vendor/modernizr/modernizr.js',
+
+                        //Toastr
+                        './public/vendor/toastr/toastr.min.js',
+
+                        './public/specs/beta/assets/plugins/hover-dropdown.min.js',
+                        './public/specs/beta/assets/plugins/back-to-top.js',
+                        './public/specs/beta/assets/plugins/respond.js',
+
+                        //Moment Js
+                        './public/vendor/momentjs/min/moment-with-langs.js',
+                        //Spin JS
+                        './public/vendor/spinjs/spin.js'
+                    ]
+                }
+            },
+            vendors_mobile: {
                 files: {
                     './public/static/dist/vendors.main.min.js':
                         [
-                            //jquery
-                            './public/vendor/jquery-migrate/jquery-migrate.min.js',
-
-                            './public/vendor/modernizr/modernizr.js',
-
-                            //Toastr
-                            './public/vendor/toastr/toastr.min.js',
-
                             //For the main site
-                            './public/specs/beta/assets/plugins/hover-dropdown.min.js',
-                            './public/specs/beta/assets/plugins/back-to-top.js',
-                            './public/specs/beta/assets/plugins/respond.js',
                             './public/specs/beta/assets/plugins/parallax-slider/js/jquery.cslider.js',
                             './public/specs/beta/assets/js/roofcare.js',
                             './public/specs/beta/assets/js/pages/index.js'
-
-
-
-
-
                         ]
                 }
             },
-            vendors: {
+            vendors_contractor: {
                 files: {
-                    './public/static/dist/vendors.min.js':
+                    './public/static/dist/vendors.contractor.min.js':
                         [
-                            //jquery
-                            './public/vendor/jquery-migrate/jquery-migrate.min.js',
 
                             './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 
-                            //modernizer
-                            './public/vendor/modernizr/modernizr.js',
-
                             //retina
                             './public/vendor/retina.js/src/retina.js',
-
-                            //Toastr
-                            './public/vendor/toastr/toastr.min.js',
-
-                            //For the main site
-                            './public/specs/beta/assets/plugins/hover-dropdown.min.js',
-                            './public/specs/beta/assets/plugins/back-to-top.js',
-                            './public/specs/beta/assets/plugins/respond.js',
-                            './public/specs/beta/assets/js/roofcare.js'
-
-
-
-
 
                     ]
                 }
@@ -181,10 +170,10 @@ module.exports = function (grunt) {
 
         concat: {
             styles_main: {
-                dest: './public/static/dist/app_main.css',
+                dest: './public/static/dist/app.main.css',
                 src: [
 
-                    //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
+
                     './public/specs/beta/assets/css/style.css',
                     './public/specs/beta/assets/css/header/header1.css',
 
@@ -204,7 +193,7 @@ module.exports = function (grunt) {
                 ]
             },
             styles: {
-                dest: './public/static/dist/app.css',
+                dest: './public/static/dist/app.contractor.css',
                 src: [
 
                     //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
@@ -215,30 +204,6 @@ module.exports = function (grunt) {
 
                     //'./public/static/css/**/*.css'
 
-                ]
-            },
-            scripts: {
-                options: {
-                    separator: ';'
-                },
-                dest: './public/static/dist/vendors.js',
-                src: [
-                    //jquery
-                    './public/vendor/jquery-migrate/jquery-migrate.min.js',
-
-
-                    //modernizer
-                    './public/vendor/modernizr/modernizr.js',
-
-                    //retina
-                    './public/vendor/retina.js/src/retina.js',
-
-                    //Toastr
-                    './public/vendor/toastr/toastr.min.js',
-
-
-
-                    './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
                 ]
             }
         },
@@ -261,7 +226,7 @@ module.exports = function (grunt) {
     //development
     grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'watch']);
 
-    grunt.registerTask('dev-main', [ 'concat:styles_main', 'browserify', 'uglify:vendors_main', 'watch']);
+
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
 

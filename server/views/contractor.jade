@@ -1,6 +1,4 @@
 extends ../includes/layout
-block css
-    link(rel='stylesheet', href='/static/dist/app.css', media="all", id="")
 
 block header
     include ../includes/currentUser
@@ -51,4 +49,4 @@ block content
         // / jquery [required]
 
 block scripts
-    script(defer, src='/static/dist/vendors.main.min.js')
+    script(defer, src='/static/dist/ngScripts.js')

@@ -13,10 +13,26 @@ var
     filters = require('../../public/app/filters');
 
 
+
+
+
 //Main Angular module. Cool
 angular.module('app',
-                  ['ngResource', 'ngRoute',
-                  controllers.name, services.name, app_routes.name, resources.name, directives.name, filters.name]);
+                  [
+                      //Angular modules
+                      'ngResource',
+                      'ngRoute',
+
+                      //Custom modules
+                      'app.controllers',
+                      'app.services',
+                      'app.routes',
+                      'app.resources',
+                      'app.directives',
+                      'app.filters',
+                      'app.common'
+
+                  ]);
 
 
 angular.module('app').run(function($rootScope, $location)

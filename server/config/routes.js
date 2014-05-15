@@ -36,6 +36,7 @@ module.exports =  function(server, User, userController, jobController, contract
 
             res.render('main/order_start.jade', {
                 locals: {
+                    moduleName: 'main',
                     breadCrump: false,
                     title : 'Termin vereinbaren'
                     ,description: 'Termin vereinbaren'
@@ -52,11 +53,12 @@ module.exports =  function(server, User, userController, jobController, contract
 
         res.render('main/index.jade', {
             locals: {
-                breadCrump: false,
-                title : 'RoofCare'
-            ,description: 'RoofCare'
-            ,author: 'RoofCare'
-            ,analyticssiteid: 'XXXXXXX'
+                moduleName: 'main'
+                ,breadCrump: false
+                ,title : 'RoofCare'
+                ,description: 'RoofCare'
+                ,author: 'RoofCare'
+                ,analyticssiteid: 'XXXXXXX'
             }
         })
 
@@ -73,6 +75,7 @@ module.exports =  function(server, User, userController, jobController, contract
 
                 locals : {
                     currentUser: req.user
+                    ,moduleName: 'contractor'
                     ,title : 'Index page'
                     ,description: 'Page Description'
                     ,author: 'IOA'

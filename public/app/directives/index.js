@@ -8,6 +8,6 @@
 
 module.exports = angular.module('App.Directives', [])
 
-    .directive('jobStatus',  require('./jobStatus'))
-.directive('dashboardJob',  require('./dashboardJob'));
+    .directive('jobStatus',  require('./../contractor/directives/jobStatus'))
+.directive('dashboardJob',  require('./../contractor/directives/dashboardJob'));
 

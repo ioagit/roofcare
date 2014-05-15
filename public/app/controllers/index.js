@@ -5,7 +5,6 @@
 module.exports = angular.module('App.Controllers', [])
 
     //Account
-    //.controller('profileCtrl',  require(npath.join(process.cwd(), 'public', 'app', 'controllers', 'account','profileCtrl')))
     .controller('profileCtrl',  require('./account/profileCtrl'))
     .controller('headerLoginCtrl', require('./account/headerLoginCtrl'))
     .controller('signupCtrl', require('./account/signupCtrl'))
@@ -15,10 +14,10 @@ module.exports = angular.module('App.Controllers', [])
 
 
     //roofer
-    .controller('rooferDashboardCtrl',require('./roofer/rooferDashboardCtrl'))
-    .controller('rooferInboxCtrl',require('./roofer/rooferInboxCtrl'))
-    .controller('rooferJobCtrl',require('./roofer/rooferJobCtrl'))
-    .controller('rooferJobStartCtrl',require('./roofer/rooferJobStartCtrl'))
-    .controller('rooferKunderCtrl',require('./roofer/rooferKunderCtrl'))
-    .controller('rooferRechnungCtrl',require('./roofer/rooferRechnungCtrl'));
+    .controller('rooferDashboardCtrl',require('./../contractor/controllers/rooferDashboardCtrl'))
+    .controller('rooferInboxCtrl',require('./../contractor/controllers/rooferInboxCtrl'))
+    .controller('rooferJobCtrl',require('./../contractor/controllers/rooferJobCtrl'))
+    .controller('rooferJobStartCtrl',require('./../contractor/controllers/rooferJobStartCtrl'))
+    .controller('rooferKunderCtrl',require('./../contractor/controllers/rooferKunderCtrl'))
+    .controller('rooferRechnungCtrl',require('./../contractor/controllers/rooferRechnungCtrl'));
 
