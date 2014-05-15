@@ -11,15 +11,16 @@ var mongoose = require('mongoose'),
     addresses = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
 var Address = addresses.Model;
+var addressDefinition = addresses.Definition;
 
 var schema =  UserSchema.extend({
-    address: { type : mongoose.Schema.ObjectId, ref : 'Address' },
+    address: addressDefinition,
     distanceCharge: {type: Number, required: false}
 });
 
 schema.statics.FindClosest = function(locCoordinates, callback)
 {
-    Address.aggregate([
+    this.aggregate([
         {
             $geoNear: {
                 near: locCoordinates,
@@ -27,7 +28,7 @@ schema.statics.FindClosest = function(locCoordinates, callback)
                 maxDistance: 50,
                 spherical: true, distanceMultiplier: 6371,
                 //spherical: false, distanceMultiplier: 112,
-                //includeLocs: "address.Coordinates",
+                includeLocs: "address.Coordinates",
                 num: 1
             }
         }

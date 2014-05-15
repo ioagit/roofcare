@@ -123,3 +123,4 @@ schema.statics.Build = function(sourceAddress, callback) {
 var model =  mongoose.model('Address', schema);
 module.exports.Model = model;
 module.exports.Schema = schema;
+module.exports.Definition = rawSchema;
