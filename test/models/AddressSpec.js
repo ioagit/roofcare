@@ -26,7 +26,7 @@ describe('Address Model', function () {
         Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)
         {
             expect(result).to.not.be.null;
-            expect(result.Street).to.eq('1 River Place');
+            expect(result.street).to.eq('1 River Place');
             console.log(result);
             done();
         })
@@ -35,7 +35,7 @@ describe('Address Model', function () {
     it('Should Find The Address For Fisher Island In Mongo', function(done) {
         var fisherIsland = testData.locations.FisherIsland;
         expect(fisherIsland).to.not.be.null;
-        Address.findOne({ Coordinates: fisherIsland.Coordinates},
+        Address.findOne({ coordinates: fisherIsland.coordinates},
             function (err, addr) {
                 expect(addr).not.to.be.null;
                 done();
@@ -49,16 +49,16 @@ describe('Address Model', function () {
         async.series(
             [
                 function(callback) {
-                    Address.findOne({ Coordinates: oceanDrive.Coordinates}, function (err, found) {
+                    Address.findOne({ coordinates: oceanDrive.coordinates}, function (err, found) {
                         sourceAddress = found;
                         sourceAddress.save(function(){
 
-                            expect(sourceAddress.Latitude).to.eq(oceanDrive.Coordinates[1]);
-                            expect(sourceAddress.Longitude).to.eq(oceanDrive.Coordinates[0]);
-                            sourceAddress.Street = '27 E Star Island Dr';
-                            sourceAddress.City = 'Miami Beach';
-                            sourceAddress.State = 'FL';
-                            sourceAddress.ZipCode = '33139';
+                            expect(sourceAddress.latitude).to.eq(oceanDrive.coordinates[1]);
+                            expect(sourceAddress.longitude).to.eq(oceanDrive.coordinates[0]);
+                            sourceAddress.street = '27 E Star Island Dr';
+                            sourceAddress.city = 'Miami Beach';
+                            sourceAddress.state = 'FL';
+                            sourceAddress.zipCode = '33139';
                             callback();
                         });
 
@@ -70,37 +70,37 @@ describe('Address Model', function () {
                 function(callback) {
                     Address.findById(sourceAddress.id, function (err, found) {
                         sourceAddress = found;
-                        expect(sourceAddress.Latitude).not.to.eq(oceanDrive.Coordinates[1]);
-                        expect(sourceAddress.Longitude).not.to.eq(oceanDrive.Coordinates[0]);
+                        expect(sourceAddress.latitude).not.to.eq(oceanDrive.coordinates[1]);
+                        expect(sourceAddress.longitude).not.to.eq(oceanDrive.coordinates[0]);
                         callback();
                     })
                 }
             ],
             function () {
-                sourceAddress.Street = oceanDrive.Street;
-                sourceAddress.Latitude = oceanDrive.Coordinates[1];
-                sourceAddress.Longitude = oceanDrive.Coordinates[0];
+                sourceAddress.street = oceanDrive.street;
+                sourceAddress.latitude = oceanDrive.coordinates[1];
+                sourceAddress.longitude = oceanDrive.coordinates[0];
                 sourceAddress.save(done);
             });
     });
 
-    it('Latitude property should update Coordinates Field', function(){
+    it('latitude property should update coordinates Field', function(){
         var address = new Address();
-        address.Latitude = 25;
-        expect(address.Latitude).to.eq(25);
-        expect(address.Coordinates[1]).to.eq(25);
+        address.latitude = 25;
+        expect(address.latitude).to.eq(25);
+        expect(address.coordinates[1]).to.eq(25);
     });
 
-    it('Longitude property should update Coordinates Field', function(){
+    it('longitude property should update coordinates Field', function(){
         var address = new Address();
-        address.Longitude = 25;
-        expect(address.Longitude).to.eq(25);
-        expect(address.Coordinates[0]).to.eq(25);
+        address.longitude = 25;
+        expect(address.longitude).to.eq(25);
+        expect(address.coordinates[0]).to.eq(25);
     });
 
     it('Should Be Allowed To Add A New PhyscialAddress In Mongo', function(done) {
 
-        var coord = {Coordinates: [0.1, 0.1]};
+        var coord = {coordinates: [0.1, 0.1]};
         var model, model2, temp;
 
         async.series([
@@ -108,7 +108,7 @@ describe('Address Model', function () {
                 Address.remove(coord, callback);
             },
             function(callback) {
-                temp = { Street:'1616 MockingBird Ln', City:'Miami',ZipCode: '11111', Country:'USA', Coordinates:[0.1,0.1] };
+                temp = { street:'1616 MockingBird Ln', city:'Miami',zipCode: '11111', country:'USA', coordinates:[0.1,0.1] };
                 Address.create(temp, callback);
             },
             function(callback) {
@@ -116,7 +116,7 @@ describe('Address Model', function () {
                     model = obj;
                     console.log(obj);
                     expect(model).to.not.be.null;
-                    model.ZipCode='22222';
+                    model.zipCode = '22222';
                     callback();
                 });
             },
@@ -124,7 +124,7 @@ describe('Address Model', function () {
                 Address.findOne(coord, function(err,obj) {
                     model2 = obj;
                     expect(model2).to.not.be.null;
-                    expect(model2.ZipCode).to.eq('11111');
+                    expect(model2.zipCode).to.eq('11111');
                     callback();
                 });
             }
@@ -136,7 +136,7 @@ describe('Address Model', function () {
 
     it('Get Formatted Address Should Return A String With Correct Data', function() {
         var academy = testData.locations.AcademyOfArts;
-        Address.findOne({Coordinates: academy.Coordinates}, function (err, addr) {
+        Address.findOne({coordinates: academy.coordinates}, function (err, addr) {
             expect(addr).not.to.be.null;
             var f = addr.getFormattedAddress();
             expect(f).to.eq('Pariser Platz 4 Berlin Germany 10117');
@@ -154,7 +154,8 @@ describe('Address Model', function () {
                     maxDistance: 3,
                     spherical: false,
                     distanceMultiplier: 112,
-                    includeLocs: "Coordinates",
+                    includeLocs: "coordinates",
+                    uniqueDocs:true,
                     num: 1
                 }
             }
@@ -170,13 +171,13 @@ describe('Address Model', function () {
     it('Find The closest location to Univision', function() {
         var univision = [ -80.350437, 25.813146];
 
-        Address.find( { Coordinates: { $near : univision , $maxDistance : 50} },
+        Address.find( { coordinates: { $near : univision , $maxDistance : 50} },
             function (err, addr) {
                 expect(addr).not.to.be.null;
                 assert(addr.length > 0, "At least one address was found");
                 console.log(addr[0]);
-                expect(addr[0].Coordinates[0]).to.eq(testData.locations.TheEnclave.Coordinates[0]);
-                expect(addr[0].Coordinates[1]).to.eq(testData.locations.TheEnclave.Coordinates[1]);
+                expect(addr[0].coordinates[0]).to.eq(testData.locations.TheEnclave.coordinates[0]);
+                expect(addr[0].coordinates[1]).to.eq(testData.locations.TheEnclave.coordinates[1]);
             });
     })
 });

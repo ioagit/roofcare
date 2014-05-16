@@ -51,7 +51,7 @@ exports.createRequest = function(){
                 }
                 jobData.WorkSite = finalAddress.id;
 
-                Contractor.FindClosest(finalAddress.Coordinates, function(err, found) {
+                Contractor.FindClosest(finalAddress.coordinates, function(err, found) {
                     if (err) {
                         res.status(400);
                         return res.send({err: err, reason: 'No contractor found ' + err.toString()});

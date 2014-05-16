@@ -7,18 +7,17 @@ var mongoose  = require('mongoose')
     , faker = require('Faker')
     , Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
 
-
 function build() {
 
     return new Address(
         {
-            Latitude: faker.Address.latitude(),
-            Longitude: faker.Address.longitude(),
-            Street: faker.Address.streetAddress(),
-            City: faker.Address.city(),
-            State: faker.Address.usState(),
-            Country: 'USA',
-            ZipCode: faker.Address.zipCode()
+            latitude: faker.Address.latitude(),
+            longitude: faker.Address.longitude(),
+            street: faker.Address.streetAddress(),
+            city: faker.Address.city(),
+            state: faker.Address.usState(),
+            country: 'USA',
+            zipCode: faker.Address.zipCode()
         });
 }
 

@@ -52,12 +52,12 @@ describe('Contractor Model', function() {
                     });
                 },
                 function(callback){
-                    oldCoordinates = contractor.address.Coordinates;
-                    contractor.address.Coordinates = testData.locations.OceanDrive.Coordinates;
+                    oldCoordinates = contractor.address.coordinates;
+                    contractor.address.coordinates = testData.locations.OceanDrive.coordinates;
                     contractor.save(callback);
                 },
                 function(callback){
-                    var findCoord = testData.locations.FisherIsland.Coordinates;
+                    var findCoord = testData.locations.FisherIsland.coordinates;
                     Contractor.FindClosest(findCoord, function(err, result) {
                         expect(err).to.be.null;
                         expect(result.length).to.be.eq(1);
@@ -73,7 +73,7 @@ describe('Contractor Model', function() {
                 }
             ],
             function() {
-                contractor.address.Coordinates = oldCoordinates;
+                contractor.address.coordinates = oldCoordinates;
                 contractor.address.save(done);
             });
     })

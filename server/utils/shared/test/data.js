@@ -24,56 +24,56 @@ var Customer = customers.Model;
 
 var testLocations = {
     Heerdter: {
-        Coordinates: [ 6.7273549, 51.2395808],
-        Street: 'Heerdter Lohweg 83',
-        City: 'Düsseldorf',
-        ZipCode: '40549'
+        coordinates: [ 6.7273549, 51.2395808],
+        street: 'Heerdter Lohweg 83',
+        city: 'Düsseldorf',
+        zipCode: '40549'
     },
     AcademyOfArts: {
-        Coordinates: [13.3795345,52.5163081],
-        Street: 'Pariser Platz 4',
-        City: 'Berlin',
-        ZipCode: '10117'
+        coordinates: [13.3795345,52.5163081],
+        street: 'Pariser Platz 4',
+        city: 'Berlin',
+        zipCode: '10117'
     },
     Sonoma: {
-        Coordinates: [ -80.378167, 25.826017],
-        Street: '11209 NW 57th Ln',
-        City: 'Doral',
-        State: 'FL',
-        Country: 'USA',
-        ZipCode: '33178'
+        coordinates: [ -80.378167, 25.826017],
+        street: '11209 NW 57th Ln',
+        city: 'Doral',
+        state: 'FL',
+        country: 'USA',
+        zipCode: '33178'
     },
     OceanDrive: {
-        Coordinates: [ -80.130808, 25.781653],
-        Street: '1020 Ocean Drive',
-        City: 'Miami Beach',
-        State: 'FL',
-        Country: 'USA',
-        ZipCode: '33139'
+        coordinates: [ -80.130808, 25.781653],
+        street: '1020 Ocean Drive',
+        city: 'Miami Beach',
+        state: 'FL',
+        country: 'USA',
+        zipCode: '33139'
     },
     DolphinMall: {
-        Coordinates: [ -80.380602, 25.787894],
-        Street: '11401 NW 12th St',
-        City: 'Miami',
-        State: 'FL',
-        Country: 'USA',
-        ZipCode: '33172'
+        coordinates: [ -80.380602, 25.787894],
+        street: '11401 NW 12th St',
+        city: 'Miami',
+        state: 'FL',
+        country: 'USA',
+        zipCode: '33172'
     },
     TheEnclave: {
-        Coordinates: [ -80.370002, 25.813993],
-        Street: '4320 NW 107th Ave  Apt 103',
-        City: 'Doral',
-        State: 'FL',
-        Country: 'USA',
-        ZipCode: '33178'
+        coordinates: [ -80.370002, 25.813993],
+        street: '4320 NW 107th Ave  Apt 103',
+        city: 'Doral',
+        state: 'FL',
+        country: 'USA',
+        zipCode: '33178'
     },
     FisherIsland: {
-        Coordinates: [ -80.14074, 25.761615],
-        Street: '18 Fisher Island Dr',
-        City: 'Miami Beach',
-        State: 'FL',
-        Country: 'USA',
-        ZipCode: '33109'
+        coordinates: [ -80.14074, 25.761615],
+        street: '18 Fisher Island Dr',
+        city: 'Miami Beach',
+        state: 'FL',
+        country: 'USA',
+        zipCode: '33109'
     }
 
 };
@@ -204,15 +204,15 @@ function createTestLocations(callback) {
 function removeAllLocations(callback) {
     Address
         .find({})
-        .where('Street')
+        .where('street')
         .in([
-            testLocations.Heerdter.Street,
-            testLocations.AcademyOfArts.Street,
-            testLocations.Sonoma.Street,
-            testLocations.OceanDrive.Street,
-            testLocations.DolphinMall.Street,
-            testLocations.TheEnclave.Street,
-            testLocations.FisherIsland.Street
+            testLocations.Heerdter.street,
+            testLocations.AcademyOfArts.street,
+            testLocations.Sonoma.street,
+            testLocations.OceanDrive.street,
+            testLocations.DolphinMall.street,
+            testLocations.TheEnclave.street,
+            testLocations.FisherIsland.street
         ])
         .remove(callback);
 }

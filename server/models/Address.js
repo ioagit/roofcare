@@ -9,31 +9,31 @@ var mongoose  = require('mongoose'),
     util = require('util');
 
 var rawSchema = {
-    Coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
-    Street : {type: String, required:true},
-    City: {type: String, required:true},
-    State: {type: String, required:false},
-    ZipCode: {type: String, required:false},
-    Country: {type: String, required:true, default: 'Germany'}
+    coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
+    street : {type: String, required:true},
+    city: {type: String, required:true},
+    state: {type: String, required:false},
+    zipCode: {type: String, required:false},
+    country: {type: String, required:true, default: 'Germany'}
 };
 
 var schema = new mongoose.Schema(rawSchema);
 
-var latitudeProp = schema.virtual('Latitude');
-latitudeProp.get(function() { return this.Coordinates[1]; });
-latitudeProp.set(function(val) { this.Coordinates[1] = val; });
+schema.virtual('latitude')
+    .get(function() { return this.coordinates[1]; })
+    .set(function(val) { this.coordinates[1] = val; });
 
-var longitudeProp = schema.virtual('Longitude');
-longitudeProp.get(function(){ return this.Coordinates[0];});
-longitudeProp.set(function(val) { this.Coordinates[0] = val; });
+schema.virtual('longitude')
+    .get(function(){ return this.coordinates[0];})
+    .set(function(val) { this.coordinates[0] = val; });
 
 schema.methods = {
 
     getFormattedAddress: function() {
-        var address = util.format('%s %s', this.Street, this.City);
-        if (this.State != null && this.State != "") address += ' ' + this.State;
-        if (this.Country != null && this.Country != "") address += ' ' + this.Country;
-        address += ' ' + this.ZipCode;
+        var address = util.format('%s %s', this.street, this.city);
+        if (this.state != null && this.state != "") address += ' ' + this.state;
+        if (this.country != null && this.country != "") address += ' ' + this.country;
+        address += ' ' + this.zipCode;
         return address;
     }
 };
@@ -49,29 +49,29 @@ schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
 
             var isDirty = false;
 
-            if (entity.Street !== sourceAddress.Street)
+            if (entity.street !== sourceAddress.street)
             {
-                entity.Street = sourceAddress.Street;
+                entity.street = sourceAddress.street;
                 isDirty = true;
             }
-            if (entity.City !== sourceAddress.City)
+            if (entity.city !== sourceAddress.city)
             {
-                entity.City = sourceAddress.City;
+                entity.city = sourceAddress.city;
                 isDirty = true;
             }
-            if (entity.State !== sourceAddress.State)
+            if (entity.state !== sourceAddress.state)
             {
-                entity.State = sourceAddress.State;
+                entity.state = sourceAddress.state;
                 isDirty = true;
             }
-            if (entity.ZipCode !== sourceAddress.ZipCode)
+            if (entity.zipCode !== sourceAddress.zipCode)
             {
-                entity.ZipCode = sourceAddress.ZipCode;
+                entity.zipCode = sourceAddress.zipCode;
                 isDirty = true;
             }
-            if (entity.Country !== sourceAddress.Country)
+            if (entity.country !== sourceAddress.country)
             {
-                entity.Country = sourceAddress.Country;
+                entity.country = sourceAddress.country;
                 isDirty = true;
             }
 
@@ -83,7 +83,7 @@ schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
                         callback(err);
                     else {
                         var geoData = data[0];
-                        entity.Coordinates = [geoData.longitude, geoData.latitude];
+                        entity.coordinates = [geoData.longitude, geoData.latitude];
                         entity.save(callback);
                     }
                 });
@@ -96,31 +96,34 @@ schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
 
 schema.statics.Build = function(sourceAddress, callback) {
     var entity = new this();
-    entity.Street = sourceAddress.street;
-    entity.City = sourceAddress.city;
-    entity.State = sourceAddress.state;
-    entity.ZipCode = sourceAddress.zipCode || '';
-    entity.Country = sourceAddress.country || 'Germany';
+    entity.street = sourceAddress.street;
+    entity.city = sourceAddress.city;
+    entity.state = sourceAddress.state;
+    entity.zipCode = sourceAddress.zipCode || '';
+    entity.country = sourceAddress.country || 'Germany';
 
     var location = entity.getFormattedAddress();
     geocoder.geocode(location, function(err, data) {
         var geoData = data[0];
         if (geoData.countryCode == 'DE')
-            entity.Street = geoData.streetName + ' ' + geoData.streetNumber;
+            entity.street = geoData.streetName + ' ' + geoData.streetNumber;
         else
-            entity.Street = geoData.streetNumber + ' ' + geoData.streetName;
+            entity.street = geoData.streetNumber + ' ' + geoData.streetName;
 
-        entity.City = geoData.city;
-        entity.Country = geoData.country;
-        entity.State = geoData.state;
-        entity.ZipCode = geoData.zipcode;
-        entity.Latitude = geoData.latitude;
-        entity.Longitude = geoData.longitude;
+        entity.city = geoData.city;
+        entity.country = geoData.country;
+        entity.state = geoData.state;
+        entity.zipCode = geoData.zipcode;
+        entity.latitude = geoData.latitude;
+        entity.longitude = geoData.longitude;
         callback(entity);
     });
 };
 
 var model =  mongoose.model('Address', schema);
-module.exports.Model = model;
-module.exports.Schema = schema;
-module.exports.Definition = rawSchema;
+
+module.exports = {
+    Model:  model,
+    Schema: schema,
+    Definition: rawSchema
+};
