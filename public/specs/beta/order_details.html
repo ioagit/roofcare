@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<title>Roofcare | Termin buchen</title>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- CSS Global Compulsory-->
+<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/headers/header1.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="shortcut icon" href="favicon.ico">
+<!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="assets/plugins/datetimepicker/bootstrap-datetimepicker.min.css">
+<!-- CSS Theme -->
+<link rel="stylesheet" href="assets/css/themes/red.css" id="style_color">
+<link rel="stylesheet" href="assets/css/themes/headers/header1-red.css" id="style_color-header-1">
+</head>
+
+<body>
+
+<!--=== Header ===-->
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container"> 
+    <div class="row">
+	  <div class="menu1">	    
+        <ul class="pull-right">
+
+        </ul>
+        </div>
+      </div>    
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="index.html"> <img id="logo-header" src="assets/img/logo1-default.png" alt="Logo"> </a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-right menu-top">                                    <li> <a href="#"><i class="icon-google-plus-sign icon-large"></i></a> </li>
+            <li> <a href="#"><i class="icon-facebook-sign icon-large"></i></a> </li><li class="devider"></li>
+            <li> <a href="kontakt.html" data-delay="0" data-close-others="false"> Kontakt </a> </li><li class="devider"></li>
+            <li> <a href="uber_uns.html" data-delay="0" data-close-others="false"> &Uuml;ber uns </a> </li>
+           
+           
+
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li> <a href="bestehender_termin.html" data-delay="0" data-close-others="false"> Bestehender Termin </a> </li>
+            <li class="devider"></li> <li> <a href="order_start.html" data-delay="0" data-close-others="false" class="active">Termin vereinbaren</a> </li>
+           
+            <li class="devider"></li>
+            <li> <a href="dacharbeiten.html" data-delay="0" data-close-others="false">Dacharbeiten</a> </li>
+            <li class="devider"></li>
+            <li> <a href="kosten.html" data-delay="0" data-close-others="false"> Kosten </a> </li>
+            <li class="devider"></li>
+            <li> <a href="warum_roofcare.html" data-delay="0" data-close-others="false">Warum Roofcare</a> </li></ul>
+      </div>
+      <!-- /navbar-collapse --> 
+      
+    </div>
+  </div>
+</div>
+<!--/header--> 
+<!--=== End Header ===--> 
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+  <div class="container">
+    <h1 class="pull-left">Termin vereinbaren</h1>
+  </div>
+</div>
+<!--/breadcrumbs--> 
+<!--=== End Breadcrumbs ===--> 
+
+<!--=== Content Part ===-->
+<div class="container"> 
+  <!-- Form -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="fuelux">
+        <div class="wizard">
+          <ul class="steps">
+            <li class="complete" data-target="#step1"> <a href="order_start.html"> <span class="step">Reparatur oder Check</span>
+                              <i class="icon-angle-right icon-large"></i> </a> </li>
+            <li class="complete" data-target="#step2" > <a href="order_repair.html"> <span class="step">Details</span>
+                              <i class="icon-angle-right icon-large"></i> </a> </li>
+            <li class="complete" data-target="#step3" >  <a href="order_cost.html"><span class="step">Kosten</span>
+                              <i class="icon-angle-right icon-large"></i> </a> </li>
+            <li class="active" data-target="#step4"> <a href="order_details.html"><span class="step">Termin</span>
+                              <i class="icon-angle-down icon-large"></i> </a></li>
+            <li data-target="#step5"> <a href="order_confirmation.html"><span class="step">Buchung</span>
+                              <i class="icon-angle-right icon-large"></i></a> </li>
+          </ul>
+        </div>
+      </div>
+      <form class="reg-page">
+        <div class="reg-header">
+          <h2>Termin</h2>
+          <p>Bitte w&auml;hlen Sie Ihren Termin aus.</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="panel ">
+              <div class="panel-heading">
+                <h3 class="panel-title"> W&auml;hlen Sie Ihren Wunschtermin</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input type="text" value="2012-05-15 21:05" id="datetimepicker" class="margin-bottom-10">
+                    <p> Under Roofcare Spezialist wird Sie 30 - 60 Minuten bevor er am vereinbarten Ort ankommt anrufen. Die Arbeiten werden ca 90 - 120 Min. dauern. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="panel ">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> Ansprechpartner vor Ort</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row margin-bottom-10">
+                    <div class="col-sm-4">
+                      <label>Anrede</label>
+                      <select class="form-control">
+                        <option>Anrede</option>
+                        <option>Herr</option>
+                        <option>Frau</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Vorname</label>
+                      <input type="text" class="form-control" name="contact-first" placeholder="Vorname">
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Nachname</label>
+                      <input type="text" class="form-control" name="contact-last" placeholder="Nachname">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <label>Funktion</label>
+                      <select class="form-control">
+                        <option>Funktion</option>
+                        <option>Besitzer/in</option>
+                        <option>Mieter/in</option>
+                        <option>Hausmeister/in</option>
+                        <option>Nachbar/in</option>
+                        <option>Mitbewohner/in</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Telefonnummer</label>
+                      <input type="text" class="form-control" name="contact-phone" placeholder="Telefonnummer">
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Handy</label>
+                      <input type="text" class="form-control" name="contact-cell" placeholder="Handy">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="panel">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> Rechnungsadresse</h3>
+                </div>
+                <div class="panel-body">
+                <div class="row margin-bottom-10">
+                    <div class="col-sm-4">
+                      <label>Firmenname</label>
+                      <input type="text" class="form-control" name="billing-company" placeholder="Firma">
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Branche/Zusatz</label>
+                      <input type="text" class="form-control" name="billing-extra" placeholder="Branche/Zusatz">
+                    </div>
+                      <div class="col-sm-4">
+                      <label>Abteilung</label>
+                      <input type="text" class="form-control" name="billing-department" placeholder="Abteilung">
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  <div class="row margin-bottom-10">
+                    <div class="col-sm-4">
+                      <label>Anrede</label>
+                      <select class="form-control" name="billing-title">
+                        <option>Anrede</option>
+                        <option>Herr</option>
+                        <option>Frau</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Vorname</label>
+                      <input type="text" class="form-control" name="billing-first" placeholder="Vorname">
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Nachname</label>
+                      <input type="text" class="form-control" name="billing-last" placeholder="Nachname">
+                    </div>
+                  </div>
+                  <div class="row margin-bottom-10">
+                    <div class="col-sm-5">
+                      <label>Strasse und Hausnummer</label>
+                      <input type="text" class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
+                    </div>
+                    <div class="col-sm-2">
+                      <label>PLZ</label>
+                      <input type="text" class="form-control" name="billing-zip" placeholder="PLZ">
+                    </div>
+                    <div class="col-sm-5">
+                      <label>Stadt</label>
+                      <input type="text" class="form-control" name="billing-city" placeholder="Stadt">
+                    </div>
+                  </div>
+                  <div class="row margin-bottom-10">
+                    <div class="col-sm-6">
+                      <label>Telefon</label>
+                      <input type="text" class="form-control" name="billing-phone" placeholder="Telefon">
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Email</label>
+                      <input type="text" class="form-control" name="billing-email" placeholder="Email">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+                <div class="row">
+          <div class="col-sm-12">
+            <button class="btn-u" type="submit" onclick="javascript:window.location.href='order_review.html'; return false;" >Termin Best&auml;tigen<i class="icon-angle-right icon-large pull-right"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--/row--> 
+  <!--//End Form -->
+  
+  
+</div>
+<!--/container--> 
+<!--=== End Content Part ===--> 
+
+<!--=== Footer ===-->
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"> 
+      <h4> 2014 &copy; Roofcare</h4>
+      <a href="index.html"> <img id="logo-footer" src="assets/img/logo2-default.png" alt="Roofcare Dachreparaturen Dachchecks" /> </a>
+        <address class="md-margin-bottom-40">
+        Jahnstr. 35<br />
+        Ottobrunn <br />
+        Deutschland <br />
+        <br />
+        Tel: <a href="tel:08007663227">0800-roofcare</a> (0800-766-322-7) <br />
+        Fax: 089-6542-74059-45 <br />
+        Email: <a href="mailto:info@roofcare.de" >info@roofcare.de</a>
+        </address>
+        
+        <ul class="social-icons">
+          <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+          <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+          <li><a href="#" data-original-title="Google Plus" class="social_googleplus"></a></li>
+        </ul>
+      </div>
+      <!--/col-md-4-->
+      
+      <div class="col-md-5 top-buffer">        <div class="col-md-6 md-margin-bottom-40">          
+        <ul class="list-unstyled footer-menu">
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="kunden_werben_kunden.html">Kunden werben Kunden</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 md-margin-bottom-40">
+          <ul class="list-unstyled footer-menu">             <li><a href="agbs.html">AGBs</a></li><li><a href="datenschutz.html">Datenschutzbestimmungen</a></li>
+            <li><a href="nutzung.html">Nutzungsbedingungen</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--/col-md-4-->
+      
+      <div class="col-md-3 md-margin-bottom-40">
+        <h4>Kontraktor werden</h4>
+        <img src="assets/img/main/kontraktor.jpg" alt="Roofcare Kontraktor">
+        <p><strong>Bewerben Sie sich jetzt als Roofcare Partner.</strong></p>
+        <a href="kontraktor_werden.html" class="btn-buy hover-effect">Anfrage schreiben<i class="icon-angle-right icon-large pull-right"></i></a>
+      </div>
+      <!--/col-md-4--> 
+      
+    </div>
+    <!--/row--> 
+  </div>
+  <!--/container--> 
+</div>
+<!--/footer--> 
+<!--=== End Footer ===--> 
+
+
+
+<!-- JS Global Compulsory --> 
+<script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script> 
+<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script> 
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/plugins/hover-dropdown.min.js"></script> 
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script> 
+<!-- JS Implementing Plugins --> 
+<!-- JS Page Level --> 
+<script type="text/javascript" src="assets/js/roofcare.js"></script> 
+<script type="text/javascript" src="assets/plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script> 
+<script type="text/javascript" src="assets/plugins/datetimepicker/bootstrap-datetimepicker.de.js"></script> 
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+		
+		$('#datetimepicker').datetimepicker({
+			language:  'de',
+		    format: 'yyyy-mm-dd hh:ii'
+});
+		
+    });
+</script> 
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+<![endif]-->
+
+</body>
+</html>

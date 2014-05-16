@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Roofcare Mobil | Home</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='text/html;charset=utf-8' http-equiv='content-type'>
+    <meta content='Roofcare Mobil' name='description'>
+    <link href='assets/images/meta_icons/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <!-- / START - page related stylesheets [optional] -->
+    
+    <!-- / END - page related stylesheets [optional] -->
+    <!-- / bootstrap [required] -->
+    <link href="assets/stylesheets/bootstrap/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- / theme file [required] -->
+    <link href="assets/stylesheets/light-theme.css" media="all" id="color-settings-body-color" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+      <script src="assets/javascripts/ie/html5shiv.js" type="text/javascript"></script>
+      <script src="assets/javascripts/ie/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body class='contrast-red'>
+    <header>
+      <nav class='navbar navbar-default'>
+        <a class='navbar-brand' href='home.html'>
+        Roofcare Mobil
+        </a>
+        <a class='toggle-nav btn pull-left' href='#'>
+          <i class='icon-reorder'></i>
+        </a>
+        <ul class='nav'>
+          <li class='dropdown dark user-menu'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <img width="23" height="23" alt="Mila Kunis" src="assets/images/avatar.jpg" />
+              <span class='user-name'>Mila Kunis</span>
+              <b class='caret'></b>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='icon-user'></i>
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='icon-cog'></i>
+                  Settings
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='login.html'>
+                  <i class='icon-signout'></i>
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id='wrapper'>
+      <div id='main-nav-bg'></div>
+      <nav id='main-nav'>
+        <div class='navigation'>
+          <ul class='nav nav-stacked'>
+            <li class='active'>
+              <a href='#/roofer/dashboard'>
+                <i class='icon-dashboard'></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href="#/roofer/inbox"><i class='icon-edit'></i>
+              <span>Inbox</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href='#/roofer/jobs'>
+                <i class='icon-calendar'></i>
+                <span>Jobs</span>
+              </a>
+            </li>                              
+            <li class=''>
+              <a href='#/roofer/kunden'>
+                <i class='icon-envelope'></i>
+                <span>Kunden</span>
+              </a>
+            </li> 
+            <li class=''>
+              <a href='#/roofer/rechnung'>
+                <i class='icon-money'></i>
+                <span>Rechnung</span>
+              </a>
+            </li>                       
+          </ul>
+        </div>
+      </nav>
+      <section id='content'>
+        <div class='container'>
+          <div class='row' id='content-wrapper'>
+            <ng-view></ng-view>
+          </div>
+          <footer id='footer'>
+            <div class='footer-wrapper'>
+              <div class='row'>
+                <div class='col-sm-6 text'>
+                  Copyright © 2013 Roofcare Mobil
+                </div>
+                <div class='col-sm-6 buttons'>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <!-- / jquery [required] -->
+    <script src="/assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- / jquery mobile (for touch events) -->
+    <script src="/assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <!-- / jquery migrate (for compatibility with new jquery) [required] -->
+    <script src="/assets/javascripts/jquery/jquery-migrate.min.js" type="text/javascript"></script>
+    <!-- / jquery ui -->
+    <script src="/assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- / jQuery UI Touch Punch -->
+    <script src="/assets/javascripts/plugins/jquery_ui_touch_punch/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <!-- / bootstrap [required] -->
+    <script src="/assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <!-- / modernizr -->
+    <script src="/assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <!-- / retina -->
+    <script src="/assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <!-- / notifyjs -->
+    <script src="/assets/javascripts/plugins/notifyjs/notify.min.js" type="text/javascript"></script>
+    <!-- / theme file [required] -->
+    <script src="/assets/javascripts/theme.js" type="text/javascript"></script>
+    <!-- / START - page related files and scripts [optional] -->
+
+
+    <!-- Angular -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+
+    <!-- /Start firebase dependencies /-->
+    <script src="//cdn.firebase.com/v0/firebase.js"></script>
+    <script src='//cdn.firebase.com/js/simple-login/1.2.0/firebase-simple-login.js' type='text/javascript'></script>
+    <script src="//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+    <script src="//cdn.firebase.com/libs/firebase-util/0.1.0/firebase-util.min.js" type="text/javascript"></script>
+
+    <!-- dependendies -->
+
+    <!-- App related scripts -->
+    <script src="app/app.js" type='text/javascript'></script>
+
+    <!-- Services -->
+    <script src="/app/js/services/userSvc.js" type='text/javascript'></script>
+    <script src="/app/js/services/authSvc.js" type='text/javascript'></script>
+    <script src="/app/js/services/notifySvc.js" type='text/javascript'></script>
+    <script src="/app/js/services/eventSvc.js" type='text/javascript'></script>
+
+    <!-- Controllers -->
+    <script src="/app/js/controllers/roofer/rooferDashboardCtrl.js" type='text/javascript'></script>
+    <script src="/app/js/controllers/roofer/rooferInboxCtrl.js" type='text/javascript'></script>
+
+
+
+    <!-- / END  />
+
+
+  </body>
+</html>

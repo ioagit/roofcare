@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Roofcare Mobil | Job Beenden</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='text/html;charset=utf-8' http-equiv='content-type'>
+    <meta content='Roofcare Mobil' name='description'>
+    <link href='assets/images/meta_icons/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <!-- / START - page related stylesheets [optional] -->
+    <link href="assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/stylesheets/plugins/signaturepad/jquery.signaturepad.css" media="all" rel="stylesheet" type="text/css" />    
+    <!-- / END - page related stylesheets [optional] -->
+    <!-- / bootstrap [required] -->
+    <link href="assets/stylesheets/bootstrap/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- / theme file [required] -->
+    <link href="assets/stylesheets/light-theme.css" media="all" id="color-settings-body-color" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+      <script src="assets/javascripts/ie/html5shiv.js" type="text/javascript"></script>
+      <script src="assets/javascripts/ie/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body class='contrast-red'>
+    <header>
+      <nav class='navbar navbar-default'>
+        <a class='navbar-brand' href='index.html'>
+        Roofcare Mobil
+        </a>
+        <a class='toggle-nav btn pull-left' href='#'>
+          <i class='icon-reorder'></i>
+        </a>
+        <ul class='nav'>
+          <li class='dropdown dark user-menu'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <img width="23" height="23" alt="Mila Kunis" src="assets/images/avatar.jpg" />
+              <span class='user-name'>Mila Kunis</span>
+              <b class='caret'></b>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='icon-user'></i>
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='icon-cog'></i>
+                  Settings
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='sign_in.html'>
+                  <i class='icon-signout'></i>
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id='wrapper'>
+      <div id='main-nav-bg'></div>
+      <nav id='main-nav'>
+        <div class='navigation'>
+          <ul class='nav nav-stacked'>
+            <li>
+              <a href='index.html'>
+                <i class='icon-dashboard'></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href="inbox.html"><i class='icon-edit'></i>
+              <span>Inbox</span>
+              </a>
+            </li>
+            <li class='active'>
+              <a href='jobs.html'>
+                <i class='icon-calendar'></i>
+                <span>Jobs</span>
+              </a>
+            </li>                              
+            <li class=''>
+              <a href='kunden.html'>
+                <i class='icon-envelope'></i>
+                <span>Kunden</span>
+              </a>
+            </li> 
+            <li class=''>
+              <a href='rechnung.html'>
+                <i class='icon-money'></i>
+                <span>Rechnung</span>
+              </a>
+            </li>                       
+          </ul>
+        </div>
+      </nav>
+      <section id='content'>
+        <div class='container'>
+          <div class='row' id='content-wrapper'>
+            <div class='col-xs-12'>
+				<div class='page-header'>
+                <h1 class='pull-left'>
+                  <i class='icon-dashboard'></i>
+                  <span>Job beenden</span>
+                </h1>
+              </div>    
+
+<div class='row'>
+                <div class='col-xs-12'>
+                  <div class='box'>
+                    <div class='box-content box-double-padding'>
+                      <form class='form' style='margin-bottom: 0;'>
+                        
+                        <fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-envelope text-contrast'></i>
+                              Anschrift des Bauvorhabens
+                            </div>
+                            <small class='text-muted'>Der Auftrag wurde an dem Objekt an der folgenden Adresse ausgef&uuml;hrt.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>
+							<div class="form-group">
+                              <label>Adresse</label>
+                              <input class="form-control" id="address" placeholder="Strasse und Hausnummer" type="text" disabled>
+                            </div>  
+							<div class="form-group">
+                              <label>Postleitzahl</label>
+                              <input class="form-control" id="zip" placeholder="Postleitzahl" type="text" disabled>
+                            </div>
+							<div class="form-group">
+                              <label>Stadt</label>
+                              <input class="form-control" id="city" placeholder="Stadt" type="text" disabled>
+                            </div>                            
+                          </div>
+                        </fieldset>
+                        <hr class='hr-normal'>
+						<fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-user text-contrast'></i>
+                              Ansprechpartner
+                            </div>
+                            <small class='text-muted'>Kontaktieren Sie vor Ort die hier angegebene Person.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>
+							<div class="form-group">
+                              <label>Ansprechpartner</label>
+                              <input class="form-control" id="contact" placeholder="Ansprechpartner (Funktion, Anrede, Name, Vorname)" type="text" disabled>
+                            </div>
+							<div class="form-group">
+                              <label>Telefon</label>
+                              <input class="form-control" id="phone" placeholder="Telefon" type="text" disabled>
+                            </div>							
+                            <div class="form-group">
+                              <label>Handy</label>
+                              <input class="form-control" id="cell" placeholder="Handy" type="text" disabled>
+                            </div>
+                          </div>
+                        </fieldset>                        
+                        <hr class='hr-normal'>
+						<fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-gear text-contrast'></i>
+                              Auftragsdaten
+                            </div>
+                            <small class='text-muted'>Die folgenen Daten wurden zu dem Auftrag angegeben.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>
+						<div class="form-group">
+                        <label class="control-label">Auftragsart</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" disabled>
+                              Dachcheck
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" checked disabled>
+                              Dachreparatur
+                            </label>
+                          </div>
+                      </div>    
+                      <div class="form-group">
+                        <label class="control-label">Dachtyp</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" disabled>
+                              Steildach
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" checked disabled>
+                              Flachdach
+                            </label>
+                          </div>
+						  <div class="radio">
+                            <label>
+                              <input type="radio" value="" disabled>
+                              Ich weiss es nicht
+                            </label>
+                          </div>                          
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label">Haustyp</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" disabled>
+                              Ein- bis Zweifamilien Wohnhaus
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="" checked disabled>
+                              Grosses Mehrfamilien Wohnhaus
+                            </label>
+                          </div>
+						  <div class="radio">
+                            <label>
+                              <input type="radio" value="" disable>
+                              Anderes Haus
+                            </label>
+                          </div>                          
+                      </div>                      
+                            <div class='form-group'>
+                              <label>Weitere Informationen</label>
+                              <textarea class='autosize form-control' id='bio' placeholder='Weitere Informationen'></textarea>
+                            </div>                                                                        
+                          </div>
+                        </fieldset>    
+                        <hr class="hr-normal">
+<fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-gear text-contrast'></i>
+                              Termin
+                            </div>
+                            <small class='text-muted'>Bitte best&auml;tigen Sie das Datum und die Uhrzeit.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>
+                          <div class='form-group'>
+                          	<label>Datum</label>
+						  	<div class="datepicker input-group" id="datepicker">
+                          	<input class="form-control" data-format="dd.MM.yyyy" placeholder="03.12.2013" type="text" disabled>
+                          	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar"></span>
+                          	</span>
+                          	</div>
+                          </div>
+                          <div class='form-group'>
+                          	<label>Anfangsuhrzeit</label>
+						  	<div class="timepicker input-group" id="timepicker">
+                         	<input class="form-control" data-format="hh:mm" placeholder="14:00" type="text" disabled>
+                          	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-time"></span>
+                          	</span>
+                        	</div>
+                          </div>    
+						  <div class='form-group'>
+                          	<label>Enduhrzeit</label>
+						  	<div class="timepicker input-group" id="timepicker">
+                         	<input class="form-control" data-format="hh:mm" placeholder="14:00" type="text">
+                          	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-time"></span>
+                          	</span>
+                        	</div>
+                          </div>                                                
+									    
+                      
+					                        
+                                                                                                    
+                          </div>
+                        </fieldset> 
+                        <hr class="hr-normal"> 
+<fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-info text-contrast'></i>
+                              Regiebericht
+                            </div>
+                            <small class='text-muted'>Geben Sie hier den Regiebericht zu dem Auftrag an.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>           
+                            <div class='form-group'>
+                              <label>Ausgeführte Arbeiten</label>
+                              <textarea class='autosize form-control' id='ausgefuhrte-arbeiten' placeholder='Ausgeführte Arbeiten'></textarea>
+                            </div>  
+                            <div class='form-group'>
+                              <label>Empfehlungen zu weiteren Massnahmen</label>
+                              <textarea class='autosize form-control' id='empfehlungen-arbeiten' placeholder='Empfehlungen zu weiteren Massnahmen'></textarea>
+                            </div>                                                                      
+                          </div>
+                        </fieldset>
+                         <hr class="hr-normal"> 
+                        <fieldset>
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-plus text-contrast'></i>
+                              Materialeinsatz
+                            </div>
+                            <small class='text-muted'>Geben Sie hier den Materialeinsatz an.</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>           
+                            <div class='form-group'>
+                              <label>Silikon  transparent</label>
+                              <div class="input-group">
+                                    <input class="form-control input-lg text-right" id="appendedPrependedInput" type="text">
+                                    <span class="input-group-addon">Tube</span>
+                              </div>
+                            </div>   
+							<div class='form-group'>
+                              <label>Dichtmasse</label>
+                             <div class="input-group">
+                                    <input class="form-control input-lg text-right" id="appendedPrependedInput" type="text">
+                                    <span class="input-group-addon">Tube</span>
+                              </div>
+                            </div>                             
+							<div class='form-group'>
+                              <label>Klebeband Typ 1</label>
+                             <div class="input-group">
+                                    <input class="form-control input-lg text-right" id="appendedPrependedInput" type="text">
+                                    <span class="input-group-addon">Band</span>
+                              </div>
+                            </div>  
+							<div class='form-group'>
+                              <label>Klebeband Typ 2</label>
+                             <div class="input-group">
+                                    <input class="form-control input-lg text-right" id="appendedPrependedInput" type="text">
+                                    <span class="input-group-addon">Band</span>
+                              </div>
+                            </div>                                                                                                                          
+                          </div>
+                        </fieldset>                           
+                         <hr class="hr-normal"> 
+                        <fieldset>                        
+                          <div class='col-sm-4'>
+                            <div class='lead'>
+                              <i class='icon-pencil text-contrast'></i>
+                              Unterschrift
+                            </div>
+                            <small class='text-muted'>Die Kundenunterschrift best&auml;tigt die obigen Angaben zum Auftrag und ist f&uuml; die Rechnungsstellung n&ouml;tig. Mit Ihrer Unterschrift akzeptieren Sie den Auftrag und erkl&auml;ren sich mit den Nutzungsbedingungen einverstanden</small>
+                          </div>
+                          <div class='col-sm-7 col-sm-offset-1'>           
+
+                          <div class="sigPad">
+                            <label for="name">Bitte geben Sie Ihren Namen ein</label>
+                            <input type="text" name="name" id="name" class="name">
+                            <p class="typeItDesc">&Uuml;berpr&uuml;fen Sie Ihre Unterschrift</p>
+                            <p class="drawItDesc">Unterschrift setzen</p>
+                            <ul class="sigNav">
+                              <li class="typeIt"><a href="#type-it" class="current">Tippen</a></li>
+                              <li class="drawIt"><a href="#draw-it" >Zeichnen</a></li>
+                              <li class="clearButton"><a href="#clear">L&ouml;schen</a></li>
+                            </ul>
+                            <div class="sig sigWrapper">
+                              <div class="typed"></div>
+                              <canvas class="pad" width="247" height="80"></canvas>
+                              <input type="hidden" name="output" class="output">
+                            </div>
+                          </div>                                                                        
+                          </div>
+                        </fieldset>                                                                                                                   
+                        <div class='form-actions form-actions-padding clearfix' style='margin-bottom: 0;'>
+ 						<div class="row">
+                          <div class="col-md-3 col-md-offset-2">
+                            <div class='btn btn-danger btn-lg'>
+                              <i class='icon-trash'></i>
+                              Job Stornieren
+                            </div>                           
+                          </div>
+                          <div class="col-md-3">
+                            <div class='btn btn-info btn-lg'>
+                              <i class='icon-ok'></i>
+                              Job Erweitern
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class='btn btn-primary btn-lg'>
+                              <i class='icon-ok'></i>
+                              Job Starten
+                            </div>
+                          </div>
+                        </div>
+                       
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+			  
+                                     
+            </div>
+          </div>
+          <footer id='footer'>
+            <div class='footer-wrapper'>
+              <div class='row'>
+                <div class='col-sm-6 text'>
+                  Copyright © 2013 Roofcare Mobil
+                </div>
+                <div class='col-sm-6 buttons'>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <!-- / jquery [required] -->
+    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- / jquery mobile (for touch events) -->
+    <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <!-- / jquery migrate (for compatibility with new jquery) [required] -->
+    <script src="assets/javascripts/jquery/jquery-migrate.min.js" type="text/javascript"></script>
+    <!-- / jquery ui -->
+    <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- / jQuery UI Touch Punch -->
+    <script src="assets/javascripts/plugins/jquery_ui_touch_punch/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <!-- / bootstrap [required] -->
+    <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <!-- / modernizr -->
+    <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <!-- / retina -->
+    <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <!-- / theme file [required] -->
+    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <!-- / START - page related files and scripts [optional] -->
+    <script src="assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js" type="text/javascript"></script>   
+ 	<script src="assets/javascripts/plugins/signaturepad/jquery.signaturepad.min.js" type="text/javascript"></script>   
+	<script src="assets/javascripts/plugins/signaturepad/json2.min.js" type="text/javascript"></script>   
+    <!--[if lt IE 9]><script src="assets/javascripts/plugins/signaturepad/flashcanvas.js" type="text/javascript"></script><![endif]-->
+  <script>
+    $(document).ready(function() {
+      $('.sigPad').signaturePad({lineTop:60});
+    });
+  </script>    
+    <!-- / END - page related files and scripts [optional] -->
+  </body>
+</html>
