@@ -17,7 +17,7 @@ describe ("Routes Tempaltes ", function() {
 
     it('Should Return an _tpl file when requested with a template path', function(done) {
         agent
-            .get('/templates/views/roofer/dashboard_tpl.html')
+            .get('/templates/views/contractor/dashboard_tpl.html')
             .expect(200,done);
 
     });

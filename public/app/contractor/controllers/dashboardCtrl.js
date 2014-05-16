@@ -6,14 +6,14 @@
 (function () {
 
     'use strict';
-    var controllerId = 'contractorDashboardCtrl'
-    angular.module('contractor').controller(controllerId, ['$scope', 'contractorDashboardSvc', controllerId]);
+    var controllerId = 'ContractorDashboardCtrl';
+    angular.module('contractor').controller(controllerId, ['$scope', 'contractorSvc', controllerId]);
 
-    function contractorDashboardCtrl($scope, contractorDashboardSvc) {
+    function ContractorDashboardCtrl($scope, contractorSvc) {
 
         $scope.getDashboardData = function() {
 
-            $scope.data =  contractorDashboardSvc.dashboard();
+            $scope.data =  contractorSvc.getDashboardData();
 
             $scope.data.then(function(data) {
                 $scope.dashboard = data;
@@ -35,7 +35,7 @@
         }
 
 
-    };
+    }
 
 
 })();

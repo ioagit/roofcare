@@ -8,16 +8,16 @@
 
     'use strict';
     var controllerId = 'contractorJobCtrl'
-    angular.module('contractor').controller(controllerId, ['$scope', '$routeParams', 'contractorJobSvc', controllerId]);
+    angular.module('contractor').controller(controllerId, ['$scope', '$routeParams', 'contractorSvc', controllerId]);
 
-    function contractorJobSvc($scope, $routeParams, contractorJobSvc) {
+    function contractorJobSvc($scope, $routeParams, contractorSvc) {
 
         //Init var
 
         $scope.getJob = function getJob() {
 
 
-            $scope.data = contractorJobSvc.getJob($routeParams.id);
+            $scope.data = contractorSvc.getJob($routeParams.id);
             $scope.data.then(function (data) {
                 $scope.job = data;
             });

@@ -36,6 +36,7 @@
             $q: $q,
             $timeout: $timeout,
             // generic
+            getData: getData,
             activateController: activateController,
             createSearchThrottle: createSearchThrottle,
             debouncedThrottle: debouncedThrottle,
@@ -45,6 +46,28 @@
         };
 
         return service;
+
+        /*
+         Uses q and http services to get remote data
+         */
+        function getData(url) {
+
+
+            var deferred = $q.defer();
+
+
+            $http({
+                    method: 'GET',
+                    url: url
+                }
+            ).success(function (data, status, headers, info) {
+                    deferred.resolve(data);
+                }).error(function (data, status, headers, info) {
+                    deferred.reject(status);
+                });
+
+            return deferred.promise;
+        }
 
         function activateController(promises, controllerId) {
             return $q.all(promises).then(function (eventArgs) {

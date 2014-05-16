@@ -1,6 +1,9 @@
 extends ../../includes/layout
 
-include ../../includes/main/header
+block css
+    link(rel='stylesheet', href='/static/dist/app_main.css', media="all", id="")
+block header
+      include ../../includes/main/header
 
 block content
     div.container

@@ -1,7 +1,7 @@
 /**
  * Created by isuarez on 4/29/14.
  */
-var lookups = require('../../../../server/models/lookups');
+var lookups = require('../../../../../server/models/lookups');
 
 
 /**
@@ -12,7 +12,7 @@ var lookups = require('../../../../server/models/lookups');
 (function () {
 
     'use strict';
-    var directiveId = 'jobStatusDirective'
+    var directiveId = 'jobStatusDirective';
     angular.module('contractor').directive(directiveId, ['lookups', directiveId]);
 
     function jobStatusDirective(lookups) {
@@ -51,7 +51,7 @@ var lookups = require('../../../../server/models/lookups');
         };
 
 
-    };
+    }
 
 
 })();

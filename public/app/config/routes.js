@@ -27,50 +27,50 @@ app_routes.config(['$routeProvider', '$locationProvider',
             ************************************** */
 
 
-            router.when('main_order_start', '/order_start', {
+            router.when('main_order_start', '/order/start', {
                 controller: 'mainOrderStart',
-                templateUrl: config.prepareViewTemplateUrl('main/order_start')
+                templateUrl: config.prepareViewTemplateUrl('order/order_start')
             });
 
 
-            router.when('roofer_dashboard_path', '/roofer/dashboard', {
-                controller: 'rooferDashboardCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/dashboard')
+            router.when('contractor_dashboard_path', '/contractor/dashboard', {
+                controller: 'ContractorDashboardCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/dashboard')
             });
 
-            router.when('roofer_inbox_path', '/roofer/inbox', {
-                controller: 'rooferInboxCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/inbox')
+            router.when('contractor_inbox_path', '/contractor/inbox', {
+                controller: 'ContractorInboxCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/inbox')
             });
 
-            router.when('roofer_jobs_path', '/roofer/jobs', {
-                controller: 'rooferJobCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/jobs')
+            router.when('contractor_jobs_path', '/contractor/jobs', {
+                controller: 'ContractorJobCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/jobs')
             });
 
-            router.when('roofer_jobs_path', '/roofer/job_start/:id', {
-                controller: 'rooferJobStartCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/job_start')
+            router.when('contractor_jobs_path', '/contractor/job_start/:id', {
+                controller: 'ContractorJobStartCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/job_start')
             });
 
-            router.when('roofer_kunden_path', '/roofer/kunden', {
-                controller: 'rooferKundenCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/kunden')
+            router.when('contractor_kunden_path', '/contractor/kunden', {
+                controller: 'ContractorKundenCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/kunden')
             });
 
-            router.when('roofer_rechnung_path', '/roofer/rechnung', {
-                controller: 'rooferRechnungCtrl',
-                templateUrl: config.prepareViewTemplateUrl('roofer/rechnung')
+            router.when('contractor_rechnung_path', '/contractor/rechnung', {
+                controller: 'ContractorRechnungCtrl',
+                templateUrl: config.prepareViewTemplateUrl('contractor/rechnung')
             });
 
             /*
-            router.when('roofer_home_path', '/', {
+            router.when('contractor_home_path', '/', {
                 controller: 'rooferDashboardCtrl',
                 templateUrl: config.prepareViewTemplateUrl('roofer/dashboard')
             });
             */
 
-            //router.alias('home_path', 'roofer_dashboard_path');
+            //router.alias('home_path', 'contractor_dashboard_path');
 
             /*
             router.otherwise({

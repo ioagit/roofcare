@@ -32,7 +32,7 @@ module.exports =  function(server, User, userController, jobController, contract
     });
 
 
-    server.get('/order_start/*', function(req, res) {
+    server.get('/order/*', function(req, res) {
 
             res.render('main/order_start.jade', {
                 locals: {

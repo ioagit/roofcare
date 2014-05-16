@@ -2,20 +2,22 @@
  * Created by isuarez on 2/3/14.
  */
 
+
+
 (function () {
 
     'use strict';
-    var controllerId = 'contractorInboxCtrl'
-    angular.module('contractor').controller(controllerId, ['$scope', 'config', 'contractorInboxSvc',controllerId]);
+    var controllerId = 'contractorJobCtrl';
+    angular.module('contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', controllerId]);
 
-    function contractorInboxCtrl($scope, config, contractorInboxSvc) {
+    function contractorJobCtrl($scope, config, contractorSvc) {
 
         //Init var
         $scope.offset = 0;
         $scope.rows = []
         $scope.totalFound = 0;
 
-        var limit = config.pagination.limit
+        var limit = config.pagination.limit;
 
 
 
@@ -23,7 +25,7 @@
 
 
 
-            $scope.data =  contractorInboxSvc.getLatest({limit: limit, offset: $scope.offset });
+            $scope.data =  contractorSvc.getLatestJobs({limit: limit, offset: $scope.offset });
             $scope.data.then(function(data) {
                 $scope.rows =   $scope.rows.concat(data.rows);
                 $scope.totalFound = data.totalFound;
@@ -32,7 +34,7 @@
         };
 
         $scope.loadMore = function() {
-            $scope.offset += limit;
+            $scope.offset += config.pagination.limit;
             $scope.getLatest();
         };
 
@@ -46,4 +48,5 @@
 
 
 })();
+
 

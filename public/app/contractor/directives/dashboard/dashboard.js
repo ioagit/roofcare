@@ -6,7 +6,7 @@
 (function () {
 
     'use strict';
-    var directiveId = 'contractorDashboardDirective'
+    var directiveId = 'contractorDashboardDirective';
     angular.module('contractor').directive(directiveId, directiveId);
 
     function contractorDashboardDirective() {
@@ -14,11 +14,11 @@
         return {
             restrict: 'AE',
             replace: 'true',
-            templateUrl: '/templates/contractorDashboard-directive.html'
+            templateUrl: '/dashboard.html'
 
         };
 
-    };
+    }
 
 
 })();
