@@ -13,9 +13,9 @@
         <address>
             <strong>{{job.Customer.contactInfo.firsName }} {{job.Customer.contactInfo.lastName}}</strong>
             <br>
-            {{job.WorkSite.Street}}
+            {{job.WorkSite.street}}
             <br>
-            {{job.WorkSite.ZipCode}} {{job.WorkSite.City}}
+            {{job.WorkSite.zipCode}} {{job.WorkSite.city}}
             <br>
             <br>
             <small><a href="{{job.Customer.contactInfo.email}}">
@@ -28,9 +28,9 @@
     </div>
     <div class="text-right">
         <small class="date text-muted">
-                                                <span class="timeago fade has-tooltip in" data-placement="top"
-                                                      title="{{job.StartDate | date: 'medium'}}">
-                                                <br>"In 2 Stunden</span>
+                        <span class="timeago fade has-tooltip in" data-placement="top"
+                              title="{{job.StartDate | date: 'medium'}}">
+                        <br>"In 2 Stunden</span>
             <i class="icon-time"></i>
         </small>
     </div>

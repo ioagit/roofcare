@@ -24,7 +24,7 @@ describe('Geocoder tests', function () {
         });
     });
 
-    //Latitude = 51.2395808, Longitude = 6.7273549
+    //Latitude = 51.2395808, longitude = 6.7273549
     it('Find address from Geo Location', function(done) {
         var geoData;
         geocoder.reverse(51.2395808, 6.7273549, function(err, data) {
