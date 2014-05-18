@@ -80,9 +80,6 @@ describe('Contractor Model', function() {
                 function (err, addr) {
                     expect(addr).not.to.be.null;
                     assert(addr.length > 0, "At least one address was found");
-                    var found = addr[0];
-                    expect(found.address.coordinates[0]).to.eq(testData.locations.OceanDrive.coordinates[0]);
-                    expect(found.address.coordinates[1]).to.eq(testData.locations.OceanDrive.coordinates[1]);
                 });
         });
 

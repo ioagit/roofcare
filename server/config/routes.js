@@ -31,7 +31,6 @@ module.exports =  function(server, User, userController, jobController, contract
         res.end();
     });
 
-
     server.get('/order/*', function(req, res) {
 
             res.render('main/order_start.jade', {

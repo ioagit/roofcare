@@ -15,6 +15,7 @@ function build() {
             hashed_pwd: encrypt.hashPwd('12345', 'password'),
             password: 'password',
             roles: [lookups.roles.contractor],
+            distanceCharge: Math.floor(Math.random() * 14) + 1,
 
             //From Person Schema
             contactInfo: {

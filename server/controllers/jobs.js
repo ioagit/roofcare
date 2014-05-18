@@ -7,6 +7,7 @@ var path = require('path'),
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
+    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     async = require('async');
 
 exports.getJob = function() {
@@ -23,59 +24,56 @@ exports.getJob = function() {
     }
 };
 
-/*
- OrderType should contain:
- duration (in hours)
- price (fixed, not dependant on duration)
-
- return RequestWorkflow {
-     jobId,
-     full address object
-     invoiceNumber,    //RC
-     duration, Order Type
-     price (EUR), Order Type
-     distance (km),
-     travelCharge (EUR)
- }
- */
 exports.createRequest = function(){
     return function(req,res) {
         var jobData = req.body;
+        var orderType = lookUps.findOrderTypeByName(jobData.orderType);
 
         Address.Build(jobData.workSite, function(address) {
 
             jobData.workSite = address;
 
             Contractor.FindClosest(address.coordinates, function(err, found) {
-                if (err) {
+                if (found.length == 0) {
                     res.status(400);
-                    return res.send({err: err, reason: 'No contractor found ' + err.toString()});
+                    return res.send({err: err, reason: 'No contractor found '});
                 }
 
                 var contractorInfo = found[0];
-                jobData.Contractor = contractorInfo.id;
-                Job.create(jobData, function (err, job) {
+                jobData.contractor = contractorInfo.id;
+                jobData.status = lookUps.jobStatus.created;
+                jobData.onSiteContact = {
+                    email: 'a@b.com',
+                    firstName: 'aaa',
+                    lastName: 'aaa',
+                    phone:'000-000-0000'
+                };
 
-                    if (err) {
-                        res.status(400);
-                        return res.send({err: err, reason: err.toString()});
-                    }
-                    var workFlow = {
-                        jobId: job.id,
-                        workSite: address,
-                        invoiceNumber: '',
-                        duration: 2,
-                        price: 90,
-                        distance: contractorInfo.distance,
-                        travelCharge: contractorInfo.distance * 2.5
-                    };
-                    Job.NextInvoiceNumber(function(invNumber) {
-                        workFlow.invoiceNumber = invNumber;
+                Job.NextInvoiceNumber(function(invNumber) {
+                    jobData.invoice = {
+                        number: invNumber,
+                        fixedPrice: orderType.fee
+                     };
 
+                    Job.create(jobData, function (err, job) {
+
+                        if (err) {
+                            res.status(400);
+                            return res.send({err: err, reason: err.toString()});
+                        }
+                        var workFlow = {
+                            jobId: job.id,
+                            workSite: address,
+                            invoiceNumber: job.invoice.number,
+                            duration: orderType.hours,
+                            price: job.invoice.fixedPrice,
+                            distance: contractorInfo.distance,
+                            travelCharge: contractorInfo.distance * contractorInfo.distanceCharge
+                        };
                         res.status(200);
                         res.send(workFlow);
-                    });
-                })
+                    })
+                });
             });
         });
     }
