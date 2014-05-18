@@ -24,13 +24,25 @@ var schema =  BaseSchema.extend({
     roofType: { type: String, default: lookUps.roofType.steep },
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },
 
-    workSite:  physicalAddress.Definition,
+    workSite: physicalAddress.Definition,
 
     notes : {
         customer: {type: String, required:false},
         contractor: {type: String, required:false}
     }
 });
+
+schema.virtual('workSite.latitude')
+    .get(function() { return this.workSite.coordinates[1]; })
+    .set(function(val) { this.workSite.coordinates[1] = val; });
+
+schema.virtual('workSite.longitude')
+    .get(function(){ return this.workSite.coordinates[0];})
+    .set(function(val) { this.workSite.coordinates[0] = val; });
+
+schema.methods.getFormattedAddress =  function() { physicalAddress.GetFormattedAddress(this.workSite); };
+
+schema.set('toJSON', { getters: true, virtuals: false });
 
 schema.statics.Filter = function(query, criteria, processQuery) {
     //http://mongoosejs.com/docs/2.7.x/docs/query.html
@@ -71,8 +83,7 @@ schema.statics.QueryInbox = function(contractorId) {
             lookUps.jobStatus.workRejected ]);
 };
 
-
 module.exports = {
     Model: mongoose.model('Job', schema),
     Schema : schema
-}
+};

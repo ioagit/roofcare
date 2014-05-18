@@ -190,33 +190,6 @@ var testJobs = {
    }
 };
 
-function createTestLocations(callback) {
-
-    Address.create(testLocations.Heerdter,
-        testLocations.AcademyOfArts,
-        testLocations.Sonoma,
-        testLocations.OceanDrive,
-        testLocations.DolphinMall,
-        testLocations.TheEnclave,
-        testLocations.FisherIsland,
-        callback);
-}
-function removeAllLocations(callback) {
-    Address
-        .find({})
-        .where('street')
-        .in([
-            testLocations.Heerdter.street,
-            testLocations.AcademyOfArts.street,
-            testLocations.Sonoma.street,
-            testLocations.OceanDrive.street,
-            testLocations.DolphinMall.street,
-            testLocations.TheEnclave.street,
-            testLocations.FisherIsland.street
-        ])
-        .remove(callback);
-}
-
 function removeAllJobs(callback) {
     Job.remove({}, function(err, result) { return callback(err, result); });
 }
@@ -250,10 +223,8 @@ function createUser(data,done) {
 
         testData.users.modifiedContractor1.id =  data.id;
         done()
-
     });
 }
-
 
 function removeUser(data,done) {
     User.remove({username: data.username}, done);
@@ -270,12 +241,10 @@ function addHashedProperties(obj) {
 }
 
 var testData = {
-    createTestLocations: createTestLocations,
     createDefaultUsers: createDefaultUsers,
     createUser: createUser,
     removeAllUsers: removeAllUsers,
     removeUser: removeUser,
-    removeAllLocations: removeAllLocations,
     removeAllJobs: removeAllJobs,
     users : testUsers,
     jobs: testJobs,

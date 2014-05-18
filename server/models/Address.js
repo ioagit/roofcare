@@ -17,92 +17,16 @@ var rawSchema = {
     country: {type: String, required:true, default: 'Germany'}
 };
 
-var schema = new mongoose.Schema(rawSchema);
+var build = function(sourceAddress, callback) {
+    var entity = {
+        street: sourceAddress.street,
+        city: sourceAddress.city,
+        state: sourceAddress.state,
+        zipCode: sourceAddress.zipCode || '',
+        country: sourceAddress.country || 'Germany'
+    };
 
-schema.virtual('latitude')
-    .get(function() { return this.coordinates[1]; })
-    .set(function(val) { this.coordinates[1] = val; });
-
-schema.virtual('longitude')
-    .get(function(){ return this.coordinates[0];})
-    .set(function(val) { this.coordinates[0] = val; });
-
-schema.methods = {
-
-    getFormattedAddress: function() {
-        var address = util.format('%s %s', this.street, this.city);
-        if (this.state != null && this.state != "") address += ' ' + this.state;
-        if (this.country != null && this.country != "") address += ' ' + this.country;
-        address += ' ' + this.zipCode;
-        return address;
-    }
-};
-schema.set('toJSON', { getters: true, virtuals: false });
-
-schema.statics.UpdateIfNeeded = function(sourceAddress, callback) {
-    var that = this;
-
-    that.findById(sourceAddress.id, function (err, entity) {
-        if (err) {
-            callback(err);
-        } else {
-
-            var isDirty = false;
-
-            if (entity.street !== sourceAddress.street)
-            {
-                entity.street = sourceAddress.street;
-                isDirty = true;
-            }
-            if (entity.city !== sourceAddress.city)
-            {
-                entity.city = sourceAddress.city;
-                isDirty = true;
-            }
-            if (entity.state !== sourceAddress.state)
-            {
-                entity.state = sourceAddress.state;
-                isDirty = true;
-            }
-            if (entity.zipCode !== sourceAddress.zipCode)
-            {
-                entity.zipCode = sourceAddress.zipCode;
-                isDirty = true;
-            }
-            if (entity.country !== sourceAddress.country)
-            {
-                entity.country = sourceAddress.country;
-                isDirty = true;
-            }
-
-            if (isDirty)
-            {
-                var location = entity.getFormattedAddress();
-                geocoder.geocode(location, function(err, data) {
-                    if (err)
-                        callback(err);
-                    else {
-                        var geoData = data[0];
-                        entity.coordinates = [geoData.longitude, geoData.latitude];
-                        entity.save(callback);
-                    }
-                });
-            }
-            else
-                callback();
-        }
-    })
-};
-
-schema.statics.Build = function(sourceAddress, callback) {
-    var entity = new this();
-    entity.street = sourceAddress.street;
-    entity.city = sourceAddress.city;
-    entity.state = sourceAddress.state;
-    entity.zipCode = sourceAddress.zipCode || '';
-    entity.country = sourceAddress.country || 'Germany';
-
-    var location = entity.getFormattedAddress();
+    var location = getFormattedAddress(entity);
     geocoder.geocode(location, function(err, data) {
         var geoData = data[0];
         if (geoData.countryCode == 'DE')
@@ -119,11 +43,41 @@ schema.statics.Build = function(sourceAddress, callback) {
         callback(entity);
     });
 };
+var getFormattedAddress = function(source) {
+    var address = util.format('%s %s', source.street, source.city);
+    if (source.state != null && source.state != "") address += ' ' + source.state;
+    if (source.country != null && source.country != "")
+        address += ' ' + source.country;
+    else
+        address += ' Germany';
 
-var model =  mongoose.model('Address', schema);
+    return address + ' ' + source.zipCode;
+};
+var refresh = function(originalAddress, currentAddress, callback) {
+    var isDirty =  (
+        currentAddress.street !== originalAddress.street ||
+        currentAddress.city !== originalAddress.city ||
+        currentAddress.state !== originalAddress.state ||
+        currentAddress.zipCode !== originalAddress.zipCode ||
+        currentAddress.country !== originalAddress.country
+    );
+
+    if (isDirty) {
+        var location = getFormattedAddress(currentAddress);
+        geocoder.geocode(location, function(err, geoData) {
+            if (err)
+                callback(err, null);
+            else
+                callback (null, [geoData[0].longitude, geoData[0].latitude]);
+        });
+    }
+    else
+        callback(null, originalAddress.coordinates);
+};
 
 module.exports = {
-    Model:  model,
-    Schema: schema,
-    Definition: rawSchema
+    Definition: rawSchema,
+    Build: build,
+    GetFormattedAddress: getFormattedAddress,
+    RefreshCoordinates: refresh
 };

@@ -8,23 +8,9 @@ var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
-    BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema'));
+    PersonSchema = require(path.join(process.cwd(), 'server', 'models', 'PersonSchema'));
 
-var schema =  BaseSchema.extend(
-    {
-        contactInfo: contactInfo
-    }
-);
-
-schema.statics.FindByFirstOrLastName = function(name, callback)
-{
-    var namesCriteria =[ {'contactInfo.firstName': name}, {'contactInfo.lastName': name}];
-    this.find({})
-        .or(namesCriteria)
-        .exec(function (err, coll) {
-            callback(coll);
-        });
-};
+var schema =  PersonSchema;
 
 var model = mongoose.model('Customer', schema);
 module.exports = {

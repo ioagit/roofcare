@@ -26,7 +26,7 @@ function build() {
             },
 
             //From Contractor Schema
-            address: addressMock.buildNonEntity()
+            address: addressMock.build()
         }
     );
 }

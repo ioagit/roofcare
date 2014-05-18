@@ -12,7 +12,7 @@ var mongoose  = require('mongoose'),
 
 function build() {
 
-    var address = addressMock.buildNonEntity();
+    var address = addressMock.build();
     var j =  new Job(
         {
             contractor: mongoose.Types.ObjectId(),

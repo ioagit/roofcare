@@ -4,14 +4,9 @@
 
 var mongoose  = require('mongoose'),
     path = require('path'),
-    faker = require('Faker'),
-    Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model;
+    faker = require('Faker');
 
-function build() {
-    return new Address(buildNonEntity());
-}
-
-function buildNonEntity()
+function build()
 {
     var entity = {
         coordinates: [
@@ -28,6 +23,5 @@ function buildNonEntity()
 }
 
 module.exports = {
-    build: build,
-    buildNonEntity: buildNonEntity
+    build: build
 };

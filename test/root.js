@@ -18,7 +18,6 @@ before(function (done) {
 
         async.series([
             function(callback) { testData.removeAllJobs(callback); },
-            function(callback) { testData.removeAllLocations(callback); },
             function(callback) { testData.removeAllUsers(callback); },
             function(callback) { testData.createDefaultUsers(callback); },
             function(callback) { seedData.seedOneContractor(200, callback); }

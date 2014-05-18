@@ -3,7 +3,6 @@
  */
 
 var path = require('path'),
-    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
