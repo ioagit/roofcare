@@ -1,8 +1,6 @@
 /**
  * Created by isuarez on 4/29/14.
  */
-var lookups = require('../../../../../server/models/lookups');
-
 
 /**
  * Created by isuarez on 4/29/14.
@@ -13,9 +11,9 @@ var lookups = require('../../../../../server/models/lookups');
 
     'use strict';
     var directiveId = 'jobStatusDirective';
-    angular.module('contractor').directive(directiveId, ['lookups', directiveId]);
+    angular.module('contractor').directive(directiveId, ['lookupsSvc', directiveId]);
 
-    function jobStatusDirective(lookups) {
+    function jobStatusDirective(lookupsSvc) {
 
         return {
             scope: {
@@ -26,6 +24,7 @@ var lookups = require('../../../../../server/models/lookups');
             templateUrl: '/templates/jobStatus-directive.html',
             link: function(scope, el, attrs) {
 
+                var lookups = lookupsSvc;
 
                 switch(attrs.status)
                 {
