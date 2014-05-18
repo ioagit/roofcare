@@ -17,6 +17,7 @@ var expect = require('chai').expect,
 describe('Contractor Model', function() {
 
     var contractor;
+    var univision = [ -80.350437, 25.813146];
 
     it('should not save without username', function(done) {
         contractor = mock.build();
@@ -29,8 +30,6 @@ describe('Contractor Model', function() {
     });
 
     describe('Contractor Entity', function() {
-
-        var univision = [ -80.350437, 25.813146];
 
         before(function(done){
             contractor = mock.build();
@@ -113,17 +112,16 @@ describe('Contractor Model', function() {
                 },
                 function(callback){
                     oldCoordinates = contractor.address.coordinates;
-                    contractor.address.coordinates = testData.locations.OceanDrive.coordinates;
+                    contractor.address.coordinates = testData.locations.TheEnclave.coordinates;
                     contractor.save(callback);
                 },
                 function(callback){
-                    var findCoord = testData.locations.FisherIsland.coordinates;
-                    Contractor.FindClosest(findCoord, function(err, result) {
+                    Contractor.FindClosest(univision, function(err, result) {
                         expect(err).to.be.null;
                         expect(result.length).to.be.eq(1);
                         var foundContractor = result[0];
-                        expect(foundContractor.distance).to.be.gt(2);
-                        expect(foundContractor.distance).to.be.lt(3);
+                        expect(foundContractor.distance).to.be.gt(1);
+                        expect(foundContractor.distance).to.be.lt(2);
 
                         console.log(' ' + foundContractor._id + ' == ' + contractor.id + '');
 
