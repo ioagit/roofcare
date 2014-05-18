@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose'),
     expect = require('chai').expect,
-     path = require('path'),
+    path = require('path'),
     async = require('async'),
     testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address'));

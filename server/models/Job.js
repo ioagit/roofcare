@@ -19,12 +19,18 @@ var schema =  BaseSchema.extend({
     onSiteContact: contactInfo,
     startDate: {type: Date, required:true},
     status: {type: String, required:true},
-    orderType: {type: String, required:true},
 
-    roofType: { type: String, default: lookUps.roofType.steep },
+    orderType: {type: String, required:true},
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },
+    roofType: { type: String, default: lookUps.roofType.steep },
 
     workSite: physicalAddress.Definition,
+
+    invoice: {
+        number: {type: String, required:true},
+        distanceCharge: {type: Number, required:true},
+        fixedPrice: {type: Number, required:true}
+    },
 
     notes : {
         customer: {type: String, required:false},
@@ -39,6 +45,9 @@ schema.virtual('workSite.latitude')
 schema.virtual('workSite.longitude')
     .get(function(){ return this.workSite.coordinates[0];})
     .set(function(val) { this.workSite.coordinates[0] = val; });
+
+schema.virtual('invoice.total')
+    .get(function() { return this.invoice.distanceCharge + this.invoice.fixedPrice; });
 
 schema.methods.getFormattedAddress =  function() { physicalAddress.GetFormattedAddress(this.workSite); };
 
@@ -65,6 +74,17 @@ schema.statics.Filter = function(query, criteria, processQuery) {
     }
     else
         processQuery(query);
+};
+
+schema.statics.NextInvoiceNumber = function(callback)
+{
+    this.findOne()
+        .sort('-invoice.number')
+        .exec(function(err, doc)
+        {
+            var max = parseInt(doc.invoice.number.slice(2)) + 1;
+            callback('RC' + ("00000000" + max).slice(-8));
+        });
 };
 schema.statics.QueryJobs = function(contractorId) {
     return this

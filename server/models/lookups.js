@@ -22,8 +22,14 @@ module.exports = {
 
     //Should be translated
     orderType: {
-        repair: 'Dachreparatur',
-        check: 'Dachcheck'
+        repair: {
+            name: 'Dachreparatur',
+            fee: 150
+        },
+        check: {
+            name:'Dachcheck',
+            fee: 99
+        }
     },
 
     roofType: {

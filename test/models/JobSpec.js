@@ -13,10 +13,27 @@ describe('Job Model', function () {
 
     var Job = jobs.Model;
 
-    it('Job model should exist', function(done){
+    it('Should exist', function(done){
 
         expect(Job).to.not.be.null;
         done();
+    });
+
+    it('NextInvoiceNumber should return 201', function(done){
+       Job.NextInvoiceNumber(function(invNumber){
+           expect(invNumber).to.eq('RC00000201');
+           done();
+       });
+    });
+
+    it('invoice total should equal distance change and fixed fee', function(done) {
+        Job.find().limit(10).exec(function(err, jobs) {
+            for(var i=0; i < jobs.length; i++) {
+                var job = jobs[i];
+                expect(job.invoice.total).to.eq(job.invoice.distanceCharge + job.invoice.fixedPrice);
+            }
+            done();
+        });
     });
 
     it ('Should return the next page of 10 rows', function(done) {
