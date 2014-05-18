@@ -181,12 +181,12 @@ var testUsers =  {
 };
 var testJobs = {
    job1: {
-       StartDate: '2014-04-19 10:00AM',
-       Status: lookups.jobStatus.requestAccepted,
-       Contractor: 1,
-       Customer:1,
-       OnSiteContact:1,
-       WorkSite:1
+       startDate: '2014-04-19 10:00AM',
+       status: lookups.jobStatus.requestAccepted,
+       contractor: 1,
+       customer:1,
+       onSiteContact:1,
+       workSite:1
    }
 };
 

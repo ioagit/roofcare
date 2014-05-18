@@ -45,7 +45,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="item in rows">
-  <td>
+        <td>
             <div class='text-right'>
                 <a class='btn btn-success btn-xs has-tooltip' data-placement="top" data-original-title="Termin best&auml;tigen" href='inbox_detail.html'>
                     <i class='icon-ok'></i>
@@ -55,11 +55,11 @@
                 </a>
             </div>
         </td>
-        <td>{{item.Customer.contactInfo.firstName}} {{item.Customer.contactInfo.lastName}}</td>
-        <td>{{item.RoofType}}</td>
-        <td>{{item.WorkSite.street}}</td>
-        <td>{{item.StartDate | date:'dd.MM.yyyy'}}</td>
-         </tr>
+        <td>{{item.customer.contactInfo.firstName}} {{item.customer.contactInfo.lastName}}</td>
+        <td>{{item.roofType}}</td>
+        <td>{{item.workSite.street}}</td>
+        <td>{{item.startDate | date:'dd.MM.yyyy'}}</td>
+    </tr>
 
     </tbody>
 </table>

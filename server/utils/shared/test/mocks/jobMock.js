@@ -2,20 +2,22 @@
  * Created by isuarez on 4/27/14.
  */
 
-var mongoose  = require('mongoose')
-    , path = require('path')
-    ,faker = require('Faker')
-    ,Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model
-    ,lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
-    ,_ = require('underscore');
+var mongoose  = require('mongoose'),
+    path = require('path'),
+    faker = require('Faker'),
+    Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
+    lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
+    _ = require('underscore');
 
 function build() {
 
-    return  new Job(
+    var address = addressMock.buildNonEntity();
+    var j =  new Job(
         {
-            Contractor: mongoose.Types.ObjectId(),
-            Customer: mongoose.Types.ObjectId(),
-            OnSiteContact: {
+            contractor: mongoose.Types.ObjectId(),
+            customer: mongoose.Types.ObjectId(),
+            onSiteContact: {
                 firstName: faker.Name.firstName(),
                 lastName: faker.Name.lastName(),
                 salutation: faker.random.array_element(_.values(lookups.salutation) ),
@@ -23,15 +25,15 @@ function build() {
                 phone: faker.PhoneNumber.phoneNumberFormat(0)
             },
             //Dates are from now for the next two weeks
-            StartDate: faker.Date.between(new Date(), new Date(+new Date + 12096e5)),
-            Status: faker.random.array_element(_.values(lookups.jobStatus) ),
-            WorkSite:  mongoose.Types.ObjectId(),
-            OrderType: faker.random.array_element(_.values(lookups.orderType) ),
-            RoofType: faker.random.array_element(_.values(lookups.roofType) ),
-            PropertyType: faker.random.array_element(_.values(lookups.propertyType) )
-
+            startDate: faker.Date.between(new Date(), new Date(+new Date + 12096e5)),
+            status: faker.random.array_element(_.values(lookups.jobStatus) ),
+            workSite:  address,
+            orderType: faker.random.array_element(_.values(lookups.orderType) ),
+            roofType: faker.random.array_element(_.values(lookups.roofType) ),
+            propertyType: faker.random.array_element(_.values(lookups.propertyType) )
         });
 
+    return j;
 }
 
 module.exports = {

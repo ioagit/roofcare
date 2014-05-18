@@ -66,14 +66,14 @@
             </a>
         </div>
     </td>
-    <td>{{job.Customer.contactInfo.firstName}} {{job.Customer.contactInfo.lastName}}</td>
-    <td>{{job.RoofType}}</td>
-    <td>{{job.OrderType}}</td>
-    <td>{{job.WorkSite.street}}</td>
+    <td>{{job.customer.contactInfo.firstName}} {{job.customer.contactInfo.lastName}}</td>
+    <td>{{job.roofType}}</td>
+    <td>{{job.orderType}}</td>
+    <td>{{job.workSite.street}}</td>
 
     <td>{{job.StartDate | date:'medium'}}</td>
     <td>
-        <job-status status="{{job.Status}}" />
+        <job-status status="{{job.status}}" />
     </td>
 
 </tr>

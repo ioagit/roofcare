@@ -47,8 +47,6 @@ describe('Job Controller', function () {
             var whatIsIt = typeof jobsController.saveRequest;
             expect(whatIsIt).to.be.eq('function');
         });
-
-
     });
 
     describe('getJob method', function() {
@@ -137,8 +135,7 @@ describe('Job Controller', function () {
             async.series([
                     function (callback) {
                         Job.QueryJobs(contractorId)
-                            .populate('Customer')
-                            .populate('WorkSite')
+                            .populate('customer')
                             .exec(function (err, collection) {
                                 results = collection;
                                 expect(results).to.not.be.null;
@@ -146,7 +143,7 @@ describe('Job Controller', function () {
                             });
                     },
                     function (callback) {
-                        customerName = results[0].Customer.contactInfo.lastName;
+                        customerName = results[0].customer.contactInfo.lastName;
                         agent
                             .get('/api/contractor/jobs?customer=' + customerName)
                             .set('Accept', 'application/json')
@@ -159,9 +156,9 @@ describe('Job Controller', function () {
                                 expect(resultObj.rows.length).to.be.at.least(1);
                                 for (var i = 0; i < resultObj.rows.length; i++) {
                                     var job = resultObj.rows[i];
-                                    expect(job.Customer).to.not.be.null;
-                                    expect(job.Customer.contactInfo.lastName).to.eq(customerName);
-                                    expect(job.Contractor).to.be.eq(contractorId);
+                                    expect(job.customer).to.not.be.null;
+                                    expect(job.customer.contactInfo.lastName).to.eq(customerName);
+                                    expect(job.contractor).to.be.eq(contractorId);
                                 }
 
                                 callback();
@@ -189,8 +186,8 @@ describe('Job Controller', function () {
                     var resultObj = JSON.parse(res.text);
                     for (var i = 0; i < resultObj.rows.length; i++) {
                         var job = resultObj.rows[i];
-                        expect(job.Status).to.be.eq(lookUps.jobStatus.requestAccepted);
-                        expect(job.Contractor).to.be.eq(contractorId);
+                        expect(job.status).to.be.eq(lookUps.jobStatus.requestAccepted);
+                        expect(job.contractor).to.be.eq(contractorId);
                     }
                     done();
                 });
@@ -263,8 +260,7 @@ describe('Job Controller', function () {
             async.series([
                     function (callback) {
                         Job.QueryInbox(contractorId)
-                            .populate('Customer')
-                            .populate('WorkSite')
+                            .populate('customer')
                             .exec(function (err, collection) {
                                 results = collection;
                                 expect(results).to.not.be.null;
@@ -272,7 +268,7 @@ describe('Job Controller', function () {
                             });
                     },
                     function (callback) {
-                        customerName = results[0].Customer.contactInfo.lastName;
+                        customerName = results[0].customer.contactInfo.lastName;
                         agent
                             .get('/api/contractor/inbox?customer=' + customerName)
                             .set('Accept', 'application/json')
@@ -285,9 +281,9 @@ describe('Job Controller', function () {
                                 expect(resultObj.rows.length).to.be.at.least(1);
                                 for (var i = 0; i < resultObj.rows.length; i++) {
                                     var job = resultObj.rows[i];
-                                    expect(job.Customer).to.not.be.null;
-                                    expect(job.Customer.contactInfo.lastName).to.eq(customerName);
-                                    expect(job.Contractor).to.be.eq(contractorId);
+                                    expect(job.customer).to.not.be.null;
+                                    expect(job.customer.contactInfo.lastName).to.eq(customerName);
+                                    expect(job.contractor).to.be.eq(contractorId);
                                 }
                                 callback();
                             });
@@ -314,8 +310,8 @@ describe('Job Controller', function () {
                     var resultObj = JSON.parse(res.text);
                     for (var i = 0; i < resultObj.rows.length; i++) {
                         var job = resultObj.rows[i];
-                        expect(job.Status).to.be.eq(lookUps.jobStatus.created);
-                        expect(job.Contractor).to.be.eq(contractorId);
+                        expect(job.status).to.be.eq(lookUps.jobStatus.created);
+                        expect(job.contractor).to.be.eq(contractorId);
                     }
                     done();
                 });

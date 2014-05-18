@@ -23,9 +23,8 @@ describe('Job Model', function () {
        Job.find({})
            .limit(10)
            .skip(5)
-           .populate('Customer')
-           .populate('Contractor')
-           .populate('WorkSite')
+           .populate('customer')
+           .populate('contractor')
            .exec(function (err, collection) {
                expect(collection.length).to.be.eq(10);
                done();
@@ -33,7 +32,7 @@ describe('Job Model', function () {
     });
 
     it ('Should return a job with only specified filter', function(done) {
-        Job.find({Status: {
+        Job.find({status: {
                 $nin: [ lookUps.jobStatus.created,
                         lookUps.jobStatus.unknown,
                         lookUps.jobStatus.workRejected ]}
@@ -41,9 +40,9 @@ describe('Job Model', function () {
             .exec(function(err, coll) {
                 for(var i=0; i<coll.length; i++)
                 {
-                    var success = coll[i].Status !== lookUps.jobStatus.created &&
-                        coll[i].Status !== lookUps.jobStatus.unknown &&
-                        coll[i].Status !== lookUps.jobStatus.workRejected;
+                    var success = coll[i].status !== lookUps.jobStatus.created &&
+                        coll[i].status !== lookUps.jobStatus.unknown &&
+                        coll[i].status !== lookUps.jobStatus.workRejected;
 
                     expect(success).to.be.true;
                 }
@@ -59,18 +58,18 @@ describe('Job Model', function () {
 
         Job.find(
             {
-                'StartDate':  {"$gte": start, "$lt": end},
-                'Status': lookUps.jobStatus.requestAccepted
+                'startDate':  {"$gte": start, "$lt": end},
+                'status': lookUps.jobStatus.requestAccepted
             })
-            .sort('StartDate')
-            .select('StartDate')
+            .sort('startDate')
+            .select('startDate')
 
             .exec(function (err, coll) {
                 var current = new Date();
                 for(var i = 0; i < coll.length; i++)
                 {
-                    expect(current).to.be.below(coll[i].StartDate);
-                    current = coll[i].StartDate;
+                    expect(current).to.be.below(coll[i].startDate);
+                    current = coll[i].startDate;
                 }
                 done();
             });
@@ -79,7 +78,7 @@ describe('Job Model', function () {
     it('Should aggregate on Status for Dashboard', function(done) {
         var dashBoard = { inbox: {}, jobs: {} };
         Job.aggregate(
-            {$group: {_id: {status: '$Status'}, count: {$sum: 1}}}
+            {$group: {_id: {status: '$status'}, count: {$sum: 1}}}
         )
             .exec(function (err, groupings) {
 
@@ -117,19 +116,17 @@ describe('Job Model', function () {
     it('Should return a job with linked Customer and WorkSite', function(done){
         Job.find({})
             .limit(1)
-            .populate('Customer')
-            .populate('Contractor')
-            .populate('WorkSite')
+            .populate('customer')
+            .populate('contractor')
             .exec(function (err, collection) {
 
                 var job = collection[0];
                 expect(job).to.not.be.null;
-                expect(job.Customer).to.not.be.null;
-                expect(job.Customer._id).to.not.be.null;
-                expect(job.Contractor).to.not.be.null;
-                expect(job.Contractor._id).to.not.be.null;
-                expect(job.WorkSite).to.not.be.null;
-                expect(job.WorkSite._id).to.not.be.null;
+                expect(job.customer).to.not.be.null;
+                expect(job.customer.id).to.not.be.null;
+                expect(job.contractor).to.not.be.null;
+                expect(job.contractor.id).to.not.be.null;
+                expect(job.workSite).to.not.be.null;
                 done();
             })
     });

@@ -10,23 +10,27 @@ var mongoose = require('mongoose'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    physicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
 
-var schema =  BaseSchema.extend
-({
-    Contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
-    Customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
-    OnSiteContact: contactInfo,
-    StartDate: {type: Date, required:true},
-    Status: {type: String, required:true},
-    OrderType: {type: String, required:true},
-    RoofType: {type: String, required:true},
-    PropertyType: {type: String, required:true},
-    WorkSite:  {type : mongoose.Schema.ObjectId, ref : 'Address'},
-    CustomerNotes: {type: String, required:false},
-    ContractorNotes: {type: String, required:false}
-});
+var schema =  BaseSchema.extend({
+    contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
+    customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
+    onSiteContact: contactInfo,
+    startDate: {type: Date, required:true},
+    status: {type: String, required:true},
+    orderType: {type: String, required:true},
 
+    roofType: { type: String, default: lookUps.roofType.steep },
+    propertyType: {type: String, default: lookUps.propertyType.singleFamily },
+
+    workSite:  physicalAddress.Definition,
+
+    notes : {
+        customer: {type: String, required:false},
+        contractor: {type: String, required:false}
+    }
+});
 
 schema.statics.Filter = function(query, criteria, processQuery) {
     //http://mongoosejs.com/docs/2.7.x/docs/query.html
@@ -34,7 +38,7 @@ schema.statics.Filter = function(query, criteria, processQuery) {
     if (criteria === undefined || criteria === null) return query;
 
     if ((criteria['status'] || '').length > 0)
-        query = query.where('Status', criteria.status);
+        query = query.where('status', criteria.status);
 
     if ((criteria['customer'] || '').length > 0)
     {
@@ -43,7 +47,7 @@ schema.statics.Filter = function(query, criteria, processQuery) {
             for(var i=0; i< customers.length; i++) {
                 customerIds.push(customers[i].id);
             }
-            query = query.where('Customer').in(customerIds);
+            query = query.where('customer').in(customerIds);
             processQuery(query);
         });
     }
@@ -52,16 +56,16 @@ schema.statics.Filter = function(query, criteria, processQuery) {
 };
 schema.statics.QueryJobs = function(contractorId) {
     return this
-        .find({Contractor: contractorId})
-        .where('Status')
+        .find({contractor: contractorId})
+        .where('status')
         .in([lookUps.jobStatus.requestAccepted,
             lookUps.jobStatus.workStarted,
             lookUps.jobStatus.workCompleted ]);
 };
 schema.statics.QueryInbox = function(contractorId) {
     return this
-        .find({Contractor: contractorId})
-        .where('Status')
+        .find({contractor: contractorId})
+        .where('status')
         .in([lookUps.jobStatus.created,
             lookUps.jobStatus.requestRejected,
             lookUps.jobStatus.workRejected ]);

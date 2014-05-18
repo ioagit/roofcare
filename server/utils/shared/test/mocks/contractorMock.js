@@ -1,10 +1,10 @@
-var mongoose = require('mongoose')
-    , path = require('path')
-    , faker = require('Faker')
-    , encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption'))
-    , lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups'))
-    , Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model;
-
+var mongoose = require('mongoose'),
+    path = require('path'),
+    faker = require('Faker'),
+    encrypt = require(path.join(process.cwd(), 'server', 'utils', 'encryption')),
+    lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
+    Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model;
 
 function build() {
 
@@ -26,15 +26,9 @@ function build() {
             },
 
             //From Contractor Schema
-            address: mongoose.Types.ObjectId()
+            address: addressMock.buildNonEntity()
         }
     );
-
-
 }
-module.exports = {
 
-    build: build
-
-
-}
+module.exports.build = build;

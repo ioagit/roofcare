@@ -1,8 +1,4 @@
 /**
- * Created by isuarez on 4/17/2014.
- */
-
-/**
  * Created by isuarez on 3/28/2014.
  */
 
@@ -10,11 +6,11 @@ var mongoose = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookUps'));
-    phisicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address'));
+    physicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
-var _schema = new mongoose.Schema({
+var schema = new mongoose.Schema({
 
-    address: [phisicalAddress.Schema],
+    address: physicalAddress.Definition,
 
     roofType: {
         type: String,
@@ -28,16 +24,9 @@ var _schema = new mongoose.Schema({
 
 });
 
-_schema.methods = {
-
-
-};
-
-var _model = mongoose.model('Property', _schema);
+var model = mongoose.model('Property', schema);
 
 module.exports = {
-  Model: _model,
-  Schema : _schema
+  Model: model,
+  Schema : schema
 }
-
-

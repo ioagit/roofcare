@@ -109,8 +109,7 @@ exports.getJobs = function() {
                 query.find()
                     .skip(startingIndex)
                     .limit(pageSize)
-                    .populate('Customer')
-                    .populate('WorkSite')
+                    .populate('customer')
                     .exec(function (err, coll) {
                         res.send(JSON.stringify({ totalFound: count, rows: coll }));
                     }
@@ -138,8 +137,7 @@ exports.getInboxes = function() {
                 query.find()
                     .skip(startingIndex)
                     .limit(pageSize)
-                    .populate('Customer')
-                    .populate('WorkSite')
+                    .populate('customer')
                     .exec(function (err, coll) {
                         res.send(JSON.stringify({ totalFound: count, rows: coll }));
                     }
