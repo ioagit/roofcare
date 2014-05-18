@@ -7,7 +7,7 @@
 
     'use strict';
     var directiveId = 'contractorDashboardDirective';
-    angular.module('contractor').directive(directiveId, directiveId);
+    angular.module('rc.contractor').directive(directiveId, contractorDashboardDirective);
 
     function contractorDashboardDirective() {
 

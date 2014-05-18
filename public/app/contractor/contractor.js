@@ -3,5 +3,5 @@
  */
 (function () {
     'use strict';
-    angular.module('contractor', []);
+    angular.module('rc.contractor', []);
 })();

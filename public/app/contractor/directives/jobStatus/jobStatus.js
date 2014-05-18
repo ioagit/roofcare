@@ -11,7 +11,7 @@
 
     'use strict';
     var directiveId = 'jobStatusDirective';
-    angular.module('contractor').directive(directiveId, ['lookupsSvc', directiveId]);
+    angular.module('rc.contractor').directive(directiveId, ['lookupsSvc', jobStatusDirective]);
 
     function jobStatusDirective(lookupsSvc) {
 

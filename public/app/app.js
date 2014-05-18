@@ -3,19 +3,6 @@
  * Created by isuarez on 2/27/14.
  */
 
-//We are getting angualr from cdn
-var
-    app_routes = require('../../public/app/config/routes.js'),
-    controllers = require('../../public/app/controllers'),
-    services = require('../../public/app/services'),
-    resources = require('../../public/app/resources'),
-    directives = require('../../public/app/directives'),
-    filters = require('../../public/app/filters');
-
-
-
-
-
 //Main Angular module. Cool
 angular.module('app',
                   [
@@ -24,23 +11,23 @@ angular.module('app',
                       'ngRoute',
 
                       //Custom modules
-                      'app.controllers',
-                      'app.services',
+                      'rc.contractors',
+                      'rc.account',
+                      'app.common',
                       'app.routes',
                       'app.resources',
                       'app.directives',
-                      'app.filters',
-                      'app.common'
+                      'app.filters'
 
                   ]);
 
 
-angular.module('app').run(function($rootScope, $location)
+angular.module('app').run(function($rootScope, $location, config)
 {
 
     $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
-            $location.path('/');
+            $location.path(config.path.contractorPath);
         }
     });
 

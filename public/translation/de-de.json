@@ -1,0 +1,17 @@
+{
+    //Authorization && Authentication
+    "authentication": "Authentication",
+    "loginError": "Error Login In",
+    "loginSuccess": "Success Login",
+    "loginInvalid": "Invalid Username/Password",
+
+    "logoutSuccess": "Success logout",
+    "notAuthorized": "not authorized",
+
+
+     //Session Loading
+    "roofCareLoaded": "RoofCare loaded",
+    "contractorDashboardLoaded": "Dashboard Loaded"
+
+
+}
