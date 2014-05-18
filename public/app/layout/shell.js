@@ -3,9 +3,9 @@
     
     var controllerId = 'shell';
     angular.module('app').controller(controllerId,
-        ['$rootScope', 'common', 'config', shell]);
+        ['$rootScope', 'commonSvc', 'config', shell]);
 
-    function shell($rootScope, common, config) {
+    function shell($rootScope, commonSvc, config) {
         var vm = this;
         var logSuccess = common.logger.getLogFn(controllerId, 'success');
         var events = config.events;
@@ -25,7 +25,7 @@
         activate();
 
         function activate() {
-            logSuccess('Hot Towel Angular loaded!', null, true);
+            logSuccess(commonSvc.translation.roofCareLoaded, null, true);
             common.activateController([], controllerId);
         }
 
@@ -42,5 +42,5 @@
         $rootScope.$on(events.spinnerToggle,
             function (data) { toggleSpinner(data.show); }
         );
-    };
+    }
 })();

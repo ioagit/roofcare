@@ -6,15 +6,15 @@
     //  - common
     //  - logger
     //  - spinner
-    var commonModule = angular.module('common', []);
+    var commonModule = angular.module('app.common', []);
 
     // Must configure the common service and set its 
     // events via the commonConfigProvider
     commonModule.provider('commonConfig', function () {
         this.config = {
             // These are the properties we need to set
-            //controllerActivateSuccessEvent: '',
-            //spinnerToggleEvent: ''
+            controllerActivateSuccessEvent: 'controllerActivateSuccessEvent',
+            spinnerToggleEvent: 'spinnerToggleEvent'
         };
 
         this.$get = function () {
@@ -24,11 +24,14 @@
         };
     });
 
-    commonModule.factory('common',
-        ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', common]);
+    commonModule.factory('commonSvc',
+        ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', 'translationSvc', commonSvc]);
 
-    function common($q, $rootScope, $timeout, commonConfig, logger) {
+    function commonSvc($q, $rootScope, $timeout, commonConfig, logger, translationSvc) {
         var throttles = {};
+
+        var translation = {};
+        translationSvc.getTransaltion(translation);
 
         var service = {
             // common angular dependencies
@@ -42,7 +45,8 @@
             debouncedThrottle: debouncedThrottle,
             isNumber: isNumber,
             logger: logger, // for accessibility
-            textContains: textContains
+            textContains: textContains,
+            translation: translation.translation
         };
 
         return service;
@@ -70,10 +74,11 @@
         }
 
         function activateController(promises, controllerId) {
-            return $q.all(promises).then(function (eventArgs) {
-                var data = { controllerId: controllerId };
-                $broadcast(commonConfig.config.controllerActivateSuccessEvent, data);
-            });
+            return $q.all(promises)
+                   .then(function (eventArgs) {
+                           var data = { controllerId: controllerId };
+                           $broadcast(commonConfig.config.controllerActivateSuccessEvent, data);
+                         });
         }
 
         function $broadcast() {

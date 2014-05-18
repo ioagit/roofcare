@@ -5,21 +5,50 @@
 
     // Configure Toastr
     toastr.options.timeOut = 4000;
-    toastr.options.positionClass = 'toast-bottom-right';
+    toastr.options.positionClass = 'toast-top-right';
 
     // For use with the HotTowel-Angular-Breeze add-on that uses Breeze
-    var remoteServiceName = 'http://localhost/MediaPulseApi/breeze/breeze';
+    //var remoteServiceName = 'http://localhost/MediaPulseApi/breeze/breeze';
 
     var events = {
         controllerActivateSuccess: 'controller.activateSuccess',
         spinnerToggle: 'spinner.toggle'
     };
 
+    var path = {
+        //Contractor
+        contractorPath: '/contractor/dashboard',
+
+        homePath: '/homePath'
+
+    };
+
+
+    //endpoints
+    var endpoints = {
+
+        auth: {
+            login: '/login',
+            logout: '/logout'
+
+        },
+
+        user: {
+            user: '/api/users'
+        },
+
+        contractor: {
+            dashboard: '/api/contractor/dashboard/',
+            inbox: '/api/contractor/inbox/',
+            job: '/api/contractor/jobs/'
+        }
+
+    };
+
     var config = {
-        appErrorPrefix: '[MySchedule Error] ', //Configure the exceptionHandler decorator
-        docTitle: 'MySchedule: ',
+        appErrorPrefix: '[RoofCare Error] ', //Configure the exceptionHandler decorator
+        docTitle: 'RoofCare: ',
         events: events,
-        remoteServiceName: remoteServiceName,
         version: '2.1.0'
     };
 

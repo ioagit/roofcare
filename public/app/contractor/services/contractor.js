@@ -6,7 +6,7 @@
 
     'use strict';
     var serviceId = 'contractorSvc';
-    angular.module('contractor').controller(serviceId, ['commonSvc', 'config', serviceId]);
+    angular.module('rc.contractor').controller(serviceId, ['commonSvc', 'config', serviceId]);
 
     function contractorService(commonSvc, config) {
 

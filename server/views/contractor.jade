@@ -36,10 +36,10 @@ block header
                                 span Rechnung
 
 block content
-    section#content
+    section#content(data-ng-controller="shell as vm")
         .container
             #content-wrapper.row
-                ng-view
+                ng-view.shuffle-animation
             footer#footer
                 .footer-wrapper
                     .row

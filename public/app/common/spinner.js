@@ -4,7 +4,7 @@
     // Must configure the common service and set its 
     // events via the commonConfigProvider
 
-    angular.module('common')
+    angular.module('app.common')
         .factory('spinner', ['common', 'commonConfig', spinner]);
 
     function spinner(common, commonConfig) {
