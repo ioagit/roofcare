@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
     testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address'));
 
-describe('Address Model', function () {
+describe('Model - Address', function () {
 
     it('Should return a full Address from user entered location information', function(done){
         Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)

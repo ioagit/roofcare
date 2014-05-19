@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
-describe('Job Model', function () {
+describe('Model - Job', function () {
 
     var Job = jobs.Model;
 

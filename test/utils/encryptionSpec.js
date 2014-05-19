@@ -1,9 +1,8 @@
 
-var expect = require("chai").expect;
-var crypto = require('../../server/utils/encryption.js');
+var expect = require("chai").expect,
+    crypto = require('../../server/utils/encryption.js');
 
-
-describe('Encryption Module', function () {
+describe('Module - Encryption', function () {
 
     it('should create salt that is at least 20 char long', function() {
 
@@ -18,4 +17,4 @@ describe('Encryption Module', function () {
         expect(pwd).to.have.length.of.at.least(20);
     });
 
-})
+});

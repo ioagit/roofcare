@@ -2,14 +2,14 @@
  * Created by isuarez on 3/6/14.
  */
 
-module.exports =  function(server, User, userController, jobController, contractorController, auth) {
+module.exports =  function(server, User, userController, jobController, requestsController, contractorController, auth) {
 
     server.get('/api/users',  auth.requiresRole('admin'), userController.getUsers(User));
     server.post('/api/users', userController.createUser(User));
     server.put('/api/users',  auth.requiresApiLogin,  userController.updateUser(User));
 
-    server.post('/api/request', jobController.createRequest());
-    server.put('/api/request', jobController.saveRequest());
+    server.post('/api/request', requestsController.createRequest());
+    server.put('/api/request', requestsController.saveRequest());
 
     server.get('/api/contractor/jobs',  auth.requiresApiLogin, jobController.getJobs());
     server.get('/api/contractor/jobs/:id',  auth.requiresApiLogin, jobController.getJob());
@@ -63,10 +63,6 @@ module.exports =  function(server, User, userController, jobController, contract
 
         }
     );
-
-
-
-
 
     server.get('/roofer/*', function(req, res) {
 

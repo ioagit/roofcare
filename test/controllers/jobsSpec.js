@@ -11,13 +11,12 @@ var mongoose = require('mongoose'),
     customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
-    testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
     testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 
 var contractor = null;
 var contractorId;
 
-describe('Job Controller', function () {
+describe('Controller - Jobs', function () {
 
     var jobsController = require(path.join(process.cwd(), 'server', 'controllers', 'jobs'));
     var agent = request.agent('http://localhost:' + 3000);
@@ -40,75 +39,6 @@ describe('Job Controller', function () {
 
     it('contractor1 should exist', function() {
         expect(contractor).to.not.be.null;
-    });
-
-    describe('saveRequest method', function() {
-
-        it('Should exist', function () {
-            var whatIsIt = typeof jobsController.saveRequest;
-            expect(whatIsIt).to.be.eq('function');
-        });
-    });
-
-    describe('createRequest method', function() {
-
-        it('Should exist', function () {
-            var whatIsIt = typeof jobsController.createRequest;
-            expect(whatIsIt).to.be.eq('function');
-        });
-
-        it('create request should fail if no contractor is within range', function(done) {
-            agent
-                .post('/api/request')
-                .send({
-                    orderType: lookUps.orderType.check.name,
-                    workSite: testData.locations.OceanDrive
-                })
-                .expect(400,done);
-        });
-
-        describe('Update contractor address', function() {
-            var contractorAddress;
-
-            before(function(done){
-                Contractor.findOne({username: 'contractor1'}, function(err, c){
-                    contractorAddress = c.address;
-                    c.address =  testData.locations.Sonoma;
-                    c.save(done);
-                });
-            });
-
-            after(function(done) {
-                Contractor.findOne({username: 'contractor1'}, function(err, c){
-                    c.address =  contractorAddress;
-                    c.save(done);
-                });
-            });
-
-            it ('create request should return 200', function(done) {
-
-                var data = {
-                    startDate: new Date(),
-                    orderType: lookUps.orderType.check.name,
-                    workSite: testData.locations.TheEnclave
-                };
-
-                agent
-                    .post('/api/request')
-                    .send(data)
-                    .expect(200)
-                    .end(function(err, res){
-                        if(err) {
-                            done(err);
-                        } else {
-                            console.log(res.text);
-                            done();
-                        }
-                    });
-            });
-
-        })
-
     });
 
     describe('getJob method', function() {

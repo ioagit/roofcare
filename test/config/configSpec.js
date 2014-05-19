@@ -6,7 +6,7 @@ var expect = require("chai").expect;
 var config = require('../../server/config/config.js');
 
 
-describe('Config Module', function () {
+describe('Module - Config', function () {
 
         describe('config', function() {
 

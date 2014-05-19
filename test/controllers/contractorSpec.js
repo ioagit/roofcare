@@ -19,7 +19,7 @@ var contractor = null;
 var controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors'));
 var agent = request.agent('http://localhost:' + 3000);
 
-describe('Contractor Controller', function () {
+describe('Controller - Contractor', function () {
 
     it('controller should exist', function(){
         expect(controller).to.not.be.null;

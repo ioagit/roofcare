@@ -14,7 +14,7 @@ var expect = require('chai').expect,
     Contractor = contractor.Model,
     Address = address.Model;
 
-describe('Contractor Model', function() {
+describe('Model - Contractor', function() {
 
     var contractor;
     var univision = [ -80.350437, 25.813146];

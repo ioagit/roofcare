@@ -14,7 +14,8 @@ var User = require(path.join(process.cwd(),'server','models','Users')).Model;
 
 //Controllers
 var userController  = require(path.join(process.cwd(),'server','controllers','users')),
-    jobController  = require(path.join(process.cwd(),'server','controllers','jobs')),
+    jobController = require(path.join(process.cwd(),'server','controllers','jobs')),
+    requestsController = require(path.join(process.cwd(),'server','controllers','requests')),
     contractorController = require(path.join(process.cwd(),'server','controllers','contractors'));
 
 
@@ -29,7 +30,7 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, jobController, contractorController, auth);
+    routes(server, User, userController, jobController, requestsController, contractorController, auth);
 
     return server;
 }

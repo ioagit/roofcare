@@ -9,7 +9,7 @@ var path = require('path');
 var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
 var users = require(path.join(process.cwd(), 'server', 'models', 'Users'));
 
-describe('User Model', function () {
+describe('Model - User', function () {
 
     var User = users.Model;
 

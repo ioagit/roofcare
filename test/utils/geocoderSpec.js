@@ -11,7 +11,7 @@ var geocoder = require('node-geocoder').getGeocoder('google', 'https');
  https://www.npmjs.org/package/node-geocoder
 */
 
-describe('Geocoder tests', function () {
+describe('Module - Geocoder', function () {
 
     it('Find geo location data for the street in Germany', function(done) {
         var address = 'Heerdter Lohweg 89 Dusseldorf Germany 40549';
