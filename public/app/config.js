@@ -23,7 +23,6 @@
 
     };
 
-
     //endpoints
     var endpoints = {
 
@@ -49,6 +48,12 @@
         limit: 5
     };
 
+    var routing =  {
+        prefix : '',
+        html5Mode : true
+
+    };
+
     var config = {
         appErrorPrefix: '[RoofCare Error] ', //Configure the exceptionHandler decorator
         docTitle: 'RoofCare: ',
@@ -56,7 +61,18 @@
         endpoints: endpoints,
         path: path,
         pagination: pagination,
-        version: '2.1.0'
+        routing: routing,
+        version: '2.1.0',
+
+        //View and template related stuff
+        viewUrlPrefix : templateUrlPrefix + 'views/',
+        partialUrlPrefix : templateUrlPrefix + 'partials/',
+        templateFileSuffix : '_tpl.html',
+
+        baseDirectory : '/',
+        templateDirectory : '/templates/',
+        templateFileQuerystring : '?v=' + version
+
     };
 
     app.value('config', config);

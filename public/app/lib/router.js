@@ -1,58 +1,81 @@
-    var lookup = {};
-    var otherwiseLookup = null;
+(function() {
 
-    module.exports = {
+    angular.module('app.common').factory('routerSvc', routerSvc);
 
-        when : function(key, url, params) {
-            lookup[key] = {
-                url : url,
-                params : params
-            };
-        },
+    function routerSvc() {
 
-        alias : function(key1, key2) {
-            lookup[key1] = lookup[key2];
-        },
+        var lookup = {};
+        var otherwiseLookup = null;
 
-        otherwise : function(params) {
-            otherwiseLookup = params;
-        },
+        return {
 
-        replaceUrlParams : function(url, params) {
-            for(var k in params) {
-                var v = params[k];
-                url = url.replace(':'+k,v);
-            }
-            return url;
-        },
+            when : function(key, url, params) {
+                lookup[key] = {
+                    url : url,
+                    params : params
+                };
+            },
 
-        routeDefined : function(key) {
-            return !! this.getRoute(key);
-        },
+            alias : function(key1, key2) {
+                lookup[key1] = lookup[key2];
+            },
 
-        getRoute : function(key, args) {
-            return lookup[key];
-        },
+            otherwise : function(params) {
+                otherwiseLookup = params;
+            },
 
-        routePath : function(key, args) {
-            var url = this.getRoute(key);
-            url = url ? url.url : null;
-            if(url && args) {
-                url = this.replaceUrlParams(url, args);
-            };
-            return url;
-        },
+            replaceUrlParams : function(url, params) {
+                for(var k in params) {
+                    var v = params[k];
+                    url = url.replace(':'+k,v);
+                }
+                return url;
+            },
 
-        install : function($routeProvider) {
-            for(var key in lookup) {
-                var route = lookup[key];
-                var url = route['url'];
-                var params = route['params'];
-                $routeProvider.when(url, params);
-            };
-            if(otherwiseLookup) {
-                $routeProvider.otherwise(otherwiseLookup);
+            routeDefined : function(key) {
+                return !! this.getRoute(key);
+            },
+
+            getRoute : function(key, args) {
+                return lookup[key];
+            },
+
+            routePath : function(key, args) {
+                var url = this.getRoute(key);
+                url = url ? url.url : null;
+                if(url && args) {
+                    url = this.replaceUrlParams(url, args);
+                }
+                return url;
+            },
+
+            install : function($routeProvider) {
+                for(var key in lookup) {
+                    var route = lookup[key];
+                    var url = route['url'];
+                    var params = route['params'];
+                    $routeProvider.when(url, params);
+                }
+                if(otherwiseLookup) {
+                    $routeProvider.otherwise(otherwiseLookup);
+                }
+            },
+
+            prepareViewTemplateUrl : function(url, options) {
+
+                if (!options)
+                    return url;
+
+                options.viewUrlPrefix = options.viewUrlPrefix || '';
+                options.templateFileSuffix = options.templateFileSuffix || '';
+                options.templateFileQuerystring = options.templateFileQuerystring || '';
+
+                return options.viewUrlPrefix + url + options.templateFileSuffix +
+                    options.templateFileQuerystring;
             }
         }
-    };
+    }
+
+
+})();
 

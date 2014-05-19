@@ -20,9 +20,10 @@
     function getRoutes() {
         return [
             {
-                url: '/',
+                url: '/contractor/dashboard',
                 config: {
-                    templateUrl: 'app/dashboard/dashboard.html',
+                    controller: 'ContractorDashboardCtrl',
+                    templateUrl: 'templates/views/contractor/dashboard_tpl.html',
                     title: 'dashboard',
                     settings: {
                         nav: 1,

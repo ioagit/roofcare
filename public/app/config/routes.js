@@ -8,9 +8,9 @@ var router = require('../../../public/app/lib/router.js');
 
 var app_routes = angular.module('App.Routes',[]);
 
-app_routes.config(['$routeProvider', '$locationProvider',
+app_routes.config(['$routeProvider', '$locationProvider', 'config', 'router',
 
-        function ( $routeProvider, $locationProvider) {
+        function ( $routeProvider, $locationProvider, config, routerSvc) {
 
             if (config.routing.html5Mode) {
                 $locationProvider.html5Mode(true);
@@ -27,38 +27,38 @@ app_routes.config(['$routeProvider', '$locationProvider',
             ************************************** */
 
 
-            router.when('main_order_start', '/order/start', {
+            routerSvc.when('main_order_start', '/order/start', {
                 controller: 'mainOrderStart',
                 templateUrl: config.prepareViewTemplateUrl('order/order_start')
             });
 
 
-            router.when('contractor_dashboard_path', '/contractor/dashboard', {
+            routerSvc.when('contractor_dashboard_path', '/contractor/dashboard', {
                 controller: 'ContractorDashboardCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/dashboard')
             });
 
-            router.when('contractor_inbox_path', '/contractor/inbox', {
+            routerSvc.when('contractor_inbox_path', '/contractor/inbox', {
                 controller: 'ContractorInboxCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/inbox')
             });
 
-            router.when('contractor_jobs_path', '/contractor/jobs', {
+            routerSvc.when('contractor_jobs_path', '/contractor/jobs', {
                 controller: 'ContractorJobCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/jobs')
             });
 
-            router.when('contractor_jobs_path', '/contractor/job_start/:id', {
+            routerSvc.when('contractor_jobs_path', '/contractor/job_start/:id', {
                 controller: 'ContractorJobStartCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/job_start')
             });
 
-            router.when('contractor_kunden_path', '/contractor/kunden', {
+            routerSvc.when('contractor_kunden_path', '/contractor/kunden', {
                 controller: 'ContractorKundenCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/kunden')
             });
 
-            router.when('contractor_rechnung_path', '/contractor/rechnung', {
+            routerSvc.when('contractor_rechnung_path', '/contractor/rechnung', {
                 controller: 'ContractorRechnungCtrl',
                 templateUrl: config.prepareViewTemplateUrl('contractor/rechnung')
             });
@@ -78,7 +78,7 @@ app_routes.config(['$routeProvider', '$locationProvider',
             });
             */
 
-            router.install($routeProvider);
+            routerSvc.install($routeProvider);
         }]);
 
 app_routes.run([ '$rootScope', '$location', function ( $rootScope, $location) {
