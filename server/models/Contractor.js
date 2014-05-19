@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 
 var schema =  UserSchema.extend({
     address: physicalAddress.Definition,
-    distanceCharge: {type: Number, required: false}
+    distanceCharge: {type: Number}
 });
 
 schema.virtual('address.latitude')
@@ -31,8 +31,9 @@ schema.statics.FindClosest = function(locCoordinates, callback) {
             $geoNear: {
                 near: locCoordinates,
                 distanceField: "distance",
-                maxDistance: 50,
-                spherical: true, distanceMultiplier: 6371,
+                maxDistance: 0.10,
+                spherical: true,
+                distanceMultiplier: 6371,
                 includeLocs: "address.coordinates",
                 num: 1
             }

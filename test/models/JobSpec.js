@@ -19,9 +19,9 @@ describe('Job Model', function () {
         done();
     });
 
-    it('NextInvoiceNumber should return 201', function(done){
+    it('NextInvoiceNumber should return 202', function(done){
        Job.NextInvoiceNumber(function(invNumber){
-           expect(invNumber).to.eq('RC00000201');
+           expect(invNumber).to.eq('RC00000202');
            done();
        });
     });

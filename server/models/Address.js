@@ -38,8 +38,7 @@ var build = function(sourceAddress, callback) {
         entity.country = geoData.country;
         entity.state = geoData.state;
         entity.zipCode = geoData.zipcode;
-        entity.latitude = geoData.latitude;
-        entity.longitude = geoData.longitude;
+        entity.coordinates = [geoData.longitude, geoData.latitude];
         callback(entity);
     });
 };

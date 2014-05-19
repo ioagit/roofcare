@@ -32,7 +32,7 @@ function build() {
 
             invoice: {
                 number: 'RC' + ("00000000" + counter).slice(-8),
-                distanceCharge: Math.floor(Math.random() * 100) + 1,
+                distanceCharge: Math.floor(Math.random() * 14) + 1,
                 fixedPrice: orderType.fee
             },
 

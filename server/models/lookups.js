@@ -20,15 +20,23 @@ module.exports = {
 
     },
 
+    findOrderTypeByName: function(name){
+        if (this.orderType.repair.name == name) return this.orderType.repair;
+        if (this.orderType.check.name == name) return this.orderType.check;
+        return null;
+    },
+
     //Should be translated
     orderType: {
         repair: {
             name: 'Dachreparatur',
-            fee: 150
+            fee: 150,
+            hours: 4
         },
         check: {
             name:'Dachcheck',
-            fee: 99
+            fee: 99,
+            hours: 2
         }
     },
 
@@ -54,7 +62,6 @@ module.exports = {
     },
 
     distanceType: {
-
         klm: 'KM',
         miles: 'miles'
     },
