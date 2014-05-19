@@ -7,14 +7,14 @@
 (function () {
 
     'use strict';
-    var controllerId = 'contractorJobCtrl';
-    angular.module('contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', controllerId]);
+    var controllerId = 'ContractorJobCtrl';
+    angular.module('rc.contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', 'commonSvc', ContractorJobCtrl]);
 
-    function contractorJobCtrl($scope, config, contractorSvc) {
+    function ContractorJobCtrl($scope, config, contractorSvc, commonSvc) {
 
         //Init var
         $scope.offset = 0;
-        $scope.rows = []
+        $scope.rows = [];
         $scope.totalFound = 0;
 
         var limit = config.pagination.limit;
@@ -40,11 +40,17 @@
 
         $scope.moreAvailable = function() {
             return $scope.totalFound > $scope.offset + limit;
+        };
+
+
+        function activate() {
+            commonSvc.activateController([$scope.getLatest()], controllerId);
         }
 
-        $scope.getLatest();
+        activate();
 
-    };
+
+    }
 
 
 })();

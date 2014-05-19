@@ -183,7 +183,10 @@ module.exports = function (grunt) {
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
                     './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
                     //Toastr
-                    './public/vendor/toastr/toastr.css'
+                    './public/vendor/toastr/toastr.css',
+
+                    //Angular related like animation, spinner
+                    './public/static/css/ngStyles'
 
 
 
@@ -200,9 +203,12 @@ module.exports = function (grunt) {
                     './public/static/css/light-theme.css',
 
                     //Toastr
-                    './public/vendor/toastr/toastr.css'
+                    './public/vendor/toastr/toastr.css',
 
                     //'./public/static/css/**/*.css'
+                    //Angular related like animation, spinner
+                    './public/static/css/ngStyles'
+
 
                 ]
             }

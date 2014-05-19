@@ -7,10 +7,10 @@
 (function () {
 
     'use strict';
-    var controllerId = 'contractorJobCtrl'
-    angular.module('contractor').controller(controllerId, ['$scope', '$routeParams', 'contractorSvc', controllerId]);
+    var controllerId = 'ContractorJobCtrl'
+    angular.module('rc.contractor').controller(controllerId, ['$scope', '$routeParams', 'contractorSvc', ContractorJobCtrl]);
 
-    function contractorJobSvc($scope, $routeParams, contractorSvc) {
+    function ContractorJobCtrl($scope, $routeParams, contractorSvc) {
 
         //Init var
 

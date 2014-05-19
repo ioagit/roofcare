@@ -5,14 +5,14 @@
 (function () {
 
     'use strict';
-    var controllerId = 'contractorKunderCtrl'
-    angular.module('contractor').controller(controllerId, ['$scope', controllerId]);
+    var controllerId = 'ContractorKunderCtrl';
+    angular.module('rc.Contractor').controller(controllerId, ['$scope', ContractorKunderCtrl]);
 
-    function contractorKunderCtrl($scope) {
+    function ContractorKunderCtrl($scope) {
 
        //TODO
 
-    };
+    }
 
 
 })();

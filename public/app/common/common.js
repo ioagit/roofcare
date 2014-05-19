@@ -60,10 +60,9 @@
             var deferred = $q.defer();
 
 
-            $http({
-                    method: 'GET',
+            $http({ method: 'GET',
                     url: url
-                }
+                  }
             ).success(function (data, status, headers, info) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, info) {
@@ -75,10 +74,10 @@
 
         function activateController(promises, controllerId) {
             return $q.all(promises)
-                   .then(function (eventArgs) {
-                           var data = { controllerId: controllerId };
-                           $broadcast(commonConfig.config.controllerActivateSuccessEvent, data);
-                         });
+                .then(function (eventArgs) {
+                    var data = { controllerId: controllerId };
+                    $broadcast(commonConfig.config.controllerActivateSuccessEvent, data);
+                });
         }
 
         function $broadcast() {
@@ -104,7 +103,7 @@
                 // translates to ...
                 // vm.filteredSessions 
                 //      = vm.sessions.filter(function(item( { returns vm.sessionFilter (item) } );
-                viewmodel[filteredList] = viewmodel[list].filter(function(item) {
+                viewmodel[filteredList] = viewmodel[list].filter(function (item) {
                     return viewmodel[filter](item);
                 });
             };
@@ -115,7 +114,7 @@
                 var filterInputTimeout;
 
                 // return what becomes the 'applyFilter' function in the controller
-                return function(searchNow) {
+                return function (searchNow) {
                     if (filterInputTimeout) {
                         $timeout.cancel(filterInputTimeout);
                         filterInputTimeout = null;

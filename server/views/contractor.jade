@@ -37,7 +37,10 @@ block header
 
 block content
     section#content(data-ng-controller="shell as vm")
-        .container
+        div.container
+            div.page-splash.dissolve-animation(data-ng-show="vm.isBusy")
+                div(data-cc-spinner="vm.spinnerOptions")
+                div.page-splash-message.page-splash-message-subtle {{vm.busyMessage}}
             #content-wrapper.row
                 ng-view.shuffle-animation
             footer#footer

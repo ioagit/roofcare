@@ -45,10 +45,17 @@
 
     };
 
+    var pagination =  {
+        limit: 5
+    };
+
     var config = {
         appErrorPrefix: '[RoofCare Error] ', //Configure the exceptionHandler decorator
         docTitle: 'RoofCare: ',
         events: events,
+        endpoints: endpoints,
+        path: path,
+        pagination: pagination,
         version: '2.1.0'
     };
 

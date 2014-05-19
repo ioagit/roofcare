@@ -7,9 +7,9 @@
 
     'use strict';
     var controllerId = 'ContractorDashboardCtrl';
-    angular.module('contractor').controller(controllerId, ['$scope', 'contractorSvc', controllerId]);
+    angular.module('rc.contractor').controller(controllerId, ['$scope', 'contractorSvc', 'commonSvc',ContractorDashboardCtrl]);
 
-    function ContractorDashboardCtrl($scope, contractorSvc) {
+    function ContractorDashboardCtrl($scope, contractorSvc, commonSvc) {
 
         $scope.getDashboardData = function() {
 
@@ -34,9 +34,14 @@
 
         }
 
+        function activate() {
+            commonSvc.activateController([$scope.getDashboardData()], controllerId);
+        }
+
+        activate();
+
 
     }
 
 
 })();
-

@@ -8,24 +8,36 @@
 
     'use strict';
     var controllerId = 'HeaderLoginCtrl';
-    angular.module('account').controller(controllerId, ['$scope',  'notifierSvc', 'identitySvc', 'authSvc', 'commonSvc', controllerId]);
+    angular.module('rc.account').controller(controllerId, ['$scope', '$location', 'config', 'identitySvc',
+                                                        'authSvc', 'commonSvc',
+                                                         controllerId]);
 
-    function HeaderLoginCtrl($scope,  notifierSvc, identitySvc, authSvc, commonSvc) {
+    function HeaderLoginCtrl($scope, $location, config, identitySvc, authSvc, commonSvc) {
+
+        var translation = commonSvc.translation;
+
+        translationSvc.getTranslation(translation);
+
 
         $scope.identity = identitySvc;
         $scope.signin = function (username, password) {
 
-            authSvc.authenticateUser(username, password).then(function (success) {
+            authSvc.authenticateUser(username, password)
+                .then(function (success) {
 
                     if (success) {
-                        notifierSvc.notify('Success Login');
+                        commonSvc.logger.logSucces(translation.successLogin, null, null, true);
                     }
                     else
-                        notifierSvc.notify('Error login in.');
+                    {
+                        commonSvc.logger.logError(translation.loginError,
+                                                  translation.loginInvalid,
+                                                  translation.authentication, true);
+                    }
 
                 }
             );
-        }
+        };
 
 
         $scope.signout = function() {
@@ -33,8 +45,8 @@
                 authSvc.logoutUser().then(function() {
                     $scope.username = "";
                     $scope.password = "";
-                    notifierSvc.notify('You have been successfylly signe out');
-                    commonSvc.location.path("/");
+                    commonSvc.logger.logSucces(translation.logoutSuccess, null, null, true)
+                    $location.path(config.path.contractorHome);
                 })
             }
 
