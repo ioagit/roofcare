@@ -21,7 +21,7 @@
             },
             restrict: 'AE',
             replace: 'true',
-            templateUrl: '/templates/jobStatus-directive.html',
+            templateUrl: '/app/templates/directives/jobStatus.html',
             link: function(scope, el, attrs) {
 
                 var lookups = lookupsSvc;

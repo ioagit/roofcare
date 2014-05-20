@@ -14,7 +14,7 @@
         return {
             restrict: 'AE',
             replace: 'true',
-            templateUrl: '/contractorDashboard.html'
+            templateUrl: '/app/templates/directives/contractorDashboard.html'
 
         };
 

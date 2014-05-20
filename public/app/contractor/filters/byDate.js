@@ -9,7 +9,7 @@
 (function() {
 
     'use strict';
-    var objectId = 'byDateFilter';
+    var objectId = 'byDate';
     angular.module('rc.contractor').filter(objectId, ['$scope',  byDateFilter]);
 
     function byDateFilter() {

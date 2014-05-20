@@ -56,8 +56,25 @@ module.exports = function (grunt) {
             options: {
                 compress: {
                     drop_console: true
-                }
+                },
+                sourceMap: true,
+                banner: '/*! <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+
             },
+
+
+            contractor_scripts: {
+                files:
+
+                {
+                    expand: true,
+                    src: '**/*.js',
+                    dest: './public/static/dist/roofcare.min.js',
+                    cwd: './public/app/'
+                }
+
+            },
+
             vendors_common: {
                 files: {
                     './public/static/dist/vendors.common.min.js':
@@ -100,7 +117,7 @@ module.exports = function (grunt) {
                             './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 
                             //retina
-                            './public/vendor/retina.js/src/retina.js',
+                            './public/vendor/retina.js/src/retina.js'
 
                     ]
                 }

@@ -2,11 +2,12 @@
  * Created by isuarez on 2/3/14.
  */
 
-var config = require('app_config');
+(function() {
 
-module.exports = function mainOrderStartCtrl($scope) {
+    angular.module('app.order').controller('MainOrderController', ['$scope', MainOrderController]);
 
-    //Do nothing for now.
-    //It is just a couple of links
+    function MainOrderController($scope) {
+        //TODO
+    }
 
-}
+})();

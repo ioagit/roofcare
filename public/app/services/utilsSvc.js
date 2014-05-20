@@ -1,143 +1,148 @@
-angular.module('App.Services')
 
-  .factory('$appTimer', function() {
+(function () {
 
-    var _delay = 500;
-    var _timer = -1;
+    angular.module('app.common')
 
-    return function(fn) {
-      clearTimeout(_timer);
-      _timer = setTimeout(function() {
-        fn(); 
-      }, _delay);
-    };
-  })
+        .factory('$appTimer', function () {
 
-  .factory('$appStorage',function() {
-    var keyPrefix = 'yom-';
-    return {
+            var _delay = 500;
+            var _timer = -1;
 
-      disableCaching : function() {
-        this.disabled = true;
-      },
+            return function (fn) {
+                clearTimeout(_timer);
+                _timer = setTimeout(function () {
+                    fn();
+                }, _delay);
+            };
+        })
 
-      enableCaching : function() {
-        this.disabled = false;
-      },
+        .factory('$appStorage', function () {
+            var keyPrefix = 'yom-';
+            return {
 
-      version : function() {
-        return '1';
-      },
+                disableCaching: function () {
+                    this.disabled = true;
+                },
 
-      prefixKey : function(key) {
-        return keyPrefix + this.version() + '-' + key;
-      },
+                enableCaching: function () {
+                    this.disabled = false;
+                },
 
-      put : function(key, value) {
-        key = this.prefixKey(key);
-        value = JSON.stringify(value);
-        localStorage.setItem(key, value);
-      },
+                version: function () {
+                    return '1';
+                },
 
-      get : function(key) {
-        key = this.prefixKey(key);
-        var value = localStorage.getItem(key);
-        return JSON.parse(value);
-      },
+                prefixKey: function (key) {
+                    return keyPrefix + this.version() + '-' + key;
+                },
 
-      erase : function(key) {
-        key = this.prefixKey(key);
-        localStorage.removeItem(key);
-      },
+                put: function (key, value) {
+                    key = this.prefixKey(key);
+                    value = JSON.stringify(value);
+                    localStorage.setItem(key, value);
+                },
 
-      flush : function() {
-        while (localStorage.length) localStorage.removeItem(localStorage.key(0));
-      },
+                get: function (key) {
+                    key = this.prefixKey(key);
+                    var value = localStorage.getItem(key);
+                    return JSON.parse(value);
+                },
 
-      isPresent : function(key) {
-        if(!this.disabled) {
-          return !! this.get(key);
-        }
-        return false;
-      }
+                erase: function (key) {
+                    key = this.prefixKey(key);
+                    localStorage.removeItem(key);
+                },
 
-    };
-  })
+                flush: function () {
+                    while (localStorage.length) localStorage.removeItem(localStorage.key(0));
+                },
 
-  .factory('$appScope', ['$rootScope', function($rootScope) {
+                isPresent: function (key) {
+                    if (!this.disabled) {
+                        return !!this.get(key);
+                    }
+                    return false;
+                }
 
-    return {
+            };
+        })
 
-      topScope : function() {
-        return this.scope(document);
-      },
+        .factory('$appScope', ['$rootScope', function ($rootScope) {
 
-      scope : function(element) {
-        return angular.element(element).scope();
-      },
+            return {
 
-      rootScope : function() {
-        return $rootScope;
-      },
+                topScope: function () {
+                    return this.scope(document);
+                },
 
-      safeApply : function(fn, $scope) {
-        $scope = $scope || this.topScope();
-        fn = fn || function() {};
-        if($scope.$$phase) {
-          fn();
-        }
-        else {
-          $scope.$apply(function() {
-            fn();
-          });
-        }
-      }
+                scope: function (element) {
+                    return angular.element(element).scope();
+                },
 
-    };
+                rootScope: function () {
+                    return $rootScope;
+                },
 
-  }])
+                safeApply: function (fn, $scope) {
+                    $scope = $scope || this.topScope();
+                    fn = fn || function () {
+                    };
+                    if ($scope.$$phase) {
+                        fn();
+                    }
+                    else {
+                        $scope.$apply(function () {
+                            fn();
+                        });
+                    }
+                }
 
-  .factory('$appLocation', ['$location','$appScope', function($location, $scopeHelper) {
+            };
 
-    return {
+        }])
 
-      gotoURL : function(url) {
-        window.location = url;
-      },
+        .factory('$appLocation', ['$location', '$appScope', function ($location, $scopeHelper) {
 
-      change : function(url, $scope) {
-        $scopeHelper.safeApply(function() {
-          $location.search('');
-          $location.path(url);
-        }, $scope);
-      },
+            return {
 
-      replace : function(url, $scope) {
-        $scopeHelper.safeApply(function() {
-          $location.path(url).replace();
-        }, $scope);
-      }
+                gotoURL: function (url) {
+                    window.location = url;
+                },
 
-    };
+                change: function (url, $scope) {
+                    $scopeHelper.safeApply(function () {
+                        $location.search('');
+                        $location.path(url);
+                    }, $scope);
+                },
 
-  }])
+                replace: function (url, $scope) {
+                    $scopeHelper.safeApply(function () {
+                        $location.path(url).replace();
+                    }, $scope);
+                }
 
-  .factory('$appSanitize', function() {
+            };
 
-    return {
-      trim : function(str) {
-        return str.replace(/^\s+|\s+$/g, '');
-      },
-      urlEncode : function(str) {
-        return escape(str);
-      },
-      prepareForUrl : function(str) {
-        str = this.trim(str);
-        str = this.urlEncode(str);
-        return str;
-      }
-    }
+        }])
 
-  });
+        .factory('$appSanitize', function () {
 
+            return {
+                trim: function (str) {
+                    return str.replace(/^\s+|\s+$/g, '');
+                },
+                urlEncode: function (str) {
+                    return escape(str);
+                },
+                prepareForUrl: function (str) {
+                    str = this.trim(str);
+                    str = this.urlEncode(str);
+                    return str;
+                }
+            }
 
+        });
+
+}
+)();

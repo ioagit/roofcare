@@ -29,38 +29,38 @@ app_routes.config(['$routeProvider', '$locationProvider', 'config', 'router',
 
             routerSvc.when('main_order_start', '/order/start', {
                 controller: 'mainOrderStart',
-                templateUrl: config.prepareViewTemplateUrl('order/order_start')
+                templateUrl: routerSvc.prepareViewTemplateUrl('order/order_start', config.template)
             });
 
 
             routerSvc.when('contractor_dashboard_path', '/contractor/dashboard', {
                 controller: 'ContractorDashboardCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/dashboard')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/dashboard', config.template)
             });
 
             routerSvc.when('contractor_inbox_path', '/contractor/inbox', {
                 controller: 'ContractorInboxCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/inbox')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/inbox', config.template)
             });
 
             routerSvc.when('contractor_jobs_path', '/contractor/jobs', {
                 controller: 'ContractorJobCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/jobs')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/jobs', config.template)
             });
 
             routerSvc.when('contractor_jobs_path', '/contractor/job_start/:id', {
                 controller: 'ContractorJobStartCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/job_start')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/job_start', config.template)
             });
 
             routerSvc.when('contractor_kunden_path', '/contractor/kunden', {
                 controller: 'ContractorKundenCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/kunden')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/kunden', config.template)
             });
 
             routerSvc.when('contractor_rechnung_path', '/contractor/rechnung', {
                 controller: 'ContractorRechnungCtrl',
-                templateUrl: config.prepareViewTemplateUrl('contractor/rechnung')
+                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/rechnung', config.template)
             });
 
             /*
