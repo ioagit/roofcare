@@ -1,7 +1,7 @@
-extends ../includes/layout
+extends ../../includes/layout
 
 block header
-    include ../includes/currentUser
+    include ../../includes/currentUser
     header
         nav.navbar.navbar-default
             a.navbar-brand(href='home.html')
@@ -11,27 +11,27 @@ block header
             div(ng-include="'/partials/account/header-login'")
         div#wrapper
             #main-nav-bg
-            nav#main-nav
+            nav#main-nav(data-ng-controller='contractorSidebarCtrl')
                 .navigation
                     ul.nav.nav-stacked
-                        li.active
-                            a(href='/roofer/dashboard')
+                        li(data-ng-class="vm.isRouteActive('dashboard')")
+                            a(href='/contractor/dashboard')
                                 i.icon-dashboard
                                 span Home
-                        li
-                            a(href='/roofer/inbox')
+                        li(data-ng-class="vm.isRouteActive('inbox')")
+                            a(href='/contractor/inbox')
                                 i.icon-edit
                                 span Inbox
-                        li
-                            a(href='/roofer/jobs')
+                        li(data-ng-class="vm.isRouteActive('jobs')")
+                            a(href='/contractor/jobs')
                                 i.icon-calendar
                                 span Jobs
-                        li
-                            a(href='/roofer/kunden')
+                        li(data-ng-class="vm.isRouteActive('kunden')")
+                            a(href='/contractor/kunden')
                                 i.icon-envelope
                                 span Kunden
-                        li
-                            a(href='/roofer/rechnung')
+                        li(data-ng-class="vm.isRouteActive('rechnung')")
+                            a(href='/contractor/rechnung')
                                 i.icon-money
                                 span Rechnung
 

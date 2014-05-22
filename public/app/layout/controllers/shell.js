@@ -1,4 +1,5 @@
 ﻿(function () { 
+
     'use strict';
     
     var controllerId = 'shell';
@@ -6,11 +7,14 @@
         ['$rootScope', 'commonSvc', 'config', shell]);
 
     function shell($rootScope, commonSvc, config) {
+
         var vm = this;
         var logSuccess = common.logger.getLogFn(controllerId, 'success');
         var events = config.events;
-        vm.busyMessage = 'Please wait ...';
+
+        vm.busyMessage = commonSvc.translation.busyMessage;
         vm.isBusy = true;
+
         vm.spinnerOptions = {
             radius: 40,
             lines: 7,

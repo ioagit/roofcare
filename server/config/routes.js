@@ -33,7 +33,7 @@ module.exports =  function(server, User, userController, jobController, requests
 
     server.get('/order/*', function(req, res) {
 
-            res.render('main/order_start.jade', {
+            res.render('order/order_start.jade', {
                 locals: {
                     moduleName: 'main',
                     breadCrump: false,
@@ -50,7 +50,7 @@ module.exports =  function(server, User, userController, jobController, requests
 
     server.get('/', function(req, res) {
 
-        res.render('main/index.jade', {
+        res.render('order/index.jade', {
             locals: {
                 moduleName: 'main'
                 ,breadCrump: false
@@ -64,9 +64,9 @@ module.exports =  function(server, User, userController, jobController, requests
         }
     );
 
-    server.get('/roofer/*', function(req, res) {
+    server.get('/contractor/*', function(req, res) {
 
-        res.render('contractor.jade', {
+        res.render('contractor/contractor.jade', {
 
                 locals : {
                     currentUser: req.user

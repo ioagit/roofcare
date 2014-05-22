@@ -4,24 +4,26 @@
 
     function routerSvc() {
 
-        var lookup = {};
-        var otherwiseLookup = null;
+        var routes = {};
+        var otherwiseRoute = null;
 
         return {
 
+            routes: routes,
+
             when : function(key, url, params) {
-                lookup[key] = {
+                routes[key] = {
                     url : url,
                     params : params
                 };
             },
 
             alias : function(key1, key2) {
-                lookup[key1] = lookup[key2];
+                routes[key1] = routes[key2];
             },
 
             otherwise : function(params) {
-                otherwiseLookup = params;
+                otherwiseRoute = params;
             },
 
             replaceUrlParams : function(url, params) {
@@ -37,7 +39,7 @@
             },
 
             getRoute : function(key, args) {
-                return lookup[key];
+                return routes[key];
             },
 
             routePath : function(key, args) {
@@ -50,14 +52,14 @@
             },
 
             install : function($routeProvider) {
-                for(var key in lookup) {
-                    var route = lookup[key];
+                for(var key in routes) {
+                    var route = routes[key];
                     var url = route['url'];
                     var params = route['params'];
                     $routeProvider.when(url, params);
                 }
-                if(otherwiseLookup) {
-                    $routeProvider.otherwise(otherwiseLookup);
+                if(otherwiseRoute) {
+                    $routeProvider.otherwise(otherwiseRoute);
                 }
             },
 

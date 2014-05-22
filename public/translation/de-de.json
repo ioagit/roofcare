@@ -11,7 +11,10 @@
 
      //Session Loading
     "roofCareLoaded": "RoofCare loaded",
-    "contractorDashboardLoaded": "Dashboard Loaded"
+    "contractorDashboardLoaded": "Dashboard Loaded",
+
+    //Shell Messages
+    "busyMessage": "Loading... Please wait"
 
 
 }
