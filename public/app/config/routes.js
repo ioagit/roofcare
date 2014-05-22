@@ -9,7 +9,6 @@ var router = require('../../../public/app/lib/router.js');
 
 (function() {
 
-
     var app_routes = angular.module('app.routes',[]);
 
     app_routes.config(['$routeProvider', '$locationProvider', 'config', 'routerSvc',
