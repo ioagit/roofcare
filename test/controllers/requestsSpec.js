@@ -38,55 +38,39 @@ describe('Controller - Requests', function () {
             expect(whatIsIt).to.be.eq('function');
         });
 
-        it('create request should fail if no contractor is within range', function(done) {
+        it('should fail if no contractor is within range', function(done) {
+
             agent
                 .post('/api/request')
                 .send({
+                    startDate: (new Date()).toString(),
                     orderType: lookUps.orderType.check.name,
-                    workSite: testData.locations.OceanDrive
+                    workSite: testData.locations.AcademyOfArts
                 })
-                .expect(400,done);
+                .expect(400, done);
+
         });
 
-        describe('Update contractor address', function() {
-            var contractorAddress;
+        it ('create request should return 200', function(done) {
 
-            before(function(done){
-                Contractor.findOne({username: 'contractor1'}, function(err, c){
-                    contractorAddress = c.address;
-                    c.address =  testData.locations.Sonoma;
-                    c.save(done);
+            var data = {
+                startDate: (new Date()).toString(),
+                orderType: lookUps.orderType.check.name,
+                workSite: testData.locations.TheEnclave
+            };
+
+            agent
+                .post('/api/request')
+                .send(data)
+                .expect(200)
+                .end(function(err, res){
+                    if(err) {
+                        done(err);
+                    } else {
+                        console.log(res.text);
+                        done();
+                    }
                 });
-            });
-
-            after(function(done) {
-                Contractor.findOne({username: 'contractor1'}, function(err, c){
-                    c.address =  contractorAddress;
-                    c.save(done);
-                });
-            });
-
-            it ('create request should return 200', function(done) {
-
-                var data = {
-                    startDate: new Date(),
-                    orderType: lookUps.orderType.check.name,
-                    workSite: testData.locations.TheEnclave
-                };
-
-                agent
-                    .post('/api/request')
-                    .send(data)
-                    .expect(200)
-                    .end(function(err, res){
-                        if(err) {
-                            done(err);
-                        } else {
-                            console.log(res.text);
-                            done();
-                        }
-                    });
-            });
         });
     });
 

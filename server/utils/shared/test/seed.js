@@ -7,8 +7,9 @@ var mongoose  = require('mongoose'),
     path = require('path'),
     async = require('async'),
     _ = require('underscore'),
+    testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
 
-    //Models
+//Models
     Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address =  require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
@@ -58,6 +59,7 @@ function seedOneContractor(n, done) {
     //Getting all the lists
     var customerList  = buildList(customerMock.build, n);
     contractorList.push( build(contractorMock.build, {username: 'contractor1'}));
+    contractorList[0].address =  testData.locations.Sonoma;
     var jobList  = buildList(jobMock.build, n);
 
     //Jobs
