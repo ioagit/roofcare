@@ -3,6 +3,10 @@
 
     var app = angular.module('app');
 
+    var appVersion = 1;
+    var appPrefix = '/';
+
+
     // Configure Toastr
     toastr.options.timeOut = 4000;
     toastr.options.positionClass = 'toast-top-right';
@@ -51,20 +55,22 @@
         limit: 5
     };
 
-    var routing =  {
+    var locationConfiguration =  {
         prefix : '',
         html5Mode : true
 
     };
 
-    var template = {
+    var templateUrlPrefix = 'templates/';
+
+    var viewConfiguration = {
 
         viewUrlPrefix : templateUrlPrefix + 'views/',
         partialUrlPrefix : templateUrlPrefix + 'partials/',
         templateFileSuffix : '_tpl.html',
 
         templateDirectory : '/templates/',
-        templateFileQuerystring : '?v=' + version
+        templateFileQuerystring : '?v=' + appVersion
 
 
     };
@@ -76,15 +82,16 @@
         endpoints: endpoints,
         path: path,
         pagination: pagination,
-        routing: routing,
-        version: '2.1.0',
-        template: template
-
+        version: appVersion
 
         //View and template related stuff
 
 
     };
+
+
+    app.constant('viewConfiguration', viewConfiguration);
+    app.constant('locationConfiguration', locationConfiguration);
 
     app.value('config', config);
     

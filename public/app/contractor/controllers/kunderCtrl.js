@@ -6,7 +6,7 @@
 
     'use strict';
     var controllerId = 'ContractorKunderCtrl';
-    angular.module('rc.Contractor').controller(controllerId, ['$scope', ContractorKunderCtrl]);
+    angular.module('rc.contractor').controller(controllerId, ['$scope', ContractorKunderCtrl]);
 
     function ContractorKunderCtrl($scope) {
 

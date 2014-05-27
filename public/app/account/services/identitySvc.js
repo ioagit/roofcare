@@ -3,10 +3,12 @@
  */
 (function() {
 
+
+
     var serviceId = 'identitySvc';
     angular.module('rc.account').factory(serviceId, ['$window', 'userResource', indentitySvc]);
 
-    function identitySvc($window, userResource) {
+    function indentitySvc($window, userResource) {
 
         var currentUser;
 

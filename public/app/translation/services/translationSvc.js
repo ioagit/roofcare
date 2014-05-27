@@ -4,7 +4,7 @@
 
 (function() {
 
-    var translationModule = angular.module('tranlation', []);
+    var translationModule = angular.module('app.translation', []);
 
     translationModule.service('translationSvc', ['$resource', translationSvc]);
 
