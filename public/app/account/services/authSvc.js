@@ -4,9 +4,9 @@
 
 (function() {
 
-    angular.module('rc.account').factory('authScv', ['identitySvc', 'userResource', 'commonSvc', 'config' , authScv ]);
+    angular.module('rc.account').factory('authScv', ['identitySvc', 'userResource', 'commonSvc', 'config' , authSvc ]);
 
-    function authSvc(identitySvc, userResource, commonSvc, config, translationSvc){
+    function authSvc(identitySvc, userResource, commonSvc, config){
 
 
         return {

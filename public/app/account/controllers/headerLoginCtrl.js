@@ -10,7 +10,7 @@
     var controllerId = 'HeaderLoginCtrl';
     angular.module('rc.account').controller(controllerId, ['$scope', '$location', 'config', 'identitySvc',
                                                         'authSvc', 'commonSvc',
-                                                         controllerId]);
+        HeaderLoginCtrl]);
 
     function HeaderLoginCtrl($scope, $location, config, identitySvc, authSvc, commonSvc) {
 

@@ -1,11 +1,12 @@
 ﻿(function () { 
     'use strict';
     
-    var controllerId = 'contractorSidebarCtrl';
-    angular.module('app').controller(controllerId,
-        ['$location', 'config', 'routes', contractorSidebarCtrl]);
+    var controllerId = 'ContractorSidebarCtrl';
 
-    function contractorSidebarCtrl($location, config, routes) {
+    angular.module('app').controller(controllerId,
+        ['$location', ContractorSidebarCtrl]);
+
+    function ContractorSidebarCtrl($location) {
 
         var vm = this;
 

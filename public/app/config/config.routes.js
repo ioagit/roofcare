@@ -37,37 +37,70 @@
                 }
             },
 
-            routerSvc.when('contractor_inbox_path', '/contractor/inbox', {
-                controller: 'ContractorInboxCtrl',
-                controllerAs: 'vm',
-                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/inbox', config.template)
-            });
+            {
+                url: '/contractor/inbox',
+                config: {
 
-            routerSvc.when('contractor_jobs_path', '/contractor/jobs', {
-                controller: 'ContractorJobCtrl',
-                controllerAs: 'vm',
-                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/jobs', config.template)
-            });
+                    controller: 'ContractorInboxCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor Inbox',
+                    templateUrl: 'contractor/inbox',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            },
+            {
+                url: '/contractor/jobs',
+                config: {
 
-            routerSvc.when('contractor_jobs_path', '/contractor/job_start/:id', {
-                controller: 'ContractorJobStartCtrl',
-                controllerAs: 'vm',
-                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/job_start', config.template)
-            });
-
-            routerSvc.when('contractor_kunden_path', '/contractor/kunden', {
-                controller: 'ContractorKundenCtrl',
-                controllerAs: 'vm',
-                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/kunden', config.template)
-            });
-
-            routerSvc.when('contractor_rechnung_path', '/contractor/rechnung', {
-                controller: 'ContractorRechnungCtrl',
-                controllerAs: 'vm',
-                templateUrl: routerSvc.prepareViewTemplateUrl('contractor/rechnung', config.template)
-            });
-
-
+                    controller: 'ContractorJobCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor Jobs',
+                    templateUrl: 'contractor/jobs',
+                    settings: {
+                        nav: 3,
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            },
+            {
+                url: '/contractor/job_start/:id',
+                config: {
+                    controller: 'ContractorJobStartCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor Job Start',
+                    templateUrl: 'contractor/job_start',
+                    settings: {
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            },
+            {
+                url: '/contractor/kunden',
+                config: {
+                    controller: 'ContractorKundenCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor Kunden',
+                    templateUrl: 'contractor/kunden',
+                    settings: {
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            },
+            {
+                url: '/contractor/rechnung',
+                config: {
+                    controller: 'ContractorRechnungCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor rechnung',
+                    templateUrl: 'contractor/rechnung',
+                    settings: {
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            }
 
         ]
 
@@ -85,6 +118,7 @@
 
     // Configure the routes and route resolvers
     app.config(['$routeProvider', 'routes','viewConfiguration', routeConfigurator]);
+
     function routeConfigurator($routeProvider, routes, viewConfiguration) {
 
         routes.forEach(function (route) {
@@ -99,7 +133,7 @@
     }
 
 
-    app.config(['$locationProvider', 'routeConfiguration',
+    app.config(['$locationProvider', 'locationConfiguration',
 
         function ($locationProvider, locationConfiguration) {
 

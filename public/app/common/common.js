@@ -31,7 +31,7 @@
         var throttles = {};
 
         var translation = {};
-        translationSvc.getTransaltion(translation);
+        translationSvc.getTranslation(translation);
 
         var service = {
             // common angular dependencies
@@ -46,7 +46,7 @@
             isNumber: isNumber,
             logger: logger, // for accessibility
             textContains: textContains,
-            translation: translation.translation
+            translation: translation
         };
 
         return service;

@@ -1,9 +1,8 @@
 {
-    //Authorization && Authentication
     "authentication": "Authentication",
     "loginError": "Error Login In",
     "loginSuccess": "Success Login",
-    "loginInvalid": "Invalid Username/Password",
+    "loginInvalid": "Invalid Username Password",
 
     "logoutSuccess": "Success logout",
     "notAuthorized": "not authorized",

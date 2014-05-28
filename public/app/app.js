@@ -13,9 +13,9 @@
 
             //Custom modules
             //'rc.contractor',
-            //'rc.account',
+            'rc.account',
             'app.common',
-            'app.routes',
+            //'app.routes',
             'app.translation'
 
         ]);

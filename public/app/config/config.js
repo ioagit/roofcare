@@ -23,6 +23,9 @@
 
         baseDirectory: '/',
 
+        //tranlation
+        translationPath: '/static/translation/',
+
         //Contractor
         contractorPath: '/contractor/dashboard',
 
@@ -89,7 +92,7 @@
 
     };
 
-
+    //injectable in the config fase.
     app.constant('viewConfiguration', viewConfiguration);
     app.constant('locationConfiguration', locationConfiguration);
 
