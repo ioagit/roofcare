@@ -14,9 +14,9 @@
 
     function HeaderLoginCtrl($scope, $location, config, identitySvc, authSvc, commonSvc) {
 
-        var translation = commonSvc.translation;
+        var translation = {};
 
-        translationSvc.getTranslation(translation);
+        commonSvc.translation.getTranslation(translation);
 
 
         $scope.identity = identitySvc;

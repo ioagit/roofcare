@@ -9,7 +9,7 @@
     function shell($rootScope, commonSvc, config) {
 
         var vm = this;
-        var logSuccess = common.logger.getLogFn(controllerId, 'success');
+        var logSuccess = commonSvc.logger.getLogFn(controllerId, 'success');
         var events = config.events;
 
         vm.busyMessage = commonSvc.translation.busyMessage;
@@ -30,7 +30,7 @@
 
         function activate() {
             logSuccess(commonSvc.translation.roofCareLoaded, null, true);
-            common.activateController([], controllerId);
+            commonSvc.activateController([], controllerId);
         }
 
         function toggleSpinner(on) { vm.isBusy = on; }

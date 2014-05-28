@@ -17,18 +17,22 @@
                     language = 'de-de';
                 }
 
-                var path = config.path.translationPath + language + '.json';
+                var path = config.path.translationPath;
                 var ssid = 'rc_' + language;
 
-                //if (sessionStorage && sessionStorage.getItem(ssid)) {
-                //    $scope.translation = JSON.parse(sessionStorage.getItem(ssid));
-                //    return;
-                //}
+                if (sessionStorage && sessionStorage.getItem(ssid)) {
+                    translation = JSON.parse(sessionStorage.getItem(ssid));
+                    return;
+                }
 
-                var dataService = $resource(path, {callback: 'JSON_CALLBACK'}, {get: {method: 'JSONP'}});
+                var dataService = $resource(path,
+                    {'query': {
+                        method: 'GET',
+                        isArray: false}
+                    });
 
 
-                dataService.get(function (data) {
+                dataService.get().$promise.then(function (data) {
                     translation = data;
                     if (sessionStorage)
                         sessionStorage.setItem(ssid, JSON.stringify(data));

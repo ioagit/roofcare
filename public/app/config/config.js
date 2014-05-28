@@ -24,7 +24,7 @@
         baseDirectory: '/',
 
         //tranlation
-        translationPath: '/static/translation/',
+        translationPath: '/api/translation',
 
         //Contractor
         contractorPath: '/contractor/dashboard',
@@ -64,7 +64,7 @@
 
     };
 
-    var templateUrlPrefix = 'templates/';
+    var templateUrlPrefix = '/templates/';
 
     var viewConfiguration = {
 

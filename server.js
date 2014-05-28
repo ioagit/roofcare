@@ -16,7 +16,8 @@ var User = require(path.join(process.cwd(),'server','models','Users')).Model;
 var userController  = require(path.join(process.cwd(),'server','controllers','users')),
     jobController = require(path.join(process.cwd(),'server','controllers','jobs')),
     requestsController = require(path.join(process.cwd(),'server','controllers','requests')),
-    contractorController = require(path.join(process.cwd(),'server','controllers','contractors'));
+    contractorController = require(path.join(process.cwd(),'server','controllers','contractors')),
+    translationController = require(path.join(process.cwd(),'server','controllers','translation'));
 
 
 // Decorate express with our components
@@ -30,7 +31,7 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, jobController, requestsController, contractorController, auth);
+    routes(server, User, userController, jobController, requestsController, contractorController, auth, translationController);
 
     return server;
 }
