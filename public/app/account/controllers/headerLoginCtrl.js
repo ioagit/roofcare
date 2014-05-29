@@ -8,19 +8,17 @@
 
     'use strict';
     var controllerId = 'HeaderLoginCtrl';
-    angular.module('rc.account').controller(controllerId, ['$scope', '$location', 'config', 'identitySvc',
-                                                        'authSvc', 'commonSvc',
+    angular.module('rc.account').controller(controllerId, ['$location', 'config', 'identitySvc','authSvc', 'commonSvc',
         HeaderLoginCtrl]);
 
-    function HeaderLoginCtrl($scope, $location, config, identitySvc, authSvc, commonSvc) {
+    function HeaderLoginCtrl($location, config, identitySvc, authSvc, commonSvc, translation) {
 
-        var translation = {};
+        var vm = this;
 
-        commonSvc.translation.getTranslation(translation);
+        //var translation =  commonSvc.translation;
 
-
-        $scope.identity = identitySvc;
-        $scope.signin = function (username, password) {
+        vm.identity = identitySvc;
+        vm.signin = function (username, password) {
 
             authSvc.authenticateUser(username, password)
                 .then(function (success) {
@@ -40,12 +38,13 @@
         };
 
 
-        $scope.signout = function() {
+        vm.signout = function() {
+
 
                 authSvc.logoutUser().then(function() {
-                    $scope.username = "";
-                    $scope.password = "";
-                    commonSvc.logger.logSucces(translation.logoutSuccess, null, null, true)
+                    vm.username = "";
+                    vm.password = "";
+                    commonSvc.logger.logSucces(translation.logoutSuccess, null, null, true);
                     $location.path(config.path.contractorHome);
                 })
             }

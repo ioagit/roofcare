@@ -25,19 +25,21 @@
     });
 
     commonModule.factory('commonSvc',
-        ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', 'translationSvc', commonSvc]);
+        ['$q', '$rootScope', '$timeout', '$http', 'commonConfig', 'logger', 'translationSvc', commonSvc]);
 
-    function commonSvc($q, $rootScope, $timeout, commonConfig, logger, translationSvc) {
+    function commonSvc($q, $rootScope, $timeout, $http, commonConfig, logger, translationSvc) {
         var throttles = {};
 
-        var translation = {};
-        translationSvc.getTranslation(translation);
+
+
+
 
         var service = {
             // common angular dependencies
             $broadcast: $broadcast,
             $q: $q,
             $timeout: $timeout,
+            $http: $http,
             // generic
             getData: getData,
             activateController: activateController,
@@ -45,8 +47,8 @@
             debouncedThrottle: debouncedThrottle,
             isNumber: isNumber,
             logger: logger, // for accessibility
-            textContains: textContains,
-            translation: translation
+            textContains: textContains
+
         };
 
         return service;

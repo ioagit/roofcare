@@ -6,44 +6,38 @@
 
     var translationModule = angular.module('app.translation', []);
 
-    translationModule.service('translationSvc', ['$resource', 'config', translationSvc]);
+    translationModule.factory('translationSvc', ['$q', '$resource', 'config', translationSvc]);
 
-    function translationSvc($resource, config) {
+    function translationSvc($q, $resource, config) {
 
 
-            this.getTranslation = function (translation, language) {
+            return {
 
-                if (!language) {
-                    language = 'de-de';
-                }
+                getTranslation: function () {
 
-                var path = config.path.translationPath;
-                var ssid = 'rc_' + language;
+                    var defer = $q.defer();
 
-                if (sessionStorage && sessionStorage.getItem(ssid)) {
-                    translation = JSON.parse(sessionStorage.getItem(ssid));
-                    return;
-                }
+                    var path = config.path.translationPath;
 
-                var dataService = $resource(path,
-                    {'query': {
-                        method: 'GET',
-                        isArray: false}
+                    var dataService = $resource(path,
+                        {'get': {
+                            method: 'GET',
+                            isArray: false,
+                            cache: true}
+                        });
+
+                    dataService.get().$promise.then(function (data) {
+                        defer.resolve(data);
+                    }, function(reason){
+                        defer.reject(reason);
                     });
 
 
-                dataService.get().$promise.then(function (data) {
-                    translation = data;
-                    if (sessionStorage)
-                        sessionStorage.setItem(ssid, JSON.stringify(data));
-                }, function(error){
-                    console.log(error);
-                });
+                    return defer.promise;
+                } // factory object return
+                }; // Get translation
 
-
-            }
-
-        }
+        } //TrasnlationSvc declararion
 
 
 

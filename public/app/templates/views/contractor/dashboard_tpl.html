@@ -24,17 +24,17 @@
             <div class='row'>
                 <div class='col-sm-12'>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-error'>{{dashboard.inbox.request}}</h3>
+                        <h3 class='title text-error'>{{vm.dashboard.inbox.request}}</h3>
                         <small><a href="/contractor/inbox">Neue Auftr&auml;ge</a></small>
                         <div class='text-error icon-plus align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-info'>{{dashboard.inbox.total}}</h3>
+                        <h3 class='title text-info'>{{vm.dashboard.inbox.total}}</h3>
                         <small><a href="/contractor/inbox">Auftr&auml;ge insgesamt</a></small>
                         <div class='text-info icon-inbox align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-primary'>{{nextJob.StartDate | date: 'HH:mm' || 'nichts zu tun'}} Uhr</h3>
+                        <h3 class='title text-primary'>{{vm.nextJob.StartDate | date: 'HH:mm' || 'nichts zu tun'}} Uhr</h3>
                         <small><a href="job_start.html">N&auml;chster Termin</a></small>
                         <div class='text-primary icon-time align-right'></div>
                     </div>
@@ -53,17 +53,17 @@
             <div class='row'>
                 <div class='col-sm-12'>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-success'>{{dashboard.jobs.completed}}</h3>
+                        <h3 class='title text-success'>{{vm.dashboard.jobs.completed}}</h3>
                         <small>Erledigt</small>
                         <div class='text-success icon-ok align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-info'>{{dashboard.jobs.started}}</h3>
+                        <h3 class='title text-info'>{{vm.dashboard.jobs.started}}</h3>
                         <small>Am Laufen</small>
                         <div class='text-info icon-check align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-muted'>{{dashboard.jobs.rejected}}</h3>
+                        <h3 class='title text-muted'>{{vm.dashboard.jobs.rejected}}</h3>
                         <small>Gek&uuml;ndigt</small>
                         <div class='text-muted icon-remove align-right'></div>
                     </div>
@@ -108,14 +108,14 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="heute">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li ng-repeat="job in dashboard.comingUp | byDateFilter | orderBy: 'StartDate' ">
+                                    <li ng-repeat="job in vm.dashboard.comingUp | byDate | orderBy: 'StartDate' ">
                                         <dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="woche">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li ng-repeat="job in dashboard.comingUp | orderBy: 'StartDate'">
+                                    <li ng-repeat="job in vm.dashboard.comingUp | orderBy: 'StartDate'">
                                         <dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>

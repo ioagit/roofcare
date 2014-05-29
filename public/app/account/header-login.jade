@@ -1,20 +1,20 @@
-.navbar-right(ng-controller="HeaderLoginCtrl as hlc")
-    form.navbar-form(ng-hide="identity.isAuthenticated()")
+.navbar-right(ng-controller="HeaderLoginCtrl as vm")
+    form.navbar-form(ng-hide="vm.identity.isAuthenticated()")
         ul.nav.navbar-nav
             li
                 a(href="/signup") Signup
         .form-group
-            input.form-control(placeholder="Email", ng-model="username")
+            input.form-control(placeholder="Email", ng-model="vm.username")
         .form-group
-            input.form-control(placeholder="Password", ng-model="password")
-        button.btn.btn-primary(ng-click="signin(username,password)") Sign In
-    ul.nav(ng-show="identity.isAuthenticated()")
+            input.form-control(placeholder="Password", ng-model="vm.password")
+        button.btn.btn-primary(ng-click="vm.signin(vm.username,vm.password)") Sign In
+    ul.nav(ng-show="vm.identity.isAuthenticated()")
         li.dropdown.dark.user-menu
             a.dropdown-toggle(data-toggle='dropdown', href='#')
-               span.user-name {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+               span.user-name {{vm.identity.currentUser.firstName + " " + vm.identity.currentUser.lastName}}
                b.caret
             ul.dropdown-menu
-                li(ng-show="identity.currentUser.isAdmin()")
+                li(ng-show="vm.identity.currentUser.isAdmin()")
                    a(href="/admin/users")
                        i.icon-asteric
                        | User Admin
@@ -24,6 +24,6 @@
                        | Profile
                 li.divider
                 li
-                   a(ngHref="#", ng-click="signout()")
+                   a(ngHref="#", ng-click="vm.signout()")
                        i.icon-signout
                        | Sign Out

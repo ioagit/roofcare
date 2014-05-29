@@ -94,7 +94,11 @@ module.exports = function (grunt) {
                         //Moment Js
                         './public/vendor/momentjs/min/moment-with-langs.js',
                         //Spin JS
-                        './public/vendor/spinjs/spin.js'
+                        './public/vendor/spinjs/spin.js',
+
+                        //angular bootstrap deferred
+                        './public/vendor/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js'
+
                     ]
                 }
             },

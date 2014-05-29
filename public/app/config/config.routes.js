@@ -27,6 +27,7 @@
                 config: {
 
                     controller: 'ContractorDashboardCtrl',
+                    controllerAs: 'vm',
                     title: 'Contractor Dashboard',
                     templateUrl: 'contractor/dashboard',
                     settings: {
@@ -106,12 +107,12 @@
     }
 
 
-    var prepareViewTemplateUrl = function(url, options) {
+    var prepareViewTemplateUrl = function(templatePath, options) {
 
         if (!options)
-            return url;
+            return templatePath;
 
-        return options.viewUrlPrefix + url + options.templateFileSuffix +
+        return options.viewUrlPrefix + templatePath + options.templateFileSuffix +
             options.templateFileQuerystring;
     };
 
@@ -124,7 +125,7 @@
 
             //build routes
             if (!route.settings || route.settings.prepareUrl)
-                route.url = prepareViewTemplateUrl(route.url, viewConfiguration);
+                route.config.templateUrl = prepareViewTemplateUrl(route.config.templateUrl, viewConfiguration);
 
             $routeProvider.when(route.url, route.config);
         });

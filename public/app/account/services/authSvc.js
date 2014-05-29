@@ -4,7 +4,9 @@
 
 (function() {
 
-    angular.module('rc.account').factory('authScv', ['identitySvc', 'userResource', 'commonSvc', 'config' , authSvc ]);
+    'use strict';
+
+    angular.module('rc.account').factory('authSvc', ['identitySvc', 'userResource', 'commonSvc', 'config' , authSvc ]);
 
     function authSvc(identitySvc, userResource, commonSvc, config){
 
@@ -13,7 +15,7 @@
 
             authenticateUser: function (username, password) {
 
-                var deferred = commonSvc.q.defer();
+                var deferred = commonSvc.$q.defer();
                 commonSvc.http.post(config.endpoints.auth.login, {username: username, password: password})
 
                     .then(function (response) {
@@ -34,7 +36,7 @@
             createUser: function(newUserData) {
 
                 var user = new userResource(newUserData);
-                var deferred = commonSvc.q.defer();
+                var deferred = commonSvc.$q.defer();
 
                 user.$save().then(function() {
                         identitySvc.currentUser = user;
@@ -57,7 +59,7 @@
                 var clone = angular.copy(identitySvc.currentUser);
                 angular.extend(clone, newUserData);
 
-                var deferred = commonSvc.q.defer();
+                var deferred = commonSvc.$q.defer();
 
                 clone.$update().then(function() {
                         identitySvc.currentUser = clone;
@@ -77,7 +79,7 @@
                     return true;
                 }
                 else {
-                    return commonSvc.q.reject(commonSvc.translation.notAuthorized);
+                    return commonSvc.$q.reject(commonSvc.translation.notAuthorized);
                 }
             },
 
@@ -86,15 +88,15 @@
                     return true;
                 }
                 else {
-                    return commonSvc.q.reject(commonSvc.translation.notAuthorized);
+                    return commonSvc.$q.reject(commonSvc.translation.notAuthorized);
                 }
             },
 
             logoutUser: function () {
 
-                var deffered = $q.defer();
+                var deffered = commonSvc.$q.defer();
 
-                $http.get(config.endpoints.auth.logout, {logout: true}).then(function () {
+                commonSvc.$http.get(config.endpoints.auth.logout, {logout: true}).then(function () {
 
                         identitySvc.currentUser = undefined;
                         deffered.resolve();

@@ -49,23 +49,6 @@ module.exports =  function(server, User, userController, jobController, requests
         }
     );
 
-
-    server.get('/', function(req, res) {
-
-        res.render('order/index.jade', {
-            locals: {
-                moduleName: 'main'
-                ,breadCrump: false
-                ,title : 'RoofCare'
-                ,description: 'RoofCare'
-                ,author: 'RoofCare'
-                ,analyticssiteid: 'XXXXXXX'
-            }
-        })
-
-        }
-    );
-
     server.get('/contractor/*', function(req, res) {
 
         res.render('contractor/contractor.jade', {
@@ -83,4 +66,22 @@ module.exports =  function(server, User, userController, jobController, requests
         );
 
     });
+
+    server.get('/', function(req, res) {
+
+        res.render('order/index.jade', {
+            locals: {
+                moduleName: 'main'
+                ,breadCrump: false
+                ,title : 'RoofCare'
+                ,description: 'RoofCare'
+                ,author: 'RoofCare'
+                ,analyticssiteid: 'XXXXXXX'
+            }
+        })
+
+        }
+    );
+
+
 };

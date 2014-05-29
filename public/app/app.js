@@ -5,14 +5,14 @@
 (function() {
 
     'use strict';
-    angular.module('app',
+    var app = angular.module('app',
         [
             //Angular modules
             'ngResource',
             'ngRoute',
 
             //Custom modules
-            //'rc.contractor',
+            'rc.contractor',
             'rc.account',
             'app.common',
             //'app.routes',
@@ -21,11 +21,13 @@
         ]);
 
 
-    angular.module('app').run(function($rootScope, $location, config)
+
+
+    app.run(function($rootScope, $location, config, translation)
     {
 
         $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
-            if (rejection === 'not authorized') {
+            if (rejection === translation.notAuthorized) {
                 $location.path(config.path.contractorPath);
             }
         });
