@@ -41,7 +41,7 @@
                 url: '/contractor/inbox',
                 config: {
 
-                    controller: 'ContractorInboxCtrl',
+                    controller: 'ContractorJobCtrl',
                     controllerAs: 'vm',
                     title: 'Contractor Inbox',
                     templateUrl: 'contractor/inbox',

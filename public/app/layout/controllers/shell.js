@@ -4,15 +4,15 @@
     
     var controllerId = 'shell';
     angular.module('app').controller(controllerId,
-        ['$rootScope', 'commonSvc', 'config', shell]);
+        ['$rootScope', 'commonSvc', 'config', 'translation', shell]);
 
-    function shell($rootScope, commonSvc, config) {
+    function shell($rootScope, commonSvc, config, translation) {
 
         var vm = this;
         var logSuccess = commonSvc.logger.getLogFn(controllerId, 'success');
         var events = config.events;
 
-        vm.busyMessage = commonSvc.translation.busyMessage;
+        vm.busyMessage = translation.busyMessage;
         vm.isBusy = true;
 
         vm.spinnerOptions = {
@@ -29,7 +29,7 @@
         activate();
 
         function activate() {
-            logSuccess(commonSvc.translation.roofCareLoaded, null, true);
+            logSuccess(translation.roofCareLoaded, null, true);
             commonSvc.activateController([], controllerId);
         }
 

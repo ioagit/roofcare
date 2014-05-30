@@ -16,7 +16,7 @@
             authenticateUser: function (username, password) {
 
                 var deferred = commonSvc.$q.defer();
-                commonSvc.http.post(config.endpoints.auth.login, {username: username, password: password})
+                commonSvc.$http.post(config.endpoints.auth.login, {username: username, password: password})
 
                     .then(function (response) {
                         if (response.data.success) {

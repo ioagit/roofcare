@@ -8,7 +8,7 @@
 
     'use strict';
     var controllerId = 'HeaderLoginCtrl';
-    angular.module('rc.account').controller(controllerId, ['$location', 'config', 'identitySvc','authSvc', 'commonSvc',
+    angular.module('rc.account').controller(controllerId, ['$location', 'config', 'identitySvc','authSvc', 'commonSvc', 'translation',
         HeaderLoginCtrl]);
 
     function HeaderLoginCtrl($location, config, identitySvc, authSvc, commonSvc, translation) {
@@ -24,7 +24,7 @@
                 .then(function (success) {
 
                     if (success) {
-                        commonSvc.logger.logSucces(translation.successLogin, null, null, true);
+                        commonSvc.logger.logSuccess(translation.loginSuccess, null, null, true);
                     }
                     else
                     {
