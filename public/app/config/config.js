@@ -16,7 +16,8 @@
 
     var events = {
         controllerActivateSuccess: 'controller.activateSuccess',
-        spinnerToggle: 'spinner.toggle'
+        spinnerToggle: 'spinner.toggle',
+        loadingDataError: 'loading.data.error'
     };
 
     var path = {
@@ -109,6 +110,7 @@
     app.config(['commonConfigProvider', function (cfg) {
         cfg.config.controllerActivateSuccessEvent = config.events.controllerActivateSuccess;
         cfg.config.spinnerToggleEvent = config.events.spinnerToggle;
+        cfg.config.loadingDataErrorEvent = config.events.loadingDataError;
     }]);
     //#endregion
 })();

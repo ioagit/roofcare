@@ -11,6 +11,9 @@
             'ngResource',
             'ngRoute',
 
+            //vendors
+            'angular-loading-bar',
+
             //Custom modules
             'rc.contractor',
             'rc.account',

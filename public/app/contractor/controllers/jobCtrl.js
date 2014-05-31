@@ -8,9 +8,9 @@
 
     'use strict';
     var controllerId = 'ContractorJobCtrl';
-    angular.module('rc.contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', 'commonSvc', ContractorJobCtrl]);
+    angular.module('rc.contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorJobCtrl]);
 
-    function ContractorJobCtrl($scope, config, contractorSvc, commonSvc) {
+    function ContractorJobCtrl($scope, config, contractorSvc, commonSvc, spinner) {
 
         //Init var
         $scope.offset = 0;
@@ -27,13 +27,15 @@
 
             $scope.data =  contractorSvc.getLatestJobs({limit: limit, offset: $scope.offset });
             $scope.data.then(function(data) {
-                $scope.rows =   $scope.rows.concat(data.rows);
+                $scope.rows = $scope.rows.concat(data.rows);
                 $scope.totalFound = data.totalFound;
-            });
+                //spinner.spinnerHide();
 
+            });
         };
 
         $scope.loadMore = function() {
+            //spinner.spinnerShow();
             $scope.offset += config.pagination.limit;
             $scope.getLatest();
         };

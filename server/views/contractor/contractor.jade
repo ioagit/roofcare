@@ -40,7 +40,7 @@ block content
         div.container
             div.page-splash.dissolve-animation(data-ng-show="vm.isBusy")
                 div(data-cc-spinner="vm.spinnerOptions")
-                div.page-splash-message.page-splash-message-subtle {{vm.busyMessage}}
+                div.page-splash-message.page-splash-message-subtle(data-ng-bind="vm.busyMessage")
             #content-wrapper.row
                 ng-view.shuffle-animation
             footer#footer
@@ -80,7 +80,7 @@ block scripts
     ////contractor - controllers
     script(defer, src='/app/contractor/controllers/contractorDashboardCtrl.js')
     script(defer, src='/app/contractor/controllers/jobCtrl.js')
-    //script(defer, src='/app/contractor/controllers/jobStartCtrl.js')
+    script(defer, src='/app/contractor/controllers/jobStartCtrl.js')
     //script(defer, src='/app/contractor/controllers/kunderCtrl.js')
     //script(defer, src='/app/contractor/controllers/rechnungCtrl.js')
     //
@@ -106,6 +106,7 @@ block scripts
     script(defer, src='/app/config/config.routes.js')
 
     //layout
+    script(defer, src='/app/layout/directives/cc-spinner.js')
     script(defer, src='/app/layout/controllers/shell.js')
     script(defer, src='/app/layout/controllers/ContractorSidebarCtrl.js')
 

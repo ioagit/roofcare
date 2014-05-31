@@ -14,7 +14,8 @@
         this.config = {
             // These are the properties we need to set
             controllerActivateSuccessEvent: 'controllerActivateSuccessEvent',
-            spinnerToggleEvent: 'spinnerToggleEvent'
+            spinnerToggleEvent: 'spinnerToggleEvent',
+            loadingDataErrorEvent: 'loadingDataError'
         };
 
         this.$get = function () {
@@ -68,6 +69,7 @@
             ).success(function (data, status, headers, info) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, info) {
+                    $broadcast(commonConfig.config.loadingDataErrorEvent, {data: data, status: status});
                     deferred.reject(status);
                 });
 

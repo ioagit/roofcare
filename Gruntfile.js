@@ -65,7 +65,6 @@ module.exports = function (grunt) {
 
             contractor_scripts: {
                 files:
-
                 {
                     expand: true,
                     src: '**/*.js',
@@ -97,7 +96,10 @@ module.exports = function (grunt) {
                         './public/vendor/spinjs/spin.js',
 
                         //angular bootstrap deferred
-                        './public/vendor/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js'
+                        './public/vendor/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js',
+
+                        './public/vendor/angular-loading-bar/build/loading-bar.min.js'
+
 
                     ]
                 }
@@ -207,7 +209,10 @@ module.exports = function (grunt) {
                     './public/vendor/toastr/toastr.css',
 
                     //Angular related like animation, spinner
-                    './public/static/css/ngStyles'
+                    './public/static/css/ngStyles.css',
+
+                    './public/vendor/angular-loading-bar/build/loading-bar.min.css'
+
 
 
 
@@ -228,7 +233,9 @@ module.exports = function (grunt) {
 
                     //'./public/static/css/**/*.css'
                     //Angular related like animation, spinner
-                    './public/static/css/ngStyles'
+                    './public/static/css/ngStyles.css',
+
+                    './public/vendor/angular-loading-bar/build/loading-bar.min.css'
 
 
                 ]

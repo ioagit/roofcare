@@ -10,6 +10,8 @@
 
         var vm = this;
         var logSuccess = commonSvc.logger.getLogFn(controllerId, 'success');
+        var logError = commonSvc.logger.getLogFn(controllerId, 'error');
+
         var events = config.events;
 
         vm.busyMessage = translation.busyMessage;
@@ -44,7 +46,30 @@
         );
 
         $rootScope.$on(events.spinnerToggle,
-            function (data) { toggleSpinner(data.show); }
+            function (evt, data) {
+                toggleSpinner(data.show);
+            }
         );
+
+        //Handling dataLoading Errors
+        $rootScope.$on(events.loadingDataError, function(evt, data) {
+
+            var msg = translation.errrLoadingData;
+            switch (data.status) {
+                case 404:
+                    msg = translation.notFoundError;
+                    break;
+                case 403:
+                    msg = translation.notAuthorizedError;
+                    break;
+                case 400:
+                    msg = translation.badRequestError;
+                    break;
+            }
+
+            logError(msg, data.status, true);
+             toggleSpinner(false);
+        });
+
     }
 })();

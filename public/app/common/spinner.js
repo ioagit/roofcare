@@ -5,9 +5,9 @@
     // events via the commonConfigProvider
 
     angular.module('app.common')
-        .factory('spinner', ['common', 'commonConfig', spinner]);
+        .factory('spinner', ['commonSvc', 'commonConfig', spinner]);
 
-    function spinner(common, commonConfig) {
+    function spinner(commonSvc, commonConfig) {
         var service = {
             spinnerHide: spinnerHide,
             spinnerShow: spinnerShow
@@ -20,7 +20,7 @@
         function spinnerShow() { spinnerToggle(true); }
 
         function spinnerToggle(show) {
-            common.$broadcast(commonConfig.config.spinnerToggleEvent, { show: show });
+            commonSvc.$broadcast(commonConfig.config.spinnerToggleEvent, { show: show });
         }
     }
 })();
