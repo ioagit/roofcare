@@ -2,8 +2,8 @@
  * Created by cerker on 4/11/14.
  */
 
-var geocoder = require('node-geocoder').getGeocoder('google', 'https');
-var mongoose  = require('mongoose'),
+var geocoder = require('node-geocoder').getGeocoder('google', 'https'),
+    mongoose  = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     util = require('util');
@@ -42,6 +42,7 @@ var build = function(sourceAddress, callback) {
         callback(entity);
     });
 };
+
 var getFormattedAddress = function(source) {
     var address = util.format('%s %s', source.street, source.city);
     if (source.state != null && source.state != "") address += ' ' + source.state;
@@ -52,6 +53,7 @@ var getFormattedAddress = function(source) {
 
     return address + ' ' + source.zipCode;
 };
+
 var refresh = function(originalAddress, currentAddress, callback) {
     var isDirty =  (
         currentAddress.street !== originalAddress.street ||

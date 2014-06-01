@@ -144,9 +144,39 @@ exports.saveJob = function() {
             res.status(400);
             return res.send({reason: 'Missing job data'});
         }
-        if (_.isEmpty(jobData._id)) {
+        var jobId = jobData._id;
+        if (_.isEmpty(jobId)) {
             res.status(404);
             return res.send({reason: 'Missing Job id'});
         }
+
+        Job.findById(jobId, function(err, job) {
+            Address.RefreshCoordinates(job.workSite, jobData.workSite, function(err, coordinates){
+                if (err) {
+                    res.status(500);
+                    return res.send({err: err, reason: 'Address lookup failure'});
+                }
+                else {
+                    jobData.workSite.coordinates = coordinates;
+                }
+            });
+
+            var keys = _.keys(jobData);
+            for(var i in keys)
+            {
+                var key = keys[i];
+                if (key == '_id' || key == '__t' || key == '__v' || key == 'created') continue;
+                job[key] = jobData[key];
+            }
+
+            job.save(function(err, result) {
+                if (err) {
+                    res.status(500);
+                    return res.send({err: err, reason: 'Job save failure'});
+                }
+                res.status(200);
+                res.send(result);
+            });
+        });
     }
 };

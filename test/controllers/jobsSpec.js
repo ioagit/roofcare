@@ -166,7 +166,7 @@ describe('Controller - Jobs', function () {
                         }
                         if (results.length) return done();
                     });
-            })
+            });
 
             it('Should filter on status', function (done) {
 
@@ -400,6 +400,48 @@ describe('Controller - Jobs', function () {
                     .expect(404, done);
             });
 
+            it('should save changes to existing job', function(done) {
+
+                var job = null;
+                async.series(
+                    [
+                        function (callback) {
+                            Job.find({'invoice.number': 'RC00000201'}, function (err, found) {
+                                job = found[0];
+                                expect(job).to.not.be.null;
+                                expect(job.invoice.number).to.eq('RC00000201');
+                                callback(null,job);
+                            })
+                        },
+
+                        function(callback) {
+                            job.onSiteContact.firstName = 'Chris';
+                            job.onSiteContact.lastName = 'Smith';
+                            agent
+                                .put('/api/job')
+                                .send(job)
+                                .expect(200)
+                                .end(function (err, res) {
+                                    if (err) return callback(err);
+                                    job = res.body;
+                                    callback(null, job);
+                                });
+                        }
+                    ],
+                    function (err, results) {
+                        //Callback when everything is done.
+                        if (err || !results) {
+                            done(err);
+                        }
+                        if (results.length > 0)  {
+                            expect(job.onSiteContact.firstName).to.eq('Chris');
+                            expect(job.onSiteContact.lastName).to.eq('Smith');
+                            return done();
+                        }
+                    }
+                );
+                done();
+            });
         });
 
     })
