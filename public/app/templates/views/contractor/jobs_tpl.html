@@ -52,7 +52,7 @@
 </thead>
 <tbody>
 
-<tr ng-repeat="job in rows">
+<tr ng-repeat="job in vmJobs.rows">
     <td>
         <div class='text-right'>
             <a class='btn btn-info btn-xs' href='checklists.html'>
@@ -71,7 +71,7 @@
     <td>{{job.orderType}}</td>
     <td>{{job.workSite.street}}</td>
 
-    <td>{{job.StartDate | date:'medium'}}</td>
+    <td>{{job.startDate | date:'medium'}}</td>
     <td>
         <job-status status="{{job.status}}" />
     </td>
@@ -81,9 +81,9 @@
 </table>
 
     <div class="load-more">
-        <a id="comments-more-activity" class="btn btn-block" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading more..." href="#" ng-click="loadMore()" ng-show="moreAvailable()"><i class="icon-circle-arrow-down"></i>
+        <a id="comments-more-activity" class="btn btn-block" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading more..." href="#" ng-click="vmJobs.loadMore()" ng-show="vmJobs.moreAvailable()"><i class="icon-circle-arrow-down"></i>
             Mehr laden...
-            <span class="pull-right" style="padding-right: 10px;" ng-show="rows.length < totalFound">showing: {{rows.length}} of {{totalFound}}</span>
+            <span class="pull-right" style="padding-right: 10px;" ng-show="rows.length < totalFound">showing: {{vmJobs.rows.length}} of {{vmJobs.totalFound}}</span>
 
         </a>
     </div>

@@ -8,24 +8,29 @@
 
     'use strict';
     var controllerId = 'ContractorJobStartCtrl';
-    angular.module('rc.contractor').controller(controllerId, ['$scope', '$routeParams', 'contractorSvc', ContractorJobStartCtrl]);
+    angular.module('rc.contractor').controller(controllerId, [ '$routeParams', 'contractorSvc', 'commonSvc', ContractorJobStartCtrl]);
 
-    function ContractorJobStartCtrl($scope, $routeParams, contractorSvc) {
+    function ContractorJobStartCtrl($routeParams, contractorSvc, commonSvc) {
 
         //Init var
+        var vm = this;
 
-        $scope.getJob = function getJob() {
+        vm.getJob = function getJob() {
 
 
-            $scope.data = contractorSvc.getJob($routeParams.id);
-            $scope.data.then(function (data) {
-                $scope.job = data;
+            vm.data = contractorSvc.getJob($routeParams.id);
+            vm.data.then(function (data) {
+                vm.job = data;
             });
 
         };
 
 
-        $scope.getJob();
+        function activate() {
+            commonSvc.activateController([vm.getJob], controllerId);
+        }
+
+        activate();
 
     }
 

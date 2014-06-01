@@ -2,7 +2,8 @@
  * Created by isuarez on 3/6/14.
  */
 
-module.exports =  function(server, User, userController, jobController, requestsController, contractorController, auth, translationController) {
+module.exports =  function(server, User, userController, jobController, requestsController, contractorController,
+                           auth, translationController, lookupsController) {
 
     server.get('/api/users',  auth.requiresRole('admin'), userController.getUsers(User));
     server.post('/api/users', userController.createUser(User));
@@ -18,7 +19,10 @@ module.exports =  function(server, User, userController, jobController, requests
     server.get('/api/contractor/dashboard', auth.requiresApiLogin, contractorController.getDashboard());
 
     server.get('/api/translation', translationController.getTranslation());
-    
+
+    server.get('/api/lookups', lookupsController.getLookups());
+
+
     server.get('/partials/*', function(req, res) {
         res.render('../../public/app/' + req.params);
     });

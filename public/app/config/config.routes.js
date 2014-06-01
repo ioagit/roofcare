@@ -42,7 +42,7 @@
                 config: {
 
                     controller: 'ContractorJobCtrl',
-                    controllerAs: 'vm',
+                    controllerAs: 'vmJobs',
                     title: 'Contractor Inbox',
                     templateUrl: 'contractor/inbox',
                     settings: {
@@ -56,7 +56,7 @@
                 config: {
 
                     controller: 'ContractorJobCtrl',
-                    controllerAs: 'vm',
+                    controllerAs: 'vmJobs',
                     title: 'Contractor Jobs',
                     templateUrl: 'contractor/jobs',
                     settings: {
@@ -71,7 +71,7 @@
                     controller: 'ContractorJobStartCtrl',
                     controllerAs: 'vm',
                     title: 'Contractor Job Start',
-                    templateUrl: 'contractor/job_start',
+                    templateUrl: '/contractor/job_start',
                     settings: {
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     }

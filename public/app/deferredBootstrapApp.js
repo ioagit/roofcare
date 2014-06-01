@@ -8,6 +8,9 @@ window.deferredBootstrapper.bootstrap(
         resolve: {
             translation: function ($http) {
                 return $http.get('/api/translation');
+            },
+            lookups:  function ($http) {
+                return $http.get('/api/lookups');
             }
         }
     }

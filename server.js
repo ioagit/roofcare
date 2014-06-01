@@ -17,7 +17,8 @@ var userController  = require(path.join(process.cwd(),'server','controllers','us
     jobController = require(path.join(process.cwd(),'server','controllers','jobs')),
     requestsController = require(path.join(process.cwd(),'server','controllers','requests')),
     contractorController = require(path.join(process.cwd(),'server','controllers','contractors')),
-    translationController = require(path.join(process.cwd(),'server','controllers','translation'));
+    translationController = require(path.join(process.cwd(),'server','controllers','translation')),
+    lookupsController = require(path.join(process.cwd(),'server','controllers','lookups'));
 
 
 // Decorate express with our components
@@ -31,7 +32,8 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, jobController, requestsController, contractorController, auth, translationController);
+    routes(server, User, userController, jobController, requestsController,
+                  contractorController, auth, translationController, lookupsController);
 
     return server;
 }

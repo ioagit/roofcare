@@ -26,8 +26,6 @@
 
         };
 
-        //Run
-        vm.getDashboardData();
 
         function getNextEvent() {
 

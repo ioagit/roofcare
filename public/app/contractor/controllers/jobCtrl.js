@@ -8,45 +8,44 @@
 
     'use strict';
     var controllerId = 'ContractorJobCtrl';
-    angular.module('rc.contractor').controller(controllerId, ['$scope', 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorJobCtrl]);
+    angular.module('rc.contractor').controller(controllerId, [ 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorJobCtrl]);
+    function ContractorJobCtrl(config, contractorSvc, commonSvc, spinner) {
 
-    function ContractorJobCtrl($scope, config, contractorSvc, commonSvc, spinner) {
+        var vmJobs = this;
 
         //Init var
-        $scope.offset = 0;
-        $scope.rows = [];
-        $scope.totalFound = 0;
+
+        vmJobs.offset = 0;
+        vmJobs.rows = [];
+        vmJobs.totalFound = 0;
 
         var limit = config.pagination.limit;
 
 
 
-        $scope.getLatest = function() {
+        vmJobs.getLatest = function() {
 
 
 
-            $scope.data =  contractorSvc.getLatestJobs({limit: limit, offset: $scope.offset });
-            $scope.data.then(function(data) {
-                $scope.rows = $scope.rows.concat(data.rows);
-                $scope.totalFound = data.totalFound;
-                //spinner.spinnerHide();
-
+            vmJobs.data =  contractorSvc.getLatestJobs({limit: limit, offset: vmJobs.offset });
+            vmJobs.data.then(function(data) {
+                vmJobs.rows = vmJobs.rows.concat(data.rows);
+                vmJobs.totalFound = data.totalFound;
             });
         };
 
-        $scope.loadMore = function() {
-            //spinner.spinnerShow();
-            $scope.offset += config.pagination.limit;
-            $scope.getLatest();
+        vmJobs.loadMore = function() {
+            vmJobs.offset += config.pagination.limit;
+            vmJobs.getLatest();
         };
 
-        $scope.moreAvailable = function() {
-            return $scope.totalFound > $scope.offset + limit;
+        vmJobs.moreAvailable = function() {
+            return vmJobs.totalFound > vmJobs.offset + limit;
         };
 
 
         function activate() {
-            commonSvc.activateController([$scope.getLatest()], controllerId);
+            commonSvc.activateController([vmJobs.getLatest()], controllerId);
         }
 
         activate();

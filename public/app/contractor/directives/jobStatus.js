@@ -11,9 +11,9 @@
 
     'use strict';
     var directiveId = 'jobStatusDirective';
-    angular.module('rc.contractor').directive(directiveId, ['lookupsSvc', jobStatusDirective]);
+    angular.module('rc.contractor').directive(directiveId, ['lookups', jobStatusDirective]);
 
-    function jobStatusDirective(lookupsSvc) {
+    function jobStatusDirective(lookups) {
 
         return {
             scope: {
@@ -24,20 +24,20 @@
             templateUrl: '/app/templates/directives/jobStatus.html',
             link: function(scope, el, attrs) {
 
-                var lookups = lookupsSvc;
+                var status = lookups.jobStatus;
 
                 switch(attrs.status)
                 {
-                    case lookups.jobStatus.workCompleted:
+                    case status.workCompleted:
                         scope.labelType = 'primary';
                         break;
-                    case lookups.jobStatus.requestAccepted:
+                    case status.requestAccepted:
                         scope.labelType = 'success';
                         break;
-                    case lookups.jobStatus.workStarted:
+                    case status.workStarted:
                         scope.labelType = 'warning';
                         break;
-                    case lookups.jobStatus.created:
+                    case status.created:
                         scope.labelType = 'danger';
                         break;
                     default:
