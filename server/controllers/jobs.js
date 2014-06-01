@@ -8,7 +8,8 @@ var path = require('path'),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
-    async = require('async');
+    async = require('async'),
+    _ = require('underscore');
 
 exports.getJob = function() {
     return function (req, res) {
@@ -138,6 +139,14 @@ exports.createJob = function(){
 
 exports.saveJob = function() {
     return function(req,res) {
-
+        var jobData = req.body;
+        if (_.isEmpty(jobData)) {
+            res.status(400);
+            return res.send({reason: 'Missing job data'});
+        }
+        if (_.isEmpty(jobData._id)) {
+            res.status(404);
+            return res.send({reason: 'Missing Job id'});
+        }
     }
 };

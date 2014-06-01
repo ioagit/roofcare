@@ -382,8 +382,22 @@ describe('Controller - Jobs', function () {
                 expect(whatIsIt).to.be.eq('function');
             });
 
+            it('should return 400 if job data is missing', function(done){
+                agent
+                    .put('/api/job')
+                    .send({})
+                    .expect(400, done);
+            });
+
             it('should return 404 if jobId is not present', function(done) {
-                done();
+                agent
+                    .put('/api/job')
+                    .send({
+                        startDate: (new Date()).toString(),
+                        orderType: lookUps.orderType.check.name,
+                        workSite: testData.locations.TheEnclave
+                    })
+                    .expect(404, done);
             });
 
         });
