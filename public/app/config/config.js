@@ -51,6 +51,10 @@
             dashboard: '/api/contractor/dashboard/',
             inbox: '/api/contractor/inbox/',
             job: '/api/contractor/jobs/'
+        },
+
+        job: {
+            create: '/api/job/'
         }
 
     };

@@ -1,0 +1,53 @@
+<form class="reg-page">
+    <div class="reg-header">
+        <h2>Kostenübersicht</h2>
+        <p>Hier eine Übersicht des Kostenvoranschlags für den Auftrag.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Dauer</td>
+                    <td>{{vm.workflow.duration}}</td>
+                    <td>Stunden</td>
+                </tr>
+                <tr>
+                    <td>Pauschalpreis</td>
+                    <td>{{vm.workflow.distance}}</td>
+                    <td>EUR</td>
+                </tr>
+                <tr>
+                    <td>Distanz zur An/Abfahrt</td>
+                    <td>{{vm.workflow.travelCharge}}</td>
+                    <td>KM</td>
+                </tr>
+                <tr>
+                    <td>Gesamt Anfahrts-und Bearbeitigungspauschale</td>
+                    <td>{{vm.job.invoice.fixedPrice}}</td>
+                    <td>EUR</td>
+                </tr>
+                <tr class="active">
+                    <td>Gesamt Kostenvoranschlag</td>
+                    <td>{{vm.job.invoice.fixedPrice + vm.workflow.travelCharge}} </td>
+                    <td>EUR</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Bitte beachten Sie: </h4>
+            <p>Sollten Sie sich vor Ort entscheiden, den Auftrag nicht auszuführen, wird die
+                Anfahrts-und Bearbeitigungspauschale unabhängig von dem Auftrag berechnet.
+                Die Gesamtkosten für eine Dachreparatur kann je nach Materialeinsatz von dem Kostenvoranschlag  abweichen.</p>
+            <p>Roofcare wird nach erfolgreichem Arbeitsabschluss per Rechnung bezahlt. Bitte beachten Sie, dass der Service nicht bar vor Ort oder per Scheck bezahlt werden kann.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="/order/detail" class="btn-u" type="submit">Termin wählen<i class="icon-angle-right icon-large pull-right"></i></a>
+        </div>
+    </div>
+</form>

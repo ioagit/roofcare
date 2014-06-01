@@ -1,0 +1,87 @@
+<form class="reg-page">
+    <div class="reg-header">
+        <h2>Dachcheck</h2>
+        <p>Um Ihren Dachcheck schnell und fachmännisch durchführen zu zu können, brauchen wir einige Details zu dem Dachcheck von Ihnen.</p>
+    </div>
+    <div class="panel ">
+        <div class="panel-heading">
+            <h3 class="panel-title">An welcher Adresse muss der Dachcheck durchgeführt werden?</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row margin-bottom-10">
+                <div class="col-sm-12">
+                    <label>Strasse und Hausnummer</label>
+                    <input type="text" class="form-control" name="address" placeholder="Strasse und Hausnummer" data-ng-model="vm.job.workSite.street">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>PLZ</label>
+                    <input type="text" class="form-control" name="zip" placeholder="PLZ" data-ng-model="vm.job.workSite.zipCode">
+                </div>
+                <div class="col-sm-6">
+                    <label>Stadt</label>
+                    <input type="text" class="form-control" name="city" placeholder="Stadt" data-ng-model="vm.job.workSite.city">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel ">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Bitte den Dachtyp auswählen</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>Dachtyp <span class="color-red">*</span></label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="flachdach" id="optionsRadios1" value="{{vm.lookups.roofType.flat}}" data-ng-model="vm.job.roofType">
+                            {{vm.lookups.roofType.flat}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="flachdach" id="optionsRadios2" value="{{vm.lookups.roofType.steep}}"  data-ng-model="vm.job.roofType">
+                            {{vm.lookups.roofType.steep}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="flachdach" id="optionsRadios3" value="{{vm.lookups.roofType.order}}" data-ng-model="vm.job.roofType">
+                            Ich weiss es nicht </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label>Haustyp <span class="color-red">*</span></label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="haustyp"  value="{{vm.lookups.propertyType.singleFamily}}"   data-ng-model="vm.job.propertyType">
+                            {{vm.lookups.propertyType.singleFamily}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="haustyp"  value="{{vm.lookups.propertyType.multiFamily}}"   data-ng-model="vm.job.propertyType">
+                            {{vm.lookups.propertyType.multiFamily}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="haustyp" value="{{vm.lookups.propertyType.other}}"   data-ng-model="vm.job.propertyType">
+                            {{vm.lookups.propertyType.other}} </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Weitere Informationen zu Ihrem Dachcheck.</label>
+                    <textarea class="form-control" rows="7" data-ng-model="vm.job.notes.customer"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button class="btn-u" type="submit" data-ng-click="vm.createJob()">Weiter<i class="icon-angle-right icon-large pull-right"></i></button>
+        </div>
+    </div>
+</form>

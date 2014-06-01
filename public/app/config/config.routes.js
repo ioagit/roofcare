@@ -32,7 +32,6 @@
             {
                 url: '/order/check',
                 config: {
-
                     controller: 'OrderCheckCtrl',
                     controllerAs: 'vm',
                     title: 'Order Check',

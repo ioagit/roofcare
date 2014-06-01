@@ -3,17 +3,28 @@
  */
 
 
-(function () {
+(function() {
     'use strict';
 
     var controllerId = 'OrderCheckCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', OrderStartCtrl]);
+        ['commonSvc','lookups', '$location', 'orderSvc',  OrderCheckCtrl]);
 
-    function OrderStartCtrl(commonSvc) {
+    function OrderCheckCtrl(commonSvc, lookups, $location, orderSvc) {
 
         var vm = this;
+
+        vm.lookups = lookups;
+
+        vm.createJob = function() {
+
+            vm.job.starDate = new Date();
+            orderSvc.createJob().then(function(data) {
+                $location.url = '/order/cost';
+            });
+
+        };
 
         function activate() {
             commonSvc.activateController([], controllerId);
