@@ -37,14 +37,14 @@ exports.getDashboard = function() {
                         .populate('customer')
 
                         .exec(function (err, coll) {
-                            dashBoard.inbox.next = coll[0];
+                            dashBoard.inbox.nextJob = coll[0];
                             dashBoard.comingUp = coll;
                             callback();
                         });
                 },
                 function (callback) {
                     Job
-                        .aggregate({$group: {_id: {status: '$Status'}, count: {$sum: 1}}})
+                        .aggregate({$group: {_id: {status: '$status'}, count: {$sum: 1}}})
                         .exec(function (err, groupings) {
                             for(var i=0; i < groupings.length; i++) {
                                 var status = groupings[i]._id.status;
