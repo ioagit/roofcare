@@ -83,6 +83,7 @@ block scripts
     ////contractor - controllers
     script(defer, src='/app/contractor/controllers/contractorDashboardCtrl.js')
     script(defer, src='/app/contractor/controllers/jobCtrl.js')
+    script(defer, src='/app/contractor/controllers/inboxCtrl.js')
     script(defer, src='/app/contractor/controllers/jobStartCtrl.js')
     //script(defer, src='/app/contractor/controllers/kunderCtrl.js')
     //script(defer, src='/app/contractor/controllers/rechnungCtrl.js')
@@ -91,17 +92,17 @@ block scripts
     script(defer, src='/app/contractor/services/contractorSvc.js')
     //
     ////contractor directives
-    script(defer, src='/app/contractor/directives/contractorDashboardDirective.js')
+    script(defer, src='/app/contractor/directives/contractorDashboardJob.js')
     script(defer, src='/app/contractor/directives/jobStatus.js')
     //
     ////contractor filters
-    script(defer, src='/app/contractor/filters/byDateFilter.js')
+    script(defer, src='/app/contractor/filters/onlyToday.js')
     //
     ////contractor resources
     //script(defer, src='/app/contractor/resources/jobResource.js')
 
     //Angular app
-    script(defer, src='/app/app.js')
+    script(defer, src='/app/contractorApp.js')
 
     //configuration
     script(defer, src='/app/config/config.js')

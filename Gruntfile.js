@@ -96,9 +96,9 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            vendors_mobile: {
+            vendors_order: {
                 files: {
-                    './public/static/dist/vendors.main.min.js':
+                    './public/static/dist/vendors.order.min.js':
                         [
                             //For the main site
                             './public/specs/beta/assets/plugins/parallax-slider/js/jquery.cslider.js',
@@ -185,14 +185,16 @@ module.exports = function (grunt) {
 
         concat: {
             styles_main: {
-                dest: './public/static/dist/app.main.css',
+                dest: './public/static/dist/app.order.css',
                 src: [
 
-
+                    './public/specs/beta/assets/css/app.css',
                     './public/specs/beta/assets/css/style.css',
                     './public/specs/beta/assets/css/header/header1.css',
 
                     './public/specs/beta/assets/css/responsive.css',
+
+
                     './public/specs/beta/assets/plugins/font-awesome/css/font-awesome.css',
                     './public/specs/beta/assets/css/themes/red.css',
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
@@ -250,7 +252,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', [ 'concat', 'browserify', 'uglify', 'watch']);
+    grunt.registerTask('dev', [ 'concat', 'uglify', 'watch']);
 
 
     //server daemon

@@ -29,7 +29,7 @@
                         <div class='text-info icon-inbox align-right'></div>
                     </div>
                     <div class='box-content box-statistic'>
-                        <h3 class='title text-primary'>{{vm.nextJob.StartDate | date: 'HH:mm' || 'nichts zu tun'}} Uhr</h3>
+                        <h3 class='title text-primary'>{{vm.nextJob.startDate | date: 'HH:mm' || 'nichts zu tun'}} Uhr</h3>
                         <small><a href="job_start.html">N&auml;chster Termin</a></small>
                         <div class='text-primary icon-time align-right'></div>
                     </div>
@@ -103,15 +103,15 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="heute">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li ng-repeat="job in vm.dashboard.comingUp | byDate | orderBy: 'StartDate' ">
-                                        <dashboard-job job="{{job}}" />
+                                    <li ng-repeat="job in vm.dashboard.comingUp | onlyToday | orderBy: 'startDate' ">
+                                        <contractor-dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="woche">
                                 <ul class="list-unstyled comments list-hover list-striped">
-                                    <li ng-repeat="job in vm.dashboard.comingUp | orderBy: 'StartDate'">
-                                        <dashboard-job job="{{job}}" />
+                                    <li ng-repeat="job in vm.dashboard.comingUp | orderBy: 'startDate'">
+                                        <contractor-dashboard-job job="{{job}}" />
                                     </li>
                                 </ul>
                                 <div class="load-more">

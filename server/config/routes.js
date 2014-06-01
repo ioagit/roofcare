@@ -39,10 +39,10 @@ module.exports =  function(server, User, userController, jobController, contract
 
     server.get('/order/*', function(req, res) {
 
-            res.render('order/order_start.jade', {
+            res.render('order/order.jade', {
                 locals: {
-                    moduleName: 'main',
-                    breadCrump: false,
+                    moduleName: 'order',
+                    breadCrump: true,
                     title : 'Termin vereinbaren'
                     ,description: 'Termin vereinbaren'
                     ,author: 'RoofCare'
@@ -75,7 +75,7 @@ module.exports =  function(server, User, userController, jobController, contract
 
         res.render('order/index.jade', {
             locals: {
-                moduleName: 'main'
+                moduleName: 'order'
                 ,breadCrump: false
                 ,title : 'RoofCare'
                 ,description: 'RoofCare'

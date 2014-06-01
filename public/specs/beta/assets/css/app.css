@@ -12,20 +12,20 @@
    border-radius: 0 !important;
 }
 
-body { 
-   color: #333; 
+body {
+   color: #333;
    font-size: 13px;
    line-height: 1.6;
 }
 
-p, li { 
+p, li {
    color: #555;
-   line-height: 1.6; 
+   line-height: 1.6;
 }
 
 a,
-a:focus, 
-a:hover, 
+a:focus,
+a:hover,
 a:active {
    color: #be1522;
    outline: 0 !important;
@@ -40,17 +40,17 @@ color: #555;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
-   margin-top: 5px; 
-   text-shadow: none; 
-   font-weight: 300; 
-   font-family: 'Open Sans', sans-serif; 
-} 
+   margin-top: 5px;
+   text-shadow: none;
+   font-weight: 300;
+   font-family: 'Open Sans', sans-serif;
+}
 h1 i, h2 i, h3 i, h4 i, h5 i {
    margin-right: 7px;
 }
 
 img.img-circle {
-    border-radius: 50% !important;  
+    border-radius: 50% !important;
 }
 
 .text-justify p {
@@ -82,11 +82,11 @@ img.img-circle {
 /*Navigation
 ------------------------------------*/
 /*Pagination*/
-.pagination > .active > a, 
-.pagination > .active > span, 
-.pagination > .active > a:hover, 
-.pagination > .active > span:hover, 
-.pagination > .active > a:focus, 
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
 .pagination > .active > span:focus {
    background-color: #72c02c;
    border-color: #72c02c;
@@ -95,15 +95,15 @@ img.img-circle {
 .pagination li a:hover {
    color: #fff;
    background: #5fb611;
-   border-color: #5fb611;   
+   border-color: #5fb611;
 }
 
 /*Pager*/
-.pager li > a:hover, 
+.pager li > a:hover,
 .pager li > a:focus {
    color: #fff;
    background: #5fb611;
-   border-color: #5fb611;   
+   border-color: #5fb611;
 }
 
 /*Button Styles
@@ -154,13 +154,13 @@ a.btn-u-lg {
 }
 
 /*For FF Only*/
-@-moz-document url-prefix() { 
+@-moz-document url-prefix() {
    .footer-subsribe .btn-u {
       padding-bottom: 5px;
    }
 }
-@media (max-width: 768px) { 
-   @-moz-document url-prefix() { 
+@media (max-width: 768px) {
+   @-moz-document url-prefix() {
       .btn-u {
          padding-bottom: 5px;
       }
@@ -222,7 +222,7 @@ a.btn-u-lg {
 /*Social Icons*/
 .social-icons {
    margin: 0;
-   padding: 0; 
+   padding: 0;
 }
 .social-icons li {
    float: left;
@@ -257,34 +257,34 @@ a.btn-u-lg {
   opacity: 1;
 }
 
-.social_amazon {background: url(../img/icons/social/amazon.png) no-repeat;}
-.social_behance {background: url(../img/icons/social/behance.png) no-repeat;}
-.social_blogger {background: url(../img/icons/social/blogger.png) no-repeat;}
-.social_deviantart {background: url(../img/icons/social/deviantart.png) no-repeat;}
-.social_dribbble {background: url(../img/icons/social/dribbble.png) no-repeat;}
-.social_dropbox {background: url(../img/icons/social/dropbox.png) no-repeat;}
-.social_evernote {background: url(../img/icons/social/evernote.png) no-repeat;}
-.social_facebook {background: url(../img/icons/social/facebook.png) no-repeat;}
-.social_forrst {background: url(../img/icons/social/forrst.png) no-repeat;}
-.social_github {background: url(../img/icons/social/github.png) no-repeat;}
-.social_googleplus {background: url(../img/icons/social/googleplus.png) no-repeat;}
-.social_jolicloud {background: url(../img/icons/social/jolicloud.png) no-repeat;}
-.social_last-fm {background: url(../img/icons/social/last-fm.png) no-repeat;}
-.social_linkedin {background: url(../img/icons/social/linkedin.png) no-repeat;}
-.social_picasa {background: url(../img/icons/social/picasa.png) no-repeat;}
-.social_pintrest {background: url(../img/icons/social/pintrest.png) no-repeat;}
-.social_rss {background: url(../img/icons/social/rss.png) no-repeat;}
-.social_skype {background: url(../img/icons/social/skype.png) no-repeat;}
-.social_spotify {background: url(../img/icons/social/spotify.png) no-repeat;}
-.social_stumbleupon {background: url(../img/icons/social/stumbleupon.png) no-repeat;}
-.social_tumblr {background: url(../img/icons/social/tumblr.png) no-repeat;}
-.social_twitter {background: url(../img/icons/social/twitter.png) no-repeat;}
-.social_vimeo {background: url(../img/icons/social/vimeo.png) no-repeat;}
-.social_wordpress {background: url(../img/icons/social/wordpress.png) no-repeat;}
-.social_xing {background: url(../img/icons/social/xing.png) no-repeat;}
-.social_yahoo {background: url(../img/icons/social/yahoo.png) no-repeat;}
-.social_youtube {background: url(../img/icons/social/youtube.png) no-repeat;}
-.social_vk {background: url(../img/icons/social/vk.png) no-repeat;}
+.social_amazon {background: url(../images/main/icons/social/amazon.png) no-repeat;}
+.social_behance {background: url(../images/main/icons/social/behance.png) no-repeat;}
+.social_blogger {background: url(../images/main/icons/social/blogger.png) no-repeat;}
+.social_deviantart {background: url(../images/main/icons/social/deviantart.png) no-repeat;}
+.social_dribbble {background: url(../images/main/icons/social/dribbble.png) no-repeat;}
+.social_dropbox {background: url(../images/main/icons/social/dropbox.png) no-repeat;}
+.social_evernote {background: url(../images/main/icons/social/evernote.png) no-repeat;}
+.social_facebook {background: url(../images/main/icons/social/facebook.png) no-repeat;}
+.social_forrst {background: url(../images/main/icons/social/forrst.png) no-repeat;}
+.social_github {background: url(../images/main/icons/social/github.png) no-repeat;}
+.social_googleplus {background: url(../images/main/icons/social/googleplus.png) no-repeat;}
+.social_jolicloud {background: url(../images/main/icons/social/jolicloud.png) no-repeat;}
+.social_last-fm {background: url(../images/main/icons/social/last-fm.png) no-repeat;}
+.social_linkedin {background: url(../images/main/icons/social/linkedin.png) no-repeat;}
+.social_picasa {background: url(../images/main/icons/social/picasa.png) no-repeat;}
+.social_pintrest {background: url(../images/main/icons/social/pintrest.png) no-repeat;}
+.social_rss {background: url(../images/main/icons/social/rss.png) no-repeat;}
+.social_skype {background: url(../images/main/icons/social/skype.png) no-repeat;}
+.social_spotify {background: url(../images/main/icons/social/spotify.png) no-repeat;}
+.social_stumbleupon {background: url(../images/main/icons/social/stumbleupon.png) no-repeat;}
+.social_tumblr {background: url(../images/main/icons/social/tumblr.png) no-repeat;}
+.social_twitter {background: url(../images/main/icons/social/twitter.png) no-repeat;}
+.social_vimeo {background: url(../images/main/icons/social/vimeo.png) no-repeat;}
+.social_wordpress {background: url(../images/main/icons/social/wordpress.png) no-repeat;}
+.social_xing {background: url(../images/main/icons/social/xing.png) no-repeat;}
+.social_yahoo {background: url(../images/main/icons/social/yahoo.png) no-repeat;}
+.social_youtube {background: url(../images/main/icons/social/youtube.png) no-repeat;}
+.social_vk {background: url(../images/main/icons/social/vk.png) no-repeat;}
 
 
 /*Font Awesome Icon Page*/
@@ -302,11 +302,11 @@ a.btn-u-lg {
    border: solid 1px #eee;
 }
 
-.fa-icons li:hover { 
+.fa-icons li:hover {
    color: #72c02c;
 }
 
-.fa-icons li i { 
+.fa-icons li i {
    padding: 4px;
    min-width: 30px;
    font-size: 18px;
@@ -315,7 +315,7 @@ a.btn-u-lg {
 }
 .fa-icons li:hover i {
    color: #fff;
-   background: #72c02c; 
+   background: #72c02c;
 }
 
 /*Font Awesome Icon Styles*/
@@ -328,11 +328,11 @@ a.btn-u-lg {
 
 i.icon-round {
    color: #666;
-   padding: 7px 0; 
+   padding: 7px 0;
    min-width: 40px;
    font-size: 22px;
    margin-bottom: 5px;
-   display: inline-block;   
+   display: inline-block;
    border: solid 1px #ddd;
    border-radius: 50% !important;
 }
@@ -497,13 +497,13 @@ li [class*=" icon-"].icon-lg {
 }
 
 /*Background light-style*/
-.bg-light { 
-   padding:10px 15px; 
-   margin-bottom:10px; 
-   background:#fcfcfc; 
+.bg-light {
+   padding:10px 15px;
+   margin-bottom:10px;
+   background:#fcfcfc;
    border:solid 1px #e5e5e5;
 }
-.bg-light:hover { 
+.bg-light:hover {
    border:solid 1px #bbb;
 }
 
@@ -512,8 +512,8 @@ a.read-more {
    font-weight:bold;
    text-decoration:none;
 }
-a.read-more:hover { 
-   color:#72c02c; 
+a.read-more:hover {
+   color:#72c02c;
    text-decoration:none;
 }
 
@@ -554,18 +554,18 @@ a.read-more:hover {
 }
 
 /*Spaces*/
-.margin-bottom-5, 
-.margin-bottom-10, 
-.margin-bottom-20, 
+.margin-bottom-5,
+.margin-bottom-10,
 .margin-bottom-20,
-.margin-bottom-25, 
-.margin-bottom-30, 
-.margin-bottom-35, 
-.margin-bottom-40, 
-.margin-bottom-50, 
-.margin-bottom-60 { 
+.margin-bottom-20,
+.margin-bottom-25,
+.margin-bottom-30,
+.margin-bottom-35,
+.margin-bottom-40,
+.margin-bottom-50,
+.margin-bottom-60 {
    clear:both;
-}   
+}
 .margin-bottom-5 {
    margin-bottom:5px;
 }
@@ -598,7 +598,7 @@ a.read-more:hover {
 ------------------------------------*/
 .clients {
    box-shadow:none !important;
-   margin-bottom: 0 !important;    
+   margin-bottom: 0 !important;
 }
 .clients li {
    float: left;
@@ -616,7 +616,7 @@ a.read-more:hover {
    display: none;
    position: absolute;
 }
-.clients li:hover img.color-img { 
+.clients li:hover img.color-img {
    display: block;
 }
 .clients li img {
@@ -627,15 +627,15 @@ a.read-more:hover {
 .clients li img:hover {
     filter: none;
 }
-.clients, 
+.clients,
 .flexslider.home {
     border: 0;
     overflow: hidden;
-    margin-top: 10px;      
-    margin-bottom: 30px;      
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-.flexslider { 
+.flexslider {
    margin-top: 10px !important;
    background: none !important;
 }
@@ -657,7 +657,7 @@ a.read-more:hover {
    -o-transform: scale(1);
    -ms-transform: scale(1);
    transform: scale(1);
-   opacity:0.4;   
+   opacity:0.4;
    filter: alpha(opacity = 50);
 }
 
@@ -666,7 +666,7 @@ a.read-more:hover {
    cursor: pointer;
    width: 100%;
    height: 100%;
-   position: relative;     
+   position: relative;
    -webkit-transition: all 0.1s ease-in-out;
    -moz-transition: all 0.1s ease-in-out;
    -o-transition: all 0.1s ease-in-out;
@@ -676,17 +676,17 @@ a.read-more:hover {
 }
 
 .overlay-zoom .zoom-icon {
-   background-image:url("../img/overlay-icon.png");
+   background-image:url("../images/main/overlay-icon.png");
    background-color: #000;
    background-repeat: no-repeat;
    background-position: 50%;
    position: absolute;
    width: inherit;
    height: inherit;
-   opacity: 0; 
+   opacity: 0;
    z-index: 100;
    filter: alpha(opacity = 0);
-   top:0;   
+   top:0;
    -webkit-transition: all 0.4s ease-in-out;
    -moz-transition: all 0.4s ease-in-out;
    -o-transition: all 0.4s ease-in-out;
@@ -756,7 +756,7 @@ margin-bottom:20px;
 .fuelux .wizard ul {
   padding: 0;
   margin: 0;
-  list-style: none outside none; 
+  list-style: none outside none;
   font-weight:300;
   }
 
@@ -869,7 +869,7 @@ margin-bottom:20px;
 
 .fuelux .step-content .active {
   display: block; }
-  
+
   .fuelux .wizard {
   background-color: transparent;
   border: none; }
@@ -885,14 +885,16 @@ margin-bottom:20px;
     .fuelux .wizard ul li.active {
       background-color: #706f6f;
       color: white; }
-    .fuelux .wizard ul li.complete {
+    .fuelux .wizard ul li.complete
+    {
       background-color: #525151;
-      color: white; }
+      color: white;
+    }
       .fuelux .wizard ul li.complete:hover {
         background-color: #525151; }
       .fuelux .wizard ul li.complete:before {
         background-color: #525151; }
-		/*
+	/*
     .fuelux .wizard ul li:before {
       content: "";
       width: 30px;
@@ -902,9 +904,10 @@ margin-bottom:20px;
       position: absolute;
       top: 50%;
       margin-top: -2px;
+	  left: -30px; }
 	  */
-      left: -30px; }
-    .fuelux .wizard ul li:first-child:before {
+
+.fuelux .wizard ul li:first-child:before {
       display: none; }
 .fuelux a{
 	text-decoration:none;

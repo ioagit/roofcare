@@ -78,7 +78,7 @@
     <div class="load-more">
         <a id="comments-more-activity" class="btn btn-block" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading more..." href="#" ng-click="vmJobs.loadMore()" ng-show="vmJobs.moreAvailable()"><i class="icon-circle-arrow-down"></i>
             Mehr laden...
-            <span class="pull-right" style="padding-right: 10px;" ng-show="rows.length < totalFound">showing: {{vmJobs.rows.length}} of {{vmJobs.totalFound}}</span>
+            <span class="pull-right" style="padding-right: 10px;" ng-show="vmJobs.rows.length < vmJobs.totalFound">showing: {{vmJobs.rows.length}} of {{vmJobs.totalFound}}</span>
 
         </a>
     </div>

@@ -15,6 +15,86 @@
         return [
 
 
+            //order routes
+            {
+                url: '/order/start',
+                config: {
+
+                    controller: 'OrderStartCtrl',
+                    controllerAs: 'vm',
+                    title: 'Order Start',
+                    templateUrl: 'order/start',
+                    settings: {
+                        step: 1
+                    }
+                }
+            },
+            {
+                url: '/order/check',
+                config: {
+
+                    controller: 'OrderCheckCtrl',
+                    controllerAs: 'vm',
+                    title: 'Order Check',
+                    templateUrl: 'order/check',
+                    settings: {
+                        step: 2
+                    }
+                }
+            },
+            {
+                url: '/order/kosten',
+                config: {
+
+                    controller: 'OrderCostCtrl',
+                    controllerAs: 'vm',
+                    title: 'Kosten',
+                    templateUrl: 'order/cost',
+                    settings: {
+                        step: 3
+                    }
+                }
+            },
+            {
+                url: '/order/detail',
+                config: {
+
+                    controller: 'OrderDetailCtrl',
+                    controllerAs: 'vm',
+                    title: 'Detail',
+                    templateUrl: 'order/detail',
+                    settings: {
+                        step: 4
+                    }
+                }
+            },
+            {
+                url: '/order/review',
+                config: {
+
+                    controller: 'OrderReviewCtrl',
+                    controllerAs: 'vm',
+                    title: 'Review',
+                    templateUrl: 'order/review',
+                    settings: {
+                        step: 5
+                    }
+                }
+            },
+            {
+                url: '/order/confirmation',
+                config: {
+
+                    controller: 'OrderConfirmationCtrl',
+                    controllerAs: 'vm',
+                    title: 'Detail',
+                    templateUrl: 'order/confirmation',
+                    settings: {
+                        step: 6
+                    }
+                }
+            },
+
 
 //            routerSvc.when('main_order_start', '/order/start', {
 //                controller: 'mainOrderStart',
@@ -41,7 +121,7 @@
                 url: '/contractor/inbox',
                 config: {
 
-                    controller: 'ContractorJobCtrl',
+                    controller: 'ContractorInboxCtrl',
                     controllerAs: 'vmJobs',
                     title: 'Contractor Inbox',
                     templateUrl: 'contractor/inbox',
