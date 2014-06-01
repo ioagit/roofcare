@@ -10,7 +10,7 @@
 (function () {
 
     'use strict';
-    var directiveId = 'jobStatusDirective';
+    var directiveId = 'jobStatus';
     angular.module('rc.contractor').directive(directiveId, ['lookups', jobStatusDirective]);
 
     function jobStatusDirective(lookups) {
