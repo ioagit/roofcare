@@ -1,5 +1,5 @@
 /**
- * Created by Christopher Erker on 5/3/14.
+ * Created by christopher erker on 5/3/14.
  */
 
 var mongoose = require('mongoose'),
@@ -11,13 +11,12 @@ var mongoose = require('mongoose'),
     customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     User = require(path.join(process.cwd(), 'server', 'models', 'Users')).Model,
-    testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
+    testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util')),
+    controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors')),
+    agent = request.agent('http://localhost:' + 3000);
 
 var contractor = null;
 var contractorId = null;
-
-var controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors'));
-var agent = request.agent('http://localhost:' + 3000);
 
 describe('Controller - Contractor', function () {
 

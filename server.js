@@ -1,21 +1,20 @@
 //setup Dependencies
-var express = require('express');
+var express = require('express'),
 
-//Configuration requirements
-var path = require('path')
-    ,expressServer =  require (path.join(process.cwd(), 'server', 'config', 'express'))
-    ,mongooseConf = require (path.join(process.cwd(),'server','config','mongoose'))
-    ,passport = require (path.join(process.cwd(),'server','config','passport'))
-    ,routes = require (path.join(process.cwd(),'server','config','routes'))
-    ,auth = require(path.join(process.cwd(),'server','config','auth'));
+    //Configuration requirements
+    path = require('path'),
+    expressServer =  require (path.join(process.cwd(), 'server', 'config', 'express')),
+    mongooseConf = require (path.join(process.cwd(),'server','config','mongoose')),
+    passport = require (path.join(process.cwd(),'server','config','passport')),
+    routes = require (path.join(process.cwd(),'server','config','routes')),
+    auth = require(path.join(process.cwd(),'server','config','auth')),
 
-//Declaring models
-var User = require(path.join(process.cwd(),'server','models','Users')).Model;
+    //Declaring models
+    User = require(path.join(process.cwd(),'server','models','Users')).Model,
 
-//Controllers
-var userController  = require(path.join(process.cwd(),'server','controllers','users')),
+    //Controllers
+    userController  = require(path.join(process.cwd(),'server','controllers','users')),
     jobController = require(path.join(process.cwd(),'server','controllers','jobs')),
-    requestsController = require(path.join(process.cwd(),'server','controllers','requests')),
     contractorController = require(path.join(process.cwd(),'server','controllers','contractors')),
     translationController = require(path.join(process.cwd(),'server','controllers','translation')),
     lookupsController = require(path.join(process.cwd(),'server','controllers','lookups'));
@@ -32,8 +31,7 @@ function main(config) {
 
 
     passport(User);
-    routes(server, User, userController, jobController, requestsController,
-                  contractorController, auth, translationController, lookupsController);
+    routes(server, User, userController, jobController, contractorController, auth, translationController, lookupsController);
 
     return server;
 }

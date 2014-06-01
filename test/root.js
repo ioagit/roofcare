@@ -2,13 +2,11 @@
  * Created by isuarez on 4/7/2014.
  */
 
-var path = require('path');
-
-var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
-var seedData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'seed'));
-
-var init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init'));
-var async = require('async');
+var path = require('path'),
+    testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
+    seedData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'seed')),
+    init = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'init')),
+    async = require('async');
 
 /* This will happen before any test */
 

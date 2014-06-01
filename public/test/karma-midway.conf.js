@@ -20,7 +20,6 @@ module.exports = function(config) {
         'public/test/midway/controllers/controllersSpec.js',
         'public/test/midway/filters/filtersSpec.js',
         'public/test/midway/directives/directivesSpec.js',
-        'public/test/midway/requestsSpec.js',
         'public/test/midway/routesSpec.js',
         'public/test/midway/**/*.js'
     ]);
