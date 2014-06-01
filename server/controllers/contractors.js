@@ -29,13 +29,12 @@ exports.getDashboard = function() {
                 function (callback) {
                     Job.find(
                         {
-                            'Contractor': user.id,
-                            'StartDate':  {"$gte": start, "$lt": end},
-                            'Status': lookUps.jobStatus.requestAccepted
+                            'contractor': user.id,
+                            'startDate':  {"$gte": start, "$lt": end},
+                            'status': lookUps.jobStatus.requestAccepted
                         })
-                        .sort('StartDate')
-                        .populate('Customer')
-                        .populate('WorkSite')
+                        .sort('startDate')
+                        .populate('customer')
 
                         .exec(function (err, coll) {
                             dashBoard.inbox.next = coll[0];

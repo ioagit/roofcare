@@ -25,15 +25,15 @@ describe('Auth Module', function () {
 
 
    describe.skip('requiresApiLogin', function() {
-       it('should return 403 for non authenticated users', function() {
+        it('should return 403 for non authenticated users', function() {
 
-         req.isAuthenticated = function () {
-             return false;
-         };
+            req.isAuthenticated = function () {
+                return false;
+            };
 
-          auth.requiresApiLogin(req, res, next);
-          res.should.have.property('status');
-          res.status.should.equal(403);
-       })
+            auth.requiresApiLogin(req, res, next);
+            res.should.have.property('status');
+            res.status.should.equal(403);
+       });
    });
 });

@@ -1,5 +1,5 @@
 /**
- * Created by christophererker on 5/3/14.
+ * Created by Christopher Erker on 5/3/14.
  */
 
 var mongoose = require('mongoose'),
@@ -11,10 +11,10 @@ var mongoose = require('mongoose'),
     customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     User = require(path.join(process.cwd(), 'server', 'models', 'Users')).Model,
-    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
 
 var contractor = null;
+var contractorId = null;
 
 var controller = require(path.join(process.cwd(), 'server', 'controllers', 'contractors'));
 var agent = request.agent('http://localhost:' + 3000);
@@ -28,6 +28,7 @@ describe('Controller - Contractor', function () {
     before( function(done){
         Contractor.find({username: 'contractor1'}, function(err, found){
             contractor = found[0].toObject();
+            contractorId = found[0].id;
             contractor.password = 'password';
             done();
         });
@@ -71,17 +72,17 @@ describe('Controller - Contractor', function () {
 
                     var dashBoard = JSON.parse(res.text);
                     expect(dashBoard).to.not.be.null;
+                    expect(dashBoard.comingUp.length).to.be.greaterThan(0);
                     for (var i =0; i < dashBoard.comingUp.length; i++)
                     {
                         var job = dashBoard.comingUp[i];
                         expect(job).to.not.be.null;
-                        expect(job.contractor).to.eq(contractor.id);
+                        expect(job.contractor).to.eq(contractorId);
                     }
                     done();
                 });
         });
 
         it('should logout contractor', testUtil.logOut(agent));
-
     });
 });

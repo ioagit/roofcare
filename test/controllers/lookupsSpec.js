@@ -11,7 +11,7 @@ var expect = require('chai').expect,
 var controller = require(path.join(process.cwd(), 'server', 'controllers', 'lookups'));
 var agent = request.agent('http://localhost:' + 3000);
 
-describe.only('Controller - lookups', function () {
+describe('Controller - lookups', function () {
 
     it('controller should exist', function(){
         expect(controller).to.not.be.null;
