@@ -98,7 +98,7 @@ schema.statics.QueryInbox = function(contractorId) {
     return this
         .find({contractor: contractorId})
         .where('status')
-        .in([lookUps.jobStatus.created,
+        .in([lookUps.jobStatus.responsePending,
             lookUps.jobStatus.requestRejected,
             lookUps.jobStatus.workRejected ]);
 };

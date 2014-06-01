@@ -151,21 +151,27 @@ exports.saveJob = function() {
         }
 
         Job.findById(jobId, function(err, job) {
-            Address.RefreshCoordinates(job.workSite, jobData.workSite, function(err, coordinates){
-                if (err) {
-                    res.status(500);
-                    return res.send({err: err, reason: 'Address lookup failure'});
-                }
-                else {
-                    jobData.workSite.coordinates = coordinates;
-                }
-            });
+            var currentStatus =  jobData.status;
+            if (currentStatus == lookUps.jobStatus.created) {
+
+                Address.RefreshCoordinates(job.workSite, jobData.workSite, function (err, coordinates) {
+                    if (err) {
+                        res.status(500);
+                        return res.send({err: err, reason: 'Address lookup failure'});
+                    }
+                    else {
+                        jobData.workSite.coordinates = coordinates;
+                    }
+                });
+            } else
+                jobData.workSite = job.workSite;
 
             var keys = _.keys(jobData);
             for(var i in keys)
             {
                 var key = keys[i];
                 if (key == '_id' || key == '__t' || key == '__v' || key == 'created') continue;
+
                 job[key] = jobData[key];
             }
 

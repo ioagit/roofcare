@@ -69,6 +69,7 @@ module.exports = {
     jobStatus: {
         unknown : 'Nicht angegeben',
         created: 'Erstellt',
+        responsePending: 'Contractor Response Pending',
         requestAccepted: 'Angenommen',
         requestRejected: 'Anfrage Abgelehnt' ,
         workStarted: 'Gestartet',

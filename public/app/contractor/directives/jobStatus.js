@@ -38,6 +38,7 @@
                         scope.labelType = 'warning';
                         break;
                     case status.created:
+                    case status.responsePending:
                         scope.labelType = 'danger';
                         break;
                     default:

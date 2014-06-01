@@ -295,7 +295,7 @@ describe('Controller - Jobs', function () {
             it('Should filter on status', function (done) {
 
                 agent
-                    .get('/api/contractor/inbox?status=' + lookUps.jobStatus.created)
+                    .get('/api/contractor/inbox?status=' + lookUps.jobStatus.responsePending)
                     .set('Accept', 'application/json')
                     .expect(200)
                     .end(function (err, res) {
@@ -304,7 +304,7 @@ describe('Controller - Jobs', function () {
                         var resultObj = JSON.parse(res.text);
                         for (var i = 0; i < resultObj.rows.length; i++) {
                             var job = resultObj.rows[i];
-                            expect(job.status).to.be.eq(lookUps.jobStatus.created);
+                            expect(job.status).to.be.eq(lookUps.jobStatus.responsePending);
                             expect(job.contractor).to.be.eq(contractorId);
                         }
                         done();
@@ -400,49 +400,80 @@ describe('Controller - Jobs', function () {
                     .expect(404, done);
             });
 
-            it('should save changes to existing job', function(done) {
+
+            describe('With an existing job', function(done) {
 
                 var job = null;
-                async.series(
-                    [
-                        function (callback) {
-                            Job.find({'invoice.number': 'RC00000201'}, function (err, found) {
-                                job = found[0];
-                                expect(job).to.not.be.null;
-                                expect(job.invoice.number).to.eq('RC00000201');
-                                callback(null,job);
-                            })
-                        },
 
-                        function(callback) {
-                            job.onSiteContact.firstName = 'Chris';
-                            job.onSiteContact.lastName = 'Smith';
-                            agent
-                                .put('/api/job')
-                                .send(job)
-                                .expect(200)
-                                .end(function (err, res) {
-                                    if (err) return callback(err);
-                                    job = res.body;
-                                    callback(null, job);
-                                });
-                        }
-                    ],
-                    function (err, results) {
-                        //Callback when everything is done.
-                        if (err || !results) {
-                            done(err);
-                        }
-                        if (results.length > 0)  {
-                            expect(job.onSiteContact.firstName).to.eq('Chris');
-                            expect(job.onSiteContact.lastName).to.eq('Smith');
-                            return done();
-                        }
-                    }
-                );
-                done();
+                before( function(done) {
+                    Job.find({'invoice.number': 'RC00000201'}, function (err, found) {
+                        job = found[0];
+                        expect(job).to.not.be.null;
+                        expect(job.invoice.number).to.eq('RC00000201');
+                        done();
+                    });
+                });
+
+                it('should save changes to onSiteContact', function(done) {
+                    job.onSiteContact.firstName = 'Chris';
+                    job.onSiteContact.lastName = 'Smith';
+                    agent
+                        .put('/api/job')
+                        .send(job)
+                        .expect(200)
+                        .end(function (err, res) {
+                            if (err) return done(err);
+                            expect(res.body.onSiteContact.firstName).to.eq('Chris');
+                            expect(res.body.onSiteContact.lastName).to.eq('Smith');
+                            done();
+                        });
+                });
+
+                it('should save changes to workSite', function(done) {
+                    job.status = lookUps.jobStatus.created;
+
+                    job.workSite.street = testData.locations.DolphinMall.street;
+                    job.workSite.city = testData.locations.DolphinMall.city;
+                    job.workSite.state = testData.locations.DolphinMall.state;
+                    job.workSite.zipCode = testData.locations.DolphinMall.zipCode;
+                    job.workSite.country = testData.locations.DolphinMall.country;
+
+                    var coordinates = job.workSite.coordinates;
+
+                    agent
+                        .put('/api/job')
+                        .send(job)
+                        .expect(200)
+                        .end(function(err,res) {
+                            if (err) return done(err);
+                            expect(res.body.workSite.coordinates).to.not.eq(coordinates);
+                            done();
+                        });
+                });
+
+                it('should not save changes to workSite', function(done) {
+                    job.status = lookUps.jobStatus.responsePending;
+
+                    job.workSite.street = testData.locations.TheEnclave.street;
+                    job.workSite.city = testData.locations.TheEnclave.city;
+                    job.workSite.state = testData.locations.TheEnclave.state;
+                    job.workSite.zipCode = testData.locations.TheEnclave.zipCode;
+                    job.workSite.country = testData.locations.TheEnclave.country;
+                    var coordinates = job.workSite.coordinates;
+
+                    agent
+                        .put('/api/job')
+                        .send(job)
+                        .expect(200)
+                        .end(function(err,res) {
+                            if (err) return done(err);
+                            expect(res.body.workSite.coordinates[0]).to.eq(coordinates[0]);
+                            expect(res.body.workSite.coordinates[1]).to.eq(coordinates[1]);
+                            done();
+                        });
+                });
+
             });
         });
-
-    })
+    });
 });

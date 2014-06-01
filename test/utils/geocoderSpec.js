@@ -1,9 +1,9 @@
-var expect = require('chai').expect;
-var assert = require('chai').assert;
-var path = require('path');
-var async = require('async');
 
-var geocoder = require('node-geocoder').getGeocoder('google', 'https');
+var expect = require('chai').expect,
+    assert = require('chai').assert,
+    path = require('path'),
+    async = require('async'),
+    geocoder = require('node-geocoder').getGeocoder('google', 'https');
 
 /*
  http://blog.stephenwyattbush.com/2011/07/16/geocoding-with-nodejs
@@ -39,4 +39,3 @@ describe('Module - Geocoder', function () {
         });
     })
 });
-

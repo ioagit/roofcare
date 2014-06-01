@@ -51,7 +51,7 @@ exports.getDashboard = function() {
                                 var count = groupings[i].count;
 
                                 switch (status) {
-                                    case lookUps.jobStatus.created:
+                                    case lookUps.jobStatus.responsePending:
                                         dashBoard.inbox.request = count;
                                         break;
 
