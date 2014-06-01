@@ -21,7 +21,7 @@
             },
             restrict: 'AE',
             replace: 'true',
-            templateUrl: '/app/templates/directives/jobStatus.html',
+            templateUrl: '/app/contractor/directives/jobStatus.html',
             link: function(scope, el, attrs) {
 
                 var status = lookups.jobStatus;

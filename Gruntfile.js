@@ -63,16 +63,8 @@ module.exports = function (grunt) {
             },
 
 
-            contractor_scripts: {
-                files:
-                {
-                    expand: true,
-                    src: '**/*.js',
-                    dest: './public/static/dist/roofcare.min.js',
-                    cwd: './public/app/'
-                }
 
-            },
+
 
             vendors_common: {
                 files: {

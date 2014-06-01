@@ -56,9 +56,12 @@ block scripts
     script(defer, src='/app/deferredBootstrapApp.js')
 
     //common module
-    script(defer, src='/app/common/common.js')
-    script(defer, src='/app/common/logger.js')
-    script(defer, src='/app/common/spinner.js')
+    script(defer, src='/app/common/services/common.js')
+    script(defer, src='/app/common/services/logger.js')
+    script(defer, src='/app/common/services/spinner.js')
+
+    //common directives
+    script(defer, src='/app/common/directives/pageHeader.js')
 
     //translation
     script(defer, src='/app/translation/services/translationSvc.js')
