@@ -1,0 +1,132 @@
+<form class="reg-page">
+    <div class="reg-header">
+        <h2>Termin</h2>
+        <p>Bitte wählen Sie Ihren Termin aus.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel ">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> Wählen Sie Ihren Wunschtermin</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" data-ng-model="vm.job.starDate" id="datetimepicker" class="margin-bottom-10">
+                            <p> Under Roofcare Spezialist wird Sie 30 - 60 Minuten bevor er am vereinbarten Ort ankommt anrufen. Die Arbeiten werden ca 90 - 120 Min. dauern. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Ansprechpartner vor Ort</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-4">
+                                <label>Anrede</label>
+                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"></select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Vorname</label>
+                                <input type="text" class="form-control" name="contact-first" placeholder="Vorname" data-ng-model="vm.job.onSiteContact.firstName" >
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Nachname</label>
+                                <input type="text" class="form-control" name="contact-last" placeholder="Nachname"  data-ng-model="vm.job.onSiteContact.lastName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Funktion</label>
+                                <select class="form-control" data-ng-model="vm.job.onSiteContact.contactType" ng-options="k as v for (k, v) in vm.lookups.contactType"></select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Telefonnummer</label>
+                                <input type="text" class="form-control"  data-ng-model="vm.job.onSiteContact.phone" name="contact-phone" placeholder="Telefonnummer">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Handy</label>
+                                <input type="text" class="form-control"   data-ng-model="vm.job.onSiteContact.cell" name="contact-cell" placeholder="Handy">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Rechnungsadresse</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-4">
+                                <label>Firmenname</label>
+                                <input type="text"  data-ng-model="vm.job.billingContact.company" class="form-control" name="billing-company" placeholder="Firma">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Branche/Zusatz</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.industry"  class="form-control" name="billing-extra" placeholder="Branche/Zusatz">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Abteilung</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.department"  class="form-control" name="billing-department" placeholder="Abteilung">
+                            </div>
+                        </div>
+
+
+
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-4">
+                                <label>Anrede</label>
+                                <select class="form-control" data-ng-model="vm.job.billingContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"  name="billing-title"></select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Vorname</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.firstName"  class="form-control" name="billing-first" placeholder="Vorname">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Nachname</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.lastName"  class="form-control" name="billing-last" placeholder="Nachname">
+                            </div>
+                        </div>
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-5">
+                                <label>Strasse und Hausnummer</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
+                            </div>
+                            <div class="col-sm-2">
+                                <label>PLZ</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
+                            </div>
+                            <div class="col-sm-5">
+                                <label>Stadt</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.city"   class="form-control" name="billing-city" placeholder="Stadt">
+                            </div>
+                        </div>
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-6">
+                                <label>Telefon</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.phone"   class="form-control" name="billing-phone" placeholder="Telefon">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Email</label>
+                                <input type="text"   data-ng-model="vm.job.billingContact.email"  class="form-control" name="billing-email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn-u" type="submit" data-ng-click="vm.saveJob">Termin Bestätigen<i class="icon-angle-right icon-large pull-right"></i></button>
+        </div>
+    </div>
+</form>

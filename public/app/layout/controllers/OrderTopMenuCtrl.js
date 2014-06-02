@@ -4,13 +4,18 @@
     var controllerId = 'OrderTopMenuCtrl';
 
     angular.module('app').controller(controllerId,
-        ['$route',  OrderTopMenuCtrl]);
+        ['$scope', '$route',  OrderTopMenuCtrl]);
 
-    function OrderTopMenuCtrl($route) {
+    function OrderTopMenuCtrl($scope, $route) {
 
         var vm = this;
 
-        vm.step = getStep();
+        vm.step = 1;
+
+        $scope.$on('$routeChangeSuccess', function(event, routeData){
+            // Your $routeParams-dependent logic goes here
+            vm.step = routeData.$$route.settings.step;
+        });
 
         function getStep() {
 

@@ -21,7 +21,22 @@ var schema =  BaseSchema.extend({
         firstName: {type: String, trim: true, validate: validator.nameValidator},
         lastName: {type: String, trim: true, validate: validator.nameValidator},
         email: {type: String, trim: true, validate: validator.emailValidator},
-        phone: {type: String, trim: true, validate: validator.phoneValidator}
+        phone: {type: String, trim: true, validate: validator.phoneValidator},
+        cell: {type: String, trim: true, validate: validator.phoneValidator},
+        contactType: {type: String, trim: true}
+    },
+
+    billingContact: {
+        salutation: {type: String, trim: true},
+        firstName: {type: String, trim: true, validate: validator.nameValidator},
+        lastName: {type: String, trim: true, validate: validator.nameValidator},
+        email: {type: String, trim: true, validate: validator.emailValidator},
+        phone: {type: String, trim: true, validate: validator.phoneValidator},
+        cell: {type: String, trim: true, validate: validator.phoneValidator},
+        company: {type: String, trim: true},
+        industry: {type: String, trim: true},
+        department: {type: String, trim: true}
+
     },
 
     startDate: {type: Date},

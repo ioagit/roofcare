@@ -12,19 +12,19 @@ block content
                 div.fuelux
                     div.wizard
                         ul.steps(data-ng-controller='OrderTopMenuCtrl as vm')
-                            li(data-target='#step1', ng-class="{'active': vm.step == 1, 'completed': vm.step > 1}")
+                            li(data-target='#step1', ng-class="{'active': vm.step == 1, 'complete': vm.step > 1}")
                                 span.step Reparatur oder Check
                                 i(ng-class="{'icon-angle-down': vm.step==1, 'icon-angle-right': vm.step > 1, 'icon-large': true}")
-                            li(data-target='#step2', ng-class="{'active': vm.step == 2, 'completed': vm.step > 2}")
+                            li(data-target='#step2', ng-class="{'active': vm.step == 2, 'complete': vm.step > 2}")
                                 span.step Details
                                 i(ng-class="{'icon-angle-down': vm.step==2, 'icon-angle-right': vm.step > 2, 'icon-large': true}")
-                            li(data-target='#step3', ng-class="{'active': vm.step == 3, 'completed': vm.step > 3}")
+                            li(data-target='#step3', ng-class="{'active': vm.step == 3, 'complete': vm.step > 3}")
                                 span.step Kosten
                                 i(ng-class="{'icon-angle-down': vm.step==3, 'icon-angle-right': vm.step > 3, 'icon-large': true}")
-                            li(data-target='#step4', ng-class="{'active': vm.step == 4, 'completed': vm.step > 4}")
+                            li(data-target='#step4', ng-class="{'active': vm.step == 4, 'complete': vm.step > 4}")
                                 span.step Termin
                                 i(ng-class="{'icon-angle-down': vm.step==4, 'icon-angle-right': vm.step > 4, 'icon-large': true}")
-                            li(data-target='#step5', ng-class="{'active': vm.step == 5, 'completed': vm.step > 5}")
+                            li(data-target='#step5', ng-class="{'active': vm.step == 5, 'complete': vm.step > 5}")
                                 span.step Buchung
                                 i(ng-class="{'icon-angle-down': vm.step==5, 'icon-angle-right': vm.step != 5, 'icon-large': true}")
 
