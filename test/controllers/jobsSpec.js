@@ -352,13 +352,13 @@ describe('Controller - Jobs', function () {
                         orderType: lookUps.orderType.check.name,
                         roofType: lookUps.roofType.flat.name,
                         workSite: {
-                            street: '1345 West Ave',
+                            street: '1345 West Ave Apt 904',
                             city: 'Miami Beach',
                             zipCode: ' 33139'
                         },
                         notes : { customer: 'Hello World'}
                     })
-                    .expect(400)
+                    .expect(200)
                     .end(function(err, res){
                         if(err) {
                             done(err);

@@ -12,5 +12,4 @@ module.exports = {
     lastName: {type: String, required: true,trim: true, validate: validator.nameValidator},
     email: {type: String, required: true,trim: true, validate: validator.emailValidator},
     phone: {type: String, required: true,trim: true, validate: validator.phoneValidator}
-
-}
+};

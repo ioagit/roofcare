@@ -110,12 +110,7 @@ exports.createJob = function(){
                 var contractorInfo = found[0];
                 jobData.contractor = contractorInfo.id;
                 jobData.status = lookUps.jobStatus.created;
-                jobData.onSiteContact = {
-                    email: 'a@b.com',
-                    firstName: 'aaa',
-                    lastName: 'aaa',
-                    phone:'000-000-0000'
-                };
+                jobData.onSiteContact = {};
 
                 Job.NextInvoiceNumber(function(invNumber) {
                     jobData.invoice = {

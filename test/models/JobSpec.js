@@ -138,12 +138,12 @@ describe('Model - Job', function () {
             .exec(function (err, collection) {
 
                 var job = collection[0];
-                expect(job).to.not.be.null;
-                expect(job.customer).to.not.be.null;
+                expect(job).to.exist;
+                expect(job.customer).to.exist;
                 expect(job.customer.id).to.not.be.null;
-                expect(job.contractor).to.not.be.null;
+                expect(job.contractor).to.exist;
                 expect(job.contractor.id).to.not.be.null;
-                expect(job.workSite).to.not.be.null;
+                expect(job.workSite).to.exist;
                 done();
             })
     });

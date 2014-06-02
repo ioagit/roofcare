@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
     extend = require('mongoose-schema-extend'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
-    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     physicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
@@ -16,7 +15,15 @@ var mongoose = require('mongoose'),
 var schema =  BaseSchema.extend({
     contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
     customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
-    onSiteContact: contactInfo,
+
+    onSiteContact: {
+        salutation: {type: String, trim: true},
+        firstName: {type: String, trim: true, validate: validator.nameValidator},
+        lastName: {type: String, trim: true, validate: validator.nameValidator},
+        email: {type: String, trim: true, validate: validator.emailValidator},
+        phone: {type: String, trim: true, validate: validator.phoneValidator}
+    },
+
     startDate: {type: Date},
     status: {type: String, required:true},
 
