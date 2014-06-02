@@ -11,6 +11,13 @@ var path = require('path'),
     async = require('async'),
     _ = require('underscore');
 
+function handleErrorResponse(response, code, msg, err) {
+    response.status(code);
+    var obj = {reason: msg};
+    if (err) obj.err = err;
+    return response.send(obj);
+}
+
 exports.getJob = function() {
     return function (req, res) {
         Job.findById(req.params.id)
@@ -86,24 +93,19 @@ exports.createJob = function(){
         var jobData = req.body;
         var orderType = lookUps.findOrderTypeByName(jobData.orderType);
 
-        if (_.isEmpty(orderType)) {
-            res.status(400);
-            return res.send({ reason: 'Missing: order type'});
-        }
+        if (_.isEmpty(orderType))
+           return handleErrorResponse(res, 404, 'Missing: order type');
 
-        Address.Build(jobData.workSite, function(address) {
+        Address.Build(jobData.workSite, function(err, address) {
+
+            if (err) return handleErrorResponse(res, 500, 'Build Address failed', err);
 
             jobData.workSite = address;
 
             Contractor.FindClosest(address.coordinates, function(err, found) {
-                if (err) {
-                    res.status(400);
-                    return res.send({err: err, reason: 'Find closest contractor failed'});
-                }
-                else if (found.length == 0) {
-                    res.status(400);
-                    return res.send({reason: 'No contractor found '});
-                }
+
+                if (err) return handleErrorResponse(res, 400, 'Find closest contractor failed', err);
+                if (found.length == 0) return handleErrorResponse(res, 400, 'No contractor found');
 
                 var contractorInfo = found[0];
                 jobData.contractor = contractorInfo.id;
@@ -123,10 +125,7 @@ exports.createJob = function(){
 
                     Job.create(jobData, function (err, job) {
 
-                        if (err) {
-                            res.status(400);
-                            return res.send({err: err, reason: err.toString()});
-                        }
+                        if (err) return handleErrorResponse(res, 400, err.toString(), err);
 
                         var result = {
                             job: job,
@@ -149,28 +148,24 @@ exports.createJob = function(){
 exports.saveJob = function() {
     return function(req,res) {
         var jobData = req.body;
-        if (_.isEmpty(jobData)) {
-            res.status(400);
-            return res.send({reason: 'Missing job data'});
-        }
+        if (_.isEmpty(jobData))
+            return handleErrorResponse(res, 406, 'Missing job data');
+
         var jobId = jobData._id;
-        if (_.isEmpty(jobId)) {
-            res.status(404);
-            return res.send({reason: 'Missing Job id'});
-        }
+        if (_.isEmpty(jobId))
+            return handleErrorResponse(res, 404, 'Missing job id');
 
         Job.findById(jobId, function(err, job) {
             var currentStatus =  jobData.status;
             if (currentStatus == lookUps.jobStatus.created) {
 
                 Address.RefreshCoordinates(job.workSite, jobData.workSite, function (err, coordinates) {
-                    if (err) {
-                        res.status(500);
-                        return res.send({err: err, reason: 'Address lookup failure'});
-                    }
-                    else {
+                    if (err)
+                        return handleErrorResponse(res, 500, 'Address lookup failure', err);
+
+                    else
                         jobData.workSite.coordinates = coordinates;
-                    }
+
                 });
             } else
                 jobData.workSite = job.workSite;
@@ -185,10 +180,8 @@ exports.saveJob = function() {
             }
 
             job.save(function(err, result) {
-                if (err) {
-                    res.status(500);
-                    return res.send({err: err, reason: 'Job save failure'});
-                }
+                if (err) return handleErrorResponse(res, 500, 'Job save failure', err);
+
                 res.status(200);
                 res.send(result);
             });

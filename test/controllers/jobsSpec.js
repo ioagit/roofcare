@@ -345,6 +345,31 @@ describe('Controller - Jobs', function () {
                     .expect(200,done);
             });
 
+            it('should fail to find contractor', function(done) {
+                agent
+                    .post('/api/job')
+                    .send({
+                        orderType: lookUps.orderType.check.name,
+                        roofType: lookUps.roofType.flat.name,
+                        workSite: {
+                            street: '1345 West Ave',
+                            city: 'Miami Beach',
+                            zipCode: ' 33139'
+                        },
+                        notes : { customer: 'Hello World'}
+                    })
+                    .expect(400)
+                    .end(function(err, res){
+                        if(err) {
+                            done(err);
+                        } else {
+                            var result = JSON.parse(res.text);
+                            console.log(result);
+                            done();
+                        }
+                    });
+            });
+
             it('should return a jobId', function(done){
                 agent
                     .post('/api/job')
@@ -379,11 +404,11 @@ describe('Controller - Jobs', function () {
                 expect(whatIsIt).to.be.eq('function');
             });
 
-            it('should return 400 if job data is missing', function(done){
+            it('should return 406 if job data is missing', function(done){
                 agent
                     .put('/api/job')
                     .send({})
-                    .expect(400, done);
+                    .expect(406, done);
             });
 
             it('should return 404 if jobId is not present', function(done) {

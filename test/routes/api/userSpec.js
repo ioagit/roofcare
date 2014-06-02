@@ -15,7 +15,7 @@ var agent = request.agent('http://localhost:' + 3000);
 var User;
 
 
-describe ("Routes API Users", function() {
+describe ("Routes - API Users", function() {
 
     describe('GET /api/users', function () {
 

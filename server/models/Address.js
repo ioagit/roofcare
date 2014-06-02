@@ -6,14 +6,15 @@ var geocoder = require('node-geocoder').getGeocoder('google', 'https'),
     mongoose  = require('mongoose'),
     path = require('path'),
     validator = require(path.join(process.cwd(), 'server', 'config', 'validator')),
-    util = require('util');
+    util = require('util'),
+    _ = require('underscore');
 
 var rawSchema = {
     coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
     street : {type: String, required:true},
     city: {type: String, required:true},
     state: {type: String, required:false},
-    zipCode: {type: String, required:false},
+    zipCode: {type: String},
     country: {type: String, required:true, default: 'Germany'}
 };
 
@@ -21,13 +22,16 @@ var build = function(sourceAddress, callback) {
     var entity = {
         street: sourceAddress.street,
         city: sourceAddress.city,
-        state: sourceAddress.state,
-        zipCode: sourceAddress.zipCode || '',
-        country: sourceAddress.country || 'Germany'
+        state: sourceAddress.state || '',
+        zipCode: sourceAddress.zipCode || ''
     };
+
+    entity.country =  (_.isEmpty(sourceAddress.country)) ? 'Germany' : sourceAddress.country;
 
     var location = getFormattedAddress(entity);
     geocoder.geocode(location, function(err, data) {
+        if (err) return callback(err, entity);
+
         var geoData = data[0];
         if (geoData.countryCode == 'DE')
             entity.street = geoData.streetName + ' ' + geoData.streetNumber;
@@ -39,7 +43,7 @@ var build = function(sourceAddress, callback) {
         entity.state = geoData.state;
         entity.zipCode = geoData.zipcode;
         entity.coordinates = [geoData.longitude, geoData.latitude];
-        callback(entity);
+        callback(null, entity);
     });
 };
 

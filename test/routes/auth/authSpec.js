@@ -1,15 +1,12 @@
-var should = require('should');
-var expect = require("chai").expect;
-var request = require('supertest');
-var path = require('path');
+var should = require('should'),
+    expect = require("chai").expect,
+    request = require('supertest'),
+    path = require('path'),
+    testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
+    testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util')),
+    agent = request.agent('http://localhost:' + 3000);
 
-var testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data'));
-var testUtil = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'util'));
-
-var agent = request.agent('http://localhost:' + 3000);
-
-describe ("Routes Login Logout", function() {
-
+describe ("Routes - Login Logout", function() {
 
     describe('Login and Logout', function() {
 

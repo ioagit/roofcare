@@ -12,7 +12,8 @@ var mongoose = require('mongoose'),
 describe('Model - Address', function () {
 
     it('Should return a full Address from user entered location information', function(done){
-        Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'}, function(result)
+        Address.Build({street: '1 River Pl', city:'New York', state: 'NY', zipCode:'10036', country: 'USA'},
+            function(err, result)
         {
             expect(result).to.not.be.null;
             expect(result.street).to.eq('1 River Place');
