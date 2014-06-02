@@ -86,14 +86,23 @@ exports.createJob = function(){
         var jobData = req.body;
         var orderType = lookUps.findOrderTypeByName(jobData.orderType);
 
+        if (_.isEmpty(orderType)) {
+            res.status(400);
+            return res.send({ reason: 'Missing: order type'});
+        }
+
         Address.Build(jobData.workSite, function(address) {
 
             jobData.workSite = address;
 
             Contractor.FindClosest(address.coordinates, function(err, found) {
-                if (found.length == 0) {
+                if (err) {
                     res.status(400);
-                    return res.send({err: err, reason: 'No contractor found '});
+                    return res.send({err: err, reason: 'Find closest contractor failed'});
+                }
+                else if (found.length == 0) {
+                    res.status(400);
+                    return res.send({reason: 'No contractor found '});
                 }
 
                 var contractorInfo = found[0];
