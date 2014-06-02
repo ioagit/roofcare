@@ -6,7 +6,7 @@ block header
       include ../../includes/main/header
 
 block content
-    div.container
+    div.container(data-ng-controller="shell as vm")
         div.row
             div.col-sm-12
                 div.fuelux
@@ -61,6 +61,7 @@ block scripts
     script(defer, src='/app/order/controllers/OrderConfirmationCtrl.js')
     //services
     script(defer, src='/app/order/services/orderSvc.js')
+    script(defer, src='/app/order/services/orderWorkFlowSvc.js')
 
 
     //Angular app

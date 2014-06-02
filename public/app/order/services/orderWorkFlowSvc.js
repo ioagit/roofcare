@@ -15,14 +15,20 @@
 
         return {
 
-            workFlowData: {},
+            workFlowData: null,
 
             setWorkFlowData: function(workFlowData) {
                 this.workFlowData = workFlowData;
             },
 
-            getWorkFlow: function() {
+            getWorkFlowData: function() {
                 return this.workFlowData;
+            },
+
+            getJob: function() {
+
+              return this.workflowData && this.workflowData.job ? this.workFlowData.job : null;
+
             }
 
 

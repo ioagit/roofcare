@@ -15,7 +15,9 @@
             // These are the properties we need to set
             controllerActivateSuccessEvent: 'controllerActivateSuccessEvent',
             spinnerToggleEvent: 'spinnerToggleEvent',
-            loadingDataErrorEvent: 'loadingDataError'
+            loadingDataErrorEvent: 'loadingDataError',
+            savingDataErrorEvent: 'savingDataError'
+
         };
 
         this.$get = function () {
@@ -32,9 +34,6 @@
         var throttles = {};
 
 
-
-
-
         var service = {
             // common angular dependencies
             $broadcast: $broadcast,
@@ -43,6 +42,8 @@
             $http: $http,
             // generic
             getData: getData,
+            postData: postData,
+
             activateController: activateController,
             createSearchThrottle: createSearchThrottle,
             debouncedThrottle: debouncedThrottle,
@@ -65,16 +66,40 @@
 
             $http({ method: 'GET',
                     url: url
-                  }
+                }
             ).success(function (data, status, headers, info) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, info) {
                     $broadcast(commonConfig.config.loadingDataErrorEvent, {data: data, status: status});
                     deferred.reject(status);
-                });
+                },errorHandler);
+
+            function errorHandler(data) {
+                $broadcast(commonConfig.config.loadingDataErrorEvent, {data: data, status: status});
+                deferred.resolve(false);
+            }
 
             return deferred.promise;
         }
+
+
+        function postData(url, data) {
+
+            var deferred = $q.defer();
+            $http.post(url, data)
+                .then(function (data) {
+                    deferred.resolve(data);
+                }, errorHandler);
+
+
+            function errorHandler(data, status, headers, info) {
+                $broadcast(commonConfig.config.savingDataErrorEvent, data.data.reason);
+                deferred.resolve(false);
+            }
+
+            return deferred.promise;
+        }
+
 
         function activateController(promises, controllerId) {
             return $q.all(promises)

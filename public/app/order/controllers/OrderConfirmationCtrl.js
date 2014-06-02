@@ -6,12 +6,12 @@
 (function () {
     'use strict';
 
-    var controllerId = 'OrderCheckCtrl';
+    var controllerId = 'OrderConfirmationCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', OrderStartCtrl]);
+        ['commonSvc', OrderConfirmationCtrl]);
 
-    function OrderStartCtrl(commonSvc) {
+    function OrderConfirmationCtrl(commonSvc) {
 
         var vm = this;
 

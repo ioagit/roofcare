@@ -17,22 +17,28 @@
             createJob: function (job) {
 
                 var deferred = commonSvc.$q.defer();
-                commonSvc.$http.post(config.endpoints.job.create, job)
 
-                    .then(function (data) {
-                        if (data) {
-                            orderWorkFlowSvc.setWorkFlowData(data);
-                            deferred.resolve(true);
-                        }
-                        else
-                            deferred.resolve(false);
+                commonSvc.postData(config.endpoints.job.create, job)
+                .then(successReturn);
 
-                    });
+
+                function successReturn(response) {
+
+                    if (response.data) {
+                        orderWorkFlowSvc.setWorkFlowData(response.data);
+                        deferred.resolve(true);
+                    }
+                    else
+                        deferred.resolve(false);
+
+                }
+
                 return deferred.promise;
+
+
+
             }
-
-
-        };
+        }
 
     }
 

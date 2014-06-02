@@ -71,5 +71,11 @@
              toggleSpinner(false);
         });
 
+        //Handling dataSaving Errors
+        $rootScope.$on(events.savingDataError, function(evt, reason) {
+            logError(reason, translation.badRequestError, true);
+            toggleSpinner(false);
+        });
+
     }
 })();

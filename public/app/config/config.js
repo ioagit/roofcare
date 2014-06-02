@@ -17,7 +17,8 @@
     var events = {
         controllerActivateSuccess: 'controller.activateSuccess',
         spinnerToggle: 'spinner.toggle',
-        loadingDataError: 'loading.data.error'
+        loadingDataError: 'loading.data.error',
+        savingDataError: 'saving.data.error'
     };
 
     var path = {
@@ -115,6 +116,7 @@
         cfg.config.controllerActivateSuccessEvent = config.events.controllerActivateSuccess;
         cfg.config.spinnerToggleEvent = config.events.spinnerToggle;
         cfg.config.loadingDataErrorEvent = config.events.loadingDataError;
+        cfg.config.savingDataErrorEvent = config.events.savingDataError;
     }]);
     //#endregion
 })();
