@@ -17,7 +17,7 @@ var schema =  BaseSchema.extend({
     contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
     customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
     onSiteContact: contactInfo,
-    startDate: {type: Date, required:true},
+    startDate: {type: Date},
     status: {type: String, required:true},
 
     orderType: {type: String, required:true},

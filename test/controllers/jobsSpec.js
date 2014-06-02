@@ -329,7 +329,6 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
-                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         workSite: testData.locations.AcademyOfArts
                     })
@@ -340,7 +339,6 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
-                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         workSite: testData.locations.TheEnclave
                     })
@@ -351,7 +349,6 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
-                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         workSite: testData.locations.TheEnclave
                     })
