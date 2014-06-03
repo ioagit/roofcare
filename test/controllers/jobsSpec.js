@@ -340,7 +340,7 @@ describe('Controller - Jobs', function () {
                     .post('/api/job')
                     .send({
                         orderType: lookUps.orderType.check.name,
-                        workSite: testData.locations.TheEnclave
+                        workSite: testData.locations.Address04
                     })
                     .expect(200,done);
             });
@@ -375,7 +375,7 @@ describe('Controller - Jobs', function () {
                     .post('/api/job')
                     .send({
                         orderType: lookUps.orderType.check.name,
-                        workSite: testData.locations.TheEnclave
+                        workSite: testData.locations.Address04
                     })
                     .end(function(err, res){
                         if(err) {
@@ -417,7 +417,7 @@ describe('Controller - Jobs', function () {
                     .send({
                         startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
-                        workSite: testData.locations.TheEnclave
+                        workSite: testData.locations.Address04
                     })
                     .expect(404, done);
             });
@@ -454,11 +454,11 @@ describe('Controller - Jobs', function () {
                 it('should save changes to workSite', function(done) {
                     job.status = lookUps.jobStatus.created;
 
-                    job.workSite.street = testData.locations.DolphinMall.street;
-                    job.workSite.city = testData.locations.DolphinMall.city;
-                    job.workSite.state = testData.locations.DolphinMall.state;
-                    job.workSite.zipCode = testData.locations.DolphinMall.zipCode;
-                    job.workSite.country = testData.locations.DolphinMall.country;
+                    job.workSite.street = testData.locations.Address03.street;
+                    job.workSite.city = testData.locations.Address03.city;
+                    job.workSite.state = testData.locations.Address03.state;
+                    job.workSite.zipCode = testData.locations.Address03.zipCode;
+                    job.workSite.country = testData.locations.Address03.country;
 
                     var coordinates = job.workSite.coordinates;
 
@@ -476,11 +476,11 @@ describe('Controller - Jobs', function () {
                 it('should not save changes to workSite', function(done) {
                     job.status = lookUps.jobStatus.responsePending;
 
-                    job.workSite.street = testData.locations.TheEnclave.street;
-                    job.workSite.city = testData.locations.TheEnclave.city;
-                    job.workSite.state = testData.locations.TheEnclave.state;
-                    job.workSite.zipCode = testData.locations.TheEnclave.zipCode;
-                    job.workSite.country = testData.locations.TheEnclave.country;
+                    job.workSite.street = testData.locations.Address04.street;
+                    job.workSite.city = testData.locations.Address04.city;
+                    job.workSite.state = testData.locations.Address04.state;
+                    job.workSite.zipCode = testData.locations.Address04.zipCode;
+                    job.workSite.country = testData.locations.Address04.country;
                     var coordinates = job.workSite.coordinates;
 
                     agent

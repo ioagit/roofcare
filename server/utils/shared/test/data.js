@@ -35,7 +35,7 @@ var testLocations = {
         city: 'Berlin',
         zipCode: '10117'
     },
-    Sonoma: {
+    Address01: {
         coordinates: [ -80.378167, 25.826017],
         street: '11209 NW 57th Ln',
         city: 'Doral',
@@ -43,7 +43,7 @@ var testLocations = {
         country: 'USA',
         zipCode: '33178'
     },
-    OceanDrive: {
+    Address02: {
         coordinates: [ -80.130808, 25.781653],
         street: '1020 Ocean Drive',
         city: 'Miami Beach',
@@ -51,7 +51,7 @@ var testLocations = {
         country: 'USA',
         zipCode: '33139'
     },
-    DolphinMall: {
+    Address03: {
         coordinates: [ -80.380602, 25.787894],
         street: '11401 NW 12th St',
         city: 'Miami',
@@ -59,7 +59,7 @@ var testLocations = {
         country: 'USA',
         zipCode: '33172'
     },
-    TheEnclave: {
+    Address04: {
         coordinates: [ -80.370002, 25.813993],
         street: '4320 NW 107th Ave  Apt 103',
         city: 'Doral',
@@ -67,7 +67,7 @@ var testLocations = {
         country: 'USA',
         zipCode: '33178'
     },
-    FisherIsland: {
+    Address05: {
         coordinates: [ -80.14074, 25.761615],
         street: '18 Fisher Island Dr',
         city: 'Miami Beach',

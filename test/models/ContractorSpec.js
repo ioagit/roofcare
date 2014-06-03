@@ -33,7 +33,7 @@ describe('Model - Contractor', function() {
 
         before(function(done){
             contractor = mock.build();
-            contractor.address = testData.locations.OceanDrive;
+            contractor.address = testData.locations.Address02;
             contractor.save(done);
         });
 
@@ -109,7 +109,7 @@ describe('Model - Contractor', function() {
                 },
                 function(callback){
                     oldCoordinates = contractor.address.coordinates;
-                    contractor.address.coordinates = testData.locations.TheEnclave.coordinates;
+                    contractor.address.coordinates = testData.locations.Address04.coordinates;
                     contractor.save(callback);
                 },
                 function(callback){
