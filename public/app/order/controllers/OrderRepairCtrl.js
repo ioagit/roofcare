@@ -6,21 +6,22 @@
 (function() {
     'use strict';
 
-    var controllerId = 'OrderCheckCtrl';
+    var controllerId = 'OrderRepairCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc','lookups', '$location', 'orderSvc', 'orderWorkFlowSvc', OrderCheckCtrl]);
+        ['commonSvc','lookups', '$location', 'orderSvc', 'orderWorkFlowSvc', OrderRepairCtrl]);
 
-    function OrderCheckCtrl(commonSvc, lookups, $location, orderSvc, orderWorkFlowSvc) {
+    function OrderRepairCtrl(commonSvc, lookups, $location, orderSvc, orderWorkFlowSvc) {
 
         var vm = this;
 
         vm.job = orderWorkFlowSvc.getJob() || {
+
             propertyType: lookups.propertyType.singleFamily,
             roofType: lookups.roofType.flat,
-            orderType: lookups.orderType.check.name,
+            orderType: lookups.orderType.repair.name,
             starDate: new Date(),
-            duration: lookups.orderType.check.hours
+            duration: lookups.orderType.repair.hours
 
        };
 
@@ -28,9 +29,10 @@
 
         vm.createJob = function() {
             orderSvc.createJob(vm.job).then(function(data) {
-                orderWorkFlowSvc.completedStep = 2;
                 $location.path('/order/kosten');
+                return;
             });
+
         };
 
         function activate() {

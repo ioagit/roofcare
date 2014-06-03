@@ -9,11 +9,12 @@
     var controllerId = 'OrderStartCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc',  OrderStartCtrl]);
+        ['commonSvc', OrderStartCtrl]);
 
     function OrderStartCtrl(commonSvc) {
 
         var vm = this;
+
 
         function activate() {
             commonSvc.activateController([], controllerId);

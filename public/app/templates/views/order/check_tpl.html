@@ -3,28 +3,11 @@
         <h2>Dachcheck</h2>
         <p>Um Ihren Dachcheck schnell und fachmännisch durchführen zu zu können, brauchen wir einige Details zu dem Dachcheck von Ihnen.</p>
     </div>
-    <div class="panel ">
+    <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">An welcher Adresse muss der Dachcheck durchgeführt werden?</h3>
         </div>
-        <div class="panel-body">
-            <div class="row margin-bottom-10">
-                <div class="col-sm-12">
-                    <label>Strasse und Hausnummer</label>
-                    <input type="text" class="form-control" name="address" placeholder="Strasse und Hausnummer" data-ng-model="vm.job.workSite.street">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label>PLZ</label>
-                <input type="text" class="form-control" name="zip" placeholder="PLZ" data-ng-model="vm.job.workSite.zipCode">
-                </div>
-                <div class="col-sm-6">
-                    <label>Stadt</label>
-                    <input type="text" class="form-control" name="city" placeholder="Stadt" data-ng-model="vm.job.workSite.city">
-                </div>
-            </div>
-        </div>
+        <order-address />
     </div>
     <div class="panel ">
         <div class="panel-heading">

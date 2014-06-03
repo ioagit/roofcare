@@ -42,7 +42,7 @@
             $http: $http,
             // generic
             getData: getData,
-            postData: postData,
+            saveData: saveData,
 
             activateController: activateController,
             createSearchThrottle: createSearchThrottle,
@@ -83,11 +83,18 @@
         }
 
 
-        function postData(url, data) {
+        function saveData(url, data, method) {
+
+            if (angular.isUndefinde(method)) {
+                method = 'POST';
+            }
 
             var deferred = $q.defer();
-            $http.post(url, data)
-                .then(function (data) {
+
+            $http({ method: method,
+                url: url,
+                data: data
+            }).then(function (data) {
                     deferred.resolve(data);
                 }, errorHandler);
 

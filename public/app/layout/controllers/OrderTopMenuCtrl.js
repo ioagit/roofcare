@@ -4,9 +4,9 @@
     var controllerId = 'OrderTopMenuCtrl';
 
     angular.module('app').controller(controllerId,
-        ['$scope', '$route',  OrderTopMenuCtrl]);
+        ['$scope',  'orderWorkFlowSvc', '$location', OrderTopMenuCtrl]);
 
-    function OrderTopMenuCtrl($scope, $route) {
+    function OrderTopMenuCtrl($scope, orderWorkFlowSvc, $location) {
 
         var vm = this;
 
@@ -14,19 +14,30 @@
 
         $scope.$on('$routeChangeSuccess', function(event, routeData){
             // Your $routeParams-dependent logic goes here
-            vm.step = routeData.$$route.settings.step;
-        });
 
-        function getStep() {
+            var workflowData = orderWorkFlowSvc.getWorkFlowData();
 
-            if (!$route.current || !$route.current.settings) {
-                return 4;
+            if (!workflowData) {
+                $location.path('/order/start');
+                return;
             }
 
-           vm.step = $route.current.settings.step;
+            //Get the latest completed step in the workflow
+            var completedStep = orderWorkFlowSvc.competedStep;
+            var step = routeData.$$route.settings.step;
+
+           if ( step <= (completedStep + 1) ) {
+                vm.step = step;
+ }
+            else {
+                vm.step = completedStep + 1
+
+            }
+
+        });
 
 
-        }
+
 
     }
 })();

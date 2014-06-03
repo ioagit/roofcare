@@ -18,8 +18,33 @@
 
                 var deferred = commonSvc.$q.defer();
 
-                commonSvc.postData(config.endpoints.job.create, job)
+                commonSvc.saveData(config.endpoints.job.create, job)
                 .then(successReturn);
+
+
+                function successReturn(response) {
+
+                    if (response.data) {
+                        orderWorkFlowSvc.setWorkFlowData(response.data);
+                        deferred.resolve(true);
+                    }
+                    else
+                        deferred.resolve(false);
+
+                }
+
+                return deferred.promise;
+
+
+
+            },
+
+            saveJob: function (job) {
+
+                var deferred = commonSvc.$q.defer();
+
+                commonSvc.saveData(config.endpoints.job.create, job, 'PUT')
+                    .then(successReturn);
 
 
                 function successReturn(response) {

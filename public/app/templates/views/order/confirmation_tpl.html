@@ -1,0 +1,45 @@
+<form class="reg-page">
+    <div class="reg-header">
+        <h1 class="margin-bottom-30">Vielen Dank für Ihren Auftrag!</h1>
+        <h3 class="margin-bottom-20">Ihr Auftrag zur Dachreparatur wurde erfolgreich vergeben.</h3>
+        <p>Anbei eine Übersicht zu Ihren Auftragsdaten. Wir haben eine Kopie Ihres Auftrags an Ihre Email Adresse gesandt.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Auftragsnummer</td>
+                    <td>{{vm.job.invoice.number}}</td>
+                </tr>
+                <tr>
+                    <td>Auftragsart</td>
+                    <td>{{vm.job.orderType}}</td>
+                </tr>
+                <tr>
+                    <td>Augtragsadresse</td>
+                    <td>{{vm.job.workSite.street}}, {{vm.job.workSite.city}}, {{vm.job.workSite.zipCode}}</td>
+                </tr>
+                <tr>
+                    <td>Auftragstermin</td>
+                    <td>{{vm.job.startDate}}</td>
+                </tr>
+                <tr>
+                    <td>Auftragsdauer</td>
+                    <td>{{vm.job.duration}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Bitte beachten Sie: </h4>
+            <p>Sollten Sie sich vor Ort entscheiden, den Auftrag nicht auszufuehren, wird die
+                Anfahrts-und Bearbeitigungspauschale unabhängig von dem Auftrag berechnet.
+                Die Gesamtkosten für eine Dachreparatur kann je nach Materialeinsatz von dem Kostenvoranschlag  abweichen.</p>
+            <p>Roofcare wird nach erfolgreichem Arbeitsabschluss per Rechnung bezahlt. Bitte beachten Sie, dass der Service nicht bar vor Ort oder per Scheck bezahlt werden kann.</p>
+        </div>
+    </div>
+    <hr>
+</form>

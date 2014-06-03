@@ -17,6 +17,11 @@
 
             workFlowData: null,
 
+            competedStep: 0,
+
+            orderType: null,
+
+
             setWorkFlowData: function(workFlowData) {
                 this.workFlowData = workFlowData;
             },

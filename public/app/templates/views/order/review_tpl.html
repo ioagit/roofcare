@@ -1,0 +1,179 @@
+<form class="reg-page">
+    <div class="reg-header">
+        <h2>Buchung</h2>
+        <p>Wir haben die folgenden Daten zu Ihrem Auftrag erhalten. Bitte überprüfen Sie die alles auf Richtigkeit.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel  ">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Reparatur-Ort</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Adresse</label>
+                            <input type="text" data-ng-model="vm.job.workSite.street" class="form-control" name="address" placeholder="Strasse und Hausnummer" disabled="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Adresse</label>
+                            <input type="text"  data-ng-model="vm.job.workSite.zipCode" class="form-control" name="zip" placeholder="PLZ" disabled="">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Adresse</label>
+                            <input type="text"  data-ng-model="vm.job.workSite.city" class="form-control" name="city" placeholder="Stadt" disabled="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="panel ">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Reparatur-Termin</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" data-ng-model="vm.job.starDate" class="margin-bottom-10" disabled="">
+                            <p> Under Roofcare Spezialist wird Sie 30 - 60 Minuten bevor er am vereinbarten Ort ankommt anrufen. Die Arbeiten werden ca 90 - 120 Min. dauern. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="panel  ">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> Rechnungsadresse
+                        <!--<span class="badge badge-red"><a href="">&Auml;ndern</a></span>-->
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-4">
+                            <label>Firmenname</label>
+                            <input type="text"   data-ng-model="vm.job.billingContact.company" class="form-control" name="billing-company" placeholder="Firma" disabled="">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Branche/Zusatz</label>
+                            <input type="text" data-ng-model="vm.job.billingContact.industry"  class="form-control" name="billing-extra" placeholder="Branche/Zusatz" disabled="">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Abteilung</label>
+                            <input type="text"  data-ng-model="vm.job.billingContact.department"  class="form-control" disabled="">
+                        </div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-4">
+                            <label>Anrede</label>
+                            <input type="text"  data-ng-model=vm.job.billingContact.salutation"  class="form-control" disabled="">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Vorname</label>
+                            <input type="text"   data-ng-model="vm.job.billingContact.firstName"  class="form-control" disabled="">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Nachname</label>
+                            <input type="text"   data-ng-model="vm.job.billingContact.lastName"  class="form-control" disabled="">
+                        </div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-5">
+                            <label>Strasse und Hausnummer</label>
+                            <input type="text"  data-ng-model="vm.job.billingContact.street" class="form-control"  disabled="">
+                        </div>
+                        <div class="col-md-2">
+                            <label>PLZ</label>
+                            <input type="text"  data-ng-model="vm.job.billingContact.zipCode" class="form-control"  disabled="">
+                        </div>
+                        <div class="col-md-5">
+                            <label>Stadt</label>
+                            <input type="text" class="form-control" data-ng-model="vm.job.billingContact.city" disabled="">
+                        </div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-6">
+                            <label>Telefon</label>
+                            <input type="text" class="form-control"  data-ng-model="vm.job.billingContact.phone" disabled="">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            <input type="text" class="form-control" data-ng-model="vm.job.billingContact.email"  disabled="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Ansprechpartner vor Ort</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row margin-bottom-10">
+                            <div class="col-md-4">
+                                <label>Anrede</label>
+                                <input type="text" class="form-control"  data-ng-model="vm.job.onSiteContact.salutation" disabled="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Vorname</label>
+                                <input type="text" class="form-control" data-ng-model="vm.job.onSiteContact.firstName" disabled="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Nachname</label>
+                                <input type="text" class="form-control" data-ng-model="vm.job.onSiteContact.lastName" disabled="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Funktion</label>
+                                <input type="text" class="form-control" data-ng-model="vm.job.onSiteContact.contactType" disabled="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Telefonnummer</label>
+                                <input type="text" class="form-control"  data-ng-model="vm.job.onSiteContact.phone" disabled="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Handy</label>
+                                <input type="text" class="form-control"  data-ng-model="vm.job.onSiteContact.cell" disabled="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"  data-ng-model="vm.job.userConfirmedInfo">
+                    Per Klick auf die nachfolgende Schaltfläche „Termin Buchen“ erklären Sie sich mit den Bestimmungen zum <a href="datenschutz.html">Datenschutz</a> sowie den <a href="nutzung.html">Nutzungsbedingungen</a> einverstanden.
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn-u" type="submit" onclick="javascript:window.location.href='order_confirmation.html'; return false;">Termin Buchen<i class="icon-angle-right icon-large pull-right"></i></button>
+        </div>
+    </div>
+</form>

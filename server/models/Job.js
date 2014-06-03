@@ -40,11 +40,13 @@ var schema =  BaseSchema.extend({
     },
 
     startDate: {type: Date},
+    duration: {type: String},
     status: {type: String, required:true},
 
     orderType: {type: String, required:true},
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },
     roofType: { type: String, default: lookUps.roofType.steep },
+    userConfirmedInfo: { type: Boolean, default: false },
 
     workSite: physicalAddress.Definition,
 

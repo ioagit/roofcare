@@ -31,12 +31,12 @@ module.exports = {
         repair: {
             name: 'Dachreparatur',
             fee: 150,
-            hours: 4
+            hours: '4 hours'
         },
         check: {
             name:'Dachcheck',
             fee: 99,
-            hours: 2
+            hours: '>ca 90 - 120 Min.'
         }
     },
 
