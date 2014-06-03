@@ -17,7 +17,7 @@ var expect = require('chai').expect,
 describe('Model - Contractor', function() {
 
     var contractor;
-    var univision = [ -80.350437, 25.813146];
+    var address05 = testData.locations.Address05.coordinates;
 
     it('should not save without username', function(done) {
         contractor = mock.build();
@@ -55,7 +55,7 @@ describe('Model - Contractor', function() {
             Contractor.aggregate([
                 {
                     $geoNear: {
-                        near: univision,
+                        near: address05,
                         distanceField: "distance",
                         maxDistance: 5,
                         spherical: false,
@@ -74,9 +74,9 @@ describe('Model - Contractor', function() {
             });
         });
 
-        it('Find The closest location to Univision', function() {
+        it('Find The closest location to the Academy of The Arts', function() {
 
-            Contractor.find( { 'address.coordinates': { $near : univision , $maxDistance : 5} },
+            Contractor.find( { 'address.coordinates': { $near : address05 , $maxDistance : 5} },
                 function (err, addr) {
                     expect(addr).not.to.be.null;
                     assert(addr.length > 0, "At least one address was found");
@@ -113,12 +113,12 @@ describe('Model - Contractor', function() {
                     contractor.save(callback);
                 },
                 function(callback){
-                    Contractor.FindClosest(univision, function(err, result) {
+                    Contractor.FindClosest(address05, function(err, result) {
                         expect(err).to.be.null;
                         expect(result.length).to.be.eq(1);
                         var foundContractor = result[0];
-                        expect(foundContractor.distance).to.be.gt(1);
-                        expect(foundContractor.distance).to.be.lt(2);
+                        expect(foundContractor.distance).to.be.gt(18);
+                        expect(foundContractor.distance).to.be.lt(20);
 
                         console.log(' ' + foundContractor._id + ' == ' + contractor.id + '');
 

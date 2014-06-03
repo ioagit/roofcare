@@ -324,17 +324,6 @@ describe('Controller - Jobs', function () {
                 expect(whatIsIt).to.be.eq('function');
             });
 
-            it('should return 400 if no contractor is within range', function(done) {
-
-                agent
-                    .post('/api/job')
-                    .send({
-                        orderType: lookUps.orderType.check.name,
-                        workSite: testData.locations.AcademyOfArts
-                    })
-                    .expect(400, done);
-            });
-
             it ('should return 200', function(done) {
                 agent
                     .post('/api/job')
@@ -345,7 +334,7 @@ describe('Controller - Jobs', function () {
                     .expect(200,done);
             });
 
-            it('should fail to find contractor', function(done) {
+            it('should return 400 if no contractor is within range', function(done) {
                 agent
                     .post('/api/job')
                     .send({
@@ -355,10 +344,9 @@ describe('Controller - Jobs', function () {
                             street: '1345 West Ave Apt 904',
                             city: 'Miami Beach',
                             zipCode: ' 33139'
-                        },
-                        notes : { customer: 'Hello World'}
+                        }
                     })
-                    .expect(200)
+                    .expect(400)
                     .end(function(err, res){
                         if(err) {
                             done(err);
