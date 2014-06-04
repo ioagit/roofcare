@@ -202,6 +202,8 @@ module.exports = function (grunt) {
                     './public/specs/beta/assets/css/themes/red.css',
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
                     './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
+                    './public/vendor/bootstrap-datetimepicker/build/css/locales/bootstrap-datetimepicker.min.css',
+
                     //Toastr
                     './public/vendor/toastr/toastr.css',
 
@@ -209,6 +211,8 @@ module.exports = function (grunt) {
                     './public/static/css/ngStyles.css',
 
                     './public/vendor/angular-loading-bar/build/loading-bar.min.css'
+
+
 
 
 

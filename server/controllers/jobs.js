@@ -18,7 +18,7 @@ function handleErrorResponse(response, code, msg, err) {
     return response.send(obj);
 }
 
-exports.getJob = function() {
+exports.getJob = function () {
     return function (req, res) {
         Job.findById(req.params.id)
           .populate('Customer')

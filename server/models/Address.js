@@ -11,22 +11,22 @@ var geocoder = require('node-geocoder').getGeocoder('google', 'https'),
 
 var rawSchema = {
     coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
-    street : {type: String, required:true},
-    city: {type: String, required:true},
-    state: {type: String, required:false},
+    street : {type: String},
+    city: {type: String},
+    state: {type: String},
     zipCode: {type: String},
-    country: {type: String, required:true, default: 'Germany'}
+    country: {type: String, default: 'Deutschland'}
 };
 
 var build = function(sourceAddress, callback) {
     var entity = {
         street: sourceAddress.street,
-        city: sourceAddress.city,
+        city: sourceAddress.city || '',
         state: sourceAddress.state || '',
         zipCode: sourceAddress.zipCode || ''
     };
 
-    entity.country =  (_.isEmpty(sourceAddress.country)) ? 'Germany' : sourceAddress.country;
+    entity.country =  (_.isEmpty(sourceAddress.country)) ? 'Deutschland' : sourceAddress.country;
 
     var location = getFormattedAddress(entity);
     geocoder.geocode(location, function(err, data) {
