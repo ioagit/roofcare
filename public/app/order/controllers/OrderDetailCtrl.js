@@ -22,7 +22,7 @@
         //Datetime picker
 
         angular.element('#datetimepicker').datetimepicker({
-            language:  'de',
+            language:  'de'
         });
 
         vm.saveJob = function() {
@@ -32,7 +32,6 @@
             });
 
         };
-
 
         function activate() {
             commonSvc.activateController([], controllerId);
