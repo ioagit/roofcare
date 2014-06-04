@@ -96,6 +96,16 @@ describe('Model - Contractor', function() {
         });
     });
 
+
+    /*
+
+     bing maps driving directions
+     Aliqeg5eEn04Z_t9nBKHFKRzXwsP1Tu1NV_jLyJq1mVlmSXCPGwXrug3VzwPtLDm
+
+
+     http://dev.virtualearth.net/REST/V1/Routes/Driving?c=de-de&o=json&wp.0=48.068869,11.666896&wp.1=48.072820,11.690583&key=Aliqeg5eEn04Z_t9nBKHFKRzXwsP1Tu1NV_jLyJq1mVlmSXCPGwXrug3VzwPtLDm
+
+     */
     it('should find the closest contractor to specified address', function(done){
         var oldCoordinates;
 
