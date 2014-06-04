@@ -18,7 +18,7 @@
         vm.job = orderWorkFlowSvc.getJob();
 
         vm.saveJob = function() {
-            orderSvc.status = lookups.jobStatus.responsePending;
+            vm.job.status = lookups.jobStatus.responsePending;
             orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)
                     orderWorkFlowSvc.nextStep();
