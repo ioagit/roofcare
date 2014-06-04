@@ -89,15 +89,15 @@
                     <div class="row margin-bottom-10">
                         <div class="col-md-5">
                             <label>Strasse und Hausnummer</label>
-                            <input type="text"  data-ng-model="vm.job.billingContact.street" class="form-control"  disabled="">
+                            <input type="text"  data-ng-model="vm.job.billingContact.address.street" class="form-control"  disabled="">
                         </div>
                         <div class="col-md-2">
                             <label>PLZ</label>
-                            <input type="text"  data-ng-model="vm.job.billingContact.zipCode" class="form-control"  disabled="">
+                            <input type="text"  data-ng-model="vm.job.billingContact.address.zipCode" class="form-control"  disabled="">
                         </div>
                         <div class="col-md-5">
                             <label>Stadt</label>
-                            <input type="text" class="form-control" data-ng-model="vm.job.billingContact.city" disabled="">
+                            <input type="text" class="form-control" data-ng-model="vm.job.billingContact.address.city" disabled="">
                         </div>
                     </div>
                     <div class="row margin-bottom-10">
@@ -173,7 +173,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button class="btn-u" type="submit" onclick="javascript:window.location.href='order_confirmation.html'; return false;">Termin Buchen<i class="icon-angle-right icon-large pull-right"></i></button>
+            <button class="btn-u" type="submit" data-ng-click="vm.saveJob()">Termin Buchen<i class="icon-angle-right icon-large pull-right"></i></button>
         </div>
     </div>
 </form>

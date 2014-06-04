@@ -35,7 +35,8 @@ var schema =  BaseSchema.extend({
         cell: {type: String, trim: true, validate: validator.phoneValidator},
         company: {type: String, trim: true},
         industry: {type: String, trim: true},
-        department: {type: String, trim: true}
+        department: {type: String, trim: true},
+        address: physicalAddress.Definition
 
     },
 

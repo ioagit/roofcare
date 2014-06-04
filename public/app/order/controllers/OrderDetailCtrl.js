@@ -19,6 +19,13 @@
 
         vm.lookups = lookups;
 
+        //Datetime picker
+
+//        angular.element('#datetimepicker').datetimepicker({
+//            language:  'de',
+//            format: 'yyyy-mm-dd hh:ii'
+//        });
+
         vm.saveJob = function() {
             orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)

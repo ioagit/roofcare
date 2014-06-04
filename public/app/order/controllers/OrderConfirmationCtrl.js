@@ -9,13 +9,15 @@
     var controllerId = 'OrderConfirmationCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', OrderConfirmationCtrl]);
+        ['commonSvc','orderWorkFlowSvc', OrderConfirmationCtrl]);
 
-    function OrderConfirmationCtrl(commonSvc) {
+    function OrderConfirmationCtrl(commonSvc, orderWorkFlowSvc) {
 
         var vm = this;
 
-        vm.job = orderWorkFlowSvc.getJob();
+        var workflowData = orderWorkFlowSvc.getWorkFlowData();
+        vm.job = workflowData.job;
+        vm.workFlow = workflowData.workFlow;
 
 
         function activate() {

@@ -90,7 +90,10 @@ module.exports = function (grunt) {
                         //angular bootstrap deferred
                         './public/vendor/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js',
 
-                        './public/vendor/angular-loading-bar/build/loading-bar.min.js'
+                        './public/vendor/angular-loading-bar/build/loading-bar.min.js',
+
+                        './public/vendor/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+                        './public/vendor/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
 
 
                     ]
@@ -112,7 +115,7 @@ module.exports = function (grunt) {
                     './public/static/dist/vendors.contractor.min.js':
                         [
 
-                            './public/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+
 
                             //retina
                             './public/vendor/retina.js/src/retina.js'

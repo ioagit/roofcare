@@ -12,7 +12,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <input type="text" data-ng-model="vm.job.starDate" id="datetimepicker" class="margin-bottom-10">
+                            <input type="text" data-ng-model="vm.job.startDate" id="datetimepicker" class="margin-bottom-10">
                             <p> Under Roofcare Spezialist wird Sie 30 - 60 Minuten bevor er am vereinbarten Ort ankommt anrufen. Die Arbeiten werden ca 90 - 120 Min. dauern. </p>
                         </div>
                     </div>
@@ -98,15 +98,15 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-5">
                                 <label>Strasse und Hausnummer</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
+                                <input type="text"   data-ng-model="vm.job.billingContact.address.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
                             </div>
                             <div class="col-sm-2">
                                 <label>PLZ</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
+                                <input type="text"   data-ng-model="vm.job.billingContact.address.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
                             </div>
                             <div class="col-sm-5">
                                 <label>Stadt</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.city"   class="form-control" name="billing-city" placeholder="Stadt">
+                                <input type="text"   data-ng-model="vm.job.billingContact.address.city"   class="form-control" name="billing-city" placeholder="Stadt">
                             </div>
                         </div>
                         <div class="row margin-bottom-10">

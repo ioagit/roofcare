@@ -16,6 +16,9 @@
 
             createJob: function (job) {
 
+                if (job._id)
+                   return this.saveJob(job);
+
                 var deferred = commonSvc.$q.defer();
 
                 commonSvc.saveData(config.endpoints.job.create, job)
