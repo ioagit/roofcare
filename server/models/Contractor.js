@@ -33,7 +33,7 @@ schema.statics.FindClosest = function(locCoordinates, callback) {
                 distanceField: "distance",
                 maxDistance: 0.50,
                 spherical: true,
-                distanceMultiplier: 3959,
+                distanceMultiplier: (6371 * 1.609344),
                 includeLocs: "address.coordinates",
                 num: 1
             }

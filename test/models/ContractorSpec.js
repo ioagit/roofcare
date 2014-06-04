@@ -17,7 +17,7 @@ var expect = require('chai').expect,
 describe('Model - Contractor', function() {
 
     var contractor;
-    var address05 = testData.locations.Address05.coordinates;
+    var address05 = testData.locations.Address01.coordinates;
 
     it('should not save without username', function(done) {
         contractor = mock.build();
@@ -109,7 +109,7 @@ describe('Model - Contractor', function() {
                 },
                 function(callback){
                     oldCoordinates = contractor.address.coordinates;
-                    contractor.address.coordinates = testData.locations.Address04.coordinates;
+                    contractor.address.coordinates = testData.locations.RicoAddress.coordinates;
                     contractor.save(callback);
                 },
                 function(callback){
@@ -117,8 +117,8 @@ describe('Model - Contractor', function() {
                         expect(err).to.be.null;
                         expect(result.length).to.be.eq(1);
                         var foundContractor = result[0];
-                        expect(foundContractor.distance).to.be.gt(11);
-                        expect(foundContractor.distance).to.be.lt(12);
+                        expect(foundContractor.distance).to.be.gt(4);
+                        expect(foundContractor.distance).to.be.lt(5);
 
                         console.log(' ' + foundContractor._id + ' == ' + contractor.id + '');
 
