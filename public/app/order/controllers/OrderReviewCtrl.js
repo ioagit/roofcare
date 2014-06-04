@@ -15,10 +15,7 @@
 
         var vm = this;
 
-        var workflowData = orderWorkFlowSvc.getWorkFlowData();
-        vm.workflow = workflowData.workFlow;
-        vm.job = workflowData.job;
-
+        vm.job = orderWorkFlowSvc.getJob();
 
         vm.saveJob = function() {
             orderSvc.status = lookups.jobStatus.responsePending;

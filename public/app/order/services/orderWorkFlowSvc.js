@@ -32,7 +32,14 @@
 
             getJob: function() {
 
-              return this.workflowData && this.workflowData.job ? this.workFlowData.job : null;
+              return this.workFlowData && this.workFlowData.job ? this.workFlowData.job : null;
+
+            },
+
+            setJob: function(job) {
+
+                if (this.workFlowData)
+                    this.workFlowData.job = job;
 
             },
 
@@ -46,10 +53,10 @@
             goToStep: function(step) {
 
                 if (step > this.completedStep)
-                    step = this.completedStep
+                    step = this.completedStep;
 
-                this.completedStep = step;
-                $location.path(this.getNextUrl(this.completedStep));
+                this.completedStep = step - 1;
+                $location.path(this.getNextUrl(step));
 
 
             },

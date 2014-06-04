@@ -15,9 +15,7 @@
 
         var vm = this;
 
-        var workflowData = orderWorkFlowSvc.getWorkFlowData();
-        vm.workflow = workflowData.workFlow;
-        vm.job = workflowData.job;
+        vm.job = orderWorkFlowSvc.getJob();
 
         vm.lookups = lookups;
 

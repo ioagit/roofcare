@@ -50,7 +50,7 @@
                 function successReturn(response) {
 
                     if (response.data) {
-                        orderWorkFlowSvc.setWorkFlowData(response.data);
+                        orderWorkFlowSvc.setJob(response.data);
                         deferred.resolve(true);
                     }
                     else
