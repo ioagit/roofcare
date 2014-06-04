@@ -23,7 +23,6 @@
                 if (data)
                     orderWorkFlowSvc.nextStep();
             });
-
         };
 
         function activate() {
