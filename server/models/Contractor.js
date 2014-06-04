@@ -31,9 +31,9 @@ schema.statics.FindClosest = function(locCoordinates, callback) {
             $geoNear: {
                 near: locCoordinates,
                 distanceField: "distance",
-                maxDistance: 0.10,
+                maxDistance: 0.50,
                 spherical: true,
-                distanceMultiplier: 6371,
+                distanceMultiplier: 3959,
                 includeLocs: "address.coordinates",
                 num: 1
             }

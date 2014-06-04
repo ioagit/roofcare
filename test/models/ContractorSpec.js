@@ -117,8 +117,8 @@ describe('Model - Contractor', function() {
                         expect(err).to.be.null;
                         expect(result.length).to.be.eq(1);
                         var foundContractor = result[0];
-                        expect(foundContractor.distance).to.be.gt(18);
-                        expect(foundContractor.distance).to.be.lt(20);
+                        expect(foundContractor.distance).to.be.gt(11);
+                        expect(foundContractor.distance).to.be.lt(12);
 
                         console.log(' ' + foundContractor._id + ' == ' + contractor.id + '');
 

@@ -35,6 +35,13 @@ var testLocations = {
         city: 'Berlin',
         zipCode: '10117'
     },
+    RicoAddress: {
+        coordinates: [11.666816, 48.068948],
+        street: 'Jahnstraße 35',
+        city: 'Ottobrunn',
+        country: 'Germany',
+        zipCode: '85521'
+    },
     Address01: {
         coordinates: [ 11.655148, 48.093719],
         street: 'Putzbrunner-Str 173',
@@ -105,8 +112,8 @@ var testUsers =  {
     contractor1: {
 
         contactInfo: {
-            firstName: 'rimita1',
-            lastName: 'rimita1',
+            firstName: 'Rico',
+            lastName: 'Gerhard',
             email: 'rimita1@verita.com',
             phone: '123-333'
         },

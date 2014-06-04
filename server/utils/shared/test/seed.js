@@ -58,8 +58,18 @@ function seedOneContractor(n, done) {
 
     //Getting all the lists
     var customerList  = buildList(customerMock.build, n);
-    contractorList.push( build(contractorMock.build, {username: 'contractor1'}));
-    contractorList[0].address =  testData.locations.Address01;
+    contractorList.push( build(contractorMock.build,
+        {
+            username: 'contractor1',
+            contactInfo: {
+                firstName: 'Rico',
+                lastName: 'Gerhard',
+                phone: '123-333',
+                email: 'rico.gerhard@gmail.com'
+            }
+        }));
+
+    contractorList[0].address =  testData.locations.RicoAddress;
     var jobList  = buildList(jobMock.build, n);
 
     //Jobs
