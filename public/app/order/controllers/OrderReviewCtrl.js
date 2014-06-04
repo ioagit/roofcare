@@ -29,7 +29,6 @@
             commonSvc.activateController([], controllerId);
         }
 
-
         activate();
 
 
