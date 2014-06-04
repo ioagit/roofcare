@@ -20,8 +20,8 @@
         vm.job = workflowData.job;
 
         vm.nextStep = function() {
-              orderWorkFlowSvc.completedStep = 3;
-              $location.path('/order/detail');
+                orderWorkFlowSvc.nextStep();
+
         };
 
 

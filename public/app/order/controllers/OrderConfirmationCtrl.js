@@ -15,6 +15,11 @@
 
         var vm = this;
 
+        var workflowData = orderWorkFlowSvc.getWorkFlowData();
+        vm.workflow = workflowData.workFlow;
+        vm.job = workflowData.job;
+
+
         function activate() {
             commonSvc.activateController([], controllerId);
         }

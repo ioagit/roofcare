@@ -85,7 +85,7 @@
 
         function saveData(url, data, method) {
 
-            if (angular.isUndefinde(method)) {
+            if (angular.isUndefined(method)) {
                 method = 'POST';
             }
 

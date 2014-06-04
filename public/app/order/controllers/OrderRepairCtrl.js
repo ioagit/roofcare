@@ -9,9 +9,9 @@
     var controllerId = 'OrderRepairCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc','lookups', '$location', 'orderSvc', 'orderWorkFlowSvc', OrderRepairCtrl]);
+        ['commonSvc','lookups', 'orderSvc', 'orderWorkFlowSvc', OrderRepairCtrl]);
 
-    function OrderRepairCtrl(commonSvc, lookups, $location, orderSvc, orderWorkFlowSvc) {
+    function OrderRepairCtrl(commonSvc, lookups,  orderSvc, orderWorkFlowSvc) {
 
         var vm = this;
 
@@ -29,8 +29,8 @@
 
         vm.createJob = function() {
             orderSvc.createJob(vm.job).then(function(data) {
-                $location.path('/order/kosten');
-                return;
+                if (data)
+                    orderWorkFlowSvc.nextStep();
             });
 
         };

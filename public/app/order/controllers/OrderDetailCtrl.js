@@ -9,9 +9,9 @@
     var controllerId = 'OrderDetailCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', OrderDetailCtrl]);
+        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc',OrderDetailCtrl]);
 
-    function OrderDetailCtrl(commonSvc) {
+    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc) {
 
         var vm = this;
 
@@ -23,8 +23,8 @@
 
         vm.saveJob = function() {
             orderSvc.saveJob(vm.job).then(function(data) {
-                orderWorkFlowSvc.completedStep = 4;
-                $location.path('/order/review');
+                if (data)
+                    orderWorkFlowSvc.nextStep();
             });
 
         };

@@ -14,17 +14,17 @@
                 </tr>
                 <tr>
                     <td>Pauschalpreis</td>
-                    <td>{{vm.workflow.distance | number:0}}</td>
+                    <td>{{vm.job.invoice.fixedPrice}}</td>
                     <td>EUR</td>
                 </tr>
                 <tr>
                     <td>Distanz zur An/Abfahrt</td>
-                    <td>{{vm.workflow.travelCharge | number:2 }}</td>
+                    <td>{{vm.workflow.distance | number:1}}</td>
                     <td>KM</td>
                 </tr>
                 <tr>
                     <td>Gesamt Anfahrts-und Bearbeitigungspauschale</td>
-                    <td>{{vm.job.invoice.fixedPrice}}</td>
+                    <td>{{vm.workflow.travelCharge | number: 2 }}</td>
                     <td>EUR</td>
                 </tr>
                 <tr class="active">

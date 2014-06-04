@@ -12,18 +12,23 @@
 
         vm.step = 1;
 
+        vm.setStep = function(step) {
+
+            orderWorkFlowSvc.goToStep(step);
+        };
+
         $scope.$on('$routeChangeSuccess', function(event, routeData){
             // Your $routeParams-dependent logic goes here
 
             var workflowData = orderWorkFlowSvc.getWorkFlowData();
 
-            if (!workflowData) {
-                $location.path('/order/start');
-                return;
-            }
+            //if (!workflowData) {
+             //   $location.path('/order/start');
+             //   return;
+            //}
 
             //Get the latest completed step in the workflow
-            var completedStep = orderWorkFlowSvc.competedStep;
+            var completedStep = orderWorkFlowSvc.completedStep;
             var step = routeData.$$route.settings.step;
 
            if ( step <= (completedStep + 1) ) {

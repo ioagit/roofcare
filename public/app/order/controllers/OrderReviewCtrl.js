@@ -9,17 +9,22 @@
     var controllerId = 'OrderReviewCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc','lookup','orderSvc', '$location', OrderReviewCtrl]);
+        ['commonSvc','lookups','orderSvc','orderWorkFlowSvc', OrderReviewCtrl]);
 
-    function OrderReviewCtrl(commonSvc, lookup,orderSvc, $location) {
+    function OrderReviewCtrl(commonSvc, lookups,orderSvc, orderWorkFlowSvc) {
 
         var vm = this;
 
+        var workflowData = orderWorkFlowSvc.getWorkFlowData();
+        vm.workflow = workflowData.workFlow;
+        vm.job = workflowData.job;
+
+
         vm.saveJob = function() {
-            orderSvc.status = lookup.jobStatus.responsePending;
+            orderSvc.status = lookups.jobStatus.responsePending;
             orderSvc.saveJob(vm.job).then(function(data) {
-                orderWorkFlowSvc.completedStep = 5;
-                $location.path('/order/confirmation');
+                if (data)
+                    orderWorkFlowSvc.nextStep();
             });
 
         };

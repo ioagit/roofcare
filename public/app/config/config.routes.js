@@ -25,6 +25,7 @@
                     title: 'Order Start',
                     templateUrl: 'order/start',
                     settings: {
+                        type: 'order',
                         step: 1
                     }
                 }
@@ -37,6 +38,20 @@
                     title: 'Order Check',
                     templateUrl: 'order/check',
                     settings: {
+                        type: 'order',
+                        step: 2
+                    }
+                }
+            },
+            {
+                url: '/order/repair',
+                config: {
+                    controller: 'OrderRepairCtrl',
+                    controllerAs: 'vm',
+                    title: 'Order Check',
+                    templateUrl: 'order/check',
+                    settings: {
+                        type: 'order',
                         step: 2
                     }
                 }
@@ -50,6 +65,7 @@
                     title: 'Kosten',
                     templateUrl: 'order/cost',
                     settings: {
+                        type: 'order',
                         step: 3
                     }
                 }
@@ -63,6 +79,7 @@
                     title: 'Detail',
                     templateUrl: 'order/detail',
                     settings: {
+                        type: 'order',
                         step: 4
                     }
                 }
@@ -76,6 +93,7 @@
                     title: 'Review',
                     templateUrl: 'order/review',
                     settings: {
+                        type: 'order',
                         step: 5
                     }
                 }
@@ -89,6 +107,7 @@
                     title: 'Detail',
                     templateUrl: 'order/confirmation',
                     settings: {
+                        type: 'order',
                         step: 6
                     }
                 }

@@ -36,7 +36,7 @@ module.exports = {
         check: {
             name:'Dachcheck',
             fee: 99,
-            hours: '>ca 90 - 120 Min.'
+            hours: 'ca 90 - 120 Min.'
         }
     },
 

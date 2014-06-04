@@ -28,8 +28,8 @@
 
         vm.createJob = function() {
             orderSvc.createJob(vm.job).then(function(data) {
-                orderWorkFlowSvc.completedStep = 2;
-                $location.path('/order/kosten');
+                if (data)
+                    orderWorkFlowSvc.nextStep();
             });
         };
 
