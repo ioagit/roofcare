@@ -79,6 +79,7 @@ exports.getInboxes = function() {
                     .skip(startingIndex)
                     .limit(pageSize)
                     .populate('customer')
+                    .sort({startDate: 1})
                     .exec(function (err, coll) {
                         res.send(JSON.stringify({ totalFound: count, rows: coll }));
                     }

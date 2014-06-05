@@ -10,38 +10,42 @@
 
         var vm = this;
 
-        vm.step = 1;
+        updateSteps(1);
 
         vm.setStep = function(step) {
 
+            if (step > orderWorkFlowSvc.completedStep + 1) {
+                return false;
+            }
+
+            this.step = step;
             orderWorkFlowSvc.goToStep(step);
         };
 
-        $scope.$on('$routeChangeSuccess', function(event, routeData){
-            // Your $routeParams-dependent logic goes here
+        $scope.$on('$routeChangeStart', function(event, routeData){
 
-            var workflowData = orderWorkFlowSvc.getWorkFlowData();
-
-            //if (!workflowData) {
-             //   $location.path('/order/start');
-             //   return;
-            //}
-
-            //Get the latest completed step in the workflow
-            var completedStep = orderWorkFlowSvc.completedStep;
             var step = routeData.$$route.settings.step;
 
-           if ( step <= (completedStep + 1) ) {
-                vm.step = step;
- }
-            else {
-                vm.step = completedStep + 1
-
+            //cancel route change if stpe is more than 2 steps ahead
+            if (step > orderWorkFlowSvc.completedStep + 1) {
+                event.preventDefault();
+                return;
             }
+
+            updateSteps(step);
+            // Your $routeParams-dependent logic goes here
+            //orderWorkFlowSvc.goToStep(step);
+
 
         });
 
 
+        function updateSteps(step) {
+            vm.completedStep = orderWorkFlowSvc.completedStep;
+            vm.step = step;
+            orderWorkFlowSvc.step = step;
+
+        }
 
 
     }

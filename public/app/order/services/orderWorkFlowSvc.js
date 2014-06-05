@@ -19,6 +19,8 @@
 
             completedStep: 0,
 
+            step: 1,
+
             orderType: null,
 
 
@@ -45,48 +47,48 @@
 
             nextStep: function() {
 
-                this.completedStep = this.completedStep + 1;
+                this.completedStep = this.step;
 
-                $location.path(this.getNextUrl(this.completedStep + 1));
+                this.goToStep(this.completedStep + 1);
             },
 
             goToStep: function(step) {
 
-                if (step > this.completedStep)
-                    step = this.completedStep;
-
-                this.completedStep = step - 1;
-                $location.path(this.getNextUrl(step));
+                this.step = step;
+                $location.path(this.getStepUrl(step));
 
 
             },
 
-
-            getNextUrl: function(step) {
+            getStepUrl: function(step) {
 
                 var orderRoutes = routes.filter(function(r) {
                     return r.config.settings && r.config.settings.type === 'order' &&
-                           r.config.settings.step === step ;
-                    });
+                        r.config.settings.step === step ;
+                });
 
-                 var foundRoutes = orderRoutes.length;
-                 var url = "/order/start";
+                var foundRoutes = orderRoutes.length;
+                var url = "/order/start";
 
                 switch (foundRoutes) {
                     case 1:
-                         url = orderRoutes[0].url;
-                         break;
+                        url = orderRoutes[0].url;
+                        break;
                     case 2: //for step 2 (check or repair)
-                         if (this.orderType && this.orderType === lookups.orderType.repair.name)
-                             url = orderRoutes[1].url;
+                        if (this.orderType && this.orderType === lookups.orderType.repair.name)
+                            url = orderRoutes[1].url;
                         else
-                             url = orderRoutes[0].url;
+                            url = orderRoutes[0].url;
                         break;
                 }
 
                 return url;
 
+
+
             }
+
+
 
 
         }

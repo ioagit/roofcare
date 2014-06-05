@@ -26,6 +26,7 @@
     "momentjs": "~2.6.0",
     "spinjs": "~2.0.1",
     "angular-deferred-bootstrap": "~0.0.5",
-    "angular-loading-bar": "~0.4.2"
+    "angular-loading-bar": "~0.4.2",
+    "bootstrap3-datetimepicker": "~3.0.0"
   }
 }
