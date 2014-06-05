@@ -25,6 +25,8 @@
 
                     if (success) {
                         commonSvc.logger.logSuccess(translation.loginSuccess, null, null, true);
+                        $location.path('/contractor/dashboard');
+                        return;
                     }
                     else
                     {

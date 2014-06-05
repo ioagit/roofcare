@@ -3,6 +3,7 @@
  */
 
 var path = require('path'),
+    mongoose = require('mongoose'),
     Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
@@ -109,7 +110,7 @@ exports.createJob = function(){
                 if (found.length == 0) return handleErrorResponse(res, 400, 'No contractor found');
 
                 var contractorInfo = found[0];
-                jobData.contractor = contractorInfo.id;
+                jobData.contractor = mongoose.Types.ObjectId(contractorInfo.id);
                 jobData.status = lookUps.jobStatus.created;
                 jobData.onSiteContact = {};
 
