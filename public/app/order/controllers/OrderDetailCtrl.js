@@ -21,9 +21,9 @@
 
         //Datetime picker
 
-//        angular.element('#datetimepicker').datetimepicker({
-//            language:  'de'
-//        });
+       angular.element('#datetimepicker').datetimepicker({
+            language:  'de'
+        });
 
         vm.saveJob = function() {
             orderSvc.saveJob(vm.job).then(function(data) {

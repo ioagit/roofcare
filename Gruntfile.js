@@ -76,7 +76,18 @@ module.exports = function (grunt) {
                         //jquery
                         './public/vendor/jquery/jquery-migrate.js',
 
+                        './public/vendor/bootstrap/dist/js/bootstrap.js',
+
+
+
                         './public/vendor/modernizr/modernizr.js',
+
+
+                        //angular
+                        './public/vendor/angular/angular.js',
+                        './public/vendor/angular-resource/angular-resource.js',
+                        './public/vendor/angular-route/angular-route.js',
+
 
                         //Toastr
                         './public/vendor/toastr/toastr.min.js',
@@ -95,8 +106,8 @@ module.exports = function (grunt) {
 
                         './public/vendor/angular-loading-bar/build/loading-bar.min.js',
 
-                        './public/vendor/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
-                        './public/vendor/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
+                        './public/vendor/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
+                        './public/vendor/bootstrap3-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
 
 
                     ]
@@ -194,18 +205,20 @@ module.exports = function (grunt) {
                 dest: './public/static/dist/app.order.css',
                 src: [
 
+                    './public/vendor/bootstrap/dist/css/bootstrap.css',
                     './public/specs/beta/assets/css/app.css',
                     './public/specs/beta/assets/css/style.css',
-                    './public/specs/beta/assets/css/header/header1.css',
+                    './public/specs/beta/assets/css/headers/header1.css',
 
                     './public/specs/beta/assets/css/responsive.css',
 
-
                     './public/specs/beta/assets/plugins/font-awesome/css/font-awesome.css',
-                    './public/vendor/bootstrap3-datetimepicker/build/css/locales/bootstrap-datetimepicker.min.css',
+                    './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
+
                     './public/specs/beta/assets/css/themes/red.css',
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
-                    './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
+
+                    './public/vendor/bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
 
 
                     //Toastr
@@ -230,7 +243,7 @@ module.exports = function (grunt) {
                 dest: './public/static/dist/app.contractor.css',
                 src: [
 
-                    //'./public/vendor/bootstrap/dist/css/bootstrap.min.css',
+                    './public/vendor/bootstrap/dist/css/bootstrap.min.css',
                     './public/static/css/light-theme.css',
 
                     //Toastr
