@@ -2,17 +2,32 @@
     <div class="row margin-bottom-10">
         <div class="col-sm-12">
             <label>Strasse und Hausnummer</label>
-            <input type="text" class="form-control" name="address" placeholder="Strasse und Hausnummer" data-ng-model="vm.job.workSite.street">
+            <input type="text" class="form-control"
+                   name="address" placeholder="Strasse und Hausnummer"
+                   data-ng-model="vm.job.workSite.street"
+                   ng-required="required"
+                   ng-minlength="5"
+                   ng-maxlength="50"
+
+            >
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <label>PLZ</label>
-            <input type="text" class="form-control" name="zip" placeholder="PLZ" data-ng-model="vm.job.workSite.zipCode">
+            <input type="text" class="form-control" name="zip" placeholder="PLZ"
+                   data-ng-model="vm.job.workSite.zipCode"
+                   ng-required="required"
+                   ng-pattern="/\d{5}/"
+                   >
         </div>
         <div class="col-sm-6">
             <label>Stadt</label>
-            <input type="text" class="form-control" name="city" placeholder="Stadt" data-ng-model="vm.job.workSite.city">
+            <input type="text" class="form-control" name="city" placeholder="Stadt"
+                   data-ng-model="vm.job.workSite.city"
+                   ng-required="required"
+                   ng-minlength="2"
+                   ng-maxlength="50">
         </div>
     </div>
 </div>

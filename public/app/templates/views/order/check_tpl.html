@@ -1,4 +1,4 @@
-<form class="reg-page" form-autofill-fix>
+<form class="reg-page" name="jobCreateForm" form-autofill-fix novalidate ng-submit="vm.createJob();">
     <div class="reg-header">
         <h2>Dachcheck</h2>
         <p>Um Ihren Dachcheck schnell und fachmännisch durchführen zu zu können, brauchen wir einige Details zu dem Dachcheck von Ihnen.</p>
@@ -64,7 +64,7 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <button class="btn-u" type="submit" data-ng-click="vm.createJob()">Weiter<i class="icon-angle-right icon-large pull-right"></i></button>
+            <button class="btn-u" type="submit" >Weiter<i class="icon-angle-right icon-large pull-right"></i></button>
         </div>
     </div>
 </form>
