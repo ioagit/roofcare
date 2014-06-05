@@ -9,6 +9,8 @@ var geocoder = require('node-geocoder').getGeocoder('google', 'https'),
     util = require('util'),
     _ = require('underscore');
 
+
+//The schema for address
 var rawSchema = {
     coordinates: {type: [Number, Number], index: '2d', default:[0,0], required:true},
     street : {type: String},
