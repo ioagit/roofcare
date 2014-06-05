@@ -71,7 +71,10 @@ module.exports = function (grunt) {
                     './public/static/dist/vendors.common.min.js':
                     [
                         //jquery
-                        './public/vendor/jquery-migrate/jquery-migrate.min.js',
+                        './public/vendor/jquery/jquery.min.js',
+
+                        //jquery
+                        './public/vendor/jquery/jquery-migrate.js',
 
                         './public/vendor/modernizr/modernizr.js',
 
@@ -92,8 +95,8 @@ module.exports = function (grunt) {
 
                         './public/vendor/angular-loading-bar/build/loading-bar.min.js',
 
-                        './public/vendor/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
-                        './public/vendor/bootstrap3-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
+                        './public/vendor/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+                        './public/vendor/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
 
 
                     ]
@@ -199,10 +202,11 @@ module.exports = function (grunt) {
 
 
                     './public/specs/beta/assets/plugins/font-awesome/css/font-awesome.css',
+                    './public/vendor/bootstrap3-datetimepicker/build/css/locales/bootstrap-datetimepicker.min.css',
                     './public/specs/beta/assets/css/themes/red.css',
                     './public/specs/beta/assets/css/themes/headers/header1-red.css',
                     './public/specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css',
-                    './public/vendor/bootstrap3-datetimepicker/build/css/locales/bootstrap-datetimepicker.min.css',
+
 
                     //Toastr
                     './public/vendor/toastr/toastr.css',
