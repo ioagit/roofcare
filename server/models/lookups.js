@@ -77,6 +77,7 @@ module.exports = {
         workRejected: 'Vor Ort Abgelehnt'
     },
 
+
     paymentType: {
 
         cash:'Bar',
