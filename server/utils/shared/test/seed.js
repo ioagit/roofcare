@@ -9,16 +9,14 @@ var mongoose  = require('mongoose'),
     _ = require('underscore'),
     testData = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'data')),
 
-//Models
+    //Models
     Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address =  require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
-    Customer =  require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
 
     //Mocks
     contractorMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock')),
     addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
-    customerMock =   require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'customerMock')),
     jobMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'jobMock'));
 
 var contractorList = [];
@@ -28,8 +26,7 @@ function build(builder, options) {
 
     var obj = builder();
 
-    if (options)
-        obj = _.extend(obj, options);
+    if (options) obj = _.extend(obj, options);
 
     return obj;
 }
@@ -57,7 +54,6 @@ function seedOneContractor(n, done) {
     if (!n) n = 10;
 
     //Getting all the lists
-    var customerList  = buildList(customerMock.build, n);
     contractorList.push( build(contractorMock.build,
         {
             username: 'contractor1',
@@ -75,11 +71,9 @@ function seedOneContractor(n, done) {
     //Jobs
     for (var i = 0; i < n; i += 1) {
         jobList[i].contractor = contractorList[0];
-        jobList[i].customer = customerList[i];
     }
 
     async.series([
-            function(callback) { Customer.create(customerList, callback) },
             function(callback) { Contractor.create(contractorList, callback)},
             function(callback) { Job.create(jobList, callback); }
         ],
