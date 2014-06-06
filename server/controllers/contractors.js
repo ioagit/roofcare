@@ -7,7 +7,6 @@ var path = require('path'),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
-    Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
     Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model;
 
 exports.getDashboard = function() {

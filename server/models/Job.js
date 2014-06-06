@@ -10,8 +10,7 @@ var mongoose = require('mongoose'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     physicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address')),
-    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
-    Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
+    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
 
 var onSiteContact = contactInfo.Definition;
 onSiteContact.cell= {type: String, trim: true, validate: validator.phoneValidator};

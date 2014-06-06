@@ -8,19 +8,17 @@ var mongoose  = require('mongoose'),
 
 
 //adding the user model for User Model registration with Mongoose
-var users = require(path.join(process.cwd(),'server','models','Users'));
-var addresses = require(path.join(process.cwd(),'server','models','Address'));
-var lookups = require(path.join(process.cwd(),'server','models','lookups'));
-var async = require('async');
-var jobs  = require(path.join(process.cwd(),'server','models','Job'));
-var contractors = require(path.join(process.cwd(),'server','models','Contractor'));
-var customers = require(path.join(process.cwd(),'server','models','Customer'));
+var users = require(path.join(process.cwd(),'server','models','Users')),
+    addresses = require(path.join(process.cwd(),'server','models','Address')),
+    lookups = require(path.join(process.cwd(),'server','models','lookups')),
+    async = require('async'),
+    jobs  = require(path.join(process.cwd(),'server','models','Job')),
+    contractors = require(path.join(process.cwd(),'server','models','Contractor'));
 
 var Address = addresses.Model;
 var Job = jobs.Model;
 var User = users.Model;
 var Contractor = contractors.Model;
-var Customer = customers.Model;
 
 var testLocations = {
     Heerdter: {

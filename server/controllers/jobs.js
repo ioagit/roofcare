@@ -5,7 +5,6 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     Job = require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
-    Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model,
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
