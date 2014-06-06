@@ -10,35 +10,26 @@ var mongoose = require('mongoose'),
     BaseSchema = require(path.join(process.cwd(), 'server', 'models', 'BaseSchema')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     physicalAddress = require(path.join(process.cwd(), 'server', 'models', 'Address')),
+    contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo')),
     Customer = require(path.join(process.cwd(), 'server', 'models', 'Customer')).Model;
+
+var onSiteContact = contactInfo.Definition;
+onSiteContact.cell= {type: String, trim: true, validate: validator.phoneValidator};
+onSiteContact.contactType = {type: String, trim: true};
+
+var billingContact = contactInfo.Definition;
+billingContact.cell= {type: String, trim: true, validate: validator.phoneValidator};
+billingContact.company = {type: String, trim: true};
+billingContact.industry = {type: String, trim: true};
+billingContact.department = {type: String, trim: true};
+billingContact.address = physicalAddress.Definition;
 
 var schema =  BaseSchema.extend({
     contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
     customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
 
-    onSiteContact: {
-        salutation: {type: String, trim: true},
-        firstName: {type: String, trim: true, validate: validator.nameValidator},
-        lastName: {type: String, trim: true, validate: validator.nameValidator},
-        email: {type: String, trim: true, validate: validator.emailValidator},
-        phone: {type: String, trim: true, validate: validator.phoneValidator},
-        cell: {type: String, trim: true, validate: validator.phoneValidator},
-        contactType: {type: String, trim: true}
-    },
-
-    billingContact: {
-        salutation: {type: String, trim: true},
-        firstName: {type: String, trim: true, validate: validator.nameValidator},
-        lastName: {type: String, trim: true, validate: validator.nameValidator},
-        email: {type: String, trim: true, validate: validator.emailValidator},
-        phone: {type: String, trim: true, validate: validator.phoneValidator},
-        cell: {type: String, trim: true, validate: validator.phoneValidator},
-        company: {type: String, trim: true},
-        industry: {type: String, trim: true},
-        department: {type: String, trim: true},
-        address: physicalAddress.Definition
-
-    },
+    onSiteContact: onSiteContact,
+    billingContact: billingContact,
 
     startDate: {type: Date},
     duration: {type: String},
