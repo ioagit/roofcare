@@ -11,18 +11,18 @@
             <a class="text-contrast" href="/contractor/job_start/{{job._id}}">{{job.StartDate | date: 'HH:mm' }} Uhr</a>
         </div>
         <address>
-            <strong>{{job.customer.contactInfo.firsName }} {{job.customer.contactInfo.lastName}}</strong>
+            <strong>{{job.customer.firsName }} {{job.customer.lastName}}</strong>
             <br>
             {{job.workSite.street}}
             <br>
             {{job.workSite.zipCode}} {{job.workSite.city}}
             <br>
             <br>
-            <small><a href="{{job.customer.contactInfo.email}}">
-                <br>{{job.customer.contactInfo.email}}
+            <small><a href="{{job.customer.email}}">
+                <br>{{job.customer.email}}
                 <br></a></small>
             <br>
-            <small>{{job.customer.contactInfo.phone}}
+            <small>{{job.customer.phone}}
                 <br></small>
         </address>
     </div>

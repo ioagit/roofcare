@@ -40,7 +40,6 @@ describe('Model - Job', function () {
        Job.find({})
            .limit(10)
            .skip(5)
-           .populate('customer')
            .populate('contractor')
            .exec(function (err, collection) {
                expect(collection.length).to.be.eq(10);
@@ -133,7 +132,6 @@ describe('Model - Job', function () {
     it('Should return a job with linked Customer and WorkSite', function(done){
         Job.find({})
             .limit(1)
-            .populate('customer')
             .populate('contractor')
             .exec(function (err, collection) {
 

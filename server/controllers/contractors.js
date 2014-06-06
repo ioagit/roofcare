@@ -34,7 +34,6 @@ exports.getDashboard = function() {
                             'status': lookUps.jobStatus.requestAccepted
                         })
                         .sort('startDate')
-                        .populate('customer')
 
                         .exec(function (err, coll) {
                             dashBoard.inbox.nextJob = coll[0];

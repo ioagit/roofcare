@@ -8,6 +8,7 @@ var mongoose  = require('mongoose'),
     Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     lookups = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
+    contactInfoMock  = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'contactInfoMock')),
     _ = require('underscore');
 
 var counter = 0;
@@ -21,14 +22,8 @@ function build() {
     var j = new Job(
         {
             contractor: mongoose.Types.ObjectId(),
-            customer: mongoose.Types.ObjectId(),
-            onSiteContact: {
-                firstName: faker.Name.firstName(),
-                lastName: faker.Name.lastName(),
-                salutation: faker.random.array_element(_.values(lookups.salutation) ),
-                email: faker.Internet.email(),
-                phone: faker.PhoneNumber.phoneNumberFormat(0)
-            },
+            customer: contactInfoMock.build(),
+            onSiteContact: contactInfoMock.build(),
 
             invoice: {
                 number: 'RC' + ("00000000" + counter).slice(-8),

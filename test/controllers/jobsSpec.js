@@ -129,7 +129,6 @@ describe('Controller - Jobs', function () {
                 async.series([
                         function (callback) {
                             Job.QueryJobs(contractorId)
-                                .populate('customer')
                                 .exec(function (err, collection) {
                                     results = collection;
                                     expect(results).to.not.be.null;
@@ -137,21 +136,21 @@ describe('Controller - Jobs', function () {
                                 });
                         },
                         function (callback) {
-                            customerName = results[0].customer.contactInfo.lastName;
+                            customerName = results[0].customer.lastName;
                             agent
                                 .get('/api/contractor/jobs?customer=' + customerName)
                                 .set('Accept', 'application/json')
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-
+                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
                                     for (var i = 0; i < resultObj.rows.length; i++) {
                                         var job = resultObj.rows[i];
                                         expect(job.customer).to.not.be.null;
-                                        expect(job.customer.contactInfo.lastName).to.eq(customerName);
+                                        expect(job.customer.lastName).to.eq(customerName);
                                         expect(job.contractor).to.be.eq(contractorId);
                                     }
 
@@ -254,11 +253,10 @@ describe('Controller - Jobs', function () {
                 async.series([
                         function (callback) {
                             Job.QueryInbox(contractorId)
-                                .populate('customer')
                                 .exec(function (err, collection) {
                                     results = collection;
                                     expect(results).to.not.be.null;
-                                    customerName = results[0].customer.contactInfo.lastName;
+                                    customerName = results[0].customer.lastName;
                                     callback();
                                 });
                         },
@@ -269,14 +267,14 @@ describe('Controller - Jobs', function () {
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-
+                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
                                     for (var i = 0; i < resultObj.rows.length; i++) {
                                         var job = resultObj.rows[i];
                                         expect(job.customer).to.not.be.null;
-                                        expect(job.customer.contactInfo.lastName).to.eq(customerName);
+                                        expect(job.customer.lastName).to.eq(customerName);
                                         expect(job.contractor).to.be.eq(contractorId);
                                     }
                                     callback();

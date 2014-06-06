@@ -51,7 +51,6 @@ exports.getJobs = function() {
                 query.find()
                     .skip(startingIndex)
                     .limit(pageSize)
-                    .populate('customer')
                     .exec(function (err, coll) {
                         res.send(JSON.stringify({ totalFound: count, rows: coll }));
                     }
@@ -79,7 +78,6 @@ exports.getInboxes = function() {
                 query.find()
                     .skip(startingIndex)
                     .limit(pageSize)
-                    .populate('customer')
                     .sort({startDate: 1})
                     .exec(function (err, coll) {
                         res.send(JSON.stringify({ totalFound: count, rows: coll }));

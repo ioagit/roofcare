@@ -26,8 +26,8 @@ billingContact.address = physicalAddress.Definition;
 
 var schema =  BaseSchema.extend({
     contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
-    customer: {type : mongoose.Schema.ObjectId, ref : 'Customer'},
 
+    customer: contactInfo.Definition,
     onSiteContact: onSiteContact,
     billingContact: billingContact,
 
@@ -77,23 +77,15 @@ schema.statics.Filter = function(query, criteria, processQuery) {
     if ((criteria['status'] || '').length > 0)
         query = query.where('status', criteria.status);
 
-    if ((criteria['customer'] || '').length > 0)
-    {
-        Customer.FindByFirstOrLastName(criteria.customer, function(customers){
-            var customerIds = [];
-            for(var i=0; i< customers.length; i++) {
-                customerIds.push(customers[i].id);
-            }
-            query = query.where('customer').in(customerIds);
-            processQuery(query);
-        });
+    if ((criteria['customer'] || '').length > 0) {
+        query = query.and([{
+                $or:[ {'customer.firstName': criteria.customer},  {'customer.lastName': criteria.customer} ]
+            }]);
     }
-    else
-        processQuery(query);
+    processQuery(query);
 };
 
-schema.statics.NextInvoiceNumber = function(callback)
-{
+schema.statics.NextInvoiceNumber = function(callback) {
     this.findOne()
         .sort('-invoice.number')
         .exec(function(err, doc)
