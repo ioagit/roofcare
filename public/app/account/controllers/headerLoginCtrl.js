@@ -15,8 +15,6 @@
 
         var vm = this;
 
-        //var translation =  commonSvc.translation;
-
         vm.identity = identitySvc;
         vm.signin = function (username, password) {
 
