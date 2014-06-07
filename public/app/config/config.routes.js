@@ -46,10 +46,10 @@
             {
                 url: '/order/repair',
                 config: {
-                    controller: 'OrderRepairCtrl',
+                    controller: 'OrderCheckCtrl',
                     controllerAs: 'vm',
-                    title: 'Order Check',
-                    templateUrl: 'order/check',
+                    title: 'Order repair',
+                    templateUrl: 'order/repair',
                     settings: {
                         type: 'order',
                         step: 2

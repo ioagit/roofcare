@@ -16,19 +16,17 @@ var onSiteContact = contactInfo.Definition;
 onSiteContact.cell= {type: String, trim: true, validate: validator.phoneValidator};
 onSiteContact.contactType = {type: String, trim: true};
 
-var billingContact = contactInfo.Definition;
-billingContact.cell= {type: String, trim: true, validate: validator.phoneValidator};
-billingContact.company = {type: String, trim: true};
-billingContact.industry = {type: String, trim: true};
-billingContact.department = {type: String, trim: true};
-billingContact.address = physicalAddress.Definition;
+var customer = contactInfo.Definition;
+customer.company = {type: String, trim: true};
+customer.industry = {type: String, trim: true};
+customer.department = {type: String, trim: true};
+customer.address = physicalAddress.Definition;
 
 var schema =  BaseSchema.extend({
     contractor: {type : mongoose.Schema.ObjectId, ref : 'Contractor'},
 
-    customer: contactInfo.Definition,
+    customer: customer,
     onSiteContact: onSiteContact,
-    billingContact: billingContact,
 
     startDate: {type: Date},
     duration: {type: String},

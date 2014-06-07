@@ -1,4 +1,4 @@
-<form class="reg-page" form-autofill-fix>
+<form class="reg-page" form-autofill-fix  name="vm.userForm" form-autofill-fix novalidate ng-submit="vm.saveJob();">
     <div class="reg-header">
         <h2>Termin</h2>
         <p>Bitte wählen Sie Ihren Termin aus.</p>
@@ -29,21 +29,40 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Anrede</label>
-                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"></select>
+                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation">
+                                    <option value="">Anrede</option>
+                                </select>
                             </div>
                             <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'has-error' : vm.isContactFirsNameinValid()}">
                                 <label>Vorname</label>
-                                <input type="text" class="form-control" name="contact-first" placeholder="Vorname" data-ng-model="vm.job.onSiteContact.firstName" >
+                                <input type="text" class="form-control"
+                                       name="contactFirstName" placeholder="Vorname"
+                                       data-ng-model="vm.job.onSiteContact.firstName"
+                                       ng-required="true"
+                                       ng-minlength="2"
+                                       ng-maxlength="50">
+                                    <p ng-show="vm.isContactFirsNameValid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
+                                 </div>
                             </div>
                             <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'has-error' : vm.isContactLastNameInvalid()}">
                                 <label>Nachname</label>
-                                <input type="text" class="form-control" name="contact-last" placeholder="Nachname"  data-ng-model="vm.job.onSiteContact.lastName">
+                                <input type="text" class="form-control" name="contactLastName" placeholder="Nachname"
+                                       data-ng-model="vm.job.onSiteContact.lastName"
+                                       ng-required="true"
+                                       ng-minlength="2"
+                                       ng-maxlength="50">
+                                <p ng-show="vm.isContactLastNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
+                                    </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
                                 <label>Funktion</label>
-                                <select class="form-control" data-ng-model="vm.job.onSiteContact.contactType" ng-options="k as v for (k, v) in vm.lookups.contactType"></select>
+                                <select class="form-control"  place-holder="please select" data-ng-model="vm.job.onSiteContact.contactType" ng-options="k as v for (k, v) in vm.lookups.contactType">
+                                    <option value="">Funktion</option>
+                                </select>
                             </div>
                             <div class="col-sm-4">
                                 <label>Telefonnummer</label>
@@ -67,15 +86,15 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Firmenname</label>
-                                <input type="text"  data-ng-model="vm.job.billingContact.company" class="form-control" name="billing-company" placeholder="Firma">
+                                <input type="text"  data-ng-model="vm.job.customer.company" class="form-control" name="billing-company" placeholder="Firma">
                             </div>
                             <div class="col-sm-4">
                                 <label>Branche/Zusatz</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.industry"  class="form-control" name="billing-extra" placeholder="Branche/Zusatz">
+                                <input type="text"   data-ng-model="vm.job.customer.industry"  class="form-control" name="billing-extra" placeholder="Branche/Zusatz">
                             </div>
                             <div class="col-sm-4">
                                 <label>Abteilung</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.department"  class="form-control" name="billing-department" placeholder="Abteilung">
+                                <input type="text"   data-ng-model="vm.job.customer.department"  class="form-control" name="billing-department" placeholder="Abteilung">
                             </div>
                         </div>
 
@@ -84,39 +103,41 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Anrede</label>
-                                <select class="form-control" data-ng-model="vm.job.billingContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"  name="billing-title"></select>
+                                <select class="form-control" data-ng-model="vm.job.customer.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"  name="billing-title">
+                                    <option value="">Anrede</option>
+                                </select>
                             </div>
                             <div class="col-sm-4">
                                 <label>Vorname</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.firstName"  class="form-control" name="billing-first" placeholder="Vorname">
+                                <input type="text"   data-ng-model="vm.job.customer.firstName"  class="form-control" name="billing-first" placeholder="Vorname">
                             </div>
                             <div class="col-sm-4">
                                 <label>Nachname</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.lastName"  class="form-control" name="billing-last" placeholder="Nachname">
+                                <input type="text"   data-ng-model="vm.job.customer.lastName"  class="form-control" name="billing-last" placeholder="Nachname">
                             </div>
                         </div>
                         <div class="row margin-bottom-10">
                             <div class="col-sm-5">
                                 <label>Strasse und Hausnummer</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.address.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
+                                <input type="text"   data-ng-model="vm.job.customer.address.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
                             </div>
                             <div class="col-sm-2">
                                 <label>PLZ</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.address.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
+                                <input type="text"   data-ng-model="vm.job.customer.address.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
                             </div>
                             <div class="col-sm-5">
                                 <label>Stadt</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.address.city"   class="form-control" name="billing-city" placeholder="Stadt">
+                                <input type="text"   data-ng-model="vm.job.customer.address.city"   class="form-control" name="billing-city" placeholder="Stadt">
                             </div>
                         </div>
                         <div class="row margin-bottom-10">
                             <div class="col-sm-6">
                                 <label>Telefon</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.phone"   class="form-control" name="billing-phone" placeholder="Telefon">
+                                <input type="text"   data-ng-model="vm.job.customer.phone"   class="form-control" name="billing-phone" placeholder="Telefon">
                             </div>
                             <div class="col-sm-6">
                                 <label>Email</label>
-                                <input type="text"   data-ng-model="vm.job.billingContact.email"  class="form-control" name="billing-email" placeholder="Email">
+                                <input type="text"   data-ng-model="vm.job.customer.email"  class="form-control" name="billing-email" placeholder="Email">
                             </div>
                         </div>
                     </div>
@@ -126,7 +147,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <button class="btn-u" type="submit" data-ng-click="vm.saveJob()">Termin Bestätigen<i class="icon-angle-right icon-large pull-right"></i></button>
+            <button class="btn-u" type="submit">Termin Bestätigen<i class="icon-angle-right icon-large pull-right"></i></button>
         </div>
     </div>
 </form>

@@ -9,15 +9,17 @@
     var controllerId = 'OrderDetailCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc',OrderDetailCtrl]);
+        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc','translation',OrderDetailCtrl]);
 
-    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc) {
+    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc, translation) {
 
         var vm = this;
 
         vm.job = orderWorkFlowSvc.getJob();
 
         vm.lookups = lookups;
+
+        vm.translation = translation;
 
         //Datetime picker
 
@@ -31,6 +33,15 @@
                     orderWorkFlowSvc.nextStep();
             });
 
+        };
+
+
+        vm.isContactFirstNameInvalid = function() {
+            return vm.userForm.contactFirstName.$invalid && !vm.userForm.contactFirstName.$pristine && vm.formSubmitted;
+        };
+
+        vm.isContactLastNameInvalid = function() {
+            return vm.userForm.contactLastName.$invalid && !vm.userForm.contactLastName.$pristine && vm.formSubmitted;
         };
 
         function activate() {
