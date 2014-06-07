@@ -28,6 +28,13 @@
         });
 
         vm.saveJob = function() {
+
+            vm.formSubmitted = true;
+
+            if (!isFormValid())
+                return;
+
+
             orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)
                     orderWorkFlowSvc.nextStep();
@@ -43,6 +50,12 @@
         vm.isContactLastNameInvalid = function() {
             return vm.userForm.contactLastName.$invalid && !vm.userForm.contactLastName.$pristine && vm.formSubmitted;
         };
+
+
+
+        function isFormValid() {
+            return vm.userForm.$valid;
+        }
 
         function activate() {
             commonSvc.activateController([], controllerId);

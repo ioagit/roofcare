@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <div class="form-group" ng-class="{ 'has-error' : vm.isContactFirsNameinValid()}">
+                                <div class="form-group" ng-class="{ 'has-error' : vm.isContactFirstNameInvalid()}">
                                 <label>Vorname</label>
                                 <input type="text" class="form-control"
                                        name="contactFirstName" placeholder="Vorname"
@@ -42,7 +42,7 @@
                                        ng-required="true"
                                        ng-minlength="2"
                                        ng-maxlength="50">
-                                    <p ng-show="vm.isContactFirsNameValid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
+                                    <p ng-show="vm.isContactFirstNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
                                  </div>
                             </div>
                             <div class="col-sm-4">
