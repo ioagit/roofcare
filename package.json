@@ -27,12 +27,15 @@
     "mongoose-schema-extend": "~0.1.7",
     "bower": "0.6.x",
     "angular": "1.2.16",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "supertest": "^0.13.0",
+    "superagent": "^0.18.0",
+    "should": "^4.0.1"
   },
   "devDependencies": {
     "vows": "0.5.x",
     "mocha": "*",
-    "should": "*",
+    "should": "^4.0.1",
     "passport": "~0.2.0",
     "karma-mocha": "~0.1.3",
     "karma-chai-plugins": "~0.2.0",

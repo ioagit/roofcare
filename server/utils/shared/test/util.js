@@ -33,14 +33,14 @@ function loginUser(agent, credentials) {
             }
             // this is should.js syntax, very clear
             //console.log(res.text)
-            res.should.have.status(200);
+            res.status.should.equal(200);
             res.body.should.have.property('success');
             res.body.should.have.property('user');
             return done();
         }
     }
 
-}; //login User
+} //login User
 
 
 function loginInvalidUser(agent, user) {
@@ -58,15 +58,15 @@ function loginInvalidUser(agent, user) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text)
-            res.should.have.status(200);
+            console.log(res.text);
+            res.status.should.equal(200);
             res.body.should.have.property('success');
             res.body.success.should.be.false;
             return done();
         }
     }
 
-}; //login Invalid User
+} //login Invalid User
 
 function logOut (agent) {
 
@@ -75,7 +75,7 @@ function logOut (agent) {
            .get('/logout')
            .expect(200, done);
    }
-};
+}
 
 function createUser(agent, user) {
 
@@ -91,11 +91,11 @@ function createUser(agent, user) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text)
-            res.should.have.status(200);
+            console.log(res.text);
+            res.status.should.equal(200);
             res.body.contactInfo.firstName.should.equal(user.contactInfo.firstName);
             res.body.hashed_pwd.should.not.equal(user.password);
-            res.body.roles.should.include('contractor');
+            res.body.roles.should.containEql('contractor');
             return done();
         }
 
@@ -118,10 +118,12 @@ function updateUser(agent, user) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text)
-            res.should.have.status(200);
+            console.log(res.text);
+            res.status.should.equal(200);
+
             res.body.contactInfo.firstName.should.equal(user.contactInfo.firstName);
-            res.body.roles.should.include('testRole');
+            res.body.roles.should.be.an.Array.and.have.lengthOf(2);
+            res.body.roles.should.containEql('testRole');
             return done();
         }
 
@@ -145,8 +147,8 @@ function reqAuthRoute(agent, data, route,method) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text)
-            res.should.have.status(403);
+            console.log(res.text);
+            res.status.should.equal(403);
             return done();
         }
 
