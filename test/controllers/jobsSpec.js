@@ -104,9 +104,9 @@ describe('Controller - Jobs', function () {
                     });
             });
 
-            it('Should respond with 5 results when limit = 5', function (done) {
+            it('Should respond with 2 results when limit = 2', function (done) {
                 agent
-                    .get('/api/contractor/jobs?limit=5')
+                    .get('/api/contractor/jobs?limit=2')
                     .set('Accept', 'application/json')
                     .expect(200)
                     .end(function (err, res) {
@@ -114,8 +114,8 @@ describe('Controller - Jobs', function () {
 
                         var resultObj = JSON.parse(res.text);
                         var len = resultObj.rows.length;
-                        expect(len).to.eq(5);
-                        expect(resultObj.totalFound).to.be.at.least(5);
+                        expect(len).to.eq(2);
+                        expect(resultObj.totalFound).to.be.at.least(2);
                         done();
                     });
             });
@@ -228,9 +228,9 @@ describe('Controller - Jobs', function () {
                     });
             });
 
-            it('Should respond with 5 results when limit = 5', function (done) {
+            it('Should respond with 2 results when limit = 2', function (done) {
                 agent
-                    .get('/api/contractor/inbox?limit=5')
+                    .get('/api/contractor/inbox?limit=2')
                     .set('Accept', 'application/json')
                     .expect(200)
                     .end(function (err, res) {
@@ -238,8 +238,8 @@ describe('Controller - Jobs', function () {
 
                         var resultObj = JSON.parse(res.text);
                         var len = resultObj.rows.length;
-                        expect(len).to.eq(5);
-                        expect(resultObj.totalFound).to.be.at.least(5);
+                        expect(len).to.eq(2);
+                        expect(resultObj.totalFound).to.be.at.least(2);
                         done();
                     });
             });
@@ -413,10 +413,10 @@ describe('Controller - Jobs', function () {
                 var job = null;
 
                 before( function(done) {
-                    Job.find({'invoice.number': 'RC00000201'}, function (err, found) {
+                    Job.find({'invoice.number': 'RC00000004'}, function (err, found) {
                         job = found[0];
                         expect(job).to.not.be.null;
-                        expect(job.invoice.number).to.eq('RC00000201');
+                        expect(job.invoice.number).to.eq('RC00000004');
                         done();
                     });
                 });

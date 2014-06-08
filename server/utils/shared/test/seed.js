@@ -2,7 +2,6 @@
 * Created by isuarez on 4/27/14.
 */
 
-
 var mongoose  = require('mongoose'),
     path = require('path'),
     async = require('async'),
@@ -13,13 +12,12 @@ var mongoose  = require('mongoose'),
     Job =  require(path.join(process.cwd(), 'server', 'models', 'Job')).Model,
     Contractor =  require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address =  require(path.join(process.cwd(), 'server', 'models', 'Address')).Model,
+    lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
 
     //Mocks
     contractorMock =  require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks','contractorMock')),
     addressMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'addressMock')),
     jobMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'jobMock'));
-
-var contractorList = [];
 
 //Some helper functions
 function build(builder, options) {
@@ -30,7 +28,6 @@ function build(builder, options) {
 
     return obj;
 }
-
 function create(builder, options, callback) {
 
     var obj = build(builder, options);
@@ -38,8 +35,7 @@ function create(builder, options, callback) {
         callback(err, obj)
     });
 }
-
-function buildList(builder, n) {
+;function buildList(builder, n) {
 
     var list = [];
 
@@ -54,7 +50,7 @@ function seedOneContractor(n, done) {
     if (!n) n = 10;
 
     //Getting all the lists
-    contractorList.push( build(contractorMock.build,
+    var contractor =  build(contractorMock.build,
         {
             username: 'contractor1',
             contactInfo: {
@@ -63,18 +59,21 @@ function seedOneContractor(n, done) {
                 phone: '123-333',
                 email: 'rico.gerhard@gmail.com'
             }
-        }));
+        });
 
-    contractorList[0].address =  testData.locations.RicoAddress;
+    contractor.address =  testData.locations.RicoAddress;
     var jobList  = buildList(jobMock.build, n);
+
+    jobList[n-2].status =  lookUps.jobStatus.requestAccepted;
+    jobList[n-1].status =  lookUps.jobStatus.requestAccepted;
 
     //Jobs
     for (var i = 0; i < n; i += 1) {
-        jobList[i].contractor = contractorList[0];
+        jobList[i].contractor = contractor;
     }
 
     async.series([
-            function(callback) { Contractor.create(contractorList, callback)},
+            function(callback) { Contractor.create(contractor, callback)},
             function(callback) { Job.create(jobList, callback); }
         ],
         function (err, results) {

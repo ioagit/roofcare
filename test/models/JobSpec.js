@@ -19,9 +19,9 @@ describe('Model - Job', function () {
         done();
     });
 
-    it('NextInvoiceNumber should return 203', function(done){
+    it('NextInvoiceNumber should return 13', function(done){
        Job.NextInvoiceNumber(function(invNumber){
-           expect(invNumber).to.eq('RC00000203');
+           expect(invNumber).to.eq('RC00000013');
            done();
        });
     });
@@ -36,13 +36,13 @@ describe('Model - Job', function () {
         });
     });
 
-    it ('Should return the next page of 10 rows', function(done) {
+    it ('Should return the next page of 5 rows', function(done) {
        Job.find({})
-           .limit(10)
+           .limit(5)
            .skip(5)
            .populate('contractor')
            .exec(function (err, collection) {
-               expect(collection.length).to.be.eq(10);
+               expect(collection.length).to.be.eq(5);
                done();
            });
     });

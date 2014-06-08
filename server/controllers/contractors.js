@@ -13,14 +13,23 @@ exports.getDashboard = function() {
     return function (req, res) {
 
         var dashBoard = {
-            inbox: {},
-            jobs: {}
+            comingUp: [],
+            inbox: {
+                nextJob: null,
+                request: 0,
+                total: 0
+            },
+            jobs: {
+                completed :0,
+                started: 0,
+                rejected: 0
+            }
         };
 
         var user = req.user;
         var now = new Date();
         var start = now.toDateString();
-        now.setDate(now.getDate() + 7);
+        now.setDate(now.getDate() + 14);
         var end = now.toDateString();
 
         async.series(
@@ -41,6 +50,7 @@ exports.getDashboard = function() {
                         });
                 },
                 function (callback) {
+
                     Job
                         .aggregate({$group: {_id: {status: '$status'}, count: {$sum: 1}}})
                         .exec(function (err, groupings) {

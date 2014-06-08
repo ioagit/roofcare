@@ -72,13 +72,13 @@ describe('Controller - Contractor', function () {
                     expect(dashBoard).to.not.be.null;
                     expect(dashBoard.inbox).to.not.be.null;
                     expect(dashBoard.jobs).to.not.be.null;
-                    expect(dashBoard.comingUp.length).to.be.greaterThan(0);
+                    expect(dashBoard.comingUp.length).to.be.at.least(0);
                     expect(dashBoard.inbox.nextJob).to.not.be.null;
-                    expect(dashBoard.inbox.request).to.be.greaterThan(0);
-                    expect(dashBoard.inbox.total).to.be.greaterThan(0);
-                    expect(dashBoard.jobs.completed).to.be.greaterThan(0);
-                    expect(dashBoard.jobs.started).to.be.greaterThan(0);
-                    expect(dashBoard.jobs.rejected).to.be.greaterThan(0);
+                    expect(dashBoard.inbox.request).to.be.at.least(0);
+                    expect(dashBoard.inbox.total).to.be.at.least(0);
+                    expect(dashBoard.jobs.completed).to.be.at.least(0);
+                    expect(dashBoard.jobs.started).to.be.at.least(0);
+                    expect(dashBoard.jobs.rejected).to.be.at.least(0);
 
                     for (var i =0; i < dashBoard.comingUp.length; i++)
                     {
