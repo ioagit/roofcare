@@ -124,7 +124,6 @@ describe('Model - Job', function () {
                             break;
                     }
                 }
-                console.log(dashBoard);
                 done();
             });
     });

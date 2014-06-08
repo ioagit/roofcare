@@ -142,7 +142,7 @@ describe('Controller - Jobs', function () {
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-                                    console.log(res.text);
+//                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
@@ -266,7 +266,7 @@ describe('Controller - Jobs', function () {
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-                                    console.log(res.text);
+//                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
@@ -349,7 +349,7 @@ describe('Controller - Jobs', function () {
                             done(err);
                         } else {
                             var result = JSON.parse(res.text);
-                            console.log(result);
+//                            console.log(result);
                             done();
                         }
                     });
@@ -375,7 +375,7 @@ describe('Controller - Jobs', function () {
                             expect(result.job._id).to.exist;
                             expect(result.job.workSite.coordinates.length).to.eq(2);
 
-                            console.log(result);
+//                            console.log(result);
                             done();
                         }
                     });

@@ -58,7 +58,6 @@ function loginInvalidUser(agent, user) {
                 return done(err);
             }
             // this is should.js syntax, very clear
-            console.log(res.text);
             res.status.should.equal(200);
             res.body.should.have.property('success');
             res.body.success.should.be.false;

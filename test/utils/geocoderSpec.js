@@ -18,7 +18,6 @@ describe('Module - Geocoder', function () {
             var geoData = data[0];
             assert(geoData !== null, 'Geo data should not be null');
             assert(geoData.country === 'Germany', 'location should be in Germany');
-            console.log(geoData);
             done();
         });
     });

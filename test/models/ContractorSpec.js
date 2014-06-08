@@ -66,8 +66,6 @@ describe('Model - Contractor', function() {
                     }
                 }
             ], function(err, result){
-                console.log(err);
-                console.log(result);
                 expect(err).to.be.null;
                 expect(result[0].distance).to.be.above(0);
                 done();
@@ -129,8 +127,6 @@ describe('Model - Contractor', function() {
                         var foundContractor = result[0];
                         expect(foundContractor.distance).to.be.gt(2);
                         expect(foundContractor.distance).to.be.lt(3);
-
-                        console.log(' ' + foundContractor._id + ' == ' + contractor.id + '');
 
                         expect(contractor._id + '').to.eq(foundContractor._id + '');
                         callback();
