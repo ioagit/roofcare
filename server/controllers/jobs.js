@@ -107,7 +107,7 @@ exports.createJob = function(){
                 if (found.length == 0) return handleErrorResponse(res, 400, 'No contractor found');
 
                 var contractorInfo = found[0];
-                jobData.contractor = mongoose.Types.ObjectId(contractorInfo.id);
+                jobData.contractor = contractorInfo;
                 jobData.status = lookUps.jobStatus.created;
                 jobData.onSiteContact = {};
 

@@ -7,54 +7,108 @@
 
 
     var serviceId = 'orderWorkFlowSvc';
-    angular.module('rc.order').factory(serviceId, ['$location', 'routes', 'lookups', orderWorkFlowSvc]);
+    angular.module('rc.order').factory(serviceId, ['$location', 'routes', 'lookups', 'localStorageService', orderWorkFlowSvc]);
 
-    function orderWorkFlowSvc($location, routes, lookups) {
+    function orderWorkFlowSvc($location, routes, lookups, localStorageService) {
+
+
+
+        //init Data
+        function init() {
+            var order = getSetOrder() ||  {
+                job: null,
+                workFlow: null,
+                step: 1,
+                completedStep: 0,
+                orderType: null
+
+            };
+
+            getSetOrder(order);
+
+        }
+
+
+
+
+        function getSetOrder(order) {
+
+            if (arguments.length)
+                localStorageService.set('order', order);
+
+            return localStorageService.get('order',order);
+
+        }
+
+        init();
 
 
 
         return {
 
-            workFlowData: null,
+            order: getSetOrder,
 
-            completedStep: 0,
+            property: function property(name, value) {
 
-            step: 1,
+                var order = this.order();
 
-            orderType: null,
+                if (!angular.isUndefined(value))  {
+                    //value passed
+                    order[name] = value;
 
+                    //storing it in the localstore
+                    this.order(order);
+                }
 
-            setWorkFlowData: function(workFlowData) {
-                this.workFlowData = workFlowData;
-            },
-
-            getWorkFlowData: function() {
-                return this.workFlowData;
-            },
-
-            getJob: function() {
-
-              return this.workFlowData && this.workFlowData.job ? this.workFlowData.job : null;
+                return order[name];
 
             },
 
-            setJob: function(job) {
+            workFlow: function(value) {
 
-                if (this.workFlowData)
-                    this.workFlowData.job = job;
+               return this.property('workFlow', value);
 
             },
+
+
+
+            job: function(value) {
+
+                return this.property('job', value);
+            },
+
+
+            step: function(value) {
+
+                return this.property('step', value);
+            },
+
+            completedStep: function(value) {
+
+                return this.property('completedStep', value);
+            },
+
+            orderType: function(value) {
+
+                return this.property('orderType', value);
+            },
+
+
+
+            //Navigation
 
             nextStep: function() {
 
-                this.completedStep = this.step;
+                var step = this.step();
 
-                this.goToStep(this.completedStep + 1);
+                this.completedStep(step);
+
+                this.goToStep(step + 1);
             },
 
             goToStep: function(step) {
 
-                this.step = step;
+                this.step(step);
                 $location.path(this.getStepUrl(step));
 
 
@@ -69,6 +123,8 @@
 
                 var foundRoutes = orderRoutes.length;
                 var url = "/order/start";
+
+                var orderType = this.orderType();
 
                 switch (foundRoutes) {
                     case 1:

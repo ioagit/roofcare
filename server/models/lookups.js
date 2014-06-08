@@ -29,11 +29,13 @@ module.exports = {
     //Should be translated
     orderType: {
         repair: {
+            id: 'repair',
             name: 'Dachreparatur',
             fee: 150,
             hours: '4 hours'
         },
         check: {
+            id: 'check',
             name:'Dachcheck',
             fee: 99,
             hours: 'ca 90 - 120 Min.'

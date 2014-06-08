@@ -19,10 +19,10 @@
 
         vm.formSubmitted = false;
 
-        vm.job = orderWorkFlowSvc.getJob() || {
+        vm.job = orderWorkFlowSvc.job() || {
             propertyType: lookups.propertyType.singleFamily,
             roofType: lookups.roofType.flat,
-            orderType: lookups.orderType.check.name,
+            orderType: orderWorkFlowSvc.orderType(),
             starDate: new Date(),
             duration: lookups.orderType.check.hours
 

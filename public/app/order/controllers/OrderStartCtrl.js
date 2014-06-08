@@ -19,7 +19,7 @@
 
         vm.nextStep = function (orderType) {
 
-           orderWorkFlowSvc.orderType = orderType;
+           orderWorkFlowSvc.orderType(orderType);
            orderWorkFlowSvc.nextStep();
         };
 

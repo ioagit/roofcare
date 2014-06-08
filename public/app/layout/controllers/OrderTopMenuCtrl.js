@@ -4,9 +4,9 @@
     var controllerId = 'OrderTopMenuCtrl';
 
     angular.module('app').controller(controllerId,
-        ['$scope',  'orderWorkFlowSvc', '$location', OrderTopMenuCtrl]);
+        ['$scope',  'orderWorkFlowSvc',  OrderTopMenuCtrl]);
 
-    function OrderTopMenuCtrl($scope, orderWorkFlowSvc, $location) {
+    function OrderTopMenuCtrl($scope, orderWorkFlowSvc) {
 
         var vm = this;
 
@@ -14,7 +14,7 @@
 
         vm.setStep = function(step) {
 
-            if (step > orderWorkFlowSvc.completedStep + 1) {
+            if (step > orderWorkFlowSvc.completedStep() + 1) {
                 return false;
             }
 
@@ -27,7 +27,7 @@
             var step = routeData.$$route.settings.step;
 
             //cancel route change if stpe is more than 2 steps ahead
-            if (step > orderWorkFlowSvc.completedStep + 1) {
+            if (step > orderWorkFlowSvc.completedStep() + 1) {
                 event.preventDefault();
                 return;
             }
@@ -41,9 +41,9 @@
 
 
         function updateSteps(step) {
-            vm.completedStep = orderWorkFlowSvc.completedStep;
+            vm.completedStep = orderWorkFlowSvc.completedStep();
             vm.step = step;
-            orderWorkFlowSvc.step = step;
+            orderWorkFlowSvc.step(step);
 
         }
 

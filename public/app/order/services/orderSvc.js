@@ -12,6 +12,7 @@
     function orderSvc(commonSvc, config, orderWorkFlowSvc) {
 
 
+
         return {
 
             createJob: function (job) {
@@ -28,7 +29,8 @@
                 function successReturn(response) {
 
                     if (response.data) {
-                        orderWorkFlowSvc.setWorkFlowData(response.data);
+                        orderWorkFlowSvc.job(response.data.job);
+                        orderWorkFlowSvc.workFlow(response.data.workFlow);
                         deferred.resolve(true);
                     }
                     else
@@ -53,7 +55,7 @@
                 function successReturn(response) {
 
                     if (response.data) {
-                        orderWorkFlowSvc.setJob(response.data);
+                        orderWorkFlowSvc.job(response.data);
                         deferred.resolve(true);
                     }
                     else

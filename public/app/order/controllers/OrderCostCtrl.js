@@ -15,9 +15,8 @@
 
         var vm = this;
 
-        var workflowData = orderWorkFlowSvc.getWorkFlowData();
-        vm.workflow = workflowData.workFlow;
-        vm.job = workflowData.job;
+        vm.workflow = orderWorkFlowSvc.workFlow();
+        vm.job = orderWorkFlowSvc.job();
 
         vm.nextStep = function() {
                 orderWorkFlowSvc.nextStep();

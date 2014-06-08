@@ -15,9 +15,8 @@
 
         var vm = this;
 
-        var workflowData = orderWorkFlowSvc.getWorkFlowData();
-        vm.job = workflowData.job;
-        vm.workFlow = workflowData.workFlow;
+        vm.job = orderWorkFlowSvc.job();
+        vm.workFlow = orderWorkFlowSvc.workFlow();
 
 
         function activate() {

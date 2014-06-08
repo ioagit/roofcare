@@ -88,6 +88,10 @@ module.exports = function (grunt) {
                         './public/vendor/angular-resource/angular-resource.js',
                         './public/vendor/angular-route/angular-route.js',
 
+                        //local storage managment
+                        './public/vendor/angular-local-storage/angular-local-storage.min.js',
+
+
 
                         //Toastr
                         './public/vendor/toastr/toastr.min.js',

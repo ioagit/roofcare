@@ -15,7 +15,7 @@
 
         var vm = this;
 
-        vm.job = orderWorkFlowSvc.getJob();
+        vm.job = orderWorkFlowSvc.job();
 
         vm.lookups = lookups;
 

@@ -13,6 +13,7 @@
 
             //vendors
             'angular-loading-bar',
+            'LocalStorageModule',
 
             //Custom modules
             'rc.order',
@@ -23,6 +24,10 @@
         ]);
 
 
+    angular.module('app')
+        .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+            localStorageServiceProvider.setPrefix('roofCare');
+        }]);
 
 
     app.run(function($rootScope, $location, config, translation)

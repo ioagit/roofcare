@@ -31,7 +31,7 @@
         activate();
 
         function activate() {
-            logSuccess(translation.roofCareLoaded, null, true);
+            //logSuccess(translation.roofCareLoaded, null, true);
             commonSvc.activateController([], controllerId);
         }
 
@@ -42,7 +42,9 @@
         );
         
         $rootScope.$on(events.controllerActivateSuccess,
-            function (data) { toggleSpinner(false); }
+            function (data) {
+                toggleSpinner(false);
+            }
         );
 
         $rootScope.$on(events.spinnerToggle,

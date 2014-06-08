@@ -35,7 +35,7 @@ function create(builder, options, callback) {
         callback(err, obj)
     });
 }
-;function buildList(builder, n) {
+function buildList(builder, n) {
 
     var list = [];
 
