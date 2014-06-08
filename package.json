@@ -23,6 +23,7 @@
     "passport-local": "~0.1.6",
     "async": "~0.7.0",
     "node-geocoder": "2.2.0",
+    "google-distance": "~0.2.1",
     "mongoose-validator": "~0.2.2",
     "mongoose-schema-extend": "~0.1.7",
     "bower": "0.6.x",

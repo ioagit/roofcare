@@ -1,4 +1,3 @@
-
 var expect = require('chai').expect,
     assert = require('chai').assert,
     path = require('path'),
