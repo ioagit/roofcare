@@ -47,7 +47,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <a data-ng-click="vm.nextStep()" class="btn-u" type="submit">Termin wählen<i class="icon-angle-right icon-large pull-right"></i></a>
+            <a  data-ng-show="vm.canEditOrder" data-ng-click="vm.nextStep()" class="btn-u" type="submit">Termin wählen<i class="icon-angle-right icon-large pull-right"></i></a>
         </div>
     </div>
 </form>

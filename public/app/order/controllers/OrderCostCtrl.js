@@ -15,6 +15,8 @@
 
         var vm = this;
 
+        vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
+
         vm.workflow = orderWorkFlowSvc.workFlow();
         vm.job = orderWorkFlowSvc.job();
 

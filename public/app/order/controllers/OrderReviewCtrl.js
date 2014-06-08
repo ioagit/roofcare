@@ -17,6 +17,8 @@
 
         vm.job = orderWorkFlowSvc.job();
 
+        vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
+
         vm.saveJob = function() {
             vm.job.status = lookups.jobStatus.responsePending;
             orderSvc.saveJob(vm.job).then(function(data) {

@@ -173,7 +173,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button class="btn-u" type="submit" data-ng-click="vm.saveJob()">Termin Buchen<i class="icon-angle-right icon-large pull-right"></i></button>
+            <button  data-ng-show="vm.canEditOrder" class="btn-u" type="submit" data-ng-click="vm.saveJob()">Termin Buchen<i class="icon-angle-right icon-large pull-right"></i></button>
         </div>
     </div>
 </form>

@@ -55,6 +55,7 @@
                 function successReturn(response) {
 
                     if (response.data) {
+
                         orderWorkFlowSvc.job(response.data);
                         deferred.resolve(true);
                     }
@@ -65,8 +66,10 @@
 
                 return deferred.promise;
 
+            },
 
-
+            orderCompleted: function() {
+                orderWorkFlowSvc.orderCompleted(true);
             }
         }
 

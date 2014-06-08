@@ -15,6 +15,8 @@
 
         var vm = this;
 
+        vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
+
         vm.job = orderWorkFlowSvc.getJob() || {
 
             propertyType: lookups.propertyType.singleFamily,

@@ -17,6 +17,8 @@
 
         vm.job = orderWorkFlowSvc.job();
 
+        vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
+
         vm.lookups = lookups;
 
         vm.translation = translation;

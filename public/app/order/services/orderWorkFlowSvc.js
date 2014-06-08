@@ -11,32 +11,40 @@
 
     function orderWorkFlowSvc($location, routes, lookups, localStorageService) {
 
+        var newOrder = {
+            job: null,
+            workFlow: null,
+            step: 1,
+            completedStep: 0,
+            orderType: null
 
+        };
+
+
+        var orderInMemory = getSetOrder() || newOrder ;
+
+        var _orderCompleted = false;
 
         //init Data
         function init() {
-            var order = getSetOrder() ||  {
-                job: null,
-                workFlow: null,
-                step: 1,
-                completedStep: 0,
-                orderType: null
 
-            };
 
-            getSetOrder(order);
+            getSetOrder(orderInMemory);
 
         }
 
+       function saveOrderInMemory() {
+           orderInMemory =  getSetOrder();
+       }
 
 
-
-        function getSetOrder(order) {
+        function getSetOrder(value) {
 
             if (arguments.length)
-                localStorageService.set('order', order);
+                localStorageService.set('order', value);
 
-            return localStorageService.get('order',order);
+            var order = localStorageService.get('order') || orderInMemory ;
+            return order;
 
         }
 
@@ -46,7 +54,34 @@
 
         return {
 
+
+
             order: getSetOrder,
+
+            initOrder: function(orderType) {
+
+                this.orderType(orderType);
+                this.order(newOrder);
+                this.nextStep();
+
+            },
+
+            orderCompleted: function(value) {
+
+                if (arguments.length && value) {
+                    _orderCompleted = value;
+                    removeOrderFromLocalStorage();
+                }
+
+                return _orderCompleted
+            },
+
+            removeOrderFromLocalStorage: function() {
+
+                //saving the order first on the order variable
+                saveOrderInMemory();
+                localStorageService.remove('order');
+            },
 
             property: function property(name, value) {
 

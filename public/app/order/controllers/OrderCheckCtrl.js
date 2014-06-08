@@ -15,6 +15,8 @@
 
         var vm = this;
 
+        vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
+
         vm.translation = translation;
 
         vm.formSubmitted = false;

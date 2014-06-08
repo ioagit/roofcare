@@ -15,12 +15,11 @@
 
         var vm = this;
 
+
         vm.orderType = lookups.orderType;
 
         vm.nextStep = function (orderType) {
-
-           orderWorkFlowSvc.orderType(orderType);
-           orderWorkFlowSvc.nextStep();
+              orderWorkFlowSvc.initOrder(orderType);
         };
 
         function activate() {
