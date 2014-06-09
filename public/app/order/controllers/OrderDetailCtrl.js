@@ -9,9 +9,9 @@
     var controllerId = 'OrderDetailCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc','translation',OrderDetailCtrl]);
+        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc','translation', 'stripEndFilter', OrderDetailCtrl]);
 
-    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc, translation) {
+    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc, translation, stripEndFilter) {
 
         var vm = this;
 
@@ -36,6 +36,8 @@
             if (!isFormValid())
                 return;
 
+            //adjusting the datetime value
+            vm.job.startDate = stripEndFilter(vm.job.startDate, 'Uhr');
 
             orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)
