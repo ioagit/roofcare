@@ -1,5 +1,34 @@
 extends ../../includes/layout
 
+block css
+    link(rel='stylesheet', href='../../../../vendor/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/app.css')
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/style.css')
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/headers/header1.css')
+
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/responsive.css')
+
+    link(rel='stylesheet', href='../../../../specs/beta/assets/plugins/font-awesome/css/font-awesome.css')
+    link(rel='stylesheet', href='../../../../specs/beta/assets/plugins/parallax-slider/css/parallax-slider.css')
+
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/themes/red.css')
+    link(rel='stylesheet', href='../../../../specs/beta/assets/css/themes/headers/header1-red.css')
+
+    link(rel='stylesheet', href='../../../../vendor/bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+
+
+        //Toastr
+    link(rel='stylesheet', href='../../../../vendor/toastr/toastr.css')
+
+        //Angular related like animation, spinner
+    link(rel='stylesheet', href='../../../../static/css/ngStyles.css')
+
+    link(rel='stylesheet', href='../../../../vendor/angular-loading-bar/build/loading-bar.min.css')
+
+
+
+
+
 block header
     div.header-top
         include ../../includes/main/header
@@ -142,6 +171,8 @@ block content
                         i.icon-angle-right.icon-large.pull-right
                 .col-md-4
                     img.img-responsive.margin-bottom-20(src='/static/images/main/main/roofcare-kosten.jpg', alt='Roofcare Kosten')
+
+
 
 
 block footer
