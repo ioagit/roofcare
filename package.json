@@ -64,6 +64,7 @@
     "partialify": "~3.1.1",
     "napa": "~0.4.1",
     "browserify-shim": "~3.4.1",
-    "grunt-nodemon": "~0.2.1"
+    "grunt-nodemon": "~0.2.1",
+    "grunt-contrib-copy": "^0.5.0"
   }
 }
