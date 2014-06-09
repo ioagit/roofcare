@@ -40,7 +40,7 @@
 
         function getSetOrder(value) {
 
-            if (arguments.length && !this.completedOrder())
+            if (arguments.length && !_orderCompleted)
                 localStorageService.set('order', value);
 
             var order = localStorageService.get('order') || orderInMemory ;
