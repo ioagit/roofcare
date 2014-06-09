@@ -40,7 +40,7 @@
 
         function getSetOrder(value) {
 
-            if (arguments.length)
+            if (arguments.length && !this.completedOrder())
                 localStorageService.set('order', value);
 
             var order = localStorageService.get('order') || orderInMemory ;
@@ -60,8 +60,9 @@
 
             initOrder: function(orderType) {
 
-                this.orderType(orderType);
+
                 this.order(newOrder);
+                this.orderType(orderType);
                 this.nextStep();
 
             },
@@ -70,18 +71,14 @@
 
                 if (arguments.length && value) {
                     _orderCompleted = value;
-                    removeOrderFromLocalStorage();
+                    saveOrderInMemory();
+                    localStorageService.remove('order');
                 }
 
                 return _orderCompleted
             },
 
-            removeOrderFromLocalStorage: function() {
 
-                //saving the order first on the order variable
-                saveOrderInMemory();
-                localStorageService.remove('order');
-            },
 
             property: function property(name, value) {
 
