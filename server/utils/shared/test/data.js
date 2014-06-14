@@ -179,16 +179,6 @@ var testUsers =  {
     }
 
 };
-var testJobs = {
-   job1: {
-       startDate: '2014-04-19 10:00AM',
-       status: lookups.jobStatus.requestAccepted,
-       contractor: 1,
-       customer:1,
-       onSiteContact:1,
-       workSite:1
-   }
-};
 
 function removeAllJobs(callback) {
     Job.remove({}, function(err, result) { return callback(err, result); });
@@ -247,7 +237,6 @@ var testData = {
     removeUser: removeUser,
     removeAllJobs: removeAllJobs,
     users : testUsers,
-    jobs: testJobs,
     locations: testLocations
 };
 

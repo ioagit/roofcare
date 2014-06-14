@@ -39,6 +39,8 @@ var schema =  BaseSchema.extend({
 
     workSite: physicalAddress.Definition,
 
+    mapUrl: {type: String},
+
     invoice: {
         number: {type: String, required:true},
         distanceCharge: {type: Number},
