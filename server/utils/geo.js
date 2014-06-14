@@ -34,7 +34,9 @@ exports.getDrivingDistance = function(originCoordinates, destinationCoordinates,
     var internalCallback = function (err, data) {
         if (err) return callback(err, null);
         var travel = data.rows[0].elements[0];
-        callback(null, Math.round(travel.distance.value / 1000));
+        var km = travel.distance.value / 1000;
+        var result =   parseFloat(""+km).toFixed(2) * 1;
+        callback(null, result);
     };
     gm.distance(origins, destinations, internalCallback, sensor, mode, alternatives, avoid, units, language);
 };
@@ -50,5 +52,5 @@ exports.getStaticMap = function(origin, destination) {
         { 'location': destination[1] + ',' + destination[0], 'color': 'green', 'label': 'D' }
     ];
 
-    return gm.staticMap(center, false, '300x300', false, false, 'roadmap', markers);
+    return gm.staticMap(center, false, '200x200', false, false, 'roadmap', markers);
 }
