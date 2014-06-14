@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
     contactInfo = require(path.join(process.cwd(), 'server', 'models', 'contactInfo'));
 
 var onSiteContact = contactInfo.Definition;
-onSiteContact.cell= {type: String, trim: true, validate: validator.phoneValidator};
+onSiteContact.cell = {type: String, trim: true, validate: validator.phoneValidator};
 onSiteContact.contactType = {type: String, trim: true};
 
 var customer = contactInfo.Definition;
