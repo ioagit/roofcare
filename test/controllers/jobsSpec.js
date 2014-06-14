@@ -375,7 +375,10 @@ describe('Controller - Jobs', function () {
                             expect(result.job._id).to.exist;
                             expect(result.job.workSite.coordinates.length).to.eq(2);
 
+                            expect(result.job.mapUrl).to.have.string('http://maps.googleapis.com/maps/api/staticmap?');
+
 //                            console.log(result);
+//                            console.log('job._id = ' + result.job._id + "\r\n");
                             done();
                         }
                     });

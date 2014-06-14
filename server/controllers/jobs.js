@@ -8,6 +8,7 @@ var path = require('path'),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
     async = require('async'),
     _ = require('underscore');
 
@@ -107,32 +108,43 @@ exports.createJob = function(){
                 if (found.length == 0) return handleErrorResponse(res, 400, 'No contractor found');
 
                 var contractorInfo = found[0];
-                jobData.contractor = contractorInfo;
-                jobData.status = lookUps.jobStatus.created;
-                jobData.onSiteContact = {};
 
-                Job.NextInvoiceNumber(function(invNumber) {
-                    jobData.invoice = {
-                        number: invNumber,
-                        fixedPrice: orderType.fee
-                    };
+                var source = contractorInfo.address.coordinates,
+                    destination = address.coordinates;
 
-                    Job.create(jobData, function (err, job) {
+                geo.getDrivingDistance(source, destination, function(err, distance) {
+                    if (err) return handleErrorResponse(res, 400, err.toString(), err);
 
-                        if (err) return handleErrorResponse(res, 400, err.toString(), err);
+                    jobData.mapUrl = geo.getStaticMap(source, destination);
+                    jobData.contractor = contractorInfo;
+                    jobData.status = lookUps.jobStatus.created;
+                    jobData.onSiteContact = {};
 
-                        var result = {
-                            job: job,
-                            workFlow: {
-                                duration: orderType.hours,
-                                distance: contractorInfo.distance,
-                                travelCharge: contractorInfo.distance * contractorInfo.distanceCharge
-                            }
+                    Job.NextInvoiceNumber(function(invNumber) {
+                        jobData.invoice = {
+                            number: invNumber,
+                            fixedPrice: orderType.fee,
+                            travelCharge: (distance * 2) * contractorInfo.distanceCharge
                         };
+                        jobData.distance = distance;
 
-                        res.status(200);
-                        res.send(result);
-                    })
+                        Job.create(jobData, function (err, job) {
+
+                            if (err) return handleErrorResponse(res, 400, err.toString(), err);
+
+                            var result = {
+                                job: job,
+                                workFlow: {
+                                    duration: orderType.hours,
+                                    distance: job.distance * 2,
+                                    travelCharge: job.invoice.travelCharge
+                                }
+                            };
+
+                            res.status(200);
+                            res.send(result);
+                        })
+                    });
                 });
             });
         });

@@ -43,9 +43,10 @@ var schema =  BaseSchema.extend({
 
     invoice: {
         number: {type: String, required:true},
-        distanceCharge: {type: Number},
+        travelCharge: {type: Number},
         fixedPrice: {type: Number}
     },
+    distance: {type: Number},
 
     notes : {
         customer: {type: String, required:false},

@@ -26,16 +26,6 @@ describe('Model - Job', function () {
        });
     });
 
-    it('invoice total should equal distance change and fixed fee', function(done) {
-        Job.find().limit(10).exec(function(err, jobs) {
-            for(var i=0; i < jobs.length; i++) {
-                var job = jobs[i];
-                expect(job.invoice.total).to.eq(job.invoice.distanceCharge + job.invoice.fixedPrice);
-            }
-            done();
-        });
-    });
-
     it ('Should return the next page of 5 rows', function(done) {
        Job.find({})
            .limit(5)
