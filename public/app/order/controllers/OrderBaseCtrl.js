@@ -2,9 +2,6 @@
  * Created by Rima on 6/15/2014.
  */
 
-(function() {
-    'use strict';
-
 
 
     function OrderBaseCtrl(commonSvc, lookups, orderSvc, orderWorkFlowSvc, translation) {
@@ -20,6 +17,8 @@
         vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
 
         vm.lookups = lookups;
+
+        vm.translation = translation;
 
 
         function isFormValid() {
@@ -50,4 +49,3 @@
 
 
     }
-})();
