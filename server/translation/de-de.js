@@ -36,7 +36,12 @@ var translation = {
 
         invalidOrderAgreement: 'order agreement is required.'
 
-    }
+    },
+
+    //persinting messages
+    orderSaveSuccess: 'Order saved successfully',
+    orderSaveFail: 'Error saving order'
+
 
 
 };

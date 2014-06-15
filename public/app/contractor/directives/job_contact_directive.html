@@ -1,0 +1,27 @@
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='{{icon}} text-contrast'></i>
+            {{title}}
+        </div>
+        <small class='text-muted'>{{description}}</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class="form-group">
+            <label>Ansprechpartner</label>
+            <input class="form-control" id="contact"   value="{{contact.firstName}} {{contact.lastName}}" placeholder="Ansprechpartner (Funktion, Anrede, Name, Vorname)" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Telefon</label>
+            <input class="form-control" id="phone"  value="{{contact.phone}}" placeholder="Telefon" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" id="email" value="{{contact.email}}" placeholder="Email" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label>Handy</label>
+            <input class="form-control" id="cell" value="{{contact.cell}}" placeholder="Handy" type="text" disabled>
+        </div>
+    </div>
+</fieldset>

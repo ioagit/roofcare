@@ -42,6 +42,10 @@
             logIt(message, data, source, showToast, 'warning');
         }
 
+        function success(message, toast) {
+            logSuccess(message, message, message, toast);
+        }
+
         function logSuccess(message, data, source, showToast) {
             logIt(message, data, source, showToast, 'success');
         }

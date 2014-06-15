@@ -1,0 +1,29 @@
+<fieldset>
+    <div class='col-sm-4'>
+        <div class='lead'>
+            <i class='icon-gear text-contrast'></i>
+            Auftragsdaten
+        </div>
+        <small class='text-muted'>Die folgenen Daten wurden zu dem Auftrag angegeben.</small>
+    </div>
+    <div class='col-sm-7 col-sm-offset-1'>
+        <div class="form-group">
+            <label class="control-label">Auftragsart</label>
+            <input class="form-control" value=" {{job.orderType}}" type="text" disabled>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Dachtyp</label>
+            <input class="form-control" value=" {{job.roofType}}" type="text" disabled>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Haustyp</label>
+            <input class="form-control" value="{{job.propertyType}}" type="text" disabled>
+
+        </div>
+        <div class='form-group'>
+            <label>Weitere Informationen</label>
+            <textarea class='autosize form-control' value=" {{job.notes.customer}}" id='bio' placeholder='Weitere Informationen'></textarea>
+        </div>
+    </div>
+</fieldset>

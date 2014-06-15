@@ -12,87 +12,11 @@
 <div class='box-content box-double-padding'>
 <form class='form' style='margin-bottom: 0;'>
 
-    <fieldset>
-        <div class='col-sm-4'>
-            <div class='lead'>
-                <i class='icon-envelope text-contrast'></i>
-                Adresse
-            </div>
-            <small class='text-muted'>Die folgenden Daten wurden vom Kunden angegeben.</small>
-        </div>
-        <div class='col-sm-7 col-sm-offset-1'>
-            <div class="form-group">
-                <label>Adresse</label>
-                <input class="form-control" id="address" placeholder="Strasse und Hausnummer" type="text" disabled value="{{job.workSite.street}}">
-            </div>
-            <div class="form-group">
-                <label>Postleitzahl</label>
-                <input class="form-control" id="zip" value="{{job.workSite.zipCode}}" placeholder="Postleitzahl" type="text" disabled>
-            </div>
-            <div class="form-group">
-                <label>Stadt</label>
-                <input class="form-control" id="city" value="{{job.workSite.city}}" value="" placeholder="Stadt" type="text" disabled>
-            </div>
-        </div>
-    </fieldset>
+    <rc-job-address address="vm.job.workSite"></rc-job-address>
     <hr class='hr-normal'>
-    <fieldset>
-        <div class='col-sm-4'>
-            <div class='lead'>
-                <i class='icon-user text-contrast'></i>
-                Ansprechpartner
-            </div>
-            <small class='text-muted'>Kontaktieren Sie vor Ort die hier angegebene Person.</small>
-        </div>
-        <div class='col-sm-7 col-sm-offset-1'>
-            <div class="form-group">
-                <label>Ansprechpartner</label>
-                <input class="form-control" id="contact"   value="{{job.onSiteContact.firstName}} {{job.onSiteContact.lastName}}" placeholder="Ansprechpartner (Funktion, Anrede, Name, Vorname)" type="text" disabled>
-            </div>
-            <div class="form-group">
-                <label>Telefon</label>
-                <input class="form-control" id="phone"  value="{{job.onSiteContact.phone}}" placeholder="Telefon" type="text" disabled>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input class="form-control" id="email" value="{{job.onSiteContact.email}}" placeholder="Email" type="text" disabled>
-            </div>
-            <div class="form-group">
-                <label>Handy</label>
-                <input class="form-control" id="cell" placeholder="Handy" type="text" disabled>
-            </div>
-        </div>
-    </fieldset>
+    <rc-job-contact contact="vm.job.onSiteContact" icon="icon-user" title="Ansprechpartner" description="Kontaktieren Sie vor Ort die hier angegebene Person."></rc-job-contact>
     <hr class='hr-normal'>
-    <fieldset>
-        <div class='col-sm-4'>
-            <div class='lead'>
-                <i class='icon-gear text-contrast'></i>
-                Auftragsdaten
-            </div>
-            <small class='text-muted'>Die folgenen Daten wurden zu dem Auftrag angegeben.</small>
-        </div>
-        <div class='col-sm-7 col-sm-offset-1'>
-            <div class="form-group">
-                <label class="control-label">Auftragsart</label>
-                <input class="form-control" value=" {{job.orderType}}" type="text" disabled>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Dachtyp</label>
-                <input class="form-control" value=" {{job.roofType}}" type="text" disabled>
-
-            </div>
-            <div class="form-group">
-                <label class="control-label">Haustyp</label>
-                <input class="form-control" value=" {{job.propertyType}}" type="text" disabled>
-
-            </div>
-            <div class='form-group'>
-                <label>Weitere Informationen</label>
-                <textarea class='autosize form-control' id='bio' placeholder='Weitere Informationen'></textarea>
-            </div>
-        </div>
-    </fieldset>
+    <rc-job-metadata job="vm.job"></rc-job-metadata>
     <hr class="hr-normal">
     <fieldset>
         <div class='col-sm-4'>
@@ -106,25 +30,13 @@
             <div class='form-group'>
                 <label>Datum</label>
                 <div class="datepicker input-group" id="datepicker">
-                    <input class="form-control" data-format="dd.MM.yyyy" value="{{job.startDate | date: 'dd.MM.yyyy'}}" placeholder="03.12.2013" type="text">
-                                <span class="input-group-addon">
-                                <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar"></span>
-                                </span>
-                </div>
-            </div>
-            <div class='form-group'>
-                <label>Anfangsuhrzeit</label>
-                <div class="timepicker input-group" id="timepicker">
-                    <input class="form-control" data-format="hh:mm" value="{{job.startDate | date: 'HH.mm'}}"  placeholder="14:00" type="text">
-                                <span class="input-group-addon">
-                                <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-time"></span>
-                                </span>
+                    <rc_date_time_picker  date="vm.job.startDate" id="datetimepicker"  class="margin-bottom-10"></rc_date_time_picker>
                 </div>
             </div>
         </div>
     </fieldset>
     <hr class="hr-normal">
-    <fieldset id="form-extend">
+    <fieldset id="form-extend" ng-show="vm.jobIsExtended">
         <div class='col-sm-4'>
             <div class='lead'>
                 <i class='icon-plus text-contrast'></i>
@@ -198,7 +110,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class='btn btn-info btn-lg' id="button-extend">
+                <div class='btn btn-info btn-lg' ng-click ="vm.toggleExpandedJob()"  id="button-extend">
                     <i class='icon-ok'></i>
                     Job Erweitern
                 </div>

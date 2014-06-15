@@ -15,19 +15,19 @@
         //Init var
         var vm = this;
 
-        vm.getJob = function getJob() {
+        vm.expandedJob = false;
 
-
-            vm.data = contractorSvc.getJob($routeParams.id);
-            vm.data.then(function (data) {
-                vm.job = data;
-            });
-
+        vm.toggleExpandedJob = function() {
+            vm.expandedJob = !vm.expandedJob;
         };
+
+        function onData(data) {
+            vm.job = data;
+        }
 
 
         function activate() {
-            commonSvc.activateController([vm.getJob], controllerId);
+            commonSvc.activateController([contractorSvc.getJob($routeParams.id).then(onData)], controllerId);
         }
 
         activate();

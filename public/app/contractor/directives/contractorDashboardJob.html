@@ -28,10 +28,10 @@
     </div>
     <div class="text-right">
         <small class="date text-muted">
-                        <span class="timeago fade has-tooltip in" data-placement="top"
-                              title="{{job.startDate | date: 'medium'}}">
-                        <br>"In 2 Stunden</span>
+            <span  class="timeago fade has-tooltip in" data-placement="top">
+            <span am-time-ago="job.startDate" />
             <i class="icon-time"></i>
+                </span>
         </small>
     </div>
 </div>

@@ -174,6 +174,17 @@
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     }
                 }
+            },{
+                url: '/contractor/inbox_detail/:id',
+                config: {
+                    controller: 'ContractorInboxDetailCtrl',
+                    controllerAs: 'vm',
+                    title: 'Contractor Inbox Detail',
+                    templateUrl: '/contractor/inbox_detail',
+                    settings: {
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
             },
             {
                 url: '/contractor/kunden',
