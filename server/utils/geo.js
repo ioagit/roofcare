@@ -7,10 +7,10 @@ var path = require('path'),
 
 function getErrorFromCoordinates(originCoordinates, destinationCoordinates)
 {
-    if (originCoordinates === null || originCoordinates.length != 2)
+    if (originCoordinates === null || originCoordinates.length != 2 || originCoordinates[0] == 0 || originCoordinates[1] == 0)
         return new Error('originCoordinates are not valid');
 
-    if (destinationCoordinates === null || destinationCoordinates.length != 2)
+    if (destinationCoordinates === null || destinationCoordinates.length != 2 || destinationCoordinates[0] == 0 || destinationCoordinates[1] == 0)
         return new Error('destinationCoordinates are not valid');
 
     return null;
