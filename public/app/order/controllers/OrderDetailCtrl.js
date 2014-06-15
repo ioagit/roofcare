@@ -43,10 +43,7 @@
         };
 
 
-        //utils
-        function formatDate() {
 
-        }
 
         vm.isContactFirstNameInvalid = function() {
             return vm.userForm.contactFirstName.$invalid && !vm.userForm.contactFirstName.$pristine && vm.formSubmitted;

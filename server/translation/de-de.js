@@ -32,7 +32,9 @@ var translation = {
         //address
         invalidAddress: 'invalid address.',
         invalidZipCode: 'invalid Zip',
-        invalidCity: 'invalid City'
+        invalidCity: 'invalid City',
+
+        invalidOrderAgreement: 'order agreement is required.'
 
     }
 

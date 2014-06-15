@@ -1,4 +1,4 @@
-<form class="reg-page">
+<form class="reg-page" form-autofill-fix  name="vm.userForm" novalidate ng-submit="vm.saveJob();">
     <div class="reg-header">
         <h2>Buchung</h2>
         <p>Wir haben die folgenden Daten zu Ihrem Auftrag erhalten. Bitte überprüfen Sie die alles auf Richtigkeit.</p>
@@ -164,9 +164,10 @@
         <div class="col-md-12">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox"  data-ng-model="vm.job.userConfirmedInfo">
+                    <input type="checkbox" name="orderAgreement"  data-ng-model="vm.job.userConfirmedInfo" required="required">
                     Per Klick auf die nachfolgende Schaltfläche „Termin Buchen“ erklären Sie sich mit den Bestimmungen zum <a href="datenschutz.html">Datenschutz</a> sowie den <a href="nutzung.html">Nutzungsbedingungen</a> einverstanden.
                 </label>
+                <p ng-show="vm.isOrderAgreementInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidOrderAgreement"></p>
             </div>
         </div>
     </div>
