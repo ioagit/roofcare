@@ -48,7 +48,7 @@ describe('Module - Google Distance', function () {
             { 'location': destCoord, 'color': 'green', 'label': 'D' }
         ];
 
-        var map = gm.staticMap(center, false, '300x300', false, false, 'roadmap', markers);
+        var map = gm.staticMap(center, false, '200x200', false, false, 'roadmap', markers);
         expect(map).to.not.be.null;
     });
 

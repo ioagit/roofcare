@@ -136,7 +136,7 @@ exports.createJob = function(){
                                 job: job,
                                 workFlow: {
                                     duration: orderType.hours,
-                                    distance: job.distance * 2,
+                                    distance: job.distance,
                                     travelCharge: job.invoice.travelCharge
                                 }
                             };
@@ -169,9 +169,21 @@ exports.saveJob = function() {
                     if (err)
                         return handleErrorResponse(res, 500, 'Address lookup failure', err);
 
-                    else
+                    else {
                         jobData.workSite.coordinates = coordinates;
+                        Contractor.findById(jobData.contractor, function (err, contractor) {
+                            if (err) return handleErrorResponse(res, 400, err.toString(), err);
 
+                            jobData.mapUrl = geo.getStaticMap(contractor.address.coordinates, coordinates);
+
+                            geo.getDrivingDistance(contractor.address.coordinates, coordinates, function (err, distance) {
+                                if (err) return handleErrorResponse(res, 500, err.toString(), err);
+
+                                jobData.invoice.travelCharge = (distance * 2) * contractor.distanceCharge;
+                                jobData.distance = distance;
+                            });
+                        });
+                    }
                 });
             } else
                 jobData.workSite = job.workSite;
