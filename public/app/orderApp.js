@@ -14,6 +14,7 @@
             //vendors
             'angular-loading-bar',
             'LocalStorageModule',
+            'angularMoment',
 
             //Custom modules
             'rc.order',
@@ -39,6 +40,10 @@
             }
         });
 
+    });
+
+    app.run(function(amMoment) {
+        amMoment.changeLanguage('de');
     });
 
 })();

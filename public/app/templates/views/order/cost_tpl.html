@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td>Distanz zur An/Abfahrt</td>
-                    <td>{{vm.workflow.distance | number:1}}</td>
+                    <td>{{vm.job.distance | number:2}}</td>
                     <td>KM</td>
                 </tr>
                 <tr>
@@ -34,6 +34,9 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="col-sm-5 offset-1">
+            <img ng-src="{{vm.job.mapUrl}}" />
         </div>
     </div>
     <div class="row">

@@ -9,13 +9,14 @@
     var controllerId = 'OrderDetailCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc','translation', 'stripEndFilter', OrderDetailCtrl]);
+        [ 'commonSvc', 'orderWorkFlowSvc', 'lookups', 'orderSvc','translation', OrderDetailCtrl]);
 
-    function OrderDetailCtrl(commonSvc, orderWorkFlowSvc, lookups, orderSvc, translation, stripEndFilter) {
+    function OrderDetailCtrl( commonSvc, orderWorkFlowSvc, lookups, orderSvc, translation) {
 
         var vm = this;
 
         vm.job = orderWorkFlowSvc.job();
+
 
         vm.canEditOrder = !orderWorkFlowSvc.orderCompleted();
 
@@ -23,11 +24,6 @@
 
         vm.translation = translation;
 
-        //Datetime picker
-
-       angular.element('#datetimepicker').datetimepicker({
-            language:  'de'
-        });
 
         vm.saveJob = function() {
 
@@ -37,7 +33,7 @@
                 return;
 
             //adjusting the datetime value
-            vm.job.startDate = stripEndFilter(vm.job.startDate, 'Uhr');
+            //vm.job.startDate = stripEndFilter(vm.job.startDate, 'Uhr');
 
             orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)
@@ -46,6 +42,11 @@
 
         };
 
+
+        //utils
+        function formatDate() {
+
+        }
 
         vm.isContactFirstNameInvalid = function() {
             return vm.userForm.contactFirstName.$invalid && !vm.userForm.contactFirstName.$pristine && vm.formSubmitted;

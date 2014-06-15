@@ -112,7 +112,10 @@ module.exports = function (grunt) {
                         './public/vendor/angular-loading-bar/build/loading-bar.min.js',
 
                         './public/vendor/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
-                        './public/vendor/bootstrap3-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js'
+                        './public/vendor/bootstrap3-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js',
+
+                        //angular modules
+                        './public/vendor/angular-moment/angular-moment.min.js'
 
 
                     ]
