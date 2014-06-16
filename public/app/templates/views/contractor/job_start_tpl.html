@@ -30,13 +30,16 @@
             <div class='form-group'>
                 <label>Datum</label>
                 <div class="datepicker input-group" id="datepicker">
-                    <rc_date_time_picker  date="vm.job.startDate" id="datetimepicker"  class="margin-bottom-10"></rc_date_time_picker>
+                    <rc_date_time_picker  date="vm.job.startDate" id="datetimepicker"  class="form-control"></rc_date_time_picker>
+                 	<span class="input-group-addon">
+                            <span data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar"></span>
+                          	</span>
                 </div>
             </div>
         </div>
     </fieldset>
     <hr class="hr-normal">
-    <fieldset id="form-extend" ng-show="vm.jobIsExtended">
+    <fieldset id="form-extend" ng-show="vm.expandedJob">
         <div class='col-sm-4'>
             <div class='lead'>
                 <i class='icon-plus text-contrast'></i>
@@ -104,7 +107,7 @@
     <div class='form-actions form-actions-padding clearfix' style='margin-bottom: 0;'>
         <div class="row">
             <div class="col-md-3 col-md-offset-2">
-                <div class='btn btn-danger btn-lg'>
+                <div class='btn btn-danger btn-lg' ng-click="vm.cancelJob()">
                     <i class='icon-trash'></i>
                     Job Stornieren
                 </div>
@@ -116,7 +119,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class='btn btn-primary btn-lg'>
+                <div class='btn btn-primary btn-lg' ng-click="vm.startJob()">
                     <i class='icon-ok'></i>
                     Job Starten
                 </div>

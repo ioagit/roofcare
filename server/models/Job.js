@@ -29,8 +29,13 @@ var schema =  BaseSchema.extend({
     onSiteContact: onSiteContact,
 
     startDate: {type: Date},
+    workStarted: {type: Date},
+    workCompleted: {type: Date},
+
+
     duration: {type: String},
     status: {type: String, required:true},
+
 
     orderType: {type: String, required:true},
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },

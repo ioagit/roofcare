@@ -8,8 +8,8 @@
 
     'use strict';
     var controllerId = 'ContractorJobCtrl';
-    angular.module('rc.contractor').controller(controllerId, [ 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorJobCtrl]);
-    function ContractorJobCtrl(config, contractorSvc, commonSvc, spinner) {
+    angular.module('rc.contractor').controller(controllerId, [ '$location', 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorJobCtrl]);
+    function ContractorJobCtrl($location, config, contractorSvc, commonSvc, spinner) {
 
         var vmJobs = this;
 
@@ -41,6 +41,11 @@
 
         vmJobs.moreAvailable = function() {
             return vmJobs.totalFound > vmJobs.offset + limit;
+        };
+
+
+        vmJobs.openJob = function openJob(id) {
+            $location.path('/contractor/job_start/' + id);
         };
 
 

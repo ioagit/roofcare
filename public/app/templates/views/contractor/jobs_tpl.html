@@ -47,7 +47,7 @@
 </thead>
 <tbody>
 
-<tr ng-repeat="job in vmJobs.rows">
+<tr ng-repeat="job in vmJobs.rows" ng-click="vmJobs.openJob(job._id)" style="cursor: pointer">
     <td>
         <div class='text-right'>
             <a class='btn btn-info btn-xs' href='checklists.html'>

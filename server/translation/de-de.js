@@ -39,8 +39,8 @@ var translation = {
     },
 
     //persinting messages
-    orderSaveSuccess: 'Order saved successfully',
-    orderSaveFail: 'Error saving order'
+    orderSavedSuccess: 'Order saved successfully',
+    orderSavedFail: 'Error saving order'
 
 
 
