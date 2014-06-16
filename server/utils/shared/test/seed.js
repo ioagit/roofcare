@@ -58,7 +58,7 @@ function seedOneContractor(n, done) {
                 lastName: 'Gerhard',
                 phone: '123-333',
                 email: 'rico.gerhard@gmail.com'
-            },
+            }
 
         });
 
