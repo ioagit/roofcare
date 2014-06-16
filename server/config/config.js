@@ -13,10 +13,13 @@ module.exports = {
         db:  'mongodb://localhost/rcdb',
         rootPath: rootPath,
         port: process.env.PORT || 3000,
-        email: {
-            host: 'GMAIL',
-            user: 'roofcare.de@gmail.com',
-            password:'r1c0r1c0'
+        mailer: {
+            service: 'GMAIL',
+            auth: {
+                user: 'roofcare.de@gmail.com',
+                password:'r1c0r1c0'
+            },
+            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
         }
     },
     test: {
@@ -26,10 +29,13 @@ module.exports = {
         db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
         port: 3000,
-        email: {
-            host: 'GMAIL',
-            user: 'roofcare.de@gmail.com',
-            password:'r1c0r1c0'
+        mailer: {
+            service: 'GMAIL',
+            auth: {
+                user: 'roofcare.de@gmail.com',
+                password:'r1c0r1c0'
+            },
+            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
         }
     },
     production: {
@@ -37,13 +43,14 @@ module.exports = {
         db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
         rootPath: rootPath,
         port: process.env.PORT || 80,
-        email: {
-            host: 'GMAIL',
-            user: 'roofcare.de@gmail.com',
-            password:'r1c0r1c0'
+        mailer: {
+            service: 'GMAIL',
+            auth: {
+                user: 'roofcare.de@gmail.com',
+                password:'r1c0r1c0'
+            },
+            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
         }
     }
-
-
 
 };

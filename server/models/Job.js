@@ -59,6 +59,8 @@ var schema =  BaseSchema.extend({
     }
 });
 
+
+
 schema.virtual('workSite.latitude')
     .get(function() { return this.workSite.coordinates[1]; })
     .set(function(val) { this.workSite.coordinates[1] = val; });
@@ -72,7 +74,20 @@ schema.virtual('invoice.total')
 
 schema.methods.getFormattedAddress =  function() { physicalAddress.GetFormattedAddress(this.workSite); };
 
-schema.set('toJSON', { getters: true, virtuals: false });
+schema.virtual('customer.fullProperName')
+    .get(function() {
+        var sal = '';
+        if (this.customer.salutation) {
+            sal = this.customer.salutation + '.';
+        }
+
+        return sal + ' ' + this.customer.firstName + ' ' + this.customer.lastName
+    });
+
+schema.set({
+    toObject: { virtuals: true },
+    toJSON: { getters: true, virtuals: true }
+});
 
 schema.statics.Filter = function(query, criteria, processQuery) {
     //http://mongoosejs.com/docs/2.7.x/docs/query.html
