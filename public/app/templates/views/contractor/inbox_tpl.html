@@ -23,7 +23,6 @@
 <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
     <thead>
     <tr>
-        <th>Aktion</th>
         <th>
             Name
         </th>
@@ -39,17 +38,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in vmJobs.rows">
-        <td>
-            <div class='text-right'>
-                <a class='btn btn-success btn-xs has-tooltip' data-placement="top" data-original-title="Termin best&auml;tigen" href="/contractor/inbox_detail/{{item._id}}">
-                    <i class='icon-ok'></i>
-                </a>
-                <a class='btn btn-danger btn-xs has-tooltip' data-placement="top" data-original-title="Termin l&ouml;schen" href='#'>
-                    <i class='icon-remove'></i>
-                </a>
-            </div>
-        </td>
+    <tr ng-repeat="item in vmJobs.rows"  ng-click="vmJobs.openInbox(item._id)" style="cursor: pointer">
         <td>{{item.customer.firstName}} {{item.customer.lastName}}</td>
         <td>{{item.roofType}}</td>
         <td>{{item.workSite.street}}</td>

@@ -8,8 +8,8 @@
 
     'use strict';
     var controllerId = 'ContractorInboxCtrl';
-    angular.module('rc.contractor').controller(controllerId, [ 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorInboxCtrl]);
-    function ContractorInboxCtrl(config, contractorSvc, commonSvc, spinner) {
+    angular.module('rc.contractor').controller(controllerId, ['$location', 'config', 'contractorSvc', 'commonSvc', 'spinner', ContractorInboxCtrl]);
+    function ContractorInboxCtrl($location, config, contractorSvc, commonSvc, spinner) {
 
         var vmJobs = this;
 
@@ -42,6 +42,11 @@
         vmJobs.moreAvailable = function() {
             return vmJobs.totalFound > vmJobs.offset + limit;
         };
+
+        vmJobs.openInbox = function openInbox(id) {
+            $location.path('/contractor/inbox_detail/' + id);
+        };
+
 
 
         function activate() {
