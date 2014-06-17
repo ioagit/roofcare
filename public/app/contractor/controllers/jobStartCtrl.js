@@ -16,12 +16,14 @@
         //Init var
         var vm = this;
 
-        vm.expandedJob = false;
+        vm.showExpandedArea = false;
 
         vm.toggleExpandedJob = function() {
-            vm.expandedJob = !vm.expandedJob;
+            vm.showExpandedArea = !vm.showExpandedArea;
         };
 
+
+        vm.canEditJob = false;
 
 
         function saveJob() {
@@ -62,6 +64,11 @@
 
         function onData(data) {
             vm.job = data;
+            if (vm.job.status === lookups.jobStatus.responsePending) {
+                vm.canEditJob = true;
+                vm.showExpandedArea = true;
+            }
+
         }
 
 

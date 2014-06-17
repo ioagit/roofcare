@@ -36,6 +36,17 @@ var schema =  BaseSchema.extend({
     duration: {type: String},
     status: {type: String, required:true},
 
+    extension: {
+
+        notes: {type: String},
+        silicon: {type: String, default: '1 tube'},
+        sealant: {type: String, default: '1 tube'},
+        tape1: {type: String, default: '1 band'},
+        tape2: {type: String, default: '1 band'}
+
+
+
+    },
 
     orderType: {type: String, required:true},
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },

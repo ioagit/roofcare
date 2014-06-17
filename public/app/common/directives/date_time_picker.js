@@ -17,7 +17,8 @@
             restrict: 'AE',
             replace: 'true',
             template: '<input type="text" ng-model="date" />',
-            link: linkFn
+            link: linkFn,
+            controller: ['$scope', controllerFn]
 
             };
 
@@ -25,16 +26,23 @@
         function linkFn(scope, element, attr) {
 
             element.datetimepicker();
-            formatDate();
+           // formatDate();
 
-            element.bind('blur', formatDate);
+           // element.bind('blur', formatDate);
 
-            function formatDate() {
 
-                scope.date =  amDateFormatFilter(scope.date, 'lll');
-                if (!scope.date)
-                    scope.date =  amDateFormatFilter(moment().add('days', 7), 'lll');
-            }
+        }
+
+        function controllerFn($scope) {
+            $scope.$watch('date', function (oldValue, newValue) {
+
+
+                    $scope.date =  amDateFormatFilter($scope.date, 'lll');
+                    if (!$scope.date)
+                        $scope.date =  amDateFormatFilter(moment().add('days', 7), 'lll');
+
+
+            });
         }
 
 
