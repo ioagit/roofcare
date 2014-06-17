@@ -25,12 +25,13 @@
     ];
 
     //Adding module base on location patch
-    if (location.pathname.indexOf('contractor')) {
-        module_list.push('rc.contractor');
-        module_list.push('rc.account');
+    if (location.pathname.indexOf('contractor')== -1) {
+        module_list.push('rc.order');
     }
     else {
-        module_list.push('rc.order');
+        module_list.push('rc.contractor');
+        module_list.push('rc.account');
+
     }
 
 
