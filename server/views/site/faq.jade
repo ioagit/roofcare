@@ -1,0 +1,202 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        div.row
+        .col-md-9
+            // General Questions
+            .headline
+                h2 Fragen zu Roofcare
+            #accordion.panel-group.acc-v1.margin-bottom-40
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                | 1. Sind die Handwerker qualifiziert?
+                    #collapseOne.panel-collapse.collapse.in
+                        .panel-body
+                            | Ja, wir arbeiten ausschließlich mit regelmäßig von uns geschulten lokalen Meisterbetrieben.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                                | 2. Ist der Pauschalfestpreis für Reparaturen garantiert?
+                    #collapseTwo.panel-collapse.collapse
+                        .panel-body
+                            p
+                                | Reparaturen führen wir grundsätzlich zum Pauschalfestpreis aus. Sollten wir feststellen, dass der Auftrag über unseren angebotenem Rahmen hinausgeht, erhalten Sie ein gesondertes, unverbindliches Angebot.
+                            ul.list-unstyled.margin-bottom-20
+                                li
+                                    i.icon-ok.color-green
+                                    | Wir errechnen für Sie die günstigste Lösung
+                                li
+                                    i.icon-ok.color-green
+                                    | Dachreparaturen und Dachchecks zum Pauschal-Festpreis
+                                li
+                                    i.icon-ok.color-green
+                                    | Dachwartungen auf Ihren Kostenrahmen maßgeschneidert
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseThree')
+                                | 3. Ist die Reparatur über die Versicherung gedeckt?
+                    #collapseThree.panel-collapse.collapse
+                        .panel-body
+                            p
+                                | Viele Dachreparaturen sind versichert. Dies ist oft der Fall bei
+                                | Sturmschäden, oder Schadenseinwirkung durch Dritte. Hier ist eine
+                                | Klärung mit Ihrer Versicherung sinnvoll.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseFour')
+                                | 4. Wieviel kostet eine Dachreparatur?
+                    #collapseFour.panel-collapse.collapse
+                        .panel-body
+                            p
+                                | Dachreparaturen bieten wir Ihnen zu einem
+                                a(href='kosten_dachreparatur.html') Pauschal-Festpreis von 150,- €
+                                | an.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseFive')
+                                | 5. Wieviel kostet ein Dachcheck?
+                    #collapseFive.panel-collapse.collapse
+                        .panel-body
+                            p
+                                | Dachchecks bieten wir Ihnen zu einem
+                                a(href='kosten_dachcheck.html') Pauschal-Festpreis von 99,- €
+                                | an.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseSix')
+                                | 6. Wie schnell arbeitet Roofcare?
+                    #collapseSix.panel-collapse.collapse
+                        .panel-body
+                            p
+                                | Auf Wunsch garantieren wir eine
+                                a(href='schnelligkeit.html') Auftragsabwicklung binnen 3 Werktagen.
+            // /acc-v1
+            // End General Questions
+            // Other Questions
+            .headline
+                h2 Andere Fragen
+            #accordion-1.panel-group.acc-v1
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion-1', href='#collapse-One')
+                                | Was ist ein Steildach?
+                    #collapse-One.panel-collapse.collapse.in
+                        .panel-body
+                            .row
+                                .col-md-4
+                                    img.img-responsive(src='assets/img/main/steildach.jpg', alt='')
+                                .col-md-8
+                                    | Wir bei RoofCare betrachten Ihr Dach als Steildach, wenn es mit kleinformatigen, schuppigen, Werkstoffen eingedeckt ist.
+                                    a(href='/steildach_definition') Lesen Sie hier mehr dazu.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion-1', href='#collapse-Two')
+                                | Was ist ein Flachdach?
+                    #collapse-Two.panel-collapse.collapse
+                        .panel-body
+                            .row
+                                .col-md-4
+                                    img.img-responsive(src='assets/img/main/flachdach.jpg', alt='Flachdach reparieren')
+                                .col-md-8
+                                    p
+                                        | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                    ul.list-unstyled
+                                        li
+                                            i.icon-ok.color-green
+                                            | Donec id elit non mi porta gravida at eget metus..
+                                        li
+                                            i.icon-ok.color-green
+                                            | Fusce dapibus, tellus ac cursus comodo egetine..
+                                        li
+                                            i.icon-ok.color-green
+                                            | Food truck quinoa nesciunt laborum eiusmod runch..
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion-1', href='#collapse-Three')
+                                | Was ist ein Dachcheck?
+                    #collapse-Three.panel-collapse.collapse
+                        .panel-body
+                            | Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Food truck quinoa nesciunt laborum eiusmodolf moon tempor, sunt aliqua put a bird. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                .panel.panel-default
+                    .panel-heading
+                        h4.panel-title
+                            a.accordion-toggle(data-toggle='collapse', data-parent='#accordion-1', href='#collapse-Four')
+                                | Was ist eine Dachreparatur?
+                    #collapse-Four.panel-collapse.collapse
+                        .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+            // /acc-v1
+            // End Other Questions
+        // /col-md-9
+        .col-md-3
+            // Contacts
+            .headline
+                h2 Kontaktdetails
+            ul.list-unstyled.who.margin-bottom-30
+                li
+                    a(href='mailto:info@roofcare.de')
+                        i.icon-envelope-alt
+                        | info@roofcare.de
+                li
+                    i.icon-phone-sign
+                    a(href='tel:08007663227') 0800-roofcare
+                    | (0800-766-322-7)
+                li
+                    a(href='http://www.roofcare.de')
+                        i.icon-globe
+                        | http://www.roofcare.de
+            // Why we are?
+            .headline
+                h2 Warum Roofcare?
+            p
+                | Wir beraten Sie auf Basis eines langjährigen Wissens mit Anspruch an die beste Lösung für Jeden. Erstmalig bieten wir in Deutschland:
+            ul.list-unstyled
+                li
+                    i.icon-ok.color-green
+                    | Zuverlässige Reparaturen binnen 3 Tagen
+                li
+                    i.icon-ok.color-green
+                    | Transparente klare Abrechnung für Reparaturen
+                li
+                    i.icon-ok.color-green
+                    | Freundliche geschulte Handwerker
+                li
+                    i.icon-ok.color-green
+                    | 24h/7Tage Auftragsaquise
+            p Vereinbaren Sie am Besten sofort einen Termin online
+            a.btn-u.btn-u-red(href='/order/start') Termin vereinbaren
+        // /col-md-3
+    // /row
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });

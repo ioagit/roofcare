@@ -1,0 +1,40 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        .row
+            // Begin Sidebar Menu
+            .col-md-3
+                include ../../includes/site/uber_uns_sidebar_menu
+            // End Sidebar Menu
+            // Begin Content
+            div.col-md-9
+                .row.margin-bottom-10
+                    .col-md-8
+                        p Erfahren Sie hier mehr über uns und das Roofcare System.
+                    .col-md-4
+                        include ../../includes/site/uber_uns_contact_info
+                // /row
+            // End Content
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });

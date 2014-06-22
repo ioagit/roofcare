@@ -17,12 +17,6 @@ html.no-js(lang='en')
     meta(name="viewport", content='width=device-width, initial-scale=1, user-scalable=no')
     link(href='/static/images/meta_icons/favicon.ico', rel='shortcut icon', type='image/x-icon')
 
-    //link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')
-
-    //Css Bundle base on module name
-    //moduleName is pass as parameter from the route.
-    if moduleName === 'contractor'
-        link(rel='stylesheet', href='/static/dist/app.' + moduleName + '.css', media="all", id="")
 
     //In case there is more Css to be added by independent views
     block css

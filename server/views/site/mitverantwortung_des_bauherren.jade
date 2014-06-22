@@ -1,0 +1,61 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        .row
+            // Begin Sidebar Menu
+            .col-md-3
+                include ../../includes/site/uber_uns_sidebar_menu
+            // End Sidebar Menu
+            // Begin Content
+            div.col-md-9
+                .row.margin-bottom-10
+                    div.col-md-8
+                        p
+                            | Eine überproportional hohe Zahl von Arbeitsunfällen und Berufskrankheiten sind Ausdruck
+                            | der ungünstigen Arbeitsbedingungen auf Baustellen. Dort ist in Deutschland die
+                            | Unfallhäufigkeit mehr als doppelt so hoch wie in der Gesamtheit der anderen Zweige der
+                            | gewerblichen Wirtschaft. Auch hinsichtlich der Schwere der Folgen eingetretener
+                            | Arbeitsunfälle ist dieser Trend zu verzeichnen.
+                        p
+                            | Das Arbeitsschutzgesetz (ArbSchG), die Arbeitsstättenverordnung (ArbStättV), die
+                            | Baustellenverordnung (BaustellV), die Betriebssicherheitsverordnung (BetrSichV) in
+                            | Verbindung mit den Technischen Regeln für Betriebssicherheit (TRBS) und das
+                            | umfassende Regelwerk der Berufsgenossenschaft der Bauwirtschaft (BG BAU) geben den
+                            | rechtlichen Rahmen, der für ausführende Unternehmen, Planer und Bauherren
+                            | verbindliche Vorgaben zur Gewährleistung von Sicherheit und Gesundheitsschutz auf
+                            | Baustellen enthält.
+                        p
+                            | Besondere Bedeutung für den präventiven Ansatz bei der Gewährleistung von Sicherheit
+                            | und Gesundheitsschutz auf Baustellen hat die Baustellenverordnung. Diese begründet
+                            | eine Mitverantwortung des Bauherren für den Arbeitsschutz auf der Baustelle, indem sie
+                            | für ihn mit dem Ziel der Minimierung von Gefährdungen entsprechende Vorgaben für die
+                            | Vorbereitung und Ausführung eines Bauvorhabens formuliert.
+
+
+        .col-md-4
+                        include ../../includes/site/uber_uns_contact_info
+                // /row
+            // End Content
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });

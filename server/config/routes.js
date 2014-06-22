@@ -53,6 +53,38 @@ module.exports =  function(server, User, userController, jobController, contract
         }
     );
 
+    server.get('/faq', function(req, res) {
+
+            res.render('site/faq.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'FAQ'
+                    ,description: 'FAQ'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'none'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );server.get('/uber_uns', function(req, res) {
+
+            res.render('site/uber_uns.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Über uns'
+                    ,description: 'Über uns'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
     server.get('/contractor/*', function(req, res) {
 
         res.render('contractor/contractor.jade', {
