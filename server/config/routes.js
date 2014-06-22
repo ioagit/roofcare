@@ -68,7 +68,9 @@ module.exports =  function(server, User, userController, jobController, contract
             })
 
         }
-    );server.get('/uber_uns', function(req, res) {
+    );
+
+    server.get('/uber_uns', function(req, res) {
 
             res.render('site/uber_uns.jade', {
                 locals: {
@@ -78,6 +80,25 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Über uns'
                     ,author: 'RoofCare'
                     ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: ''
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/mitverantwortung_des_bauherren', function(req, res) {
+
+            res.render('site/mitverantwortung_des_bauherren.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Über uns - Mitverantwortung des bauherren'
+                    ,description: 'Über uns - Mitverantwortung des bauherren'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'mitverantwortung_des_bauherren'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })

@@ -1,26 +1,33 @@
+- var zahlen_und_fakten_class = (uberUnsSidebarActive === 'zahlen_und_fakten' ? 'active' : '')
+- var garantie_class = (uberUnsSidebarActive === 'garantie' ? 'active' : '')
+- var arbeitsschutz_class = (uberUnsSidebarActive === 'arbeitsschutz' ? 'active' : '')
+- var mitverantwortung_des_bauherren_class = (uberUnsSidebarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
+- var kontraktor_werden_class = (uberUnsSidebarActive === 'kontraktor_werden' ? 'active' : '')
+- var kunden_werben_kunden_class = (uberUnsSidebarActive === 'kunden_werben_kunden' ? 'active' : '')
+
 ul.list-group.sidebar-nav-v1
     li.list-group-item
-        a(href='/zahlen_und_fakten')
+        a(href='/zahlen_und_fakten', class=zahlen_und_fakten_class)
             | Zahlen und Fakten
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/garantie')
+        a(href='/garantie', class=garantie_class)
             | Garantie
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/arbeitsschutz')
+        a(href='/arbeitsschutz', class=arbeitsschutz_class)
             | Arbeitsschutz
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/mitverantwortung_des_bauherren')
+        a(href='/mitverantwortung_des_bauherren', class=mitverantwortung_des_bauherren_class)
             | Mitverantwortung des Bauherren
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/kontraktor_werden')
+        a(href='/kontraktor_werden', class=kontraktor_werden_class)
             | Kontraktor werden
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/kunden_werben_kunden')
+        a(href='/kunden_werben_kunden', class=kunden_werben_kunden_class)
             | Kunden werben Kunden
             i.icon-angle-right.pull-right
     li.list-group-item
