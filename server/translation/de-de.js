@@ -1,46 +1,46 @@
 var translation = {
     language: 'de-de',
-    authentication: 'Authentication',
-    loginError: 'Error Login In',
-    loginSuccess: 'Success Login',
-    loginInvalid: 'Invalid Username Password',
+    authentication: 'Authentifikation',
+    loginError: 'Error beim Einlaggen',
+    loginSuccess: 'Erfolgreich eingeloggt',
+    loginInvalid: 'Falscher Benutzername',
 
-    logoutSuccess: 'Success logout',
-    notAuthorized: 'not authorized',
+    logoutSuccess: 'Erfolgreich ausgeloggt',
+    notAuthorized: 'Nicht erlaubt',
 
 
      //Session Loading
-    roofCareLoaded: 'RoofCare loaded',
-    contractorDashboardLoaded: 'Dashboard Loaded',
+    roofCareLoaded: 'Roofcare geladen',
+    contractorDashboardLoaded: 'Dashboard geladen',
 
     //Shell Messages
-    busyMessage: 'Loading... Please wait',
+    busyMessage: 'Laden...bitte warten',
 
     //data Loading errors
-    loadinError: 'Error loading data',
-    notFoundError: 'Data not found',
-    notAuthorizedError: 'You are not authorize to see this data. Please login.',
-    serverError: 'Something went wron when loading the data. Please try again later',
-    badRequestError: 'Bad Request.',
+    loadinError: 'Daten konnten nicht geladen werden',
+    notFoundError: 'Daten nicht gefunden',
+    notAuthorizedError: 'Diese Daten sind nicht vefuegbar. Bitte einloggen',
+    serverError: 'Etwas ist falsch gelaufen. Bitte nochmal probieren',
+    badRequestError: 'Falsche Anfrage',
 
 
     validation: {
 
         //contact Info
-        invalidName: 'Invalid entry',
+        invalidName: 'Falsche Eingabe',
 
         //address
-        invalidAddress: 'invalid address.',
-        invalidZipCode: 'invalid Zip',
-        invalidCity: 'invalid City',
+        invalidAddress: 'Adresse inkorrekt',
+        invalidZipCode: 'PLZ inkorrekt',
+        invalidCity: 'Stadt inkorrekt',
 
-        invalidOrderAgreement: 'order agreement is required.'
+        invalidOrderAgreement: 'Bitte auf Einverstanden klicken'
 
     },
 
     //persinting messages
-    orderSavedSuccess: 'Order saved successfully',
-    orderSavedFail: 'Error saving order'
+    orderSavedSuccess: 'Bestellung erfolgreich gepeichert.',
+    orderSavedFail: 'Bestellung wurde nicht gespeichert.'
 
 
 
