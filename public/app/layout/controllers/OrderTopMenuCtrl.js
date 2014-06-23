@@ -4,7 +4,7 @@
     var controllerId = 'OrderTopMenuCtrl';
 
     angular.module('app').controller(controllerId,
-        ['$scope',  'orderWorkFlowSvc',  OrderTopMenuCtrl]);
+        ['$scope',  'orderWorkFlowSvc', '$location',  OrderTopMenuCtrl]);
 
     function OrderTopMenuCtrl($scope, orderWorkFlowSvc) {
 
@@ -23,6 +23,11 @@
         };
 
         $scope.$on('$routeChangeStart', function(event, routeData){
+
+            //make user we only proccess in the route has order on it.
+            if ( !routeData.$$route  )
+               return;
+
 
             var step = routeData.$$route.settings.step;
 

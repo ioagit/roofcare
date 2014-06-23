@@ -1,3 +1,18 @@
+- if (headerBarActive === undefined)
+     headerBarActive = ''
+
+- if (title === undefined)
+    title = ''
+
+
+- var kontakt_class = (headerBarActive === 'kontakt' ? 'active' : '')
+- var uber_uns_class = (headerBarActive === 'uber_uns' ? 'active' : '')
+- var bestehender_termin_class = (headerBarActive === 'bestehender_termin' ? 'active' : '')
+- var order_class = (headerBarActive === 'order' ? 'active' : '')
+- var dacharbeiten_class = (headerBarActive === 'dacharbeiten' ? 'active' : '')
+- var kosten_class = (headerBarActive === 'kosten' ? 'active' : '')
+- var warum_roofcare_class = (headerBarActive === 'warum_roofcare' ? 'active' : '')
+
 div.header
     div.navbar.navbar-default(role='navigation')
         div.container
@@ -24,25 +39,25 @@ div.header
                             i.icon-facebook-sign.icon-large
                     li.devider
                     li
-                        a(href='/kontakt', data-delay='0', data-close-others='false', title='Kontakt' )  Kontakt
+                        a(href='/kontakt',  class=kontakt_class, data-delay='0', data-close-others='false', title='Kontakt' )  Kontakt
                     li.devider
                     li
-                        a(href='/uber_uns', data-delay='0', data-close-others='false', title='Über uns') Über uns
+                        a(href='/uber_uns',  class=uber_uns_class , data-delay='0', data-close-others='false', title='Über uns') Über uns
                 ul.nav.navbar-nav.navbar-right
                     li
-                        a(href='/bestehender_termin', data-delay='0', data-close-others='false') Bestehender Termin
+                        a(href='/bestehender_termin',  class=bestehender_termin_class , data-delay='0', data-close-others='false') Bestehender Termin
                     li.devider
                     li
-                        a(href='/order/start', data-delay='0', data-close-others='false') Termin vereinbaren
+                        a(href='/order/start',  class=order_class , data-delay='0', data-close-others='false') Termin vereinbaren
                     li.devider
                     li
-                        a(href='/dacharbeiten', data-delay='0', data-close-others='false') Dacharbeiten
+                        a(href='/dacharbeiten',  class=dacharbeiten_class , data-delay='0', data-close-others='false') Dacharbeiten
                     li.devider
                     li
-                        a(href='/kosten', data-delay='0', data-close-others='false')  Kosten
+                        a(href='/kosten',  class=kosten_class , data-delay='0', data-close-others='false')  Kosten
                     li.devider
                     li
-                        a(href='/warum_roofcare', data-delay='0', data-close-others='false') Warum Roofcare
+                        a(href='/warum_roofcare',  class=warum_roofcare_class, data-delay='0', data-close-others='false') Warum Roofcare
 
 if (breadCrump)
     div.breadcrumbs.margin-bottom-40

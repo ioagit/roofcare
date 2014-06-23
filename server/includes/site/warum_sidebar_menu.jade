@@ -1,0 +1,28 @@
+- if (warumSideBarActive === undefined)
+    warumSideBarActive = ''
+
+
+- var zahlen_und_fakten_class = (warumSideBarActive === 'zahlen_und_fakten' ? 'active' : '')
+- var garantie_class = (warumSideBarActive === 'garantie' ? 'active' : '')
+- var arbeitsschutz_class = (warumSideBarActive === 'arbeitsschutz' ? 'active' : '')
+- var mitverantwortung_des_bauherren_class = (warumSideBarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
+- var kontraktor_werden_class = (warumSideBarActive === 'kontraktor_werden' ? 'active' : '')
+- var kunden_werben_kunden_class = (warumSideBarActive === 'kunden_werben_kunden' ? 'active' : '')
+
+ul.list-group.sidebar-nav-v1
+    li.list-group-item
+        a.hover-effect(href='/auftragsannahme')
+            | 24h/7Tage Auftragsannahme
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/kostentransparenz')
+            | Kostentransparenz
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/schnelligkeit')
+            | Schnelligkeit
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/qualitaet')
+            | Qualität
+            i.icon-angle-right.pull-right

@@ -1,0 +1,52 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        .row
+            // Begin Sidebar Menu
+            .col-md-3
+                include ../../includes/site/kosten_sidebar_menu
+            // End Sidebar Menu
+            // Begin Content
+            div.col-md-9
+                .row.margin-bottom-10
+                    div.col-md-8
+                        p Das Eigenheim ist nach wie vor eines der wichtigsten Güter unserer Gesellschaft.
+                        p
+                            | Der Erhalt des Eigenheims wird ähnlich wichtig gesehen wie der Erhalt der eigenen Gesundheit.
+                        p
+                            | Auch die gesetzlichen Vorgaben an die Instandhaltung von Wohnungen und Wohngebäuden lassen wenig Spielraum für Nachlässigkeiten, da aus Schäden schnell Schadensersatzansprüche entstehen können.
+                        p
+                            | Eine
+                            a(href='/dachreparatur') Dachreparatur
+                            | und/oder eine
+                            a(href='/dachwartung') Dachwartung
+                            | hilft größere Schäden am Gebäude zu vermeiden
+                        p
+
+                    .col-md-4
+                        include ../../includes/site/uber_uns_contact_info
+                                    // /row
+            // End Content
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });

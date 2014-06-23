@@ -43,8 +43,93 @@ module.exports =  function(server, User, userController, jobController, contract
                 locals: {
                     moduleName: 'order',
                     breadCrump: true,
+                    headerBarActive: 'order',
                     title : 'Termin vereinbaren'
                     ,description: 'Termin vereinbaren'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kontakt', function(req, res) {
+
+            res.render('site/kontakt.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'kontakt',
+                    title : 'Kontakt'
+                    ,description: 'Kontakt'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/bestehender_termin', function(req, res) {
+
+            res.render('site/bestehender_termin.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'bestehender_termin',
+                    title : 'Bestehender Termin'
+                    ,description: 'Bestehender Termin'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/dacharbeiten', function(req, res) {
+
+            res.render('site/dacharbeiten.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Dacharbeiten'
+                    ,description: 'Bestehender'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kosten', function(req, res) {
+
+            res.render('site/kosten.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'kosten',
+                    title : 'Kosten'
+                    ,description: 'Kosten'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+ server.get('/warum_roofcare', function(req, res) {
+
+            res.render('site/warum_roofcare.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'warum_roofcare',
+                    title : 'Warum Roofcare'
+                    ,description: 'Warum Roofcare'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
                 }

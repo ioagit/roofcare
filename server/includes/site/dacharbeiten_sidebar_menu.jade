@@ -1,0 +1,40 @@
+- if (kostenSideBarActive === undefined)
+    kostenSideBarActive = ''
+
+
+- var zahlen_und_fakten_class = (kostenSideBarActive === 'zahlen_und_fakten' ? 'active' : '')
+- var garantie_class = (kostenSideBarActive === 'garantie' ? 'active' : '')
+- var arbeitsschutz_class = (kostenSideBarActive === 'arbeitsschutz' ? 'active' : '')
+- var mitverantwortung_des_bauherren_class = (kostenSideBarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
+- var kontraktor_werden_class = (kostenSideBarActive === 'kontraktor_werden' ? 'active' : '')
+- var kunden_werben_kunden_class = (kostenSideBarActive === 'kunden_werben_kunden' ? 'active' : '')
+
+ul.list-group.sidebar-nav-v1
+    li.list-group-item
+        a.hover-effect(href='/dachreparatur')
+            | Dachreparatur
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/dachcheck')
+            | Dachcheck
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/dachwartung')
+            | Dachwartung
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/steildach_definition')
+            | Steildach-Definition
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/flachdach_definition')
+            | Steildach-Besonderheiten
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/flachdach_definition')
+            | Flachdach-Definition
+            i.icon-angle-right.pull-right
+    li.list-group-item
+        a.hover-effect(href='/flachdach_besonderheiten')
+            | Flachdach-Besonderheiten
+            i.icon-angle-right.pull-right

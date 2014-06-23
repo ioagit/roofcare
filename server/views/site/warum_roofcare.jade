@@ -1,0 +1,64 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        .row
+            // Begin Sidebar Menu
+            .col-md-3
+                include ../../includes/site/warum_sidebar_menu
+            // End Sidebar Menu
+            // Begin Content
+            div.col-md-9
+                .row.margin-bottom-10
+                    div.col-md-8
+                        p
+                            | Nutzen Sie die Vorteile eines großen Netzwerkes gepaart mit lokalen
+                            | Meisterbetrieben.
+                        p
+                            | Persönliche Ansprechpartner vor Ort und ein gut
+                            | strukturiertes, übergreifendes System.
+                        p
+                            | Spezialisierung auf Serviceleistungen am Dach ergeben eine bisher nicht dagewesene
+                            | Kombination, die perfekt auf Ihre Ansprüche zugeschnitten ist:
+                        ul.list-unstyled
+                            li
+                                i.icon-ok.color-green
+                                | schnell,
+                            li
+                                i.icon-ok.color-green
+                                | transparent,
+                            li
+                                i.icon-ok.color-green
+                                | hochwertig,
+                            li
+                                i.icon-ok.color-green
+                                | und zuverlässig.
+                        p
+
+
+                    .col-md-4
+                        include ../../includes/site/uber_uns_contact_info
+                                    // /row
+            // End Content
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });

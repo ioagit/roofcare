@@ -1,0 +1,89 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    .container
+        div.row.margin-bottom-30
+        .col-md-9.mb-margin-bottom-30
+            p
+                | Für Ihre Fragen, Buchungswünsche, und Feedback stehen wir jederzeit für Sie zur Verfügung. Rufen Sie uns an oder füllen Sie das das foldende Formular aus. Wir melden uns bei Ihnen umgehend.
+            br
+            form
+                label Name
+                .row.margin-bottom-20
+                    .col-md-7.col-md-offset-0
+                        input.form-control(type='text')
+                label
+                    | Email
+                    span.color-red *
+                .row.margin-bottom-20
+                    .col-md-7.col-md-offset-0
+                        input.form-control(type='text')
+                label Nachricht
+                .row.margin-bottom-20
+                    .col-md-11.col-md-offset-0
+                        textarea.form-control(rows='8')
+                p
+                    button.btn-u(type='submit') Nachricht abschicken
+        // /col-md-9
+        .col-md-3
+            // Contacts
+            .headline
+                h2 Kontaktdetails
+            ul.list-unstyled.who.margin-bottom-30
+                li
+                    a(href='mailto:info@roofcare.de')
+                        i.icon-envelope-alt
+                        | info@roofcare.de
+                li
+                    i.icon-phone-sign
+                    a(href='tel:08007663227') 0800-roofcare
+                    | (0800-766-322-7)
+                li
+                    a(href='http://www.roofcare.de')
+                        i.icon-globe
+                        | http://www.roofcare.de
+            // Why we are?
+            .headline
+                h2 Warum Roofcare?
+            p
+                | Wir beraten Sie auf Basis eines langjährigen Wissens mit Anspruch an die beste Lösung für Jeden. Erstmalig bieten wir in Deutschland:
+            ul.list-unstyled
+                li
+                    i.icon-ok.color-green
+                    | Zuverlässige Reparaturen binnen 3 Tagen
+                li
+                    i.icon-ok.color-green
+                    | Transparente klare Abrechnung für Reparaturen
+                li
+                    i.icon-ok.color-green
+                    | Freundliche geschulte Handwerker
+                li
+                    i.icon-ok.color-green
+                    | 24h/7Tage Auftragsaquise
+            p Vereinbaren Sie am Besten sofort einen Termin online
+            a.btn-u.btn-u-red(href='order/start') Termin vereinbaren
+        // /col-md-3
+    // /row
+// /row
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });
