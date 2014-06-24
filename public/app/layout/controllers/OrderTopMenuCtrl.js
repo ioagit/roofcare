@@ -22,25 +22,24 @@
             orderWorkFlowSvc.goToStep(step);
         };
 
-        $scope.$on('$routeChangeStart', function(event, routeData){
+        $scope.$on('$routeChangeStart', function(event, routeData, preveous){
 
             //make user we only proccess in the route has order on it.
-            if ( !routeData.$$route  )
-               return;
+            if ( !angular.isUndefined( routeData.$$route ) ) {
 
 
-            var step = routeData.$$route.settings.step;
+                var step = routeData.$$route.settings.step;
 
-            //cancel route change if stpe is more than 2 steps ahead
-            if (step > orderWorkFlowSvc.completedStep() + 1) {
-                event.preventDefault();
-                return;
+                //cancel route change if stpe is more than 2 steps ahead
+                if (step > orderWorkFlowSvc.completedStep() + 1) {
+                    event.preventDefault();
+                    return;
+                }
+
+                updateSteps(step);
+                // Your $routeParams-dependent logic goes here
+                //orderWorkFlowSvc.goToStep(step);
             }
-
-            updateSteps(step);
-            // Your $routeParams-dependent logic goes here
-            //orderWorkFlowSvc.goToStep(step);
-
 
         });
 
