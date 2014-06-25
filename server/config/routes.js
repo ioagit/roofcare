@@ -121,6 +121,26 @@ module.exports =  function(server, User, userController, jobController, contract
 
         }
     );
+
+
+    server.get('/kosten_dachreparatur', function(req, res) {
+
+            res.render('site/kosten_dachreparatur.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Kosten Dachreparatur'
+                    ,description: 'Kosten Dachreparatur'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'kosten'
+                    ,kostenSideBarActive: ''
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
  server.get('/warum_roofcare', function(req, res) {
 
             res.render('site/warum_roofcare.jade', {
@@ -190,6 +210,8 @@ module.exports =  function(server, User, userController, jobController, contract
 
         }
     );
+
+
 
     server.get('/contractor/*', function(req, res) {
 
