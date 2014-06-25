@@ -194,6 +194,40 @@ module.exports =  function(server, User, userController, jobController, contract
         }
     );
 
+    server.get('/auftragsannahme', function(req, res) {
+
+            res.render('site/auftragsannahme.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'warum_roofcare',
+                    title : 'Auftragsannahme'
+                    ,description: 'Auftragsannahme'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kostentransparenz', function(req, res) {
+
+            res.render('site/kostentransparenz.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'warum_roofcare',
+                    title : 'Kostentransparenz'
+                    ,description: 'Kostentransparenz'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
     server.get('/faq', function(req, res) {
 
             res.render('site/faq.jade', {
