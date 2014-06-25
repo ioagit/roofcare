@@ -30,9 +30,9 @@ var translation = {
         invalidName: 'Falsche Eingabe',
 
         //address
-        invalidAddress: 'Adresse inkorrekt',
-        invalidZipCode: 'PLZ inkorrekt',
-        invalidCity: 'Stadt inkorrekt',
+        invalidAddress: 'Bitte Adresse angeben',
+        invalidZipCode: 'Bitte PLZ angeben',
+        invalidCity: 'Bitte Stadt angeben',
 
         invalidOrderAgreement: 'Bitte auf Einverstanden klicken'
 

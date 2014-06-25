@@ -1,6 +1,6 @@
 .da-slider{
 	width: 100%;
-	height: 500px;
+	height: 484px;
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
@@ -126,7 +126,7 @@ text-align:right;
 	text-shadow: 0 1px 0 #d22936;	
 	color: #fff;
 	font-size: 18px;	
-	min-width:250px;
+	min-width:260px;
 	padding: 2px 5px;
 	text-align: left;
 	top: 425px; /*depends on p height*/

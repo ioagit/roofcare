@@ -1,0 +1,52 @@
+extends ../../includes/layout
+
+block css
+    include ../../includes/main/site
+
+
+
+
+block header
+    div
+        include ../../includes/main/header
+
+block content
+    div.container
+        .row
+            // Begin Sidebar Menu
+            .col-md-3
+                include ../../includes/site/kosten_sidebar_menu
+            // End Sidebar Menu
+            // Begin Content
+            div.col-md-9
+                .row.margin-bottom-10
+                    div.col-md-8
+                        img.img-responsive.margin-bottom-20(src='assets/img/main/kosten_dachreparatur.jpg', alt='Kosten Dachreparatur')
+                        p   Dachreparaturen bieten wir Ihnen zu einem Pauschal-Festpreis von 150,- € an.
+                        p
+                            | Im Angebot enthalten sind bis zu zwei Stunden Arbeitszeit, die An- und Abfahrt , Kleinmaterial wie Silikon und Dichtbänder sowie die Wiederherstellung der Regensicherheit Ihres Daches. Hierfür können Sie ein Höchstmaß an Service und Sicherheit bei der Ausführung erwarten.
+                        p
+                            | Eine Ausnahme bilden Flachdächer. Da bei Flachdächern die Ursache nicht immer eindeutig ist, kann bei Flachdächern der sofortige Erfolg nicht garantiert werden Bei größeren Schäden, wie umfangreichere Sturmschäden, können Sie vor Ort Stunden dazu buchen. Für jede weitere Stunde berechnen wir 45 €.
+                        p
+                            | Die Reparatur stellt eine Sofortmaßnahme dar und erfolgt bei beschädigten Einbauteilen eventuell als Provisorium. Ein solches Provisorium hat eine Haltbarkeit von ca. 2 Jahren.
+                        p
+                            | Nach erfolgter Reparatur erhalten Sie von unserem Servicetechniker eine unverbindliche Empfehlung, wie weiter zu verfahren ist und ob weitere Maßnahmen notwendig sind. Auf Wunsch erhalten Sie ein kostenfreies und unverbindliches Angebot über weitere Maßnahmen.
+                        p
+                            i Übrigens: Wir sind ein in die Handwerksrolle eingetragener Betrieb und können die Lohnkosten steuermindernd ausweisen. Ihre Steuer reduziert sich damit um bis zu 1.200 € bei einem max. Lohnanteil von 6.000 €.(in welchem Umfang die Pauschale angesetzt werden kann, sollten Sie mit Ihrem Steuerberater klären.)
+
+                    .col-md-4
+                        include ../../includes/site/uber_uns_contact_info
+                                    // /row
+            // End Content
+
+
+
+
+block footer
+    include ../../includes/main/footer
+
+block scripts
+    script.
+        $(document).ready(function() {
+            App.init();
+        });
