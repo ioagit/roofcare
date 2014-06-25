@@ -22,11 +22,11 @@
 
 
 
-        function activate() {
-            commonSvc.activateController([], controllerId);
-        }
+        //function activate() {
+        //    commonSvc.activateController([], controllerId);
+       // }
 
-        activate();
+        //activate();
 
 
 

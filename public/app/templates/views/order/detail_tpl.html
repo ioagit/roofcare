@@ -29,7 +29,7 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Anrede</label>
-                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation">
+                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="v as k for (v, k) in vm.lookups.salutation">
                                     <option value="">Anrede</option>
                                 </select>
                             </div>

@@ -104,7 +104,7 @@
 
                     controller: 'OrderConfirmationCtrl',
                     controllerAs: 'vm',
-                    title: 'Detail',
+                    title: 'Confirm',
                     templateUrl: 'order/confirmation',
                     settings: {
                         type: 'order',

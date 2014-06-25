@@ -43,6 +43,26 @@
         };
 
 
+        /////////////////////////////
+        //////////Validations///////
+        ///////////////////////////
+
+        //validation
+        vm.isAddressInvalid = function() {
+            return vm.userForm.address.$invalid && !vm.userForm.address.$pristine && vm.formSubmitted;
+        };
+
+        vm.isZipCodeInvalid  = function() {
+            return vm.userForm.zip.$invalid && !vm.userForm.zip.$pristine && vm.formSubmitted;
+        };
+
+        vm.isCityInvalid  = function() {
+            return vm.userForm.city.$invalid && !vm.userForm.city.$pristine && vm.formSubmitted;
+        };
+
+        function isFormValid() {
+            return vm.userForm.$valid;
+        }
 
 
         vm.isContactFirstNameInvalid = function() {

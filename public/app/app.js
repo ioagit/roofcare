@@ -60,7 +60,6 @@
     app.run(function(amMoment) {
         amMoment.changeLanguage('de');
     });
-
 })();
 
 

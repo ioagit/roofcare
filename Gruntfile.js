@@ -83,6 +83,11 @@ module.exports = function (grunt) {
 
                         './public/vendor/modernizr/modernizr.js',
 
+                        //Moment Js
+                        './public/vendor/momentjs/min/moment.min.js',
+                        './public/vendor/momentjs/lang/de.js',
+
+
 
                         //angular
                         './public/vendor/angular/angular.js',
@@ -101,8 +106,7 @@ module.exports = function (grunt) {
                         './public/specs/beta/assets/plugins/back-to-top.js',
                         './public/specs/beta/assets/plugins/respond.js',
 
-                        //Moment Js
-                        './public/vendor/momentjs/min/moment-with-langs.js',
+
                         //Spin JS
                         './public/vendor/spinjs/spin.js',
 
@@ -114,7 +118,7 @@ module.exports = function (grunt) {
                         './public/vendor/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
                         './public/vendor/bootstrap3-datetimepicker/src/js/locales/bootstrap-datetimepicker.de.js',
 
-                        //angular modules
+
                         './public/vendor/angular-moment/angular-moment.min.js'
 
 
