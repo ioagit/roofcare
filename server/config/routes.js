@@ -141,6 +141,42 @@ module.exports =  function(server, User, userController, jobController, contract
         }
     );
 
+    server.get('/kosten_dachcheck', function(req, res) {
+
+            res.render('site/kosten_dachcheck.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Kosten Dachcheck'
+                    ,description: 'Kosten Dachcheck'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'kosten'
+                    ,kostenSideBarActive: ''
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kosten_dachwartung', function(req, res) {
+
+            res.render('site/kosten_dachwartung.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Kosten Dachwartung'
+                    ,description: 'Kosten Dachwartung'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'kosten'
+                    ,kostenSideBarActive: ''
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
  server.get('/warum_roofcare', function(req, res) {
 
             res.render('site/warum_roofcare.jade', {
