@@ -96,7 +96,130 @@ module.exports =  function(server, User, userController, jobController, contract
                     breadCrump: true,
                     headerBarActive: 'dacharbeiten',
                     title : 'Dacharbeiten'
-                    ,description: 'Bestehender'
+                    ,description: 'Dacharbeiten'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/dachreparatur', function(req, res) {
+
+            res.render('site/dachreparatur.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Dachreparatur'
+                    ,description: 'Dachreparatur'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/dachcheck', function(req, res) {
+
+            res.render('site/dachcheck.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Dachcheck'
+                    ,description: 'Dachcheck'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/dachwartung', function(req, res) {
+
+            res.render('site/dachwartung.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Dachwartung'
+                    ,description: 'Dachwartung'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+
+    server.get('/steildach_definition', function(req, res) {
+
+            res.render('site/steildach_definition.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Steildach Definition'
+                    ,description: 'Steildach Definition'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+
+    server.get('/steildach_besonderheiten', function(req, res) {
+
+            res.render('site/steildach_besonderheiten.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Steildach Besonderheiten'
+                    ,description: 'Steildach Besonderheiten'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+
+
+    server.get('/flachdach_definition', function(req, res) {
+
+            res.render('site/flachdach_definition.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Flachdach Definition'
+                    ,description: 'Flachdach Definition'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/flachdach_besonderheiten', function(req, res) {
+
+            res.render('site/flachdach_besonderheiten.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'dacharbeiten',
+                    title : 'Flachdach Besonderheiten'
+                    ,description: 'Flachdach Besonderheiten'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
                 }
