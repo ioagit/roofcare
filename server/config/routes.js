@@ -228,6 +228,40 @@ module.exports =  function(server, User, userController, jobController, contract
         }
     );
 
+    server.get('/schnelligkeit', function(req, res) {
+
+            res.render('site/schnelligkeit.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'warum_roofcare',
+                    title : 'Schnelligkeit'
+                    ,description: 'Schnelligkeit'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/qualitaet', function(req, res) {
+
+            res.render('site/qualitaet.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    headerBarActive: 'warum_roofcare',
+                    title : 'Qualitaet'
+                    ,description: 'Qualitaet'
+                    ,author: 'RoofCare'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
     server.get('/faq', function(req, res) {
 
             res.render('site/faq.jade', {
