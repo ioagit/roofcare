@@ -133,7 +133,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Kosten Dachreparatur'
                     ,author: 'RoofCare'
                     ,activeMenu: 'kosten'
-                    ,kostenSideBarActive: ''
+                    ,kostenSideBarActive: 'kosten_dachreparatur'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -151,7 +151,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Kosten Dachcheck'
                     ,author: 'RoofCare'
                     ,activeMenu: 'kosten'
-                    ,kostenSideBarActive: ''
+                    ,kostenSideBarActive: 'kosten_dachcheck'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -169,7 +169,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Kosten Dachwartung'
                     ,author: 'RoofCare'
                     ,activeMenu: 'kosten'
-                    ,kostenSideBarActive: ''
+                    ,kostenSideBarActive: 'kosten_dachwartung'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -204,6 +204,8 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Auftragsannahme'
                     ,description: 'Auftragsannahme'
                     ,author: 'RoofCare'
+                    ,activeMenu: 'warum_roofcare'
+                    ,warumSideBarActive: 'auftragsannahme'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -221,6 +223,8 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Kostentransparenz'
                     ,description: 'Kostentransparenz'
                     ,author: 'RoofCare'
+                    ,activeMenu: 'warum_roofcare'
+                    ,warumSideBarActive: 'kostentransparenz'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -238,6 +242,8 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Schnelligkeit'
                     ,description: 'Schnelligkeit'
                     ,author: 'RoofCare'
+                    ,activeMenu: 'warum_roofcare'
+                    ,warumSideBarActive: 'schnelligkeit'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -255,6 +261,8 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Qualitaet'
                     ,description: 'Qualitaet'
                     ,author: 'RoofCare'
+                    ,activeMenu: 'warum_roofcare'
+                    ,warumSideBarActive: 'qualitaet'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
@@ -297,6 +305,60 @@ module.exports =  function(server, User, userController, jobController, contract
         }
     );
 
+    server.get('/zahlen_und_fakten', function(req, res) {
+
+            res.render('site/zahlen_und_fakten.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Zahlen und Fakten'
+                    ,description: 'Zahlen und Fakten'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'zahlen_und_fakten'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/garantie', function(req, res) {
+
+            res.render('site/garantie.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Garantie'
+                    ,description: 'Garantie'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'garantie'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/arbeitsschutz', function(req, res) {
+
+            res.render('site/arbeitsschutz.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Arbeitsschutz'
+                    ,description: 'Arbeitsschutz'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'arbeitsschutz'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
     server.get('/mitverantwortung_des_bauherren', function(req, res) {
 
             res.render('site/mitverantwortung_des_bauherren.jade', {
@@ -308,6 +370,42 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,author: 'RoofCare'
                     ,activeMenu: 'uber_uns'
                     ,uberUnsSidebarActive: 'mitverantwortung_des_bauherren'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kontraktor_werden', function(req, res) {
+
+            res.render('site/kontraktor_werden.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Kontraktor werden'
+                    ,description: 'Kontraktor werden'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'kontraktor_werden'
+                    ,analyticssiteid: 'XXXXXXX'
+                }
+            })
+
+        }
+    );
+
+    server.get('/kunden_werben_kunden', function(req, res) {
+
+            res.render('site/kunden_werben_kunden.jade', {
+                locals: {
+                    moduleName: 'main',
+                    breadCrump: true,
+                    title : 'Kunden werben Kunden'
+                    ,description: 'Kunden werben Kunden'
+                    ,author: 'RoofCare'
+                    ,activeMenu: 'uber_uns'
+                    ,uberUnsSidebarActive: 'kunden_werben_kunden'
                     ,analyticssiteid: 'XXXXXXX'
                 }
             })
