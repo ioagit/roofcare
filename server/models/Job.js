@@ -1,5 +1,5 @@
 /**
- * Created by christophererker on 4/20/2014.
+ * Created by christopher erker on 4/20/2014.
  */
 
 // Job Model
@@ -28,24 +28,26 @@ var schema =  BaseSchema.extend({
     customer: customer,
     onSiteContact: onSiteContact,
 
+    checkLists: [{
+        _id:false,
+        name: {type: String, required:true},
+        description: {type: String, required:true},
+        content: {}
+    }],
+
     startDate: {type: Date},
     workStarted: {type: Date},
     workCompleted: {type: Date},
-
 
     duration: {type: String},
     status: {type: String, required:true},
 
     extension: {
-
         notes: {type: String},
         silicon: {type: String, default: '1 tube'},
         sealant: {type: String, default: '1 tube'},
         tape1: {type: String, default: '1 band'},
         tape2: {type: String, default: '1 band'}
-
-
-
     },
 
     orderType: {type: String, required:true},
@@ -69,8 +71,6 @@ var schema =  BaseSchema.extend({
         contractor: {type: String, required:false}
     }
 });
-
-
 
 schema.virtual('workSite.latitude')
     .get(function() { return this.workSite.coordinates[1]; })
