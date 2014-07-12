@@ -24,7 +24,7 @@ describe('Module - Mailer', function () {
         done();
     });
 
-    describe('#sendOne()', function () {
+    describe.skip('#sendOne()', function () {
 
         it('should fail to find non-existent template', function (done) {
             var locals = {

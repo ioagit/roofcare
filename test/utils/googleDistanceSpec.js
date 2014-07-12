@@ -60,7 +60,7 @@ describe('Module - Google Distance', function () {
 
             geo.getDrivingDistance(origin, destination, function(err, distance) {
                 if (err) done(err);
-                expect(distance).to.eq(632.48);
+                expect(distance).to.eq(632.49);
                 done();
             })
         });

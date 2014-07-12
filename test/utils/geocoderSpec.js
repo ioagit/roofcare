@@ -29,7 +29,7 @@ describe('Module - Geocoder', function () {
             geoData = data[0];
             assert(geoData !== null, 'Geo data should not be null');
             assert(geoData.country === 'Germany', 'location should be in Germany');
-            assert(geoData.city === 'Dusseldorf', 'location should be in Dusseldorf');
+            assert(geoData.city === 'Düsseldorf', 'location should be in Düsseldorf');
             expect(geoData.zipcode).to.eq('40549');
             expect(geoData.streetName).to.eq('Heerdter Lohweg');
             expect(geoData.streetNumber).to.eq('89');
