@@ -174,7 +174,21 @@
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     }
                 }
-            },{
+            },
+          {
+            url: '/contractor/job/:id/checklists',
+            config: {
+              controller: 'JobCheckListCtrl',
+              controllerAs: 'vm',
+              title: 'Contractor Job CheckLists',
+              templateUrl: '/contractor/job_checklists',
+              settings: {
+                content: '<i class=""></i> Checklisten'
+              }
+            }
+          },
+
+            {
                 url: '/contractor/inbox_detail/:id',
                 config: {
                     controller: 'ContractorInboxDetailCtrl',

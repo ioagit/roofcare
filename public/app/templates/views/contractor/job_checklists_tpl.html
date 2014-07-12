@@ -1,0 +1,902 @@
+<div class='col-xs-12'>
+<page-header text="Checklisten" icon="icon-list-alt"></page-header>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="box-header">
+          <div class="title">
+            <i class="icon-user"></i>
+            Kunde
+          </div>
+          <div class="actions">
+
+
+            <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+            </a>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="col-sm-6">
+              <address>
+                <strong>{{vm.job.customer.salutation}} {{vm.job.customer.firstName}} {{vm.job.customer.lastName}} </strong>
+                <br>
+                {{vm.job.customer.address.street}}
+                <br>
+                {{vm.job.customer.address.zipCode}} {{vm.job.customer.address.city}}
+                <br>
+                <abbr title="Phone">P:</abbr>
+                {{vm.job.customer.phone}}
+                <br>
+                <abbr title="Email">E:</abbr>
+                {{vm.job.customer.email}}
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="box-header">
+          <div class="title">
+            <i class="icon-flag"></i>
+            Anschrift
+          </div>
+          <div class="actions">
+
+
+            <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+            </a>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="col-sm-6">
+              <address>
+                <strong>{{vm.job.onSiteContact.salutation}} {{vm.job.onSiteContact.firstName}} {{vm.job.onSiteContact.lastName}} </strong>
+                <br>
+                {{vm.job.onSiteContact.address.street}}
+                <br>
+                {{vm.job.onSiteContact.address.zipCode}} {{vm.job.onSiteContact.address.city}}
+                <br>
+                <abbr title="Phone">P:</abbr>
+                {{vm.job.onSiteContact.phone}}
+                <br>
+                <abbr title="Email">E:</abbr>
+                {{vm.job.onSiteContact.email}}
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="box">
+        <div class="box-header">
+          <div class="title">
+            <i class="icon-wrench"></i>
+            Auftragsdetails
+          </div>
+          <div class="actions">
+            <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+            </a>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="col-sm-12">
+              <ul>
+                <li>{{vm.job.roofType}}</li>
+                <li>{{vm.job.propertyType}}</li>
+                <li>Datum: {{vm.job.startDate | amDateFormat: 'lll'}}</li>
+                <li><span am-time-ago="vm.job.startDate"></span></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="box bordered-box red-border">
+      <div class="box-header red-background">
+        <div class="title">Bestehende Checklisten</div>
+        <div class="actions">
+          <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
+          </a>
+
+          <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+          </a>
+        </div>
+      </div>
+      <div class="box-content box-no-padding">
+        <div class="responsive-table">
+          <div class="scrollable-area">
+            <table class="table" style="margin-bottom:0;">
+              <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Beschreibung
+                </th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="item in vm.job.checkLists"  ng-click="vm.showCheckList(item.name)" style="cursor: pointer">
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+
+                <td>
+                  <div class="text-right">
+                    <a class="btn btn-success btn-xs" ng-click="vm.showCheckList(item.name)" href="">
+                      <i class="icon-edit"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs"  ng-click="vm.deleteCheckList(item.name)" href="">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+             </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-12 newCheckList" ng-hide="vm.editingCheckList">
+    <div class="box">
+      <div class="box-header red-background">
+        <div class="title">
+          <div class="icon-edit"></div>
+          Neue Checkliste anlegen
+        </div>
+        <div class="actions">
+          <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
+          </a>
+
+          <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+          </a>
+        </div>
+      </div>
+      <div class="box-content">
+        <form class="form form-horizontal" style="margin-bottom: 0;" name="checkListForm" form-autofill-fix novalidate>
+          <input name="authenticity_token" type="hidden"><div class="form-group">
+          <label class="col-md-2 control-label" for="inputText1">Name</label>
+          <div class="col-md-5">
+            <input class="form-control" id="checklist-name" name ="checklistName" ng-model="vm.checListName" placeholder="Text field" type="text" ng-required="true">
+          </div>
+        </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label" for="inputTextArea1">Beschreibung</label>
+            <div class="col-md-5">
+              <textarea class="form-control" id="checklist-beschreibung" name="checklistBeschreibung" ng-model="vm.checListDesc" placeholder="Textarea" rows="3" ng-required="true"></textarea>
+            </div>
+          </div>
+          <div class="form-actions form-actions-padding-sm">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <button class="btn btn-primary"  disabled="{{ vm.checkListForm.$invalid }}" ng-click="vm.AddCheckList()">
+                  <i class="icon-save"></i>
+                  Speichern
+                </button>
+                <button class="btn" ng-click="vm.cancelAddCheckList()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row checkList" ng-show="vm.editingCheckList">>
+  <div class="col-xs-12">
+  <div class="box">
+  <div class="box-header red-background">
+    <div class="title">
+      <div class="icon-edit"></div>
+      {{vm.checkList.name}}: Bestand
+    </div>
+    <div class="actions">
+      <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+      </a>
+    </div>
+  </div>
+  <div class="box-content">
+
+  <form class="form form-horizontal" style="margin-bottom: 0;">
+  <input name="authenticity_token" type="hidden">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Art Abdichtung</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-art-abdichtung">
+        Bitumen
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-art-abdichtung">
+        Kunststoff
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Baujahr Flachdach</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-baujahr">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Dachaufbau</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-dachaufbau">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Fläche (geschätzt) in m<sup>2</sup></label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-flache-geschatzt">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Ausführung Attika</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-ausfuhrung-attika">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Attika Höhe in m</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-attike-hohe">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Art der Entwässerung</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-entwasserung">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Flachdach Neigung in Grad</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-flachdach-neigung">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Zweischaliges Dach</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-zweischaliges-dach">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-zweischaliges-dach">
+        Nein
+      </label>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-md-2 control-label"> Verwahrungen</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-verwahrungen">
+        verz.
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-verwahrungen">
+        Zink
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-verwahrungen">
+        Cu
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-verwahrungen">
+        Alu
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Umkehrdach</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-umkehrdach">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-umkehrdach">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Wärmedämmung</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-warmedammung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-warmedammung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Ausf. d. Wärmed.</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-warmd">
+        PU
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-warmd">
+        PS
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-warmd">
+        Mineral
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Blitzschutz</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-blitzschutz">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-blitzschutz">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Ausf. Blitzschutz</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        verz.
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        Zink
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        Cu
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        Alu
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Bekiesung</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-bekiesung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-bekiesung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Ausf. Bekiesung</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-bekiesung">
+        8/16
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausf-bekiesung">
+        16/32
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Dachbegrünung</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-dachbegrunung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-dachbegrunung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Ausf. Dachbegr.</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausfdachbegr">
+        intensiv
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-ausfdachbegr">
+        extensiv
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Entwässerungsrinnen</label>
+    <div class="col-md-10">                          <label class="radio radio-inline">
+      <input type="radio" value="" name="a-entwasserungsrinnen">
+      Ja
+    </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-entwasserungsrinnen">
+        Nein
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Lichtkuppeln</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-lichtkuppeln">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-lichtkuppeln">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Lichtkuppenanzahl</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-lichtkuppenanzahl">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Durchsturzischerung vorhanden</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-durchsturzischerung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-durchsturzischerung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Dachausstieg</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-dachausstieg">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-dachausstieg">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Dachausstieganzahl</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-dachausstieganzahl">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Schutzbeton</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-schutzbeton">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-schutzbeton">
+        Nein
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Sicherungseinrichtung</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-sicherungseinrichtung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-sicherungseinrichtung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Art der Sicherungseinrichtung</label>
+    <div class="col-md-10">
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        Securanten
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        Seilanlage
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        Dachrandgeländer
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Notentwässerung</label>
+    <div class="col-md-10">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-notentwasserung">
+        Ja
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="a-notentwasserung">
+        Nein
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="inputText1">Art der Notentwässerung</label>
+    <div class="col-md-5">
+      <input class="form-control"  placeholder="Text field" type="text" name="a-art-notentwasserung">
+    </div>
+  </div>
+
+  </form>
+
+  </div>
+  </div>
+  </div>
+  <div class="col-sm-12">
+  <div class="box">
+  <div class="box-header red-background">
+    <div class="title">
+      <div class="icon-edit"></div>
+      Feststellungen
+    </div>
+    <div class="actions">
+      <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
+      </a>
+
+      <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+      </a>
+    </div>
+  </div>
+  <div class="box-content">
+  <form class="form form-horizontal" style="margin-bottom: 0;" method="post" action="#" accept-charset="UTF-8"><input name="authenticity_token" type="hidden">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Abdichtungsoberlage</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-abdichtungsoberlage">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-abdichtungsoberlage">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-abdichtungsoberlage">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-abdichtungsoberlage-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Randabschlüsse</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-randabschlusse">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-randabschlusse">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-randabschlusse">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-randabschlusse-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Wandanschlüsse</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-wandanschlusse">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-wandanschlusse">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-wandanschlusse">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-wandanschlusse-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Dachdurchdringungen</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-dachdurchdringungen">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-dachdurchdringungen">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-dachdurchdringungen">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-dachdurchdringungen-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Lichtkuppeln/Dachausstiege</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-lichtkuppeln-dachausstiege">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-lichtkuppeln-dachausstiege">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-lichtkuppeln-dachausstiege">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-lichtkuppeln-dachausstiege-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Blechverwahrungen</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechverwahrungen">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechverwahrungen">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechverwahrungen">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-blechverwahrungen-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Blechabdeckungen</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechabdeckungen">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechabdeckungen">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-blechabdeckungen">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-blechabdeckungen-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Unterbau/Holz/Betondecke</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-unterbau-holz-betondecke">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-unterbau-holz-betondecke">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-unterbau-holz-betondecke">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-unterbau-holz-betondecke-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Türschwellenhöhe</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-turschwellenhohe">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-turschwellenhohe">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-turschwellenhohe">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-turschwellenhohe-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Wärmedämmung</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-warmedammung">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-warmedammung">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-warmedammung">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-warmedammung-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Entwässerung</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-entwasserung">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-entwasserung">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-entwasserung">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-entwasserung-text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Notentwässerung</label>
+    <div class="col-md-3">
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-notentwasserung">
+        keine Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-notentwasserung">
+        geringe Mängel
+      </label>
+      <label class="radio radio-inline">
+        <input type="radio" value="" name="b-notentwasserung">
+        große Mängel
+      </label>
+    </div>
+    <div class="col-md-7">
+      <input class="form-control"  placeholder="Text field" type="text" name="b-notentwasserung-text">
+    </div>
+  </div>
+
+
+
+  </form>
+
+  </div>
+  </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="box">
+      <div class="box-header red-background">
+        <div class="title">
+          <div class="icon-edit"></div>
+          Zusammenfassung
+        </div>
+        <div class="actions">
+          <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
+          </a>
+
+          <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
+          </a>
+        </div>
+      </div>
+      <div class="box-content">
+        <form class="form form-horizontal" style="margin-bottom: 0;" method="post" action="#" accept-charset="UTF-8"><input name="authenticity_token" type="hidden">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Empfehlung</label>
+            <div class="col-md-10">
+              <label class="radio radio-inline">
+                <input type="radio" value="" name="c-empfehlung">
+                Flachdach erscheint in Ordnung
+              </label>
+              <label class="radio radio-inline">
+                <input type="radio" value="" name="c-empfehlung">
+                Empfehlung: Flachdach sollte saniert oder erneuert werden
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label" for="inputTextArea1">Bemerkungen</label>
+            <div class="col-md-5">
+              <textarea class="form-control" id="inputTextArea1" placeholder="Textarea" rows="5" name="c-bemerkungen"></textarea>
+            </div>
+          </div>
+          <div class="form-actions form-actions-padding-sm">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <button class="btn btn-primary" type="submit">
+                  <i class="icon-save"></i>
+                  Speichern
+                </button>
+                <button class="btn" type="submit">Abbrechen</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+</div>

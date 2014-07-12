@@ -50,14 +50,11 @@
 <tr ng-repeat="job in vmJobs.rows" ng-click="vmJobs.openJob(job._id)" style="cursor: pointer">
     <td>
         <div class='text-right'>
-            <a class='btn btn-info btn-xs' href='checklists.html'>
+            <a class='btn btn-info btn-xs' href='/contractor/job/{{job._id}}/checklists'>
                 <i class='icon-check'></i>
             </a>
-            <a class='btn btn-success btn-xs' href='job_start.html'>
+            <a class='btn btn-success btn-xs' href='/contractor/job_start/{{job._id}}'>
                 <i class='icon-ok'></i>
-            </a>
-            <a class='btn btn-danger btn-xs' href='job_end.html'>
-                <i class='icon-remove'></i>
             </a>
         </div>
     </td>
