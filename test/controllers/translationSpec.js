@@ -6,8 +6,6 @@ var expect = require('chai').expect,
     path = require('path'),
     request = require('supertest');
 
-
-
 var controller = require(path.join(process.cwd(), 'server', 'controllers', 'translation'));
 var agent = request.agent('http://localhost:' + 3000);
 

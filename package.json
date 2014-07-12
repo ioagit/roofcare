@@ -32,6 +32,8 @@
     "supertest": "^0.13.0",
     "superagent": "^0.18.0",
     "should": "^4.0.1",
+    "mandrill-api": "~1.0.40",
+
     "nodemailer": "0.6.5",
     "email-templates": "1.0.0"
 },
