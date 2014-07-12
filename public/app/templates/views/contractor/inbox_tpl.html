@@ -42,7 +42,7 @@
         <td>{{item.customer.firstName}} {{item.customer.lastName}}</td>
         <td>{{item.roofType}}</td>
         <td>{{item.workSite.street}}</td>
-        <td>{{item.startDate | date:'dd.MM.yyyy'}}</td>
+        <td>{{item.startDate | date:'dd.MM.yyyy HH:ss'}}, <span am-time-ago="item.startDate"></span> </td>
     </tr>
 
     </tbody>

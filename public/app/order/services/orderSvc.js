@@ -7,9 +7,9 @@
 
 
     var serviceId = 'orderSvc';
-    angular.module('rc.order').factory(serviceId, ['commonSvc', 'config', 'orderWorkFlowSvc', 'amDateFormatFilter', orderSvc]);
+    angular.module('rc.order').factory(serviceId, ['commonSvc', 'config', 'orderWorkFlowSvc', 'moment', orderSvc]);
 
-    function orderSvc(commonSvc, config, orderWorkFlowSvc, amDateFormatFilter) {
+    function orderSvc(commonSvc, config, orderWorkFlowSvc, moment) {
 
 
 
@@ -49,7 +49,7 @@
                 var deferred = commonSvc.$q.defer();
 
                 //Formating the date to unix timestamp
-                amDateFormatFilter(job.startDate, 'X');
+               job.startDate = moment(job.startDate, 'lll').format('YYYY/MM/DD HH:mm');
 
 
               commonSvc.saveData(config.endpoints.job.create, job, 'PUT')
@@ -60,7 +60,8 @@
 
                     if (response.data) {
 
-                        orderWorkFlowSvc.job(response.data);
+                      response.data.startDate = moment(response.data.startDate).format('lll');
+                      orderWorkFlowSvc.job(response.data);
                         deferred.resolve(true);
                     }
                     else

@@ -63,8 +63,11 @@
 
 
         function onData(data) {
-            vm.job = data;
-            if (vm.job.status === lookups.jobStatus.responsePending) {
+          data.startDate = moment(data.startDate).format('lll');
+
+          vm.job = data;
+
+          if (vm.job.status === lookups.jobStatus.responsePending) {
                 vm.canEditJob = true;
                 vm.showExpandedArea = true;
             }

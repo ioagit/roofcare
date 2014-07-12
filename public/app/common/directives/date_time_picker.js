@@ -17,34 +17,19 @@
             restrict: 'AE',
             replace: 'true',
             template: '<input type="text" ng-model="date" />',
-            link: linkFn,
-            controller: ['$scope', controllerFn]
+            link: linkFn
 
             };
 
 
         function linkFn(scope, element, attr) {
 
-            element.datetimepicker({language: 'de-DE'});
-           // formatDate();
-
-           // element.bind('blur', formatDate);
-
+            element.datetimepicker({language: 'de-DE', format: 'lll'});
+            scope.dtEl = element;
 
         }
 
-        function controllerFn($scope) {
-            $scope.$watch('date', function (oldValue, newValue) {
 
-                    var dateFormat = 'lll';
-
-                    amDateFormatFilter($scope.date, dateFormat);
-                    if (!$scope.date)
-                        $scope.date =  amDateFormatFilter(moment().add('days', 7), dateFormat);
-
-
-            });
-        }
 
 
 
