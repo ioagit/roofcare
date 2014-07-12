@@ -11,7 +11,6 @@ var expect = require('chai').expect,
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
 
-
 describe('Module - Mailer', function () {
 
     var Job = jobs.Model;
@@ -24,7 +23,7 @@ describe('Module - Mailer', function () {
         done();
     });
 
-    describe.skip('#sendOne()', function () {
+    describe('#sendOne()', function () {
 
         it('should fail to find non-existent template', function (done) {
             var locals = {
@@ -41,7 +40,7 @@ describe('Module - Mailer', function () {
 
         it('should render the password reset templates correctly', function (done) {
             var locals = {
-                email: 'one@example.com',
+                email: 'christopher.erker@gmail.com',
                 subject: 'Password reset',
                 name: 'Forgetful User',
                 resetUrl: 'http;//localhost:3000/password_rest/000000000001|afdaevdae353'
@@ -67,15 +66,18 @@ describe('Module - Mailer', function () {
                     var job = collection[0];
 
                     var locals = {
-                        email: 'one@example.com',
+                        email: 'christopher.erker@gmail.com',
                         subject: 'welcome',
                         name: 'Roofcare',
                         job: job
                     };
-                    mailer.sendOne('responsePending', locals, function (err, responseStatus, html, text) {
+                    mailer.sendOne('responsePending', locals, function (err, responseStatus, html) {
+                        console.log(err);
+                        console.log(responseStatus);
+                        console.log(html);
+
                         expect(err).to.be.null;
                         expect(html).to.include(job.customer.fullProperName);
-                        console.log(html);
                         done();
                     });
                 });

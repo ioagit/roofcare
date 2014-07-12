@@ -17,7 +17,6 @@ describe('Model - Address', function () {
         {
             expect(result).to.not.be.null;
             expect(result.street).to.eq('1 River Place');
-//            console.log(result);
             done();
         })
     });

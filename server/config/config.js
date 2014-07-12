@@ -7,20 +7,30 @@ var  path = require('path');
 var rootPath = path.normalize(__dirname + '/../../');
 
 
+//var mailInfo =  {
+//    service: 'Mandrill',
+//        auth: {
+//        user: 'app24367544@heroku.com',
+//        pass:'0V9OHO7slJb6Mdg2FIZ7pA'
+//    },
+//    defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
+//};
+
+var mailInfo =  {
+    service: 'GMAIL',
+        auth: {
+        user: 'roofcare.de@gmail.com',
+            pass:'r1c0r1c0'
+    },
+    defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
+};
 module.exports = {
 
     development: {
         db:  'mongodb://localhost/rcdb',
         rootPath: rootPath,
         port: process.env.PORT || 3000,
-        mailer: {
-            service: 'GMAIL',
-            auth: {
-                user: 'roofcare.de@gmail.com',
-                password:'r1c0r1c0'
-            },
-            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
-        }
+        mailer: mailInfo
     },
     test: {
         //db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
@@ -29,28 +39,14 @@ module.exports = {
         db:  'mongodb://localhost/testdb',
         rootPath: rootPath,
         port: 3000,
-        mailer: {
-            service: 'GMAIL',
-            auth: {
-                user: 'roofcare.de@gmail.com',
-                password:'r1c0r1c0'
-            },
-            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
-        }
+        mailer: mailInfo
     },
     production: {
 
         db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
         rootPath: rootPath,
         port: process.env.PORT || 80,
-        mailer: {
-            service: 'GMAIL',
-            auth: {
-                user: 'roofcare.de@gmail.com',
-                password:'r1c0r1c0'
-            },
-            defaultFromAddress: 'Roofcare  <roofcare.de@gmail.com>'
-        }
+        mailer: mailInfo
     }
 
 };

@@ -238,7 +238,7 @@ describe('Controller - Jobs', function () {
 
                         var resultObj = JSON.parse(res.text);
                         var len = resultObj.rows.length;
-                        expect(len).to.eq(2);
+                        expect(len).to.be.at.most(2);
                         expect(resultObj.totalFound).to.be.at.least(2);
                         done();
                     });
