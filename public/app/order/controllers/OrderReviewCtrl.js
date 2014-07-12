@@ -9,13 +9,13 @@
     var controllerId = 'OrderReviewCtrl';
 
     angular.module('rc.order').controller(controllerId,
-        ['commonSvc','lookups','orderSvc','orderWorkFlowSvc', 'translation', OrderReviewCtrl]);
+        ['commonSvc','lookups','orderSvc','orderWorkFlowSvc', OrderReviewCtrl]);
 
-    function OrderReviewCtrl(commonSvc, lookups, orderSvc, orderWorkFlowSvc, translation) {
+    function OrderReviewCtrl(commonSvc, lookups, orderSvc, orderWorkFlowSvc) {
 
         var vm = this;
 
-        vm.formSubmitted = true;
+        vm.formSubmitted = false;
 
         vm.job = orderWorkFlowSvc.job();
 

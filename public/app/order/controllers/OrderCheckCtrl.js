@@ -21,6 +21,16 @@
 
         vm.formSubmitted = false;
 
+
+        vm.prepopulate =  function() {
+
+          vm.job.workSite = {
+
+          street: 'Gräfelfinger Straße 47',
+          zipCode: '81735',
+          city: 'Munich'
+        }};
+
         vm.job = orderWorkFlowSvc.job() || {
             propertyType: lookups.propertyType.singleFamily,
             roofType: lookups.roofType.flat,

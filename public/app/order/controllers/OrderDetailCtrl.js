@@ -33,9 +33,7 @@
                 return;
 
             //adjusting the datetime value
-            //vm.job.startDate = stripEndFilter(vm.job.startDate, 'Uhr');
-
-            orderSvc.saveJob(vm.job).then(function(data) {
+          orderSvc.saveJob(vm.job).then(function(data) {
                 if (data)
                     orderWorkFlowSvc.nextStep();
             });

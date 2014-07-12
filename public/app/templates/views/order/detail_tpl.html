@@ -29,8 +29,9 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Anrede</label>
-                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation" ng-options="v as k for (v, k) in vm.lookups.salutation">
+                                <select class="form-control" data-ng-model="vm.job.onSiteContact.salutation">
                                     <option value="">Anrede</option>
+                                    <option ng-repeat="o in vm.lookups.salutation"  value="{{o}}">{{o}}</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
@@ -60,8 +61,9 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label>Funktion</label>
-                                <select class="form-control"  place-holder="please select" data-ng-model="vm.job.onSiteContact.contactType" ng-options="k as v for (k, v) in vm.lookups.contactType">
+                                <select class="form-control"  place-holder="please select" data-ng-model="vm.job.onSiteContact.contactType">
                                     <option value="">Funktion</option>
+                                  <option ng-repeat="o in vm.lookups.contactType"  value="{{o}}">{{o}}</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
@@ -103,8 +105,9 @@
                         <div class="row margin-bottom-10">
                             <div class="col-sm-4">
                                 <label>Anrede</label>
-                                <select class="form-control" data-ng-model="vm.job.customer.salutation" ng-options="k as v for (k, v) in vm.lookups.salutation"  name="billing-title">
+                                <select class="form-control" data-ng-model="vm.job.customer.salutation" name="billing-title">
                                     <option value="">Anrede</option>
+                                  <option ng-repeat="o in vm.lookups.salutation"  value="{{o}}">{{o}}</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">

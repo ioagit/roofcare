@@ -84,8 +84,7 @@ module.exports = function (grunt) {
                         './public/vendor/modernizr/modernizr.js',
 
                         //Moment Js
-                        './public/vendor/momentjs/min/moment.min.js',
-                        './public/vendor/momentjs/lang/de.js',
+                        './public/vendor/momentjs/min/moment-with-langs.min.js',
 
 
 

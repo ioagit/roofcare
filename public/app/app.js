@@ -57,6 +57,11 @@
 
     });
 
+
+   app.constant('angularMomentConfig', {
+    timezone: 'Europe/London' // optional
+  });
+
     app.run(function(amMoment) {
         amMoment.changeLanguage('de');
     });

@@ -25,7 +25,7 @@
 
         function linkFn(scope, element, attr) {
 
-            element.datetimepicker();
+            element.datetimepicker({language: 'de-DE'});
            // formatDate();
 
            // element.bind('blur', formatDate);
@@ -36,10 +36,11 @@
         function controllerFn($scope) {
             $scope.$watch('date', function (oldValue, newValue) {
 
+                    var dateFormat = 'lll';
 
-                    $scope.date =  amDateFormatFilter($scope.date, 'lll');
+                    amDateFormatFilter($scope.date, dateFormat);
                     if (!$scope.date)
-                        $scope.date =  amDateFormatFilter(moment().add('days', 7), 'lll');
+                        $scope.date =  amDateFormatFilter(moment().add('days', 7), dateFormat);
 
 
             });
