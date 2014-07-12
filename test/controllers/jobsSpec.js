@@ -142,7 +142,6 @@ describe('Controller - Jobs', function () {
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-//                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
@@ -238,8 +237,9 @@ describe('Controller - Jobs', function () {
 
                         var resultObj = JSON.parse(res.text);
                         var len = resultObj.rows.length;
+                        console.log(resultObj);
                         expect(len).to.be.at.most(2);
-                        expect(resultObj.totalFound).to.be.at.least(2);
+                        expect(resultObj.totalFound).to.be.at.least(1);
                         done();
                     });
             });
@@ -266,7 +266,6 @@ describe('Controller - Jobs', function () {
                                 .expect(200)
                                 .end(function (err, res) {
                                     if (err) return callback(err);
-//                                    console.log(res.text);
                                     var resultObj = JSON.parse(res.text);
 
                                     expect(resultObj.rows.length).to.be.at.least(1);
@@ -325,6 +324,7 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
+                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         workSite: testData.locations.Address04
                     })
@@ -335,6 +335,7 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
+                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         roofType: lookUps.roofType.flat.name,
                         workSite: {
@@ -359,6 +360,7 @@ describe('Controller - Jobs', function () {
                 agent
                     .post('/api/job')
                     .send({
+                        startDate: (new Date()).toString(),
                         orderType: lookUps.orderType.check.name,
                         workSite: testData.locations.Address04
                     })
@@ -377,8 +379,6 @@ describe('Controller - Jobs', function () {
 
                             expect(result.job.mapUrl).to.have.string('http://maps.googleapis.com/maps/api/staticmap?');
 
-//                            console.log(result);
-//                            console.log('job._id = ' + result.job._id + "\r\n");
                             done();
                         }
                     });

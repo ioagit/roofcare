@@ -34,13 +34,14 @@ describe('Module - Mailer', function () {
             };
             mailer.sendOne('missing_template_name', locals, function(err) {
                 expect(err).to.not.be.null;
+                expect(err.code).to.eq("ENOENT");
                 done();
             });
         });
 
         it('should render the password reset templates correctly', function (done) {
             var locals = {
-                email: 'christopher.erker@gmail.com',
+                email: 'one@example.com',
                 subject: 'Password reset',
                 name: 'Forgetful User',
                 resetUrl: 'http;//localhost:3000/password_rest/000000000001|afdaevdae353'
@@ -66,22 +67,17 @@ describe('Module - Mailer', function () {
                     var job = collection[0];
 
                     var locals = {
-                        email: 'christopher.erker@gmail.com',
+                        email: 'one@example.com',
                         subject: 'welcome',
                         name: 'Roofcare',
                         job: job
                     };
-                    mailer.sendOne('responsePending', locals, function (err, responseStatus, html) {
-                        console.log(err);
-                        console.log(responseStatus);
-                        console.log(html);
-
+                    mailer.sendOne('customer/responsePending', locals, function (err, responseStatus, html) {
                         expect(err).to.be.null;
                         expect(html).to.include(job.customer.fullProperName);
                         done();
                     });
                 });
-
         });
 
     });

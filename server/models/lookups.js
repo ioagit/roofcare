@@ -96,7 +96,21 @@ module.exports = {
         Piece: 'Stueck',
         Meter: 'Meter',
         CubicMeter: 'Kubik Meter'
-    }
+    },
 
+    propertyFromValue: function ( source, value ){
+
+        for( var key in source ) {
+
+            if(source[key] === value ) return key;
+
+            if( typeof source[key] === 'object' )
+            {
+                var result = this.propertyFromValue( source[key], value );
+                if (result !== null) return result;
+            }
+        }
+        return null;
+    }
 
 };

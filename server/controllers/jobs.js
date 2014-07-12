@@ -8,6 +8,7 @@ var path = require('path'),
     Contractor = require(path.join(process.cwd(), 'server', 'models', 'Contractor')).Model,
     Address = require(path.join(process.cwd(), 'server', 'models', 'Address')),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
+    mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
     async = require('async'),
     _ = require('underscore');
@@ -17,6 +18,32 @@ function handleErrorResponse(response, code, msg, err) {
     var obj = {reason: msg};
     if (err) obj.err = err;
     return response.send(obj);
+}
+
+function sendEmails(job) {
+    var locals = {
+        email: job.customer.email,
+        subject: job.status,
+        name: 'Roofcare',
+        job: job
+    };
+    var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
+
+    mailer.sendOne('contractor/' + jobStatus, locals, function (err, responseStatus, html) {});
+    mailer.sendOne('customer/' + jobStatus, locals, function (err, responseStatus, html) {});
+}
+
+function validate(res, jobData, isAnUpdate) {
+    if (_.isEmpty(jobData))
+        return handleErrorResponse(res, 406, 'Missing job data');
+
+    if (isAnUpdate && _.isEmpty(jobData._id))
+        return handleErrorResponse(res, 404, 'Missing job id');
+
+    if (_.isEmpty(jobData.startDate))
+        return handleErrorResponse(res, 404, 'Missing: start date');
+
+    return null;
 }
 
 exports.getJob = function () {
@@ -91,10 +118,11 @@ exports.getInboxes = function() {
 exports.createJob = function(){
     return function(req,res) {
         var jobData = req.body;
-        var orderType = lookUps.findOrderTypeByName(jobData.orderType);
 
-        if (_.isEmpty(orderType))
-           return handleErrorResponse(res, 404, 'Missing: order type');
+        var validationError = validate(res, jobData, false);
+        if (validationError !== null) return validationError;
+
+        var orderType = lookUps.findOrderTypeByName(jobData.orderType);
 
         Address.Build(jobData.workSite, function(err, address) {
 
@@ -154,17 +182,13 @@ exports.createJob = function(){
 exports.saveJob = function() {
     return function(req,res) {
         var jobData = req.body;
-        if (_.isEmpty(jobData))
-            return handleErrorResponse(res, 406, 'Missing job data');
+        var validationError = validate(res, jobData, true);
+        if (validationError !== null) return validationError;
 
-        var jobId = jobData._id;
-        if (_.isEmpty(jobId))
-            return handleErrorResponse(res, 404, 'Missing job id');
-
-        Job.findById(jobId, function(err, job) {
+        Job.findById(jobData._id, function(err, job) {
             var currentStatus =  jobData.status;
+            var statusChanged = currentStatus !== job.status;
             if (currentStatus == lookUps.jobStatus.created) {
-
                 Address.RefreshCoordinates(job.workSite, jobData.workSite, function (err, coordinates) {
                     if (err)
                         return handleErrorResponse(res, 500, 'Address lookup failure', err);
@@ -199,6 +223,7 @@ exports.saveJob = function() {
 
             job.save(function(err, result) {
                 if (err) return handleErrorResponse(res, 500, 'Job save failure', err);
+                if (statusChanged) sendEmails(job);
 
                 res.status(200);
                 res.send(result);
