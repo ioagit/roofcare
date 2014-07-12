@@ -42,7 +42,12 @@ function validate(res, jobData, isAnUpdate) {
 
     if (_.isEmpty(jobData.startDate))
         return handleErrorResponse(res, 404, 'Missing: start date');
-
+    else
+    {
+        var dt = new Date(jobData.startDate);
+        if (!_.isDate(dt)) return handleErrorResponse(res, 404, 'Missing: start date');
+        if (Date.now() > dt) return handleErrorResponse(res, 406, 'Start date cannot be in the past');
+    }
     return null;
 }
 

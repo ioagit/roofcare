@@ -87,11 +87,7 @@ schema.methods.getFormattedAddress =  function() { physicalAddress.GetFormattedA
 
 schema.virtual('customer.fullProperName')
     .get(function() {
-        var sal = '';
-        if (this.customer.salutation) {
-            sal = this.customer.salutation + '.';
-        }
-
+        var sal = (this.customer.salutation) ? this.customer.salutation :'';
         return sal + ' ' + this.customer.firstName + ' ' + this.customer.lastName
     });
 
