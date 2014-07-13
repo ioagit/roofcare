@@ -49,7 +49,11 @@
        }
 
       vm.AddCheckList = function() {
+        if (angular.isUndefined(vm.job.checkLists))
+           vm.job.checkLists =[];
+
         vm.job.checkLists.push({name: vm.checkListName, description: vm.checkListDesc, content: {}});
+        saveJob();
         vm.cancelAddCheckList();
 
       };
