@@ -21,7 +21,7 @@ Auftragsnummer          <%= job.invoice.number %>
 Auftragsart             <%= job.orderType %>
 Augtragsadresse         <%= job.workSite.street %> <%= job.workSite.zipCode %> <%= job.workSite.city %>
 Auftragstermin          <%= job.startDate %>
-Auftragsdauer           ca 90 - 120 Min.
+Auftragsdauer           <%= job.duration  %>
 Kundenname              <%= job.customer.fullProperName %>
 Dachtyp                 <%= job.roofType %>
 Haustyp                 <%= job.propertyType %>
