@@ -322,7 +322,7 @@ describe('Controller - Jobs', function () {
             agent
                 .post('/api/job')
                 .send({
-                    startDate: (new Date()).toString(),
+                    startDate: (new Date(+new Date() + 86400000)).toString(),
                     orderType: lookUps.orderType.check.name,
                     workSite: testData.locations.Address04
                 })
@@ -333,7 +333,7 @@ describe('Controller - Jobs', function () {
             agent
                 .post('/api/job')
                 .send({
-                    startDate: (new Date()).toString(),
+                    startDate: (new Date(+new Date() + 86400000)).toString(),
                     orderType: lookUps.orderType.check.name,
                     roofType: lookUps.roofType.flat.name,
                     workSite: {
@@ -358,7 +358,7 @@ describe('Controller - Jobs', function () {
             agent
                 .post('/api/job')
                 .send({
-                    startDate: (new Date()).toString(),
+                    startDate: (new Date(+new Date() + 86400000)).toString(),
                     orderType: lookUps.orderType.check.name,
                     workSite: testData.locations.Address04
                 })
@@ -480,6 +480,21 @@ describe('Controller - Jobs', function () {
                         done();
                     });
             });
+
+            it('should not save with a start date in the past', function(done) {
+                job.startDate = new Date(+new Date() - 86400000);
+                agent
+                    .put('/api/job')
+                    .send(job)
+                    .expect(406)
+                    .end(function (err, res) {
+                        expect(res.text).to.not.be.empty;
+                        var errorResponse = JSON.parse(res.text);
+                        expect(errorResponse).to.not.be.null;
+                        expect(errorResponse).to.have.property('reason').and.to.eq("Start date cannot be in the past");
+                        done();
+                    });
+            })
 
             describe('with checklists', function() {
 
