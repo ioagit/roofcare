@@ -1,7 +1,12 @@
+var path = require('path'),
+    moment = require('moment');
+
+moment.lang('de');
+
 var translation = {
     language: 'de-de',
     authentication: 'Authentifikation',
-    loginError: 'Error beim Einlaggen',
+    loginError: 'Error beim Einloggen',
     loginSuccess: 'Erfolgreich eingeloggt',
     loginInvalid: 'Falscher Benutzername',
 
@@ -62,3 +67,6 @@ var translation = {
 };
 
 module.exports = translation;
+module.exports.formatDate = function(date) {
+    return moment(date).format('lll');
+};

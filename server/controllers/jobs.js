@@ -10,37 +10,15 @@ var path = require('path'),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
-    translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
-    moment = require('moment'),
     async = require('async'),
     _ = require('underscore');
+
 
 function handleErrorResponse(response, code, msg, err) {
     response.status(code);
     var obj = {reason: msg};
     if (err) obj.err = err;
     return response.send(obj);
-}
-
-function sendEmails(job) {
-
-
-
-  var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
-
-  moment.lang('de');
-  //formatting job date
-  job.startDate =  moment(job.startDate).format('lll');
-
-  var locals = {
-        email: job.customer.email,
-        subject:  translation.emials.subject[jobStatus],
-        name: 'Roofcare',
-        job: job
-    };
-
-    mailer.sendOne('contractor/' + jobStatus, locals, function (err, responseStatus, html) {});
-    mailer.sendOne('customer/' + jobStatus, locals, function (err, responseStatus, html) {});
 }
 
 function validate(res, jobData, isAnUpdate) {
@@ -239,7 +217,7 @@ exports.saveJob = function() {
 
             job.save(function(err, result) {
                 if (err) return handleErrorResponse(res, 500, 'Job save failure', err);
-                if (statusChanged) sendEmails(job);
+                if (statusChanged) mailer.sendEmailsForJob(job);
 
                 res.status(200);
                 res.send(result);

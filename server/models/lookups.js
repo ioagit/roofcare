@@ -66,22 +66,22 @@ module.exports = {
     contactType: {
         owner: 'Besitzer/in',
         renter: 'Mieter/in',
-        concierge: 'Hausmeiser/in',
-        roommate: 'MItberwohner/in',
+        concierge: 'Hausmeister/in',
+        roommate: 'Mitberwohner/in',
         neighbour: 'Nachbar/in'
     },
 
     distanceType: {
         klm: 'KM',
-        miles: 'miles'
+        miles: 'Meilen'
     },
 
     jobStatus: {
         unknown : 'Nicht angegeben',
         created: 'Erstellt',
-        responsePending: 'Roofcare Auftrag erteilt',
-        requestAccepted: 'Roofcare Auftrag bestaetigt',
-        requestRejected: 'Roofcare Auftrag gekuendigt' ,
+        responsePending: 'Zu Bearbeiten',
+        requestAccepted: 'Angenommen',
+        requestRejected: 'Gekündigt' ,
         workStarted: 'Gestartet',
         workCompleted: 'Fertig',
         workRejected: 'Vor Ort Abgelehnt'
@@ -101,7 +101,7 @@ module.exports = {
 
     UnitOfMeasure: {
 
-        Piece: 'Stueck',
+        Piece: 'Stück',
         Meter: 'Meter',
         CubicMeter: 'Kubik Meter'
     },

@@ -1,5 +1,5 @@
 /**
- * Created by christophererker on 6/16/14.
+ * Created by christopher erker on 6/16/14.
  */
 
 'use strict';
@@ -9,7 +9,8 @@ var expect = require('chai').expect,
     async = require('async'),
     mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
-    jobs = require(path.join(process.cwd(), 'server', 'models', 'Job'));
+    jobs = require(path.join(process.cwd(), 'server', 'models', 'Job')),
+    jobMock = require(path.join(process.cwd(), 'server', 'utils', 'shared', 'test', 'mocks', 'jobMock'));
 
 describe('Module - Mailer', function () {
 
@@ -82,4 +83,24 @@ describe('Module - Mailer', function () {
 
     });
 
+    describe('sendJob()', function() {
+
+        it('should send two emails for responsePending', function(done) {
+            var job = jobMock.build();
+            job.status = lookUps.jobStatus.responsePending;
+
+            var lookFor = "Roofcare Auftrag " + job.invoice.number;
+            var counter = 0;
+            mailer.sendEmailsForJob(job, function(err, responseStatus, html, text) {
+
+                expect(err).to.be.null;
+                expect(responseStatus).to.include("OK");
+                expect(html).to.include(lookFor);
+
+                counter += 1;
+                if (counter == 2) done();
+            });
+        });
+
+    })
 });
