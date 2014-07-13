@@ -53,6 +53,8 @@ var schema =  BaseSchema.extend({
     orderType: {type: String, required:true},
     propertyType: {type: String, default: lookUps.propertyType.singleFamily },
     roofType: { type: String, default: lookUps.roofType.steep },
+    roofAccess: { type: String, default: lookUps.roofAccess.none },
+
     userConfirmedInfo: { type: Boolean, default: false },
 
     workSite: physicalAddress.Definition,

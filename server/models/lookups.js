@@ -55,6 +55,14 @@ module.exports = {
         other: 'Anderes Haus'
     },
 
+    roofAccess: {
+
+      window: 'Zugang zum Dach über Ausstige / Fenster oder Leiter vor Ort möglich',
+      ladder: 'Leiter muss mitgebracht werden (max.7,00m)',
+      none: 'Kein Zugang über Dach möglich und höher als 7,00m (in diesem Fall klärt unser Servicetechniker mit Ihnen die Möglichkeiten)'
+
+    },
+
     contactType: {
         owner: 'Besitzer/in',
         renter: 'Mieter/in',

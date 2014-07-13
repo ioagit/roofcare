@@ -11,7 +11,7 @@ var path = require('path'),
     mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
     translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
-    moment = require('moment-with-langs.js'),
+    moment = require('moment'),
     async = require('async'),
     _ = require('underscore');
 
