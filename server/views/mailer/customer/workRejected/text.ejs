@@ -1,0 +1,49 @@
+Roofcare Auftrag <%= job.invoice.number %>
+------------------------------------------------------------
+
+
+** Ihr Roofcare <%= job.orderType %> Auftrag wurde gekündigt!
+------------------------------------------------------------
+Roofcare Kontakt
+info@roofcare.de
+0800-roofcare(0800-766-322-7)
+http://www.roofcare.de
+
+
+** Unser Roofcare Team hat Ihren Auftragstermin gekündigt.
+------------------------------------------------------------
+
+
+** Der folgende Termin wurde gelöscht.
+------------------------------------------------------------
+Ihre Auftragsdaten:
+Auftragsnummer          <%= job.invoice.number %>
+Auftragsart             <%= job.orderType %>
+Augtragsadresse         <%= job.workSite.street %> <%= job.workSite.zipCode %> <%= job.workSite.city %>
+Auftragstermin          <%= job.startDate %>
+Auftragsdauer           ca 90 - 120 Min.
+Kundenname              <%= job.customer.fullProperName %>
+Dachtyp                 <%= job.roofType %>
+Haustyp                 <%= job.propertyType %>
+Ansprechpartner vor Ort <%= job.onSiteContact.salutation %> <%= job.onSiteContact.firstName %> <%= job.onSiteContact.lastName %>
+
+
+** Warum wurde der Termin gelöscht?
+------------------------------------------------------------
+Wir löschen Termine auf Kundenanfrage. Ausserdem löschen wir Termine, die vom Roofcare Team nicht angenommen werden können. Wenn der Termin nicht gelöscht werden sollte, so kontaktieren Sie uns bitte umgehend um dies rückgängig zu machen. Sie können auch jederzeit einen neuen Termin auf unserer Webseite bichen.
+
+
+** Haben Sie noch Fragen?
+------------------------------------------------------------
+Bitte kontaktieren Sie uns und wir helfen Ihnen gerne sofort weiter.
+info@roofcare.de
+0800-roofcare(0800-766-322-7)
+
+============================================================
+** Finden Sie uns auf Facebook (http://www.facebook.com)
+Copyright © 2014, Roofcare.
+Kontakt:
+
+info@roofcare.de
+0800-roofcare(0800-766-322-7)
+** http://www.roofcare.de (http://www.roofcare.de)
