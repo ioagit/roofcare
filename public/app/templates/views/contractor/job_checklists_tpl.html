@@ -293,19 +293,19 @@
     <label class="col-md-2 control-label"> Verwahrungen</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-verwahrungen">
+        <input type="checkbox" ng-model="vm.checkList.content.aVerwahrungen.verz" >
         verz.
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-verwahrungen">
+        <input type="checkbox" ng-model="vm.checkList.content.aVerwahrungen.zink" >
         Zink
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-verwahrungen">
+        <input type="checkbox" ng-model="vm.checkList.content.aVerwahrungen.cu">
         Cu
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-verwahrungen">
+        <input type="checkbox" ng-model="vm.checkList.content.aVerwahrungen.alu">
         Alu
       </label>
     </div>
@@ -340,15 +340,15 @@
     <label class="col-md-2 control-label">Ausf. d. Wärmed.</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-warmd">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfWarmd.pu">
         PU
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-warmd">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfWarmd.ps">
         PS
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-warmd">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfWarmd.mineral">
         Mineral
       </label>
     </div>
@@ -372,19 +372,19 @@
     <label class="col-md-2 control-label">Ausf. Blitzschutz</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBlitzschutz.pu">
         verz.
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBlitzschutz.zink">
         Zink
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBlitzschutz.cu">
         Cu
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-blitzschutz">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBlitzschutz.alu">
         Alu
       </label>
     </div>
@@ -408,11 +408,11 @@
     <label class="col-md-2 control-label">Ausf. Bekiesung</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-bekiesung">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBekiesung.one" >
         8/16
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausf-bekiesung">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfBekiesung.two">
         16/32
       </label>
     </div>
@@ -436,11 +436,11 @@
     <label class="col-md-2 control-label">Ausf. Dachbegr.</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausfdachbegr">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfDachbegr.intensiv">
         intensiv
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-ausfdachbegr">
+        <input type="checkbox" ng-model="vm.checkList.content.aAusfDachbegr.extensiv">
         extensiv
       </label>
     </div>
@@ -478,7 +478,7 @@
   <div class="form-group">
     <label class="col-md-2 control-label" for="inputText1">Lichtkuppenanzahl</label>
     <div class="col-md-5">
-      <input class="form-control"   type="text" name="a-lichtkuppenanzahl">
+      <input class="form-control" ng-model="vm.checkList.content.aLichtkuppenanzahl"    type="text" name="aLichtkuppenanzahl">
     </div>
   </div>
   <div class="form-group">
@@ -510,7 +510,7 @@
   <div class="form-group">
     <label class="col-md-2 control-label" for="inputText1">Dachausstieganzahl</label>
     <div class="col-md-5">
-      <input class="form-control"   type="text" name="a-dachausstieganzahl">
+      <input class="form-control" ng-model="vm.checkList.content.aDachausstieganzahl"  type="text" name="aDachausstieganzahl">
     </div>
   </div>
 
@@ -546,15 +546,15 @@
     <label class="col-md-2 control-label">Art der Sicherungseinrichtung</label>
     <div class="col-md-10">
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        <input type="checkbox" ng-model="vm.checkList.content.aArtsicherungseinrichtung.securanten">
         Securanten
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        <input type="checkbox" ng-model="vm.checkList.content.aArtsicherungseinrichtung.seilanlage">
         Seilanlage
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" value="" name="a-art-sicherungseinrichtung">
+        <input type="checkbox" ng-model="vm.checkList.content.aArtsicherungseinrichtung.dach">
         Dachrandgeländer
       </label>
     </div>
@@ -577,7 +577,7 @@
   <div class="form-group">
     <label class="col-md-2 control-label" for="inputText1">Art der Notentwässerung</label>
     <div class="col-md-5">
-      <input class="form-control"   type="text" name="a-art-notentwasserung">
+      <input class="form-control" ng-model="vm.checkList.content.aArtNotentwasserung"  type="text" name="aArtNotentwasserung">
     </div>
   </div>
 
