@@ -8,8 +8,8 @@
 
     'use strict';
     var controllerId = 'JobCheckListCtrl';
-    angular.module('rc.contractor').controller(controllerId, ['$location', 'config', 'contractorSvc', 'commonSvc', JobCheckListCtrl]);
-    function JobCheckListCtrl($location, config, contractorSvc, commonSvc) {
+    angular.module('rc.contractor').controller(controllerId, ['$location', '$routeParams', 'config', 'contractorSvc', 'commonSvc', JobCheckListCtrl]);
+    function JobCheckListCtrl($location, $routeParams, config, contractorSvc, commonSvc) {
 
         var vm = this;
 
@@ -49,7 +49,7 @@
        }
 
       vm.AddCheckList = function() {
-        vm.job.checkList.push({name: vm.checkListName, description: vm.checkListDesc, content: {}});
+        vm.job.checkLists.push({name: vm.checkListName, description: vm.checkListDesc, content: {}});
         vm.cancelAddCheckList();
 
       };
