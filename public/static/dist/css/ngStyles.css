@@ -205,6 +205,15 @@ a {
 }
 /*#endregion */
 
+
+/* other animations */
+.newCheckList.ng-enter {
+  animation: fadeIn 0.5s
+}
+.newCheckList.ng-leave {
+  animation: fadeOut 0.5s
+}
+
 /*#region toastr */
 #toast-container.toast-top-full-width > div, #toast-container.toast-bottom-full-width > div {
     margin: 4px auto;

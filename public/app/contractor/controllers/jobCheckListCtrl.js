@@ -15,6 +15,16 @@
 
         vm.editingCheckList = false;
 
+
+      /**
+       * Managing CheckList
+       */
+
+      vm.saveCheckList = function() {
+        saveJob();
+        vm.editingCheckList = false;
+      };
+
       vm.showCheckList = function (checkListName) {
 
         var index = findIndex(vm.job.checkLists, checkListName);
@@ -36,17 +46,6 @@
 
       };
 
-       function findIndex(list, name) {
-
-         for (var i = 0, len = list.length; i < len; i++) {
-           if (list[i].name === name)
-              return i;
-         }
-
-         return -1;
-
-
-       }
 
       vm.AddCheckList = function() {
         if (angular.isUndefined(vm.job.checkLists))
@@ -64,6 +63,23 @@
        vm.checkListName = '';
        vm.checkListDesc = '';
       };
+
+
+      /*
+       Util methods
+       */
+
+      function findIndex(list, name) {
+
+        for (var i = 0, len = list.length; i < len; i++) {
+          if (list[i].name === name)
+            return i;
+        }
+
+        return -1;
+
+
+      }
 
 
       function onData(data) {
