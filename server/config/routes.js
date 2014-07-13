@@ -537,8 +537,26 @@ module.exports =  function(server, User, userController, jobController, contract
     );
 
 
+  server.get('/login', function(req, res) {
 
-    server.get('/contractor/*', function(req, res) {
+    res.render('contractor/login.jade', {
+
+        locals : {
+          currentUser: req.user
+          ,moduleName: 'contractor'
+          ,title : 'Login'
+          ,description: 'Login'
+          ,author: 'RC'
+          ,analyticssiteid: 'XXXXXXX'
+
+        }
+      }
+    );
+
+  });
+
+
+  server.get('/contractor/*', function(req, res) {
 
         res.render('contractor/contractor.jade', {
 

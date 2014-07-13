@@ -25,7 +25,11 @@
     ];
 
     //Adding module base on location patch
-    if (location.pathname.indexOf('contractor')== -1) {
+    if (location.pathname.indexOf('contractor')=== -1 &&
+        location.pathname.indexOf('login') === -1 &&
+        location.pathname.indexOf('logout') === -1
+
+      )  {
         module_list.push('rc.order');
     }
     else {

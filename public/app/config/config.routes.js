@@ -120,7 +120,24 @@
 //                templateUrl: routerSvc.prepareViewTemplateUrl('order/order_start', config.template)
 //            });
 
-            {
+          {
+            url: '/login',
+            config: {
+
+              controller: 'ContractorLoginCtrl',
+              controllerAs: 'vm',
+              title: 'Contractor Login',
+              templateUrl: 'contractor/login',
+              settings: {
+                nav: 1,
+                content: '<i class="fa fa-dashboard"></i> Login'
+              }
+            }
+          },
+
+
+
+          {
                 url: '/contractor/dashboard',
                 config: {
 

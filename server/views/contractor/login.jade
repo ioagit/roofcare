@@ -1,0 +1,69 @@
+extends ../../includes/layout
+
+block css
+
+block header
+    include ../../includes/currentUser
+
+block content
+    .middle-container(data-ng-controller="shell as vm")
+      .middle-row
+        .middle-wrapper
+            .login-container-header
+                .container
+                    .row
+                        .col-sm-12
+                            .text-center
+                                h1 Roofcare Mobil
+            .login-container
+                ng-view.shuffle-animation
+            .login-container-footer
+                .container
+                    .row
+                        .col-sm-12
+                            .text-center
+                                a(href='#')
+                                    | © Roofcare | 2014
+
+
+block scripts
+    //bootstrap the app
+    script(defer, src='/app/deferredBootstrapApp.js')
+
+    //common module
+    script(defer, src='/app/common/services/common.js')
+    script(defer, src='/app/common/services/logger.js')
+    script(defer, src='/app/common/services/spinner.js')
+
+    //common directives
+    script(defer, src='/app/common/directives/pageHeader.js')
+
+    //translation
+    script(defer, src='/app/translation/services/translationSvc.js')
+
+
+    ////account module
+    script(defer, src='/app/account/account.js')
+    script(defer, src='/app/account/resources/userResource.js')
+    script(defer, src='/app/account/services/authSvc.js')
+    script(defer, src='/app/account/services/identitySvc.js')
+    //
+    //contractor
+    script(defer, src='/app/contractor/contractor.js')
+    //
+    ////contractor - controllers
+    script(defer, src='/app/contractor/controllers/ContractorLoginCtrl.js')
+    //
+        //Angular app
+    script(defer, src='/app/app.js')
+
+    //configuration
+    script(defer, src='/app/config/config.js')
+    script(defer, src='/app/config/config.exceptionHandler.js')
+    script(defer, src='/app/config/config.routes.js')
+
+    //layout
+    script(defer, src='/app/layout/directives/cc-spinner.js')
+    script(defer, src='/app/layout/controllers/shell.js')
+
+

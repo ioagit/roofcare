@@ -9,5 +9,6 @@ lib-cov
 .idea
 node_modules
 public/vendor
+publi/specs
 config/runtime.json
 npm-debug.log

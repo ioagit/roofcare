@@ -5,6 +5,7 @@ var translation = {
     loginSuccess: 'Erfolgreich eingeloggt',
     loginInvalid: 'Falscher Benutzername',
 
+
     logoutSuccess: 'Erfolgreich ausgeloggt',
     notAuthorized: 'Nicht erlaubt',
 
@@ -28,6 +29,9 @@ var translation = {
 
         //contact Info
         invalidName: 'Falsche Eingabe',
+
+        invalidUsername: 'User name must be at least 6 characters long',
+        invalidPassword: 'Password must be at least 6 characters long',
 
         //address
         invalidAddress: 'Bitte Adresse angeben',
