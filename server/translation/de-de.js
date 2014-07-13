@@ -40,9 +40,20 @@ var translation = {
 
     //persinting messages
     orderSavedSuccess: 'Bestellung erfolgreich gepeichert.',
-    orderSavedFail: 'Bestellung wurde nicht gespeichert.'
+    orderSavedFail: 'Bestellung wurde nicht gespeichert.',
 
-
+    email: {
+      subject: {
+        unknown : 'Nicht angegeben',
+        created: 'Erstellt',
+        responsePending: 'Roofcare Auftrag erteilt',
+        requestAccepted: 'Roofcare Auftrag bestaetigt',
+        requestRejected: 'Roofcare Auftrag gekuendigt' ,
+        workStarted: 'Gestartet',
+        workCompleted: 'Fertig',
+        workRejected: 'Vor Ort Abgelehnt'
+      }
+    }
 
 };
 

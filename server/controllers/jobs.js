@@ -10,6 +10,8 @@ var path = require('path'),
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
+    translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
+    moment = require('moment-with-langs.js'),
     async = require('async'),
     _ = require('underscore');
 
@@ -21,13 +23,21 @@ function handleErrorResponse(response, code, msg, err) {
 }
 
 function sendEmails(job) {
-    var locals = {
+
+
+
+  var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
+
+  moment.lang('de');
+  //formatting job date
+  job.startDate =  moment(job.startDate).format('lll');
+
+  var locals = {
         email: job.customer.email,
-        subject: job.status,
+        subject:  translation.emials.subject[jobStatus],
         name: 'Roofcare',
         job: job
     };
-    var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
 
     mailer.sendOne('contractor/' + jobStatus, locals, function (err, responseStatus, html) {});
     mailer.sendOne('customer/' + jobStatus, locals, function (err, responseStatus, html) {});
