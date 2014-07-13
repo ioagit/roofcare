@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <label>Dachtyp <span class="color-red">*</span></label>
                     <div class="radio"> 
                         <label>
@@ -34,7 +34,7 @@
                             Ich weiss es nicht </label>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <label>Haustyp <span class="color-red">*</span></label>
                     <div class="radio">
                         <label>
@@ -50,6 +50,24 @@
                         <label>
                             <input type="radio" name="haustyp" value="{{vm.lookups.propertyType.other}}"   data-ng-model="vm.job.propertyType">
                             {{vm.lookups.propertyType.other}} </label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label>Zugang zum Dach <span class="color-red">*</span></label>
+                    <div class="radio"> 
+                        <label>
+                            <input type="radio" name="zugang" value="{{vm.lookups.roofAccess.window}}" data-ng-model="vm.job.roofAccess">
+                            {{vm.lookups.roofAccess.window}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="zugang" value="{{vm.lookups.roofAccess.ladder}}"  data-ng-model="vm.job.roofAccess">
+                            {{vm.lookups.roofAccess.ladder}} </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="zugang" value="{{vm.lookups.roofAccess.none}}" data-ng-model="vm.job.roofAccess">
+                            {{vm.lookups.roofAccess.none}} </label>
                     </div>
                 </div>
             </div>
