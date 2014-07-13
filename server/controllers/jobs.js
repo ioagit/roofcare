@@ -152,6 +152,7 @@ exports.createJob = function(){
                     jobData.contractor = contractorInfo;
                     jobData.status = lookUps.jobStatus.created;
                     jobData.onSiteContact = {};
+                    jobData.checkLists = [];
 
                     Job.NextInvoiceNumber(function(invNumber) {
                         jobData.invoice = {
