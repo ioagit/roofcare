@@ -2,18 +2,18 @@
   <div class='row'>
     <div class='col-sm-4 col-sm-offset-4'>
       <h1 class='text-center title'>Login</h1>
-      <form name="vm.loginForm" class='validate-form' form-autofill-fix novalidate">
+      <form name="vm.loginForm" class='validate-form' form-autofill-fix novalidate>
         <div class='form-group'>
           <div class='controls with-icon-over-input'>
-            <input ng-model="username"   ng-minlength="6" ng-maxlength="100" placeholder="username/email" class="form-control" ng-required="true" name="username" type="text" />
+            <input ng-model="vm.username"   ng-minlength="6" ng-maxlength="100" placeholder="username/email" class="form-control" ng-required="true" name="username" type="text" />
             <i class='icon-user text-muted'></i>
-            <p ng-show="vm.isUserNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidUsernamen"></p>
+            <p ng-show="vm.isUsernameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidUsername"></p>
           </div>
           </div>
 
         <div class='form-group'>
           <div class='controls with-icon-over-input'>
-            <input ng-model="password"  placeholder="Password" ng-minlength="6" ng-maxlength="12"   class="form-control" ng-required="true" name="password" type="password" />
+            <input ng-model="vm.password"  placeholder="Password" ng-minlength="6" ng-maxlength="12"   class="form-control" ng-required="true" name="password" type="password" />
             <i class='icon-lock text-muted'></i>
             <p ng-show="vm.isPasswordInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidPassword"></p>
 
@@ -28,7 +28,7 @@
             Eingeloggt bleiben
           </label>
         </div>
-        <button class='btn btn-block' ng-click="vm.signin()">Login</button>
+        <button class='btn btn-block'  ng-click="vm.signin()">Login</button>
       </form>
       <div class='text-center'>
         <hr class='hr-normal'>

@@ -9,13 +9,13 @@
     var controllerId = 'ContractorLoginCtrl';
 
     angular.module('rc.contractor').controller(controllerId,
-        ['commonSvc', 'translation', 'identitySvc', '$location', 'authSvc',ContractorLoginCtrl]);
+        ['commonSvc', 'translation', 'identitySvc', '$window', 'authSvc', '$timeout',ContractorLoginCtrl]);
 
-    function ContractorLoginCtrl(commonSvc, translation, identitySvc, $location, authSvc) {
+    function ContractorLoginCtrl(commonSvc, translation, identitySvc, $window, authSvc, $timeout) {
 
        //Check is the user is already logged in
        if (identitySvc.currentUser) {
-          $location.path('/contractor/dashboard');
+         $window.location.href = '/contractor/dashboard';
          return;
        }
 
@@ -41,7 +41,7 @@
 
             if (success) {
               vm.showInvalidLogin = false;
-              $location.path('/contractor/dashboard');
+              $window.location.href = '/contractor/dashboard';
               return;
             }
             else
@@ -56,25 +56,14 @@
       };
 
 
-      vm.signout = function() {
-
-
-        authSvc.logoutUser().then(function() {
-          vm.username = "";
-          vm.password = "";
-          $location.path('/login');
-        })
-      };
-
-
 
         //validation
         vm.isUsernameInvalid = function() {
-            return vm.loginForm.username.$invalid && !vm.loginForm.username.$pristine && vm.formSubmitted;
+            return vm.loginForm.username.$invalid &&  vm.formSubmitted;
         };
 
         vm.isPasswordInvalid = function() {
-            return vm.loginForm.password.$invalid && !vm.loginForm.password.$pristine && vm.formSubmitted;
+            return vm.loginForm.password.$invalid && vm.formSubmitted;
         };
 
 

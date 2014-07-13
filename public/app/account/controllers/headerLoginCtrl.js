@@ -8,44 +8,25 @@
 
     'use strict';
     var controllerId = 'HeaderLoginCtrl';
-    angular.module('rc.account').controller(controllerId, ['$location', 'config', 'identitySvc','authSvc', 'commonSvc', 'translation',
+    angular.module('rc.account').controller(controllerId, ['$window',  'identitySvc','authSvc',
         HeaderLoginCtrl]);
 
-    function HeaderLoginCtrl($location, config, identitySvc, authSvc, commonSvc, translation) {
+    function HeaderLoginCtrl($window,  identitySvc, authSvc ) {
 
         var vm = this;
 
+        if (!identitySvc.currentUser) {
+          $window.location.href = '/login';
+        }
+
         vm.identity = identitySvc;
-        vm.signin = function (username, password) {
-
-            authSvc.authenticateUser(username, password)
-                .then(function (success) {
-
-                    if (success) {
-                        commonSvc.logger.logSuccess(translation.loginSuccess, null, null, true);
-                        $location.path('/contractor/dashboard');
-                        return;
-                    }
-                    else
-                    {
-                        commonSvc.logger.logError(translation.loginError,
-                                                  translation.loginInvalid,
-                                                  translation.authentication, true);
-                    }
-
-                }
-            );
-        };
 
 
         vm.signout = function() {
 
 
                 authSvc.logoutUser().then(function() {
-                    vm.username = "";
-                    vm.password = "";
-                    commonSvc.logger.logSucces(translation.logoutSuccess, null, null, true);
-                    $location.path(config.path.contractorHome);
+                  $window.location.href = '/login';
                 })
             }
 
