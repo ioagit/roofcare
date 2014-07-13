@@ -8,8 +8,8 @@
 
     'use strict';
     var controllerId = 'JobCheckListCtrl';
-    angular.module('rc.contractor').controller(controllerId, ['$location', '$routeParams', 'config', 'contractorSvc', 'commonSvc', JobCheckListCtrl]);
-    function JobCheckListCtrl($location, $routeParams, config, contractorSvc, commonSvc) {
+    angular.module('rc.contractor').controller(controllerId, ['$location', '$routeParams', 'translation', 'config', 'contractorSvc', 'commonSvc', JobCheckListCtrl]);
+    function JobCheckListCtrl($location, $routeParams, translation, config, contractorSvc, commonSvc) {
 
         var vm = this;
 
@@ -17,10 +17,10 @@
 
       vm.showCheckList = function (checkListName) {
 
-        var index = findIndex(vm.lists, checkListName);
+        var index = findIndex(vm.job.checkLists, checkListName);
 
-        if (index) {
-          vm.checkList = vm.list[index];
+        if (index >= 0) {
+          vm.checkList = vm.job.checkLists[index];
           vm.editingCheckList = true;
         }
       };
@@ -28,10 +28,10 @@
 
       vm.deleteCheckList = function (checkListName) {
 
-        var index = findIndex(vm.lists, checkListName);
+        var index = findIndex(vm.job.checkLists, checkListName);
 
-        if (index) {
-           vm.list.splice(index, 1);
+        if (index >= 0) {
+           vm.job.checkLists.splice(index, 1);
         }
 
       };
@@ -61,12 +61,14 @@
 
       vm.cancelAddCheckList = function () {
        vm.checkListForm.$setPristine();
+       vm.checkListName = '';
+       vm.checkListDesc = '';
       };
 
 
       function onData(data) {
         vm.job = data;
-        vm.lists = data.checkLists;
+
       }
 
 
