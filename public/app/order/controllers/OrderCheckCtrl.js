@@ -35,7 +35,7 @@
             propertyType: lookups.propertyType.singleFamily,
             roofType: lookups.roofType.flat,
             orderType: orderWorkFlowSvc.orderType(),
-            starDate: new Date(),
+            startDate:moment().add('days', 7),
             duration: lookups.orderType.check.hours
 
        };

@@ -29,6 +29,7 @@
                 function successReturn(response) {
 
                     if (response.data) {
+                        response.data.job.startDate = moment(response.data.job.startDate).format('lll');
                         orderWorkFlowSvc.job(response.data.job);
                         orderWorkFlowSvc.workFlow(response.data.workFlow);
                         deferred.resolve(true);
