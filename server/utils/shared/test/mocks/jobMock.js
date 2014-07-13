@@ -19,7 +19,7 @@ function build() {
     var address = addressMock.build();
     var orderType = faker.random.array_element(_.values(lookups.orderType));
 
-    var j = new Job(
+    var job = new Job(
         {
             contractor: mongoose.Types.ObjectId(),
             customer: contactInfoMock.build(),
@@ -40,7 +40,7 @@ function build() {
             propertyType: faker.random.array_element(_.values(lookups.propertyType) )
         });
 
-    return j;
+    return job;
 }
 
 module.exports = {

@@ -2,16 +2,11 @@
  * Created by isuarez on 4/12/14.
  */
 
-var should = require('should');
-var expect = require("chai").expect;
-var request = require('supertest');
-var path = require('path');
-
-
-var agent;
-agent = request.agent('http://localhost:' + 3000);
-
-
+var should = require('should'),
+    expect = require("chai").expect,
+    request = require('supertest'),
+    path = require('path'),
+    agent = request.agent('http://localhost:' + 3000);
 
 describe ("Routes - Templates ", function() {
 
@@ -23,4 +18,3 @@ describe ("Routes - Templates ", function() {
     });
 
 });
-
