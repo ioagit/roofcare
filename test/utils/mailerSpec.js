@@ -82,4 +82,7 @@ describe('Module - Mailer', function () {
 
     });
 
+    describe('sendJob()', function() {
+        it('should ')
+    })
 });

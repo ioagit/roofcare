@@ -11,9 +11,9 @@ var path = require('path'),
     mailer = require(path.join(process.cwd(), 'server', 'utils','mailer' )),
     geo = require(path.join(process.cwd(), 'server', 'utils','geo' )),
     translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
-    moment = require('moment'),
     async = require('async'),
     _ = require('underscore');
+
 
 function handleErrorResponse(response, code, msg, err) {
     response.status(code);
@@ -22,20 +22,18 @@ function handleErrorResponse(response, code, msg, err) {
     return response.send(obj);
 }
 
-function sendEmails(job) {
+function sendEmails(jobModel) {
 
+    var job = jobModel.toObject();
 
+    //formatting job date
+    job.startDate =  translation.formatDate(job.startDate);
+    var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
 
-  var jobStatus = lookUps.propertyFromValue(lookUps.jobStatus, job.status);
-
-  moment.lang('de');
-  //formatting job date
-  job.startDate =  moment(job.startDate).format('lll');
-
-  var locals = {
-        email: job.customer.email,
-        subject:  translation.emials.subject[jobStatus],
-        name: 'Roofcare',
+    var locals = {
+        email: jobModel.customer.email,
+        name: "Roofcare",
+        subject: translation.email.subject[jobStatus],
         job: job
     };
 

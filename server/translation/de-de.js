@@ -1,3 +1,8 @@
+var path = require('path'),
+    moment = require('moment');
+
+moment.lang('de');
+
 var translation = {
     language: 'de-de',
     authentication: 'Authentifikation',
@@ -58,3 +63,6 @@ var translation = {
 };
 
 module.exports = translation;
+module.exports.formatDate = function(date) {
+    return moment(date).format('lll');
+};
