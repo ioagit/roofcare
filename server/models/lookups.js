@@ -71,9 +71,9 @@ module.exports = {
     jobStatus: {
         unknown : 'Nicht angegeben',
         created: 'Erstellt',
-        responsePending: 'Contractor Response Pending',
-        requestAccepted: 'Angenommen',
-        requestRejected: 'Anfrage Abgelehnt' ,
+        responsePending: 'Roofcare Auftrag erteilt',
+        requestAccepted: 'Roofcare Auftrag bestaetigt',
+        requestRejected: 'Roofcare Auftrag gekuendigt' ,
         workStarted: 'Gestartet',
         workCompleted: 'Fertig',
         workRejected: 'Vor Ort Abgelehnt'
