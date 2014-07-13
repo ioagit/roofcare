@@ -422,7 +422,7 @@ h4, .h4{
                                     </td>
                                     <td class="headerContent" width="100%" style="padding-left:10px; padding-right:20px;">
                                         <div>
-                                            <h1>Vielen Dank, <%= job.customer.firstName  %>!</h1>
+                                            <h1>Ihr Roofcare <%= job.orderType  %> Auftrag wurde erteilt!</h1>
                                         </div>
                                     </td>
                                 </tr>
@@ -471,27 +471,33 @@ h4, .h4{
                                             <tr>
                                                 <td valign="top" style="padding-left:0;">
                                                     <div>
-                                                        <h2 class="h2">Ihr Roofcare <%= job.orderType  %>Auftrag wurde erteilt!</h2>
+                                                        <h2 class="h2">Vielen Dank, <%= job.customer.firstName  %>!</h2>
                                                         <h3 class="h3">Ihr Termin wird von unseren Mitarbeitern berarbeitet und umgehend bestätigt.</h3>
                                                         <strong>Wir haben folgende Daten zu Ihrem Auftrag erhalten:</strong>
-                                                        <table>
+                                                        <table class="table">
+                                                            <tbody>
                                                             <tr>
-                                                                <td>Vorname</td><td><%= job.customer.firstName  %></td>
+                                                                <td>Auftragsnummer</td>
+                                                                <td ><%= job.invoice.number  %></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Nachname</td><td><%= job.customer.lastName  %></td>
+                                                                <td>Auftragsart</td>
+                                                                <td ><%= job.orderType  %></td>
+                                                            <tr>
+                                                                <td>Augtragsadresse</td>
+                                                                <td ><%= job.workSite.street  %> <%= job.workSite.zipCode  %> <%= job.workSite.city  %></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Termin</td><td><%= job.startDate  %></td>
+                                                                <td>Auftragstermin</td>
+                                                                <td ><%= job.startDate  %></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Strasse und Hausnummer</td><td><%= job.workSite.street  %></td>
+                                                                <td>Auftragsdauer</td>
+                                                                <td >ca 90 - 120 Min.</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Stadt</td><td><%= job.workSite.city  %></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>PLZ</td><td><%= job.workSite.zipCode  %></td>
+                                                                <td>Kundenname</td>
+                                                                <td><%= job.customer.fullProperName  %></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Dachtyp</td><td><%= job.roofType  %></td>
@@ -499,17 +505,28 @@ h4, .h4{
                                                             <tr>
                                                                 <td>Haustyp</td><td><%= job.propertyType  %></td>
                                                             </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Ansprechpartner vor Ort
+                                                                </td>
+                                                                <td>
+                                                                    <%= job.onSiteContact.salutation %> <%= job.onSiteContact.firstName %> <%= job.onSiteContact.lastName %>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
                                                         </table>
+                                                        <h3 class="h3">Was ist der nächste Schritt?</h3>
+                                                        Unser Roofcare Team bestätigt den Termin und wird Sie bei Bedarf telefonisch kontaktieren. Nach erfolgreicher Bestätigung erhalten Sie von uns eine email.
+                                                        <br />
                                                         <br />
                                                         <br />
                                                         <h4 class="h4">Wir freuen uns, Sie bald als neuen Kunden begrüssen zu dürfen.</h4>
-                                                        Wir bieten erstmalig in Deutschland:
-                                                        <ul>
-                                                            <li>Zuverlässige Reparaturen binnen 3 Tagen</li>
-                                                            <li>Transparente klare Abrechnung für Reparaturen</li>
-                                                            <li>Freundliche geschulte Handwerker</li>
-                                                            <li>24h/7 Tage Auftragsaquise</li>
-                                                        </ul>
+                                                        Haben Sie noch Fragen zu Ihrem Auftrag? Bitte kontaktieren Sie uns und wir helfen Ihnen gerne sofort weiter.
+                                                        <br />
+                                                        info@roofcare.de
+                                                        <br />
+                                                        <strong>0800-roofcare(0800-766-322-7)</strong>
+                                                        <br />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -545,8 +562,8 @@ h4, .h4{
                                                         <br />
                                                         <strong>Kontakt:</strong>
                                                         <br />
-                                                        info@roofcare.de
                                                         <br />
+                                                        info@roofcare.de
                                                         <br />
                                                         <strong>0800-roofcare(0800-766-322-7)</strong>
                                                         <br />

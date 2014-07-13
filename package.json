@@ -33,10 +33,10 @@
     "superagent": "^0.18.0",
     "should": "^4.0.1",
     "mandrill-api": "~1.0.40",
-
     "nodemailer": "0.6.5",
-    "email-templates": "1.0.0"
-},
+    "email-templates": "1.0.0",
+    "moment": "^2.7.0"
+  },
   "devDependencies": {
     "vows": "0.5.x",
     "mocha": "*",
