@@ -44,6 +44,7 @@ a.read-more:hover {
 a.btn-buy {
 	background:#be1522;
 	text-shadow:0 1px 0 #d22936;
+    min-width: 195px;
 }
 a.btn-buy:hover {
 	background:#d22936;

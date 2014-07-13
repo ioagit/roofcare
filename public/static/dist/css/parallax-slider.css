@@ -4,7 +4,7 @@
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
-	background: transparent url(/static/images/main/parallax-slider/img/b_bg_545.jpg) repeat 0% 0%;
+	background: transparent url(https://s3-eu-west-1.amazonaws.com/roofcare/bg_fade.jpg) repeat 0% 0%;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -2px 1px #fff;
 	-webkit-transition: background-position 1.4s ease-in-out 0.3s;
 	-moz-transition: background-position 1.4s ease-in-out 0.3s;
@@ -126,7 +126,7 @@ text-align:right;
 	text-shadow: 0 1px 0 #d22936;	
 	color: #fff;
 	font-size: 18px;	
-	min-width:260px;
+	min-width:265px;
 	padding: 2px 5px;
 	text-align: left;
 	top: 386px; /*depends on p height*/
