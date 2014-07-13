@@ -1,1 +1,45 @@
-The customer response pending email template for text-only.
+Roofcare Auftrag <%= job.invoice.number %>
+------------------------------------------------------------
+
+
+** Vielen Dank, <%= job.customer.firstName %>!
+------------------------------------------------------------
+Roofcare Kontakt
+info@roofcare.de
+0800-roofcare(0800-766-322-7)
+http://www.roofcare.de
+
+
+** Ihr Roofcare <%= job.orderType %>Auftrag wurde erteilt!
+------------------------------------------------------------
+
+
+** Ihr Termin wird von unseren Mitarbeitern berarbeitet und umgehend bestätigt.
+------------------------------------------------------------
+Wir haben folgende Daten zu Ihrem Auftrag erhalten:
+Vorname                <%= job.customer.firstName %>
+Nachname               <%= job.customer.lastName %>
+Termin                 <%= job.startDate %>
+Strasse und Hausnummer <%= job.workSite.street %>
+Stadt                  <%= job.workSite.city %>
+PLZ                    <%= job.workSite.zipCode %>
+Dachtyp                <%= job.roofType %>
+Haustyp                <%= job.propertyType %>
+
+
+** Wir freuen uns, Sie bald als neuen Kunden begrüssen zu dürfen.
+------------------------------------------------------------
+Wir bieten erstmalig in Deutschland:
+* Zuverlässige Reparaturen binnen 3 Tagen
+* Transparente klare Abrechnung für Reparaturen
+* Freundliche geschulte Handwerker
+* 24h/7 Tage Auftragsaquise
+
+============================================================
+** Finden Sie uns auf Facebook (http://www.facebook.com)
+Copyright © 2014, Roofcare.
+Kontakt:
+info@roofcare.de
+
+0800-roofcare(0800-766-322-7)
+** http://www.roofcare.de (http://www.roofcare.de)
