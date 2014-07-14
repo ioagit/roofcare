@@ -2,23 +2,20 @@
     kostenSideBarActive = ''
 
 
-- var zahlen_und_fakten_class = (kostenSideBarActive === 'zahlen_und_fakten' ? 'active' : '')
-- var garantie_class = (kostenSideBarActive === 'garantie' ? 'active' : '')
-- var arbeitsschutz_class = (kostenSideBarActive === 'arbeitsschutz' ? 'active' : '')
-- var mitverantwortung_des_bauherren_class = (kostenSideBarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
-- var kontraktor_werden_class = (kostenSideBarActive === 'kontraktor_werden' ? 'active' : '')
-- var kunden_werben_kunden_class = (kostenSideBarActive === 'kunden_werben_kunden' ? 'active' : '')
+- var kosten_dachreparatur_class = (kostenSideBarActive === 'kosten_dachreparatur' ? 'active' : '')
+- var kosten_dachcheck_class = (kostenSideBarActive === 'kosten_dachcheck' ? 'active' : '')
+- var kosten_dachwartung_class = (kostenSideBarActive === 'kosten_dachwartung' ? 'active' : '')
 
 ul.list-group.sidebar-nav-v1
     li.list-group-item
-        a(href='/kosten_dachreparatur')
+        a(href='/kosten_dachreparatur', class=kosten_dachreparatur_class)
             | Dachreparatur
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/kosten_dachcheck')
+        a(href='/kosten_dachcheck', class=kosten_dachcheck_class)
             | Dachcheck
             i.icon-angle-right.pull-right
     li.list-group-item
-        a(href='/kosten_dachwartung')
+        a(href='/kosten_dachwartung', class=kosten_dachwartung_class)
             | Dachwartung
             i.icon-angle-right.pull-right

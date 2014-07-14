@@ -2,27 +2,25 @@
     warumSideBarActive = ''
 
 
-- var zahlen_und_fakten_class = (warumSideBarActive === 'zahlen_und_fakten' ? 'active' : '')
-- var garantie_class = (warumSideBarActive === 'garantie' ? 'active' : '')
-- var arbeitsschutz_class = (warumSideBarActive === 'arbeitsschutz' ? 'active' : '')
-- var mitverantwortung_des_bauherren_class = (warumSideBarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
-- var kontraktor_werden_class = (warumSideBarActive === 'kontraktor_werden' ? 'active' : '')
-- var kunden_werben_kunden_class = (warumSideBarActive === 'kunden_werben_kunden' ? 'active' : '')
+- var auftragsannahme_class = (warumSideBarActive === 'auftragsannahme' ? 'active' : '')
+- var kostentransparenz_class = (warumSideBarActive === 'kostentransparenz' ? 'active' : '')
+- var schnelligkeit_class = (warumSideBarActive === 'schnelligkeit' ? 'active' : '')
+- var qualitaet_class = (warumSideBarActive === 'qualitaet' ? 'active' : '')
 
 ul.list-group.sidebar-nav-v1
     li.list-group-item
-        a.hover-effect(href='/auftragsannahme')
+        a.hover-effect(href='/auftragsannahme', class=auftragsannahme_class)
             | 24h/7Tage Auftragsannahme
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/kostentransparenz')
+        a.hover-effect(href='/kostentransparenz', class=kostentransparenz_class)
             | Kostentransparenz
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/schnelligkeit')
+        a.hover-effect(href='/schnelligkeit', class=schnelligkeit_class)
             | Schnelligkeit
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/qualitaet')
+        a.hover-effect(href='/qualitaet', class=qualitaet_class)
             | Qualität
             i.icon-angle-right.pull-right

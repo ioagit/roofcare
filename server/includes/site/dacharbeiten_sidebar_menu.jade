@@ -1,40 +1,41 @@
-- if (kostenSideBarActive === undefined)
-    kostenSideBarActive = ''
+- if (dacharbeitenSideBarActive === undefined)
+    dacharbeitenSideBarActive = ''
 
 
-- var zahlen_und_fakten_class = (kostenSideBarActive === 'zahlen_und_fakten' ? 'active' : '')
-- var garantie_class = (kostenSideBarActive === 'garantie' ? 'active' : '')
-- var arbeitsschutz_class = (kostenSideBarActive === 'arbeitsschutz' ? 'active' : '')
-- var mitverantwortung_des_bauherren_class = (kostenSideBarActive === 'mitverantwortung_des_bauherren' ? 'active' : '')
-- var kontraktor_werden_class = (kostenSideBarActive === 'kontraktor_werden' ? 'active' : '')
-- var kunden_werben_kunden_class = (kostenSideBarActive === 'kunden_werben_kunden' ? 'active' : '')
+- var dachreparatur_class = (dacharbeitenSideBarActive === 'dachreparatur' ? 'active' : '')
+- var dachcheck_class = (dacharbeitenSideBarActive === 'dachcheck' ? 'active' : '')
+- var dachwartung_class = (dacharbeitenSideBarActive === 'dachwartung' ? 'active' : '')
+- var steildach_definition_class = (dacharbeitenSideBarActive === 'steildach_definition' ? 'active' : '')
+- var steildach_besonderheiten_class = (dacharbeitenSideBarActive === 'steildach_besonderheiten' ? 'active' : '')
+- var flachdach_definition_class = (dacharbeitenSideBarActive === 'flachdach_definition' ? 'active' : '')
+- var flachdach_besonderheiten_class = (dacharbeitenSideBarActive === 'flachdach_besonderheiten' ? 'active' : '')
 
 ul.list-group.sidebar-nav-v1
     li.list-group-item
-        a.hover-effect(href='/dachreparatur')
+        a.hover-effect(href='/dachreparatur', class=dachreparatur_class)
             | Dachreparatur
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/dachcheck')
+        a.hover-effect(href='/dachcheck', class=dachcheck_class)
             | Dachcheck
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/dachwartung')
+        a.hover-effect(href='/dachwartung', class=dachwartung_class)
             | Dachwartung
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/steildach_definition')
+        a.hover-effect(href='/steildach_definition', class=steildach_definition_class)
             | Steildach-Definition
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/steildach_besonderheiten')
+        a.hover-effect(href='/steildach_besonderheiten', class=steildach_besonderheiten_class)
             | Steildach-Besonderheiten
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/flachdach_definition')
+        a.hover-effect(href='/flachdach_definition', class=flachdach_definition_class)
             | Flachdach-Definition
             i.icon-angle-right.pull-right
     li.list-group-item
-        a.hover-effect(href='/flachdach_besonderheiten')
+        a.hover-effect(href='/flachdach_besonderheiten', class=flachdach_besonderheiten_class)
             | Flachdach-Besonderheiten
             i.icon-angle-right.pull-right

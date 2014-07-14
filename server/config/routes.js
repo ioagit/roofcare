@@ -116,6 +116,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Dachreparatur'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'dachreparatur'
                 }
             })
 
@@ -133,6 +134,8 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Dachcheck'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'dachcheck'
+
                 }
             })
 
@@ -150,6 +153,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Dachwartung'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'dachwartung'
                 }
             })
 
@@ -168,6 +172,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Steildach Definition'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'steildach_definition'
                 }
             })
 
@@ -186,6 +191,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Steildach Besonderheiten'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'steildach_besonderheiten'
                 }
             })
 
@@ -205,6 +211,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Flachdach Definition'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'flachdach_definition'
                 }
             })
 
@@ -222,6 +229,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     ,description: 'Flachdach Besonderheiten'
                     ,author: 'RoofCare'
                     ,analyticssiteid: 'XXXXXXX'
+                    ,dacharbeitenSideBarActive: 'flachdach_besonderheiten'
                 }
             })
 
@@ -488,7 +496,7 @@ module.exports =  function(server, User, userController, jobController, contract
                 locals: {
                     moduleName: 'main',
                     breadCrump: true,
-                    title : 'Über uns - Mitverantwortung des bauherren'
+                    title : 'Mitverantwortung des Bauherren'
                     ,description: 'Über uns - Mitverantwortung des bauherren'
                     ,author: 'RoofCare'
                     ,activeMenu: 'uber_uns'
