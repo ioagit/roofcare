@@ -427,7 +427,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Über uns'
                     ,description: 'Über uns'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: ''
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -445,7 +445,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Zahlen und Fakten'
                     ,description: 'Zahlen und Fakten'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'zahlen_und_fakten'
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -463,7 +463,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Garantie'
                     ,description: 'Garantie'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'garantie'
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -481,7 +481,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Arbeitsschutz'
                     ,description: 'Arbeitsschutz'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'arbeitsschutz'
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -499,7 +499,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Mitverantwortung des Bauherren'
                     ,description: 'Über uns - Mitverantwortung des bauherren'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'mitverantwortung_des_bauherren'
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -517,7 +517,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Kontraktor werden'
                     ,description: 'Kontraktor werden'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'kontraktor_werden'
                     ,analyticssiteid: 'XXXXXXX'
                 }
@@ -535,7 +535,7 @@ module.exports =  function(server, User, userController, jobController, contract
                     title : 'Kunden werben Kunden'
                     ,description: 'Kunden werben Kunden'
                     ,author: 'RoofCare'
-                    ,activeMenu: 'uber_uns'
+                    ,headerBarActive: 'uber_uns'
                     ,uberUnsSidebarActive: 'kunden_werben_kunden'
                     ,analyticssiteid: 'XXXXXXX'
                 }
