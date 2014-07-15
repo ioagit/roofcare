@@ -46,6 +46,9 @@
 /* Medium devices (desktops, 992px and up) */
 @media (max-width: 992px) {
 
+
+    /*to do: Show Responsive Nav already.*/
+
     li.devider{
         display:none;
     }
@@ -53,6 +56,11 @@
     .header .navbar-collapse {
         margin-top: 50px;
         background-image:url("../../images/main/bg-fade.jpg");
+    }
+
+    .header .navbar-default .navbar-nav > li > a {
+        padding: 9px 20px;
+        border-bottom: 1px solid #706f6f;
     }
 
 	/*Spaces (Margin Bottom)*/
