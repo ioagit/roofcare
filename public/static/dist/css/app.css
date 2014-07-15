@@ -713,8 +713,8 @@ a.read-more:hover {
 
 /*Fuelux
 ------------------------------------*/
-.fuelux{
-margin-bottom:20px;
+.fuelux {
+    margin-bottom:20px;
 }
 
 .fuelux .wizard {
@@ -892,6 +892,10 @@ margin-bottom:20px;
 	text-decoration:none;
 	color: #FFF;
 }
-.fuelux a:hover{
+.fuelux a:hover {
 	color: #FFF;
+}
+
+.fuelux a span {
+    padding: 0 6px;
 }

@@ -46,6 +46,13 @@
 /* Medium devices (desktops, 992px and up) */
 @media (max-width: 992px) {
 
+    .da-slide-current .da-button1{
+        top:335px;
+    }
+
+    .da-slide-current .da-button2 {
+        left: 20%;
+    }
 
     /*to do: Show Responsive Nav already.*/
 
