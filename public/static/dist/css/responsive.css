@@ -45,59 +45,16 @@
 
 /* Medium devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-	
-	
-		/*Show responsive nav sooner*/
-	.navbar-header {
-        float: none;
+
+    li.devider{
+        display:none;
     }
-    .navbar-toggle {
-        display: block;
+
+    .header .navbar-collapse {
+        margin-top: 50px;
+        background-image:url("../../images/main/bg-fade.jpg");
     }
-	
-	
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-	
-	.header-top {
-		position: relative;
-	}
-	
-	li.devider{
-		display:none;
-	}
-	
-	.navbar-nav.menu-top > li{
-		float:none;
-	}
-	
-	.navbar-collapse {
-		max-height: none;
-	}
-	
-	.header .navbar-nav {
-		top: 0px;
-	}
-	
-	
-	
-	
+
 	/*Spaces (Margin Bottom)*/
 	.md-margin-bottom-20 {
 		margin-bottom: 20px;
@@ -156,13 +113,7 @@
 }
 
 @media (max-width: 1140px) {
-	.da-slide .da-button1{
-		top:265px !important;
-	}
-	
-	.da-slide .da-button2{
-		left:10% !important;
-	}
-	
-	
+
+
+
 }

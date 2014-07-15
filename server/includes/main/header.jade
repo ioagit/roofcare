@@ -13,14 +13,27 @@
 - var kosten_class = (headerBarActive === 'kosten' ? 'active' : '')
 - var warum_roofcare_class = (headerBarActive === 'warum_roofcare' ? 'active' : '')
 
-div.header
-    div.navbar.navbar-default(role='navigation')
-        div.container
-            div.row
-                div.menu1
-                    ul.pull-right
+div.top
+    div.container
+        ul.topnav.pull-right
+            li
+                a(href='/uber_uns', target='_self', data-delay='0', data-close-others='false', title='Über uns') Über uns
+            li.devider
+            li
+                a(href='/kontakt', target='_self', data-delay='0', data-close-others='false', title='Kontakt') Kontakt
+            li.devider
+            li
+                a(href='#')
+                    i.icon-facebook-sign.icon-large
+            li
+                a(href='#')
+                    i.icon-google-plus-sign.icon-large
+
+.header
+    .navbar.navbar-default(role='navigation')
+        .container
             // Brand and toggle get grouped for better mobile display
-            div.navbar-header
+            .navbar-header
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
                     span.sr-only Toggle navigation
                     span.icon-bar
@@ -30,19 +43,6 @@ div.header
                     img#logo-header(src='/static/images/main/logo1-default.png', alt='Logo')
             // Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse.navbar-responsive-collapse
-                ul.nav.navbar-nav.navbar-right.menu-top
-                    li
-                        a(href='#')
-                            i.icon-google-plus-sign.icon-large
-                    li
-                        a(href='#')
-                            i.icon-facebook-sign.icon-large
-                    li.devider
-                    li
-                        a(href='/kontakt', target="_self",  class=kontakt_class, data-delay='0', data-close-others='false', title='Kontakt' )  Kontakt
-                    li.devider
-                    li
-                        a(href='/uber_uns', target="_self",  class=uber_uns_class , data-delay='0', data-close-others='false', title='Über uns') Über uns
                 ul.nav.navbar-nav.navbar-right
                     li
                         a(href='/bestehender_termin', target="_self",  class=bestehender_termin_class , data-delay='0', data-close-others='false') Bestehender Termin
@@ -58,6 +58,7 @@ div.header
                     li.devider
                     li
                         a(href='/warum_roofcare', target="_self",   class=warum_roofcare_class, data-delay='0', data-close-others='false') Warum Roofcare
+            // /navbar-collapse
 
 if (breadCrump)
     div.breadcrumbs.margin-bottom-40

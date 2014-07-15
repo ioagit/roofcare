@@ -681,6 +681,7 @@ a.read-more:hover {
 /*Main Slider (Parallax)
 ------------------------------------*/
 .slider-inner .da-slider {
+   margin-top: -82px;
    box-shadow: none;
    border-bottom: 2px solid #ddd;
 }

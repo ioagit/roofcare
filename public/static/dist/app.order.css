@@ -8167,14 +8167,6 @@ text-align:left;
 }
 /*Top Bar (login, search etc.)
 ------------------------------------*/
-.header-top{
-position:absolute;
-width: 100%;
-}
-
-.menu1{
-
-}
 
 .menu1,.menu2 {
 	margin: 0;
