@@ -7,7 +7,7 @@
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     path = require('path'),
     nodemailer = require('nodemailer'),
-    emailTemplates = require('email-templates'),
+    //emailTemplates = require('email-templates'),
     config = require(path.join(process.cwd(), 'server', 'config','config'))[env],
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
