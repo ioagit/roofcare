@@ -7,7 +7,7 @@
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     path = require('path'),
     nodemailer = require('nodemailer'),
-    //emailTemplates = require('email-templates'),
+    emailTemplates = require('email-templates'),
     config = require(path.join(process.cwd(), 'server', 'config','config'))[env],
     lookUps = require(path.join(process.cwd(), 'server', 'models', 'lookups')),
     translation = require(path.join(process.cwd(), 'server', 'translation','de-de' )),
@@ -23,34 +23,35 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     });
 
 var doEmailing = function(templateName, locals, fn) {
-  return fn(null, 'email template is commented now', 'email tempd disabled', 'email temp disabled');
 
-//    emailTemplates(templatesDir, function (err, template) {
-//        if (err) return fn(err);
-//
-//        // Send a single email
-//        template(templateName, locals, function (err, html, text) {
-//            if (err) return fn(err);
-//
-//            // if we are testing don't send out an email instead return success and the html and txt strings for inspection
-//            if (env === 'test')
-//                return fn(null, '250 2.0.0 OK 1350452502 s5sm19782310obo.10', html, text);
-//
-//            defaultTransport.sendMail({
-//                from: config.mailer.defaultFromAddress,
-//                to: locals.email,
-//                subject: locals.subject,
-//                html: html,
-//                generateTextFromHTML: true,
-//                text: text
-//            }, function (err, responseStatus) {
-//                if (err) return fn(err);
-//
-//                return fn(null, responseStatus.message, html, text);
-//            });
-//        });
-//
-//    });
+  //return fn(null, 'email template is commented now', 'email tempd disabled', 'email temp disabled');
+
+    emailTemplates(templatesDir, function (err, template) {
+        if (err) return fn(err);
+
+        // Send a single email
+        template(templateName, locals, function (err, html, text) {
+            if (err) return fn(err);
+
+            // if we are testing don't send out an email instead return success and the html and txt strings for inspection
+            if (env === 'test')
+                return fn(null, '250 2.0.0 OK 1350452502 s5sm19782310obo.10', html, text);
+
+            defaultTransport.sendMail({
+                from: config.mailer.defaultFromAddress,
+                to: locals.email,
+                subject: locals.subject,
+                html: html,
+                generateTextFromHTML: true,
+                text: text
+            }, function (err, responseStatus) {
+                if (err) return fn(err);
+
+                return fn(null, responseStatus.message, html, text);
+            });
+        });
+
+    });
 };
 
 exports.sendEmailsForJob = function (jobModel, callbackFunction) {
