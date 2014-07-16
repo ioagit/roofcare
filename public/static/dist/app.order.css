@@ -6043,11 +6043,34 @@ a.btn-u-lg {
   opacity: 1;
 }
 
-.social_facebook {background: url(../../images/main/icons/social/facebook.png) no-repeat;}
-.social_googleplus {background: url(../../images/main/icons/social/googleplus.png) no-repeat;}
-.social_rss {background: url(../../images/main/icons/social/rss.png) no-repeat;}
-.social_twitter {background: url(../../images/main/icons/social/twitter.png) no-repeat;}
-.social_youtube {background: url(../../images/main/icons/social/youtube.png) no-repeat;}
+.social_amazon {background: url(../images/main/icons/social/amazon.png) no-repeat;}
+.social_behance {background: url(../images/main/icons/social/behance.png) no-repeat;}
+.social_blogger {background: url(../images/main/icons/social/blogger.png) no-repeat;}
+.social_deviantart {background: url(../images/main/icons/social/deviantart.png) no-repeat;}
+.social_dribbble {background: url(../images/main/icons/social/dribbble.png) no-repeat;}
+.social_dropbox {background: url(../images/main/icons/social/dropbox.png) no-repeat;}
+.social_evernote {background: url(../images/main/icons/social/evernote.png) no-repeat;}
+.social_facebook {background: url(../images/main/icons/social/facebook.png) no-repeat;}
+.social_forrst {background: url(../images/main/icons/social/forrst.png) no-repeat;}
+.social_github {background: url(../images/main/icons/social/github.png) no-repeat;}
+.social_googleplus {background: url(../images/main/icons/social/googleplus.png) no-repeat;}
+.social_jolicloud {background: url(../images/main/icons/social/jolicloud.png) no-repeat;}
+.social_last-fm {background: url(../images/main/icons/social/last-fm.png) no-repeat;}
+.social_linkedin {background: url(../images/main/icons/social/linkedin.png) no-repeat;}
+.social_picasa {background: url(../images/main/icons/social/picasa.png) no-repeat;}
+.social_pintrest {background: url(../images/main/icons/social/pintrest.png) no-repeat;}
+.social_rss {background: url(../images/main/icons/social/rss.png) no-repeat;}
+.social_skype {background: url(../images/main/icons/social/skype.png) no-repeat;}
+.social_spotify {background: url(../images/main/icons/social/spotify.png) no-repeat;}
+.social_stumbleupon {background: url(../images/main/icons/social/stumbleupon.png) no-repeat;}
+.social_tumblr {background: url(../images/main/icons/social/tumblr.png) no-repeat;}
+.social_twitter {background: url(../images/main/icons/social/twitter.png) no-repeat;}
+.social_vimeo {background: url(../images/main/icons/social/vimeo.png) no-repeat;}
+.social_wordpress {background: url(../images/main/icons/social/wordpress.png) no-repeat;}
+.social_xing {background: url(../images/main/icons/social/xing.png) no-repeat;}
+.social_yahoo {background: url(../images/main/icons/social/yahoo.png) no-repeat;}
+.social_youtube {background: url(../images/main/icons/social/youtube.png) no-repeat;}
+.social_vk {background: url(../images/main/icons/social/vk.png) no-repeat;}
 
 
 /*Font Awesome Icon Page*/
@@ -8167,6 +8190,14 @@ text-align:left;
 }
 /*Top Bar (login, search etc.)
 ------------------------------------*/
+.header-top{
+position:absolute;
+width: 100%;
+}
+
+.menu1{
+
+}
 
 .menu1,.menu2 {
 	margin: 0;
@@ -10079,7 +10110,7 @@ a .icon-flip-vertical:before {
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
-	background: transparent url(/static/images/main/parallax-slider/img/bg.jpg) repeat 0% 0%;
+	background: transparent url(https://s3-eu-west-1.amazonaws.com/roofcare/bg_fade.jpg) repeat 0% 0%;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -2px 1px #fff;
 	-webkit-transition: background-position 1.4s ease-in-out 0.3s;
 	-moz-transition: background-position 1.4s ease-in-out 0.3s;
@@ -11975,10 +12006,10 @@ a {
 
 
 /*! 
- * angular-loading-bar v0.4.2
+ * angular-loading-bar v0.4.3
  * https://chieffancypants.github.io/angular-loading-bar
  * Copyright (c) 2014 Wes Cruver
  * License: MIT
  */
 
-#loading-bar,#loading-bar-spinner{pointer-events:none;-webkit-pointer-events:none;-webkit-transition:350ms linear all;-moz-transition:350ms linear all;-o-transition:350ms linear all;transition:350ms linear all}#loading-bar.ng-enter,#loading-bar.ng-leave.ng-leave-active,#loading-bar-spinner.ng-enter,#loading-bar-spinner.ng-leave.ng-leave-active{opacity:0}#loading-bar.ng-enter.ng-enter-active,#loading-bar.ng-leave,#loading-bar-spinner.ng-enter.ng-enter-active,#loading-bar-spinner.ng-leave{opacity:1}#loading-bar .bar{-webkit-transition:width 350ms;-moz-transition:width 350ms;-o-transition:width 350ms;transition:width 350ms;background:#29d;position:fixed;z-index:2000;top:0;left:0;width:100%;height:2px;border-bottom-right-radius:1px;border-top-right-radius:1px}#loading-bar .peg{position:absolute;width:70px;right:0;top:0;height:2px;opacity:.45;-moz-box-shadow:#29d 1px 0 6px 1px;-ms-box-shadow:#29d 1px 0 6px 1px;-webkit-box-shadow:#29d 1px 0 6px 1px;box-shadow:#29d 1px 0 6px 1px;-moz-border-radius:100%;-webkit-border-radius:100%;border-radius:100%}#loading-bar-spinner{display:block;position:fixed;z-index:2000;top:10px;left:10px}#loading-bar-spinner .spinner-icon{width:14px;height:14px;border:solid 2px transparent;border-top-color:#29d;border-left-color:#29d;border-radius:10px;-webkit-animation:loading-bar-spinner 400ms linear infinite;-moz-animation:loading-bar-spinner 400ms linear infinite;-ms-animation:loading-bar-spinner 400ms linear infinite;-o-animation:loading-bar-spinner 400ms linear infinite;animation:loading-bar-spinner 400ms linear infinite}@-webkit-keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-moz-keyframes loading-bar-spinner{0%{-moz-transform:rotate(0deg);transform:rotate(0deg)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes loading-bar-spinner{0%{-o-transform:rotate(0deg);transform:rotate(0deg)}100%{-o-transform:rotate(360deg);transform:rotate(360deg)}}@-ms-keyframes loading-bar-spinner{0%{-ms-transform:rotate(0deg);transform:rotate(0deg)}100%{-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading-bar-spinner{0%{transform:rotate(0deg);transform:rotate(0deg)}100%{transform:rotate(360deg);transform:rotate(360deg)}}
+#loading-bar,#loading-bar-spinner{pointer-events:none;-webkit-pointer-events:none;-webkit-transition:350ms linear all;-moz-transition:350ms linear all;-o-transition:350ms linear all;transition:350ms linear all}#loading-bar.ng-enter,#loading-bar.ng-leave.ng-leave-active,#loading-bar-spinner.ng-enter,#loading-bar-spinner.ng-leave.ng-leave-active{opacity:0}#loading-bar.ng-enter.ng-enter-active,#loading-bar.ng-leave,#loading-bar-spinner.ng-enter.ng-enter-active,#loading-bar-spinner.ng-leave{opacity:1}#loading-bar .bar{-webkit-transition:width 350ms;-moz-transition:width 350ms;-o-transition:width 350ms;transition:width 350ms;background:#29d;position:fixed;z-index:10002;top:0;left:0;width:100%;height:2px;border-bottom-right-radius:1px;border-top-right-radius:1px}#loading-bar .peg{position:absolute;width:70px;right:0;top:0;height:2px;opacity:.45;-moz-box-shadow:#29d 1px 0 6px 1px;-ms-box-shadow:#29d 1px 0 6px 1px;-webkit-box-shadow:#29d 1px 0 6px 1px;box-shadow:#29d 1px 0 6px 1px;-moz-border-radius:100%;-webkit-border-radius:100%;border-radius:100%}#loading-bar-spinner{display:block;position:fixed;z-index:10002;top:10px;left:10px}#loading-bar-spinner .spinner-icon{width:14px;height:14px;border:solid 2px transparent;border-top-color:#29d;border-left-color:#29d;border-radius:10px;-webkit-animation:loading-bar-spinner 400ms linear infinite;-moz-animation:loading-bar-spinner 400ms linear infinite;-ms-animation:loading-bar-spinner 400ms linear infinite;-o-animation:loading-bar-spinner 400ms linear infinite;animation:loading-bar-spinner 400ms linear infinite}@-webkit-keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-moz-keyframes loading-bar-spinner{0%{-moz-transform:rotate(0deg);transform:rotate(0deg)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes loading-bar-spinner{0%{-o-transform:rotate(0deg);transform:rotate(0deg)}100%{-o-transform:rotate(360deg);transform:rotate(360deg)}}@-ms-keyframes loading-bar-spinner{0%{-ms-transform:rotate(0deg);transform:rotate(0deg)}100%{-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading-bar-spinner{0%{transform:rotate(0deg);transform:rotate(0deg)}100%{transform:rotate(360deg);transform:rotate(360deg)}}

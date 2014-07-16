@@ -256,6 +256,8 @@ module.exports = function (grunt) {
 
                     './public/vendor/bootstrap/dist/css/bootstrap.min.css',
                     './public/static/css/light-theme.css',
+                    './public/static/dist/css/theme-colors.css',
+
 
                     //Toastr
                     './public/vendor/toastr/toastr.css',

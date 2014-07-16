@@ -24,11 +24,15 @@ html.no-js(lang='en')
     - if (moduleName !== undefined && moduleName === 'contractor')
          link(rel='stylesheet', href='/static/dist/app.' + moduleName + '.css', media="all", id="")
 
+    //Page related classes to the body
+    if (bodyClass === undefined)
+        bodyClass = '';
+
     //In case there is more Css to be added by independent views
     block css
 
 
-  body.contrast-red
+  body.contrast-red(class=bodyClass)
 
     block header
     block content

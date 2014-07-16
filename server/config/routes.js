@@ -551,6 +551,7 @@ module.exports =  function(server, User, userController, jobController, contract
 
         locals : {
           currentUser: req.user
+          ,bodyClass: 'login contrast-background'
           ,moduleName: 'contractor'
           ,title : 'Login'
           ,description: 'Login'
