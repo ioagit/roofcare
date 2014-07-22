@@ -5,7 +5,6 @@
 module.exports = {
 
     roles: {
-
         admin: 'admin',
         contractor: 'Kontraktor',
         customer: 'Kunde'
@@ -13,11 +12,8 @@ module.exports = {
     },
 
     salutation: {
-
         Mr: 'Herr',
-        Mrs: 'Frau',
-        Miss: ''
-
+        Mrs: 'Frau'
     },
 
     findOrderTypeByName: function(name){
