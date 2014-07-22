@@ -23,7 +23,7 @@
         };
 
 
-        vm.canEditJob = false;
+        vm.canEditJob = true;
 
 
         function saveJob() {
