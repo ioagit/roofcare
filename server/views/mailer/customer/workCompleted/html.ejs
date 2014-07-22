@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>*|MC:SUBJECT|*</title>
+<title>Roofcare Auftrag <%= job.invoice.number  %></title>
 <style type="text/css">
 /* Client-specific Styles */
 #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
@@ -497,7 +497,7 @@ h4, .h4{
                                                             </tr>
                                                             <tr>
                                                                 <td>Kundenname</td>
-                                                                <td><%= job.customer.fullProperName  %></td>
+                                                                <td><%= job.customer.salutation  %><%= job.customer.firstName  %><%= job.customer.lastName  %></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Dachtyp</td><td><%= job.roofType  %></td>

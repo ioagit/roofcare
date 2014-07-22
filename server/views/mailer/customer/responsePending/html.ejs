@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>*|MC:SUBJECT|*</title>
+<title>Roofcare Auftrag <%= job.invoice.number  %></title>
 <style type="text/css">
 /* Client-specific Styles */
 #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
@@ -471,7 +471,7 @@ h4, .h4{
                                             <tr>
                                                 <td valign="top" style="padding-left:0;">
                                                     <div>
-                                                        <h2 class="h2">Vielen Dank, <%= job.customer.firstName  %>!</h2>
+                                                        <h2 class="h2">Vielen Dank, <%= job.customer.salutation  %><%= job.customer.firstName  %><%= job.customer.lastName  %>!</h2>
                                                         <h3 class="h3">Ihr Termin wird von unseren Mitarbeitern berarbeitet und umgehend bestätigt.</h3>
                                                         <strong>Wir haben folgende Daten zu Ihrem Auftrag erhalten:</strong>
                                                         <table class="table">
@@ -497,7 +497,7 @@ h4, .h4{
                                                             </tr>
                                                             <tr>
                                                                 <td>Kundenname</td>
-                                                                <td><%= job.customer.fullProperName  %></td>
+                                                                <td><%= job.customer.salutation  %><%= job.customer.firstName  %><%= job.customer.lastName  %></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Dachtyp</td><td><%= job.roofType  %></td>
