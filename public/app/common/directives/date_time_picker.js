@@ -24,7 +24,16 @@
 
         function linkFn(scope, element, attr) {
 
+
+
             element.datetimepicker({language: 'de-DE', format: 'lll'});
+
+            if (attr.showCalendar) {
+
+              element.data('DateTimePicker').show();
+
+            }
+
             scope.dtEl = element;
 
         }
