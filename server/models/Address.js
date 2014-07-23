@@ -46,7 +46,7 @@ var build = function(sourceAddress, callback) {
         entity.zipCode = geoData.zipcode;
         entity.coordinates = [geoData.longitude, geoData.latitude];
         callback(null, entity);
-    });
+    },{ language: 'de' });
 };
 
 var getFormattedAddress = function(source) {
@@ -76,7 +76,7 @@ var refresh = function(originalAddress, currentAddress, callback) {
                 callback(err, null);
             else
                 callback (null, [geoData[0].longitude, geoData[0].latitude]);
-        });
+        },{ language: 'de' });
     }
     else
         callback(null, originalAddress.coordinates);
