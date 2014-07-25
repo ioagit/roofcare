@@ -19,6 +19,7 @@
 
 
         function onData(data) {
+          data.startDate = moment(data.startDate).format('lll');
             vm.job = data;
         }
 
