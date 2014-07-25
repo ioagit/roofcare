@@ -15,6 +15,8 @@
 
         var vm = this;
 
+      var canCopyOnSiteToBillingInfo = true;
+
         vm.job = orderWorkFlowSvc.job();
 
 
@@ -40,6 +42,20 @@
 
         };
 
+
+
+        ///
+      vm.copyOnSiteToBillingInfo = function() {
+        if (canCopyOnSiteToBillingInfo) {
+          vm.job.customer.firstName = vm.job.onSiteContact.firstName;
+          vm.job.customer.lastName = vm.job.onSiteContact.lastName;
+          vm.job.customer.phone = vm.job.onSiteContact.phone;
+        }
+      };
+
+      vm.disableCopingToBilling = function() {
+        canCopyOnSiteToBillingInfo = false;
+      };
 
         /////////////////////////////
         //////////Validations///////
@@ -70,6 +86,26 @@
         vm.isContactLastNameInvalid = function() {
             return vm.userForm.contactLastName.$invalid && !vm.userForm.contactLastName.$pristine && vm.formSubmitted;
         };
+
+      vm.isContactPhoneInvalid = function() {
+        return vm.userForm.contactPhone.$invalid && !vm.userForm.contactPhone.$pristine && vm.formSubmitted;
+      };
+
+      vm.isBillingContactFirstNameInvalid = function() {
+        return vm.userForm.billingFirst.$invalid && !vm.userForm.billingFirst.$pristine && vm.formSubmitted;
+      };
+
+      vm.isBillingContactLastNameInvalid = function() {
+        return vm.userForm.billingLast.$invalid && !vm.userForm.billingLast.$pristine && vm.formSubmitted;
+      };
+
+      vm.isBillingPhoneInvalid = function() {
+        return vm.userForm.billingPhone.$invalid && !vm.userForm.billingPhone.$pristine && vm.formSubmitted;
+      };
+
+      vm.isBillingEmailInvalid = function() {
+        return vm.userForm.billingEmail.$invalid && !vm.userForm.billingEmail.$pristine && vm.formSubmitted;
+      };
 
 
 

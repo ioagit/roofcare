@@ -34,6 +34,8 @@ var translation = {
 
         //contact Info
         invalidName: 'Falsche Eingabe',
+        invalidPhone: 'Invalid Phone number',
+        invalidEmail: 'Invalid Email',
 
         invalidUsername: 'User name must be at least 6 characters long',
         invalidPassword: 'Password must be at least 6 characters long',

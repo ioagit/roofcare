@@ -63,7 +63,7 @@
     <td>{{job.orderType}}</td>
     <td>{{job.workSite.street}}</td>
 
-    <td>{{job.startDate | date:'medium'}}</td>
+    <td>{{job.startDate | amDateFormat: 'lll'}}, <span am-time-ago="job.startDate"></span></td>
     <td>
         <job-status status="{{job.status}}" />
     </td>

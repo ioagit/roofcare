@@ -28,11 +28,11 @@
 
             element.datetimepicker({language: 'de-DE', format: 'lll'});
 
-            if (attr.showCalendar) {
-
-              element.data('DateTimePicker').show();
-
-            }
+//            if (attr.showCalendar) {
+//
+//              element.data('DateTimePicker').show();
+//
+//            }
 
             scope.dtEl = element;
 

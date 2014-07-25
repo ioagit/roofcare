@@ -28,13 +28,15 @@
 
           street: 'Gräfelfinger Straße 47',
           zipCode: '81735',
-          city: 'Munich'
+          city: 'München'
         }};
 
         vm.job = orderWorkFlowSvc.job() || {
             propertyType: lookups.propertyType.singleFamily,
             roofType: lookups.roofType.flat,
             orderType: orderWorkFlowSvc.orderType(),
+            roofAccess: lookups.roofAccess.window,
+
             startDate:moment().add('days', 7),
             duration: lookups.orderType.check.hours
 
@@ -49,7 +51,11 @@
             if (!isFormValid())
                 return;
 
-            orderSvc.createJob(vm.job).then(function(data) {
+          //set the workSite Address to be also the customer address by default
+          vm.job.customer = {address: vm.job.workSite};
+
+
+          orderSvc.createJob(vm.job).then(function(data) {
                 if (data)
                     orderWorkFlowSvc.nextStep();
             });

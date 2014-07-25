@@ -6,9 +6,9 @@
 
         <div class="name">
             <a class="text-blue" href="/contractor/job_start/{{job._id}}">
-                {{job.startDate | date: 'EEEE, dd.MM.yyyy' }}
+                {{job.startDate | amDateFormat: 'lll' }}
             </a><br/>
-            <a class="text-contrast" href="/contractor/job_start/{{job._id}}">{{job.StartDate | date: 'HH:mm' }} Uhr</a>
+            <a class="text-contrast" href="/contractor/job_start/{{job._id}}"><span am-time-ago="job.startDate"></span></a>
         </div>
         <address>
             <strong>{{job.customer.firsName }} {{job.customer.lastName}}</strong>
