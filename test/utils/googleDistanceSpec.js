@@ -52,7 +52,41 @@ describe('Module - Google Distance', function () {
         expect(map).to.not.be.null;
     });
 
+    it ('return coordinates from street location', function(done) {
+        var callback = function(err, r) {
+            console.log(r);
+            expect(r.results[0].geometry.location.lat).to.eq(41.8781136);
+            expect(r.results[0].geometry.location.lng).to.eq(-87.6297982);
+            done();
+        };
+
+        gm.geocode('Chicago , Il , USA', callback, 'false');
+    });
+
     describe('geo', function() {
+
+        it ('should return a properly formatted address object', function(done) {
+            geo.getAddress('1 River Pl New York NY 10036', function(err, address) {
+                if (err) done(err);
+                expect(address.city).to.eq('New York City');
+                expect(address.country).to.eq('USA');
+                console.log(address);
+
+                done();
+            })
+        });
+
+        it('Should return a full Address from user entered location information in Munich', function(done){
+            geo.getAddress('Putzbrunner-Str 173 81739 München',
+                function(err, address)
+                {
+                    expect(address).to.not.be.null;
+                    expect(address.city).to.eq('München');
+                    console.log(address);
+                    done();
+                })
+        });
+
         it ('should return the driving distance for 2 locations', function(done){
 
             var destination = testData.locations.RicoAddress.coordinates;
@@ -94,5 +128,4 @@ describe('Module - Google Distance', function () {
             expect(map).to.have.string('zoom=false');
         })
     });
-
 });

@@ -21,6 +21,17 @@ describe('Model - Address', function () {
         })
     });
 
+    it('Should return a full Address from user entered location information in Munich', function(done){
+        Address.Build({street: 'Putzbrunner-Str 173', city:'München', zipCode:'81739'},
+            function(err, result)
+            {
+                expect(result).to.not.be.null;
+                expect(result.city).to.eq('München');
+                done();
+            })
+    });
+
+
     it('Should refresh Lat/Long only if address has changed', function(done){
         var Address02 = testData.locations.Address02;
         var destination =  {
@@ -42,6 +53,6 @@ describe('Model - Address', function () {
     it('Get Formatted Address Should Return A String With Correct Data', function() {
         var academy = testData.locations.AcademyOfArts;
         var f = Address.GetFormattedAddress(academy);
-        expect(f).to.eq('Pariser Platz 4 Berlin Germany 10117');
+        expect(f).to.eq('Pariser Platz 4 Berlin Deutschland 10117');
     });
 });
