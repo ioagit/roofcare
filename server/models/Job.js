@@ -70,7 +70,10 @@ var schema =  BaseSchema.extend({
 
     notes : {
         customer: {type: String, required:false},
-        contractor: {type: String, required:false}
+        contractor: {type: String, required:false},
+        workCarriedOut: {type: String, required:false},
+        recommendations: {type: String, required:false}
+
     }
 });
 
