@@ -143,7 +143,13 @@ module.exports = function (grunt) {
 
 
                             //retina
-                            './public/vendor/retina.js/src/retina.js'
+                            './public/vendor/retina.js/src/retina.js',
+
+                            //signature pad
+                          './public/vendor/signature-pad/assets/json2.min.js',
+                          './public/vendor/signature-pad/assets/flashcanvas.js',
+                          './public/vendor/signature-pad/jquery.signaturepad.js'
+
 
                     ]
                 }
@@ -258,6 +264,9 @@ module.exports = function (grunt) {
                     './public/static/css/light-theme.css',
                     './public/static/dist/css/theme-colors.css',
 
+                    //Sign pad
+                    './public/static/dist/css/jquery.signaturepad.css',
+
 
                     //Toastr
                     './public/vendor/toastr/toastr.css',
@@ -267,6 +276,7 @@ module.exports = function (grunt) {
                     './public/static/css/ngStyles.css',
 
                     './public/vendor/angular-loading-bar/build/loading-bar.min.css'
+
 
 
                 ]

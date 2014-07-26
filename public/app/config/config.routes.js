@@ -188,10 +188,22 @@
                     title: 'Contractor Job Start',
                     templateUrl: '/contractor/job_start',
                     settings: {
-                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                        content: '<i class="fa fa-dashboard"></i> job start'
                     }
                 }
             },
+          {
+            url: '/contractor/job_beenden/:id',
+            config: {
+              controller: 'ContractorJobEndCtrl',
+              controllerAs: 'vm',
+              title: 'Contractor Job Beenden',
+              templateUrl: '/contractor/job_end',
+              settings: {
+                content: '<i class="fa fa-dashboard"></i> Job beenden'
+              }
+            }
+          },
           {
             url: '/contractor/job/:id/checklists',
             config: {

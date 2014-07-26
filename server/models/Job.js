@@ -74,7 +74,14 @@ var schema =  BaseSchema.extend({
         workCarriedOut: {type: String, required:false},
         recommendations: {type: String, required:false}
 
+    },
+
+    sign: {
+      signature: {type: Array, required:false},
+      name: {type: String, required:false}
+
     }
+
 });
 
 schema.virtual('workSite.latitude')
