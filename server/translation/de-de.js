@@ -20,7 +20,7 @@ var translation = {
     contractorDashboardLoaded: 'Dashboard geladen',
 
     //Shell Messages
-    busyMessage: 'Laden...bitte warten',
+    busyMessage: 'Seite laedt...bitte warten',
 
     //data Loading errors
     loadinError: 'Daten konnten nicht geladen werden',
@@ -33,9 +33,9 @@ var translation = {
     validation: {
 
         //contact Info
-        invalidName: 'Falsche Eingabe',
-        invalidPhone: 'Invalid Phone number',
-        invalidEmail: 'Invalid Email',
+        invalidName: 'Bitte Name angeben',
+        invalidPhone: 'Bitte Telefonnummer angeben',
+        invalidEmail: 'Bitte Email angeben',
 
         invalidUsername: 'User name must be at least 6 characters long',
         invalidPassword: 'Password must be at least 6 characters long',
