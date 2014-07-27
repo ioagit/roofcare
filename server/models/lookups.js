@@ -28,7 +28,7 @@ module.exports = {
             id: 'repair',
             name: 'Dachreparatur',
             fee: 150,
-            hours: '4 hours'
+            hours: '4 Stunden'
         },
         check: {
             id: 'check',
