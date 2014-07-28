@@ -33,7 +33,7 @@
                 function successReturn(response) {
 
                     if (response.data) {
-                        response.data.job.startDate = moment(job.startDate, 'lll').format('lll');
+                        response.data.job.startDate = moment(job.startDate).format('lll');
                         orderWorkFlowSvc.job(response.data.job);
                         orderWorkFlowSvc.workFlow(response.data.workFlow);
                         deferred.resolve(true);
@@ -65,7 +65,7 @@
 
                     if (response.data) {
 
-                      response.data.startDate = moment(job.startDate, 'lll').format('lll');
+                      response.data.startDate = moment(job.startDate).format('lll');
                       orderWorkFlowSvc.job(response.data);
                         deferred.resolve(true);
                     }
