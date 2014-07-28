@@ -29,7 +29,7 @@ var doEmailing = function(templateName, locals, fn) {
     emailTemplates(templatesDir, function (err, template) {
         if (err) return fn(err);
 
-        // Send a single email
+                // Send a single email
         template(templateName, locals, function (err, html, text) {
             if (err) return fn(err);
 
@@ -50,6 +50,7 @@ var doEmailing = function(templateName, locals, fn) {
                 return fn(null, responseStatus.message, html, text);
             });
         });
+
 
     });
 };

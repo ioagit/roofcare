@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group" ng-class="{ 'has-error' : vm.isContactFirstNameInvalid()}">
-                                <label>Vorname</label>
+                                <label>Vorname<span class="color-red">*</span></label>
                                 <input type="text" class="form-control"
                                        ng-change="vm.copyOnSiteToBillingInfo()"
                                        name="contactFirstName" placeholder="Vorname"
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group" ng-class="{ 'has-error' : vm.isContactLastNameInvalid()}">
-                                <label>Nachname</label>
+                                <label>Nachname<span class="color-red">*</span></label>
                                 <input type="text" class="form-control" name="contactLastName" placeholder="Nachname"
                                        ng-change="vm.copyOnSiteToBillingInfo()"
                                        data-ng-model="vm.job.onSiteContact.lastName"
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group" ng-class="{ 'has-error' : vm.isContactPhoneInvalid()}">
-                                <label>Telefonnummer</label>
+                                <label>Telefonnummer<span class="color-red">*</span></label>
                                 <input type="text"
                                        ng-change="vm.copyOnSiteToBillingInfo()"
                                        class="form-control"
@@ -80,7 +80,7 @@
                                        ng-minlength="6"
                                        ng-maxlength="50"
                                        placeholder="Telefonnummer">
-                              <p ng-show="vm.isContactPhoneInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidPhone"></p>
+                                  <p ng-show="vm.isContactPhoneInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidPhone"></p>
                             </div>
                               </div>
                             <div class="col-sm-4">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group" ng-class="{ 'has-error' : vm.isBillingContactFirstNameInvalid()}">
-                                <label>Vorname</label>
+                                <label>Vorname<span class="color-red">*</span></label>
                                 <input type="text"
                                        ng-focus="vm.disableCopingToBilling()"
                                        data-ng-model="vm.job.customer.firstName"
@@ -135,12 +135,12 @@
                                        ng-minlength="2"
                                        ng-maxlength="50"
                                        placeholder="Vorname">
-                              <p ng-show="vm.isBillingContactFirstNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
+                                  <p ng-show="vm.isBillingContactFirstNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
                             </div>
                               </div>
                             <div class="col-sm-4">
                               <div class="form-group" ng-class="{ 'has-error' : vm.isBillingContactLastNameInvalid()}">
-                                <label>Nachname</label>
+                                <label>Nachname<span class="color-red">*</span></label>
                                 <input type="text"
                                        ng-focus="vm.disableCopingToBilling()"
                                        data-ng-model="vm.job.customer.lastName"
@@ -150,28 +150,28 @@
                                        ng-minlength="2"
                                        ng-maxlength="50"
                                        placeholder="Nachname">
-                              <p ng-show="vm.isBillingContactLastNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
+                                  <p ng-show="vm.isBillingContactLastNameInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidName"></p>
                             </div>
                               </div>
                         </div>
                         <div class="row margin-bottom-10">
                             <div class="col-sm-5">
-                                <label>Strasse und Hausnummer</label>
+                                <label>Strasse und Hausnummer<span class="color-red">*</span></label>
                                 <input type="text"   data-ng-model="vm.job.customer.address.street"  class="form-control" name="billing-address" placeholder="Strasse und Hausnummer">
                             </div>
                             <div class="col-sm-2">
-                                <label>PLZ</label>
+                                <label>PLZ<span class="color-red">*</span></label>
                                 <input type="text"   data-ng-model="vm.job.customer.address.zipCode"  class="form-control" name="billing-zip" placeholder="PLZ">
                             </div>
                             <div class="col-sm-5">
-                                <label>Stadt</label>
+                                <label>Stadt<span class="color-red">*</span></label>
                                 <input type="text"   data-ng-model="vm.job.customer.address.city"   class="form-control" name="billing-city" placeholder="Stadt">
                             </div>
                         </div>
                         <div class="row margin-bottom-10">
                             <div class="col-sm-6">
                               <div class="form-group" ng-class="{ 'has-error' : vm.isBillingPhoneInvalid()}">
-                                <label>Telefon</label>
+                                <label>Telefonnummer<span class="color-red">*</span></label>
                                 <input type="text"
                                        ng-focus="vm.disableCopingToBilling()"
                                        data-ng-model="vm.job.customer.phone"
@@ -187,14 +187,14 @@
                               </div>
                             <div class="col-sm-6">
                               <div class="form-group" ng-class="{ 'has-error' : vm.isBillingEmailInvalid()}">
-                                <label>Email</label>
+                                <label>Email<span class="color-red">*</span></label>
                                 <input type="email"
                                        data-ng-model="vm.job.customer.email"
                                        class="form-control"
                                        name="billingEmail"
                                        ng-required="true"
                                        placeholder="Email">
-                              <p ng-show="vm.isBillingEmailInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidEmail"></p>
+                                  <p ng-show="vm.isBillingEmailInvalid()" class="help-block" data-ng-bind="vm.translation.validation.invalidEmail"></p>
                             </div>
                               </div>
                         </div>
