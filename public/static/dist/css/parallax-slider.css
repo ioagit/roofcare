@@ -55,7 +55,7 @@
 .da-slide h2{
 	color: #706f6f;
 	line-height:50px;
-	top: 110px;
+	top: 115px;
 	z-index: 10;
 	padding:0;
 	margin-left:-2%;
@@ -75,7 +75,7 @@ text-align:right;
 	font-weight:400;
 	line-height: 25px;
 	width:500px;
-	top: 228px;
+	top: 236px;
 	color: #706f6f;
 	overflow: hidden;
 	margin-left:-2%;
@@ -99,6 +99,7 @@ text-align:right;
 .da-slide-current .da-img{
 	left: 60%;
 	opacity: 1;
+    z-index: -1;
 }
 
 .da-slide .da-link{
@@ -125,10 +126,10 @@ text-align:right;
 	text-shadow: 0 1px 0 #d22936;	
 	color: #fff;
 	font-size: 18px;	
-	min-width:265px;
+	min-width:256px;
 	padding: 2px 5px;
 	text-align: left;
-	top: 386px; /*depends on p height*/
+	top: 400px; /*depends on p height*/
 	
 }
 

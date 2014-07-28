@@ -31,7 +31,6 @@ a:active {
    outline: 0 !important;
 }
 a:hover {
-   color: #72c02c;
    text-decoration: underline;
 }
 
@@ -118,14 +117,14 @@ img.img-circle {
    cursor:pointer;
    padding:10px;
    position:relative;
-   background:#72c02c;
+   background:#be1522;
    display:inline-block;
    color:#fff !important;
    text-decoration:none !important;
 }
 .btn-u:hover {
    color:#fff;
-   background:#5fb611;
+   background:#d22936;
    text-decoration:none;
     -webkit-transition:all 0.4s ease-in-out;
     -moz-transition:all 0.4s ease-in-out;
@@ -458,7 +457,7 @@ li [class*=" icon-"].icon-lg {
 .color-sea { color:#1abc9c;}
 .color-red { color:#be1522;}
 .color-blue { color:#3498db;}
-.color-green { color:#72c02c;}
+.color-green { color:#be1522;}
 .color-orange { color:#e67e22;}
 .color-green1 { color:#2ecc71;}
 
@@ -491,13 +490,13 @@ a.read-more {
    text-decoration:none;
 }
 a.read-more:hover {
-   color:#72c02c;
+   color:#be1522;
    text-decoration:none;
 }
 
 /*Link color-green-style*/
 .linked:hover {
-   color:#72c02c;
+   color:#be1522;
    text-decoration:none;
 }
 

@@ -1,21 +1,3 @@
-a:focus, 
-a:hover, 
-a:active {
-	color: #be1522;
-	
-}
-
-.color-green {
-	color: #be1522;
-}
-
-a.read-more:hover { 
-	color:#be1522; 
-}
-
-.linked:hover {
-	color:#be1522;
-}
 
 /*Sliders
 ------------------------------------*/
@@ -39,55 +21,8 @@ a.read-more:hover {
 	background:rgba(231, 76, 60, 0.8);
 }
 
-/*Purchase
-------------------------------------*/
-a.btn-buy {
-	background:#be1522;
-	text-shadow:0 1px 0 #d22936;
-    min-width: 195px;
-}
-a.btn-buy:hover {
-	background:#d22936;
-} 
 
-/*Buttons
-------------------------------------*/
-.btn-u {
-	background: #be1522;
-}
 
-.btn-u:hover {
-	background: #d22936;
-}
-
-/*Service
-------------------------------------*/
-.service .service-icon {
-	color:#be1522;	
-}
-
-/*Service Blocks*/
-.service-alternative .service:hover { 
-	background:#be1522;
-} 
-
-/*Thumbnail (Recent Work)
-------------------------------------*/
-.thumbnail-style h3 a:hover {
-	color:#be1522;
-}
-
-.thumbnail-style a.btn-more {
-	background:#be1522;
-}
-.thumbnail-style a.btn-more:hover {
-	box-shadow:0 0 0 2px #d22936;
-}
-
-/*Carousel (Recent Work)*/
-.recent-work a:hover span {
-	border-bottom:solid 2px #be1522;
-}
 
 .bx-wrapper .bx-prev {
 	background-image: url(../../plugins/bxslider/images/controls-red.png);
@@ -96,19 +31,7 @@ a.btn-buy:hover {
 	background-image: url(../../plugins/bxslider/images/controls-red.png);
 }
 
-/*Typography
-------------------------------------*/
-/*Heading*/
 
-
-/*Blockquote*/
-blockquote:hover {
-	border-left-color:#be1522; 
-}
-
-.hero {
-	border-left-color: #be1522;
-}
 
 /*Carousel
 ------------------------------------*/
@@ -116,25 +39,6 @@ blockquote:hover {
 	color: #be1522;
 }
 
-/*Footer
-------------------------------------*/
-.footer a,
-.copyright a,
-.footer a:hover,
-.copyright a:hover {
-	color: #ebeaea;
-}
-
-.footer a[href^="mailto"] { text-decoration:underline; }
-
-.footer h4{
-margin-bottom: 20px;
-}
-
-/*Footer Blog*/
-.footer .dl-horizontal a:hover {
-	color:#be1522 !important;
-}
 
 /*Blog Posts
 ------------------------------------*/
@@ -155,34 +59,6 @@ margin-bottom: 20px;
 	color: #be1522;
 }
 
-/*Tabs
-------------------------------------*/
-/*Tabs v1*/
-.tab-v1 .nav-tabs { 
-	border-bottom: solid 2px #be1522; 	
-}
-
-.tab-v1 .nav-tabs > .active > a, 
-.tab-v1 .nav-tabs > .active > a:hover, 
-.tab-v1 .nav-tabs > .active > a:focus { 
-	background: #be1522; 
-}
-
-.tab-v1 .nav-tabs > li > a:hover { 
-	background: #be1522; 
-}
-
-/*Tabs v2*/
-.tab-v2 .nav-tabs li.active a {
-	border-top: solid 2px #be1522;
-}
-
-/*Tabs v3*/
-.tab-v3 .nav-pills li a:hover,
-.tab-v3 .nav-pills li.active a {
-	background: #be1522;
-	border: solid 1px #d22936;
-}
 
 /*Accardion
 ------------------------------------*/
@@ -194,37 +70,7 @@ margin-bottom: 20px;
 	border-bottom:solid 1px #be1522; 
 }
 
-/*Testimonials
-------------------------------------*/
-.testimonials .testimonial-info {
-	color: #be1522;
-}
 
-.testimonials .carousel-arrow i:hover {
-	background: #be1522;
-}
-
-/*Info Blocks
-------------------------------------*/
-
-
-/*Breadcrumb
-------------------------------------*/
-.breadcrumb li.active,
-.breadcrumb li a:hover {
-	color:#be1522;
-}
-
-/*About Page
-------------------------------------*/
-.team .thumbnail-style:hover h3 a {
-	color:#be1522 !important;
-}
-
-/*Social Icons*/
-.team ul.team-socail li i:hover {
-	background: #be1522;
-}
 
 /*Pricing Page
 ------------------------------------*/
@@ -274,20 +120,6 @@ margin-bottom: 20px;
 	color:#be1522;
 }
 
-/*Right Sidebar
-------------------------------------*/
-/*Right Sidebar*/
-.who li i,
-.who li:hover i, 
-.who li:hover a { 
-	color:#be1522; 
-}
-
-/*Privacy Page
-------------------------------------*/
-.privacy a:hover {
-	color:#be1522; 
-}
 
 /*Portfolio Page
 ------------------------------------*/
@@ -397,22 +229,7 @@ ul.blog-tags a:hover {
 	color: #be1522;
 }
 
-/*Page Features
-------------------------------------*/
-/*Tag Boxes v1*/
-.tag-box-v1 {
-	border-top: solid 2px #be1522;
-}
 
-/*Tag Boxes v2*/
-.tag-box-v2 {
-	border-left: solid 2px #be1522;
-}
-
-/*Tag Boxes v7*/
-.tag-box-v7 {
-	border-bottom: solid 2px #be1522;
-}
 
 /*Font Awesome Icon Page Style*/
 .fa-icons li:hover { 
