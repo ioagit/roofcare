@@ -85,6 +85,8 @@ module.exports = function (grunt) {
 
                         //Moment Js
                         './public/vendor/momentjs/min/moment-with-langs.min.js',
+                        './public/vendor/moment-timezone/moment-timezone.js',
+                        './public/vendor/moment-timezone/moment-timezone-utils.js',
 
 
 

@@ -89,18 +89,17 @@
 
 
 
-
       function saveJob() {
 
-        commonSvc.saveData(config.endpoints.job.create, vm.job, 'PUT')
+        contractorSvc.saveJob( vm.job)
           .then(successReturn);
 
 
         function successReturn(response) {
 
-          if (response.data) {
-            commonSvc.logger.logSuccess(translation.orderSavedSuccess, response.data, 'CheckList', true  );
-            //$location.path('/contractor/jobs');
+          if (response) {
+            commonSvc.logger.logSuccess(translation.orderSavedSuccess, response, 'JobEnd', true  );
+
           }
 
 

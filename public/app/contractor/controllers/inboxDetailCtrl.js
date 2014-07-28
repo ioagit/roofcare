@@ -19,25 +19,21 @@
 
 
         function onData(data) {
-          data.startDate = moment(data.startDate).format('lll');
             vm.job = data;
         }
 
         function saveJob() {
 
-          //transform starDate to a readable server format.
-          //Formating the date to unix timestamp
-          vm.job.startDate = moment(vm.job.startDate, 'lll').format('YYYY/MM/DD HH:mm');
 
 
-          commonSvc.saveData(config.endpoints.job.create, vm.job, 'PUT')
+          contractorSvc.saveJob( vm.job)
                 .then(successReturn);
 
 
             function successReturn(response) {
 
-                if (response.data) {
-                    commonSvc.logger.logSuccess(translation.orderSavedSuccess, response.data, 'InboxDetail', true  );
+                if (response) {
+                    commonSvc.logger.logSuccess(translation.orderSavedSuccess, response, 'InboxDetail', true  );
                     $location.path('/contractor/inbox');
                 }
 

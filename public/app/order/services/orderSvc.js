@@ -13,6 +13,7 @@
 
 
 
+
         return {
 
             createJob: function (job) {
@@ -26,16 +27,13 @@
                 .then(successReturn);
 
 
-                function fixDateTimeZone(date) {
-                  var d = new Date(date);
-                  return moment(d).add('minutes', d.getTimezoneOffset())
-                }
+
 
 
                 function successReturn(response) {
 
                     if (response.data) {
-                        response.data.job.startDate = fixDateTimeZone(response.data.job.startDate).format('lll');
+                        response.data.job.startDate = moment(job.startDate, 'lll').format('lll');
                         orderWorkFlowSvc.job(response.data.job);
                         orderWorkFlowSvc.workFlow(response.data.workFlow);
                         deferred.resolve(true);
@@ -67,7 +65,7 @@
 
                     if (response.data) {
 
-                      response.data.startDate = moment(response.data.startDate).format('lll');
+                      response.data.startDate = moment(job.startDate, 'lll').format('lll');
                       orderWorkFlowSvc.job(response.data);
                         deferred.resolve(true);
                     }
