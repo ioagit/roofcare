@@ -63,7 +63,7 @@
 
 
    app.constant('angularMomentConfig', {
-    timezone: 'Europe/London' // optional
+    timezone: 'Europe/Berlin' // optional
   });
 
     app.run(function(amMoment) {

@@ -163,7 +163,7 @@
                         url = orderRoutes[0].url;
                         break;
                     case 2: //for step 2 (check or repair)
-                        if (this.orderType && this.orderType === lookups.orderType.repair.name)
+                        if (orderType && orderType === lookups.orderType.repair.name)
                             url = orderRoutes[1].url;
                         else
                             url = orderRoutes[0].url;

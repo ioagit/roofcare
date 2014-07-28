@@ -27,10 +27,12 @@ var mailInfo =  {
 module.exports = {
 
     development: {
+      //db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
         db:  'mongodb://localhost/rcdb',
         rootPath: rootPath,
         port: process.env.PORT || 3000,
         mailer: mailInfo
+
     },
     test: {
         //db:  'mongodb://roofcareuser:roofcarepwd@ds033559.mongolab.com:33559/roofcare',
