@@ -717,8 +717,8 @@ a.read-more:hover {
 }
 
 .fuelux .wizard {
-  background-color: #f9f9f9;
-  border: 1px solid #d4d4d4;
+  background-color: transparent;
+  border: none;
   *zoom: 1;
 }
 
@@ -742,14 +742,18 @@ a.read-more:hover {
   position: relative;
   float: left;
   height: 46px;
-  padding: 0 20px 0 30px;
-  margin: 0;
+  margin-bottom: 20px;
   font-size: 16px;
   line-height: 46px;
-  color: #999999;
+  background-color: #bab9b9;
+  margin-right: 30px;
+  padding: 0 20px;
+  color: #424242;
+  font-size: 20px;
+  position: relative;
   cursor: default;
-  background: #ededed; }
 
+}
 .fuelux .wizard ul li .chevron {
   position: absolute;
   top: 0;
@@ -848,18 +852,10 @@ a.read-more:hover {
 .fuelux .step-content .active {
   display: block; }
 
-  .fuelux .wizard {
-  background-color: transparent;
-  border: none; }
+
   .fuelux .wizard .actions {
     padding: 0; }
-  .fuelux .wizard ul li {
-    background-color: #bab9b9;
-    margin-right: 30px;
-    padding: 0 20px;
-    color: #424242;
-    font-size: 20px;
-    position: relative;}
+
     .fuelux .wizard ul li.active {
       background-color: #706f6f;
       color: white; }
@@ -872,21 +868,10 @@ a.read-more:hover {
         background-color: #525151; }
       .fuelux .wizard ul li.complete:before {
         background-color: #525151; }
-	/*
-    .fuelux .wizard ul li:before {
-      content: "";
-      width: 30px;
-      height: 4px;
-      background-color: #dddddd;
-      display: block;
-      position: absolute;
-      top: 50%;
-      margin-top: -2px;
-	  left: -30px; }
-	  */
 
 .fuelux .wizard ul li:first-child:before {
       display: none; }
+
 .fuelux a{
 	text-decoration:none;
 	color: #FFF;
