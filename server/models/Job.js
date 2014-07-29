@@ -129,7 +129,9 @@ schema.statics.NextInvoiceNumber = function(callback) {
         .sort('-invoice.number')
         .exec(function(err, doc)
         {
-            var max = parseInt(doc.invoice.number.slice(2)) + 1;
+          var max = 1;
+          if (doc && doc.invoice)
+             max = parseInt(doc.invoice.number.slice(2)) + 1;
             callback('RC' + ("00000000" + max).slice(-8));
         });
 };
