@@ -57,8 +57,12 @@
 /*Custom Breakpoint for Menu*/
 @media only screen and (max-width : 995px) {
     /*Show Responsive Menu*/
-    .top, .header {
-        background-image: url("../../images/main/bg-fade.jpg");
+
+    .header{
+        min-height: 100px;
+    }
+    .slider-inner .da-slider {
+        margin-top: 0px;
     }
     .navbar-header {
         float: none;
@@ -94,9 +98,9 @@
     .collapse.in{
         display:block !important;
     }
-}
+    }
 
-/* Medium Devices, Desktops */
+    /* Medium Devices, Desktops */
 @media only screen and (max-width : 980px) {
 
     .da-slide-current .da-button2 {
