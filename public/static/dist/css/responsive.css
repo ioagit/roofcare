@@ -184,6 +184,10 @@
 /* Small Devices, Tablets */
 @media only screen and (max-width : 780px) {
 
+    .headline {
+        margin-left: 20px;
+    }
+
     .da-slide-current .da-button2 {
         top:460px;
         left: 20%;
@@ -228,15 +232,41 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
+
+
+    .da-slide-current .da-button1 {
+        top:280px;
+    }
+
+    .da-slide-current .da-button2 {
+        top:345px;
+    }
+
     /*Slider Parallax*/
     .da-slide p {
         display:none;
     }
+
+
 }
 
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width : 384px) {
+    .da-slide h2 i {
+        font-size: 36px;
+    }
 
+    .da-slide-current h2{
+        left: 10%;
+    }
+
+    .da-slide-current .da-button1 {
+        left: 10%;
+    }
+
+    .da-slide-current .da-button2 {
+        left: 10%;
+    }
 }
 
 
