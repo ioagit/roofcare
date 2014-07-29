@@ -21,7 +21,7 @@ describe('Model - Address', function () {
         })
     });
 
-    it.only('Should return a full Address from user entered location information in Munich', function(done){
+    it('Should return a full Address from user entered location information in Munich', function(done){
         Address.Build({street: 'Putzbrunner-Str 173', city:'München', zipCode:'81739'},
             function(err, result)
             {
