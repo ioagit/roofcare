@@ -39,7 +39,7 @@ exports.getAddress = function(sourceAddress, callback) {
                     address.country = val.long_name;
                     streetNumberFirst = val.short_name == 'US';
                     break;
-                case "postal_code_prefix": address.zipCode = val.long_name; break;
+                case "postal_code": address.zipCode = val.long_name; break;
             }
         });
 
@@ -89,4 +89,4 @@ exports.getStaticMap = function(origin, destination) {
     ];
 
     return gm.staticMap(center, false, '200x200', false, false, 'roadmap', markers);
-}
+};
